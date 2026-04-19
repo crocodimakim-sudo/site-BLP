@@ -1,0 +1,89 @@
+{
+  "agents": [
+    {
+      "agent_id": "a4ee2aa08f221af16",
+      "agent_type": "g4-fasteners",
+      "started_at": "2026-04-18T18:38:44.807Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:38:53.456Z",
+      "duration_ms": 8649
+    },
+    {
+      "agent_id": "a2c3f858dd6b75e6a",
+      "agent_type": "g3-architect",
+      "started_at": "2026-04-18T18:38:44.879Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:39:17.024Z",
+      "duration_ms": 32145
+    },
+    {
+      "agent_id": "a666fcf88c7d7ccf0",
+      "agent_type": "g5-dealers",
+      "started_at": "2026-04-18T18:38:44.950Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:39:04.823Z",
+      "duration_ms": 19873
+    },
+    {
+      "agent_id": "aa1f5a1b0491fc018",
+      "agent_type": "g7-contacts",
+      "started_at": "2026-04-18T18:38:45.167Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:38:58.268Z",
+      "duration_ms": 13101
+    },
+    {
+      "agent_id": "acc19a85e32442a6e",
+      "agent_type": "g12-image-arch",
+      "started_at": "2026-04-18T18:38:45.655Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:38:58.479Z",
+      "duration_ms": 12824
+    },
+    {
+      "agent_id": "a0209022e73d18cc5",
+      "agent_type": "g6-objects",
+      "started_at": "2026-04-18T18:38:45.709Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:39:29.496Z",
+      "duration_ms": 43787
+    },
+    {
+      "agent_id": "a8b4a21ab3dab9c3b",
+      "agent_type": "g13-typography",
+      "started_at": "2026-04-18T18:38:46.179Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:39:01.134Z",
+      "duration_ms": 14955
+    },
+    {
+      "agent_id": "a0c446e6716a8f3c1",
+      "agent_type": "g14-remove-tilda",
+      "started_at": "2026-04-18T18:38:46.265Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:40:08.627Z",
+      "duration_ms": 82362
+    },
+    {
+      "agent_id": "a8c4cd894ada1eed2",
+      "agent_type": "g15-mobile",
+      "started_at": "2026-04-18T18:38:46.563Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-18T18:39:14.634Z",
+      "duration_ms": 28071
+    }
+  ],
+  "total_spawned": 6,
+  "total_completed": 9,
+  "total_failed": 0,
+  "last_updated": "2026-04-18T18:40:08.735Z"
+}

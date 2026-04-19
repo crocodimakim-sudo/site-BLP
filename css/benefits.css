@@ -1,0 +1,118 @@
+/* ========================================
+   Блок преимуществ (общий для всех страниц)
+   ======================================== */
+
+.benefits-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 0;
+            overflow-x: hidden;
+        }
+
+        .benefits-section > h2 {
+            margin-bottom: 20px;
+        }
+
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            gap: 30px;
+            width: 100%;
+            padding: 0;
+        }
+
+        .benefit-col {
+            width: calc(25% - 22.5px);
+            padding: 0;
+            margin-bottom: 0;
+            opacity: 1;
+        }
+
+        .benefit-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            height: 100%;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: var(--color-border-hover);
+        }
+
+        .benefit-icon {
+            color: var(--color-primary);
+            margin-bottom: 16px;
+            width: 32px;
+            height: 32px;
+            transition: transform var(--transition-slow);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1);
+        }
+
+        .benefit-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: invert(14%) sepia(15%) saturate(4120%) hue-rotate(128deg) brightness(98%) contrast(101%);
+        }
+
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--color-text);
+            transition: color var(--transition-slow);
+        }
+
+        .benefits-section > h2 {
+            font-size: 37px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-align: left;
+            margin-bottom: 40px;
+            padding-left: 32px;
+        }
+
+        .benefit-card:hover .benefit-title {
+            color: var(--color-primary);
+        }
+
+        .benefit-text {
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 960px) {
+            .benefit-col {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .benefits-section {
+                padding: 16px;
+            }
+
+            .benefits-grid {
+                margin: 0;
+            }
+
+            .benefit-col {
+                width: 100%;
+                padding: 0 8px;
+            }
+        }
+
+        /* ========================================
+           БЛОК 5: PARTNERS SLIDER
+           ======================================== */
+        

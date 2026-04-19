@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"echo \\\"=== ГЛАВНАЯ ===\\\" && curl -s \\\"http://localhost/blp/\\\" | grep -o \\\"object_residential\\\\|object_admin\\\\|object_commercial\\\\|object_healthcare\\\\|object_education\\\" && echo \\\"✅ Объекты...",
+  "error": "Exit code 1\n=== ГЛАВНАЯ ===\nobject_residential\nobject_admin\nobject_commercial\nobject_healthcare\nobject_education\n✅ Объекты загружаются\n=== СЕРТИФИКАТЫ ===\n0",
+  "timestamp": "2026-04-18T13:54:29.182Z",
+  "retry_count": 1
+}

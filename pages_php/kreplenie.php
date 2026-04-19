@@ -1,0 +1,107 @@
+<?php
+$page_title = "Способы крепления — BLP Board";
+$page_desc = "Варианты крепления фиброцементных панелей BLP Board к подсистеме: видимый и скрытый способы. Совместимость с алюминиевыми, оцинкованными и нержавеющими подсистемами.";
+$extra_css = '<link rel="stylesheet" href="/blp/css/pages/kreplenie.css">';
+$extra_js = "";
+
+ob_start();
+?>
+
+<!-- Блок MOUNTING -->
+<div class="blp-mounting-block">
+    <h1 class="blp-mounting-title">Варианты крепления панелей&nbsp;к подсистеме</h1>
+    <div class="blp-mounting-divider"></div>
+
+    <!-- Видимый способ -->
+    <div class="blp-method-section">
+        <h2 class="blp-method-header">Видимый</h2>
+        <div class="blp-method-content">
+            <div class="blp-method-images">
+                <div class="blp-img-large">
+                    <img src="/blp/images-convert/pages/kreplenie/mount_visible_facade.png" alt="Фасад с видимыми заклёпками">
+                </div>
+                <div class="blp-img-small">
+                    <img src="/blp/images-convert/pages/kreplenie/mount_visible_rivets.png" alt="Заклёпки">
+                </div>
+            </div>
+            <div class="blp-method-info">
+                <p class="blp-method-description">Заклёпки, выкрашенные&nbsp;в тон панели, становятся деталью дизайна.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Скрытый способ -->
+    <div class="blp-method-section">
+        <h2 class="blp-method-header">Скрытый способ</h2>
+        <div class="blp-method-content">
+            <div class="blp-method-images">
+                <div class="blp-img-large">
+                    <img src="/blp/images-convert/pages/kreplenie/mount_hidden_scheme.png" alt="Скрытый способ крепления">
+                </div>
+            </div>
+            <div class="blp-method-info">
+                <p class="blp-method-description">Невидимый крепёж - сохраняет чистоту фасадной поверхности. Ничего лишнего, только идеальные линии.</p>
+                <div class="blp-hardware-grid">
+                    <div class="blp-hardware-item">
+                        <p class="blp-hardware-title">Кляммер «КРАБ»</p>
+                        <div class="blp-hardware-images">
+                            <div class="blp-hardware-img">
+                                <img src="/blp/images-convert/pages/kreplenie/mount_krab_1.png" alt="Кляммер КРАБ">
+                            </div>
+                            <div class="blp-hardware-img">
+                                <img src="/blp/images-convert/pages/kreplenie/mount_krab_2.png" alt="Кляммер КРАБ вид 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blp-hardware-item">
+                        <p class="blp-hardware-title">KEIL</p>
+                        <div class="blp-hardware-images">
+                            <div class="blp-hardware-img">
+                                <img src="/blp/images-convert/pages/kreplenie/mount_keil_1.png" alt="KEIL крепёж">
+                            </div>
+                            <div class="blp-hardware-img">
+                                <img src="/blp/images-convert/pages/kreplenie/mount_keil_2.png" alt="KEIL крепёж вид 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blp-hardware-item">
+                        <p class="blp-hardware-title">Аграфы NORDFox</p>
+                        <div class="blp-hardware-images">
+                            <div class="blp-hardware-img">
+                                <img src="/blp/images-convert/pages/kreplenie/mount_nordfox_1.png" alt="Аграфы NORDFox схема">
+                            </div>
+                            <div class="blp-hardware-img">
+                                <img src="/blp/images-convert/pages/kreplenie/mount_nordfox_2.png" alt="Аграфы NORDFox">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Блок COMPAT -->
+<div class="blp-compatibility-block">
+    <h2 class="blp-compatibility-title">Совместимость&nbsp;с подсистемами</h2>
+    <div class="blp-compatibility-divider"></div>
+
+    <div class="blp-materials-grid">
+        <div class="blp-material-card">
+            <p class="blp-material-name">Алюминий</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">Оцинкованная сталь</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">Нержавеющая сталь</p>
+        </div>
+    </div>
+</div>
+
+<?php include "../blocks/partners-section.php"; ?>
+<?php include "../blocks/contact-form.php"; ?>
+
+<?php
+$page_content = ob_get_clean();
+include "../blocks/template.php";

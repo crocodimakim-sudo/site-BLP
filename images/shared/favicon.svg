@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#00352F" rx="6"/>
+  <!-- BLP Text monogram -->
+  <g fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="700" font-size="16" letter-spacing="-1">
+    <text x="5" y="22" text-anchor="start">BLP</text>
+  </g>
+</svg>

@@ -1,0 +1,1085 @@
+/* ========================================
+
+HERO SECTION
+
+======================================== */
+
+.hero-section {
+
+width: 100%;
+
+max-width: 1200px;
+
+margin: 0 auto;
+
+padding: 44px 24px 0 24px;
+
+}
+
+.hero-card {
+
+position: relative;
+
+width: 100%;
+
+min-height: 450px;
+
+border-radius: var(--radius-lg);
+
+overflow: hidden;
+
+display: flex;
+
+align-items: center;
+
+box-shadow: var(--shadow-lg);
+
+border: 1px solid var(--color-border);
+
+}
+
+/* Фоновое изображение */
+
+.hero-bg {
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+right: 0;
+
+bottom: 0;
+
+background-image: url('https://static.tildacdn.com/tild3931-3161-4864-b933-643461393938/IMG_0930.JPG');
+
+background-size: cover;
+
+background-position: center;
+
+z-index: 1;
+
+}
+
+/* Градиентный оверлей (в стиле бренда) */
+
+.hero-overlay {
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+right: 0;
+
+bottom: 0;
+
+background: linear-gradient(135deg, rgba(0, 53, 47, 0.95) 0%, rgba(0, 53, 47, 0.8) 50%, rgba(0, 53, 47, 0.4) 100%);
+
+z-index: 2;
+
+}
+
+/* Декоративная линия сверху */
+
+.hero-card::before {
+
+content: '';
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+right: 0;
+
+height: 4px;
+
+background: linear-gradient(90deg, var(--color-cta) 0%, var(--color-primary) 100%);
+
+z-index: 4;
+
+}
+
+/* Контент */
+
+.hero-content {
+
+position: relative;
+
+z-index: 3;
+
+padding: 60px;
+
+max-width: 700px;
+
+animation: fadeInUp 0.8s ease forwards;
+
+}
+
+.hero-label {
+
+display: inline-block;
+
+font-size: 12px;
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+letter-spacing: 0.1em;
+
+color: var(--color-cta);
+
+margin-bottom: 16px;
+
+background: rgba(39, 174, 96, 0.15);
+
+padding: 6px 12px;
+
+border-radius: 20px;
+
+border: 1px solid rgba(39, 174, 96, 0.3);
+
+}
+
+.hero-title {
+
+font-size: 42px;
+
+font-weight: 700;
+
+color: #ffffff;
+
+line-height: 1.2;
+
+margin-bottom: 20px;
+
+font-family: 'Montserrat', sans-serif;
+
+letter-spacing: -0.02em;
+
+}
+
+.hero-subtitle {
+
+font-size: 18px;
+
+color: rgba(255, 255, 255, 0.85);
+
+line-height: 1.7;
+
+margin-bottom: 32px;
+
+font-weight: 400;
+
+max-width: 550px;
+
+}
+
+/* Кнопка */
+
+.hero-cta {
+
+display: inline-flex;
+
+align-items: center;
+
+gap: 10px;
+
+background: var(--color-cta);
+
+color: white;
+
+padding: 16px 32px;
+
+border-radius: 50px;
+
+font-size: 15px;
+
+font-weight: 600;
+
+text-decoration: none;
+
+border: 2px solid var(--color-cta);
+
+transition: all var(--transition-slow);
+
+box-shadow: 0 4px 16px rgba(39, 174, 96, 0.3);
+
+cursor: pointer;
+
+}
+
+.hero-cta:hover {
+
+background: white;
+
+color: var(--color-cta);
+
+border-color: white;
+
+transform: translateY(-2px);
+
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+}
+
+.hero-cta::after {
+
+content: '>';
+
+font-size: 18px;
+
+transition: transform var(--transition-slow);
+
+}
+
+.hero-cta:hover::after {
+
+transform: translateX(4px);
+
+}
+
+/* Анимация */
+
+@keyframes fadeInUp {
+
+from {
+
+opacity: 0;
+
+transform: translateY(30px);
+
+}
+
+to {
+
+opacity: 1;
+
+transform: translateY(0);
+
+}
+
+}
+
+/* Адаптивность */
+
+@media (max-width: 960px) {
+
+.hero-content {
+
+padding: 40px;
+
+max-width: 100%;
+
+}
+
+.hero-title {
+
+font-size: 32px;
+
+}
+
+.hero-subtitle {
+
+font-size: 16px;
+
+}
+
+}
+
+@media (max-width: 640px) {
+
+.hero-section {
+
+padding: 16px 16px 0 16px;
+
+}
+
+.hero-card {
+
+min-height: 400px;
+
+}
+
+.hero-content {
+
+padding: 32px 24px;
+
+}
+
+.hero-title {
+
+font-size: 26px;
+
+}
+
+.hero-subtitle {
+
+font-size: 15px;
+
+margin-bottom: 24px;
+
+}
+
+.hero-cta {
+
+width: 100%;
+
+justify-content: center;
+
+padding: 14px 24px;
+
+}
+
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+.hero-content {
+
+animation: none;
+
+}
+
+.hero-cta {
+
+transition: none;
+
+}
+
+}
+
+/* ========================================
+
+БЛОК ТЕХНИЧЕСКИХ ПРЕИМУЩЕСТВ
+
+======================================== */
+
+.tech-section {
+
+width: 100%;
+
+max-width: 1200px;
+
+margin: 0 auto;
+
+padding: 60px 24px 0 24px;
+
+}
+
+.devops-section .section-header {
+
+margin-bottom: 40px;
+
+}
+
+.devops-section .section-title {
+
+font-size: 32px;
+
+font-weight: 600;
+
+letter-spacing: -0.01em;
+
+color: var(--color-text);
+
+font-family: 'Montserrat', sans-serif;
+
+}
+
+.section-subtitle {
+
+font-size: 18px;
+
+color: var(--color-text-secondary);
+
+margin-top: 8px;
+
+font-weight: 500;
+
+}
+
+/* Грид 3 колонки */
+
+.tech-grid {
+
+display: flex;
+
+flex-wrap: wrap;
+
+margin: 0 -12px;
+
+}
+
+.tech-col {
+
+width: 33.333%;
+
+padding: 0 12px;
+
+margin-bottom: 24px;
+
+}
+
+@media (max-width: 960px) {
+
+.tech-col {
+
+width: 100%;
+
+}
+
+}
+
+/* Карточка */
+
+.tech-card {
+
+background-color: var(--color-surface);
+
+border: 1px solid var(--color-border);
+
+border-radius: var(--radius-lg);
+
+overflow: hidden;
+
+height: 100%;
+
+transition: all var(--transition-slow);
+
+transform: translateY(0);
+
+box-shadow: var(--shadow-sm);
+
+display: flex;
+
+flex-direction: column;
+
+position: relative;
+
+}
+
+.tech-card::before {
+
+content: '';
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+right: 0;
+
+height: 4px;
+
+background: var(--color-primary);
+
+opacity: 0;
+
+transition: opacity var(--transition-slow);
+
+}
+
+.tech-card:hover::before {
+
+opacity: 1;
+
+}
+
+.tech-card:hover {
+
+transform: translateY(-8px);
+
+box-shadow: var(--shadow-lg);
+
+border-color: var(--color-border-hover);
+
+}
+
+/* Номер карточки */
+
+.tech-number {
+
+position: absolute;
+
+top: 20px;
+
+right: 20px;
+
+font-size: 48px;
+
+font-weight: 800;
+
+color: var(--color-primary);
+
+opacity: 0.08;
+
+line-height: 1;
+
+}
+
+/* Контент */
+
+.tech-content {
+
+padding: 28px 24px 24px 24px;
+
+flex: 1;
+
+display: flex;
+
+flex-direction: column;
+
+position: relative;
+
+z-index: 1;
+
+}
+
+.tech-label {
+
+font-size: 11px;
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+letter-spacing: 0.08em;
+
+color: var(--color-cta);
+
+margin-bottom: 12px;
+
+}
+
+.tech-title {
+
+font-size: 20px;
+
+font-weight: 700;
+
+color: var(--color-text);
+
+margin-bottom: 16px;
+
+font-family: 'Montserrat', sans-serif;
+
+transition: color var(--transition-slow);
+
+line-height: 1.3;
+
+}
+
+.tech-card:hover .tech-title {
+
+color: var(--color-primary);
+
+}
+
+.tech-text {
+
+font-size: 15px;
+
+color: var(--color-text-secondary);
+
+line-height: 1.7;
+
+margin: 0 0 20px 0;
+
+font-family: 'Montserrat', sans-serif;
+
+flex: 1;
+
+}
+
+.tech-text strong {
+
+color: var(--color-text);
+
+font-weight: 600;
+
+}
+
+/* Список преимуществ */
+
+.tech-list {
+
+list-style: none;
+
+padding: 0;
+
+margin: 0;
+
+}
+
+.tech-list li {
+
+position: relative;
+
+padding-left: 20px;
+
+margin-bottom: 10px;
+
+font-size: 14px;
+
+color: var(--color-text-secondary);
+
+line-height: 1.5;
+
+}
+
+.tech-list li::before {
+
+content: '';
+
+position: absolute;
+
+left: 0;
+
+top: 8px;
+
+width: 6px;
+
+height: 6px;
+
+background: var(--color-cta);
+
+border-radius: 50%;
+
+}
+
+/* ========================================
+
+БЛОК ПРЕИМУЩЕСТВ BLP BOARD
+
+======================================== */
+
+.blp-benefits.benefits-section {
+
+width: 100%;
+
+max-width: 1200px;
+
+margin: 20px auto 0 auto;
+
+padding: 0 24px;
+
+}
+
+/* Заголовок слева */
+
+.blp-benefits .section-header {
+
+margin-bottom: 40px;
+
+}
+
+.blp-benefits .section-title {
+
+font-size: 32px;
+
+font-weight: 600;
+
+letter-spacing: -0.01em;
+
+color: var(--color-text);
+
+font-family: 'Montserrat', sans-serif;
+
+}
+
+.blp-benefits .section-subtitle {
+
+font-size: 18px;
+
+color: var(--color-text-secondary);
+
+margin-top: 8px;
+
+font-weight: 500;
+
+}
+
+/* Грид 3 колонки */
+
+.blp-benefits .benefits-grid {
+
+display: flex;
+
+flex-wrap: wrap;
+
+margin: 0 -12px;
+
+}
+
+.blp-benefits .benefit-col {
+
+width: 33.333%;
+
+padding: 0 12px;
+
+margin-bottom: 24px;
+
+}
+
+@media (max-width: 960px) {
+
+.blp-benefits .benefit-col {
+
+width: 100%;
+
+}
+
+}
+
+/* Карточка с рамкой и анимацией */
+
+.blp-benefits .benefit-card {
+
+background-color: var(--color-surface);
+
+border: 1px solid var(--color-border);
+
+border-radius: var(--radius-lg);
+
+overflow: hidden;
+
+height: 100%;
+
+transition: all var(--transition-slow);
+
+transform: translateY(0);
+
+box-shadow: var(--shadow-sm);
+
+display: flex;
+
+flex-direction: column;
+
+position: relative;
+
+}
+
+.blp-benefits .benefit-card::before {
+
+content: '';
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+right: 0;
+
+height: 4px;
+
+background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-light) 100%);
+
+opacity: 0;
+
+transition: opacity var(--transition-slow);
+
+}
+
+.blp-benefits .benefit-card:hover::before {
+
+opacity: 1;
+
+}
+
+.blp-benefits .benefit-card:hover {
+
+transform: translateY(-8px);
+
+box-shadow: var(--shadow-lg);
+
+border-color: var(--color-border-hover);
+
+}
+
+/* Цветовые акценты для карточек */
+
+.blp-benefits .benefit-col:nth-child(1) { --accent-color: #00352F; --accent-light: #27AE60; }
+
+.blp-benefits .benefit-col:nth-child(2) { --accent-color: #27AE60; --accent-light: #00352F; }
+
+.blp-benefits .benefit-col:nth-child(3) { --accent-color: #00352F; --accent-light: #27AE60; }
+
+/* Иконка */
+
+.blp-benefits .benefit-icon {
+
+width: 64px;
+
+height: 64px;
+
+border-radius: var(--radius-lg);
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+margin: 24px 24px 0 24px;
+
+background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+
+color: white;
+
+box-shadow: 0 4px 12px rgba(0,53,47,0.2);
+
+transition: transform var(--transition-slow);
+
+position: relative;
+
+}
+
+.blp-benefits .benefit-card:hover .benefit-icon {
+
+transform: scale(1.05);
+
+}
+
+/* CSS-иконки */
+
+.blp-benefits .benefit-icon::after {
+
+content: '';
+
+display: block;
+
+width: 28px;
+
+height: 28px;
+
+background: currentColor;
+
+mask-size: contain;
+
+mask-repeat: no-repeat;
+
+mask-position: center;
+
+-webkit-mask-size: contain;
+
+-webkit-mask-repeat: no-repeat;
+
+-webkit-mask-position: center;
+
+}
+
+/* Иконка молнии */
+
+.blp-benefits .benefit-col:nth-child(1) .benefit-icon::after {
+
+mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'%3E%3C/polygon%3E%3C/svg%3E");
+
+-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'%3E%3C/polygon%3E%3C/svg%3E");
+
+}
+
+/* Иконка доллара */
+
+.blp-benefits .benefit-col:nth-child(2) .benefit-icon::after {
+
+mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='1' x2='12' y2='23'%3E%3C/line%3E%3Cpath d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'%3E%3C/path%3E%3C/svg%3E");
+
+-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='1' x2='12' y2='23'%3E%3C/line%3E%3Cpath d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'%3E%3C/path%3E%3C/svg%3E");
+
+}
+
+/* Иконка щита */
+
+.blp-benefits .benefit-col:nth-child(3) .benefit-icon::after {
+
+mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3C/svg%3E");
+
+-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3C/svg%3E");
+
+}
+
+/* Контент карточки */
+
+.blp-benefits .benefit-content {
+
+padding: 20px 24px 24px 24px;
+
+flex: 1;
+
+display: flex;
+
+flex-direction: column;
+
+}
+
+.blp-benefits .benefit-label {
+
+font-size: 12px;
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+letter-spacing: 0.05em;
+
+color: var(--color-cta);
+
+margin-bottom: 8px;
+
+}
+
+.blp-benefits .benefit-title {
+
+font-size: 18px;
+
+font-weight: 700;
+
+color: var(--color-text);
+
+margin-bottom: 12px;
+
+font-family: 'Montserrat', sans-serif;
+
+transition: color var(--transition-slow);
+
+line-height: 1.3;
+
+}
+
+.blp-benefits .benefit-card:hover .benefit-title {
+
+color: var(--color-primary);
+
+}
+
+.blp-benefits .benefit-text {
+
+font-size: 15px;
+
+color: var(--color-text-secondary);
+
+line-height: 1.7;
+
+margin: 0;
+
+font-family: 'Montserrat', sans-serif;
+
+flex: 1;
+
+}
+
+.blp-benefits .benefit-text strong {
+
+color: var(--color-text);
+
+font-weight: 600;
+
+}
+
+/* Футер блока */
+
+.blp-benefits .benefits-footer {
+
+margin-top: 16px;
+
+text-align: center;
+
+}
+
+.blp-benefits .benefits-summary {
+
+display: inline-flex;
+
+align-items: center;
+
+gap: 12px;
+
+background: linear-gradient(135deg, var(--color-primary) 0%, #004d44 100%);
+
+color: white;
+
+padding: 16px 28px;
+
+border-radius: 50px;
+
+font-size: 15px;
+
+font-weight: 600;
+
+box-shadow: 0 4px 16px rgba(0,53,47,0.25);
+
+}
+
+.blp-benefits .benefits-summary::before {
+
+content: '>';
+
+color: var(--color-cta);
+
+font-size: 18px;
+
+}
+
+.tech-col {
+
+animation: fadeInUp 0.6s ease forwards;
+
+opacity: 0;
+
+}
+
+.tech-col:nth-child(1) { animation-delay: 0.1s; }
+
+.tech-col:nth-child(2) { animation-delay: 0.2s; }
+
+.tech-col:nth-child(3) { animation-delay: 0.3s; }
+
+.blp-benefits .benefit-col {
+
+animation: fadeInUp 0.6s ease forwards;
+
+opacity: 0;
+
+}
+
+.blp-benefits .benefit-col:nth-child(1) { animation-delay: 0.1s; }
+
+.blp-benefits .benefit-col:nth-child(2) { animation-delay: 0.2s; }
+
+.blp-benefits .benefit-col:nth-child(3) { animation-delay: 0.3s; }
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+.tech-col, .blp-benefits .benefit-col {
+
+animation: none;
+
+opacity: 1;
+
+}
+
+.tech-card, .blp-benefits .benefit-card {
+
+transition: none;
+
+}
+
+.tech-card:hover, .blp-benefits .benefit-card:hover {
+
+transform: none;
+
+}
+
+}

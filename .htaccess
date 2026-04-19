@@ -1,0 +1,15 @@
+DirectoryIndex pages_php/index.php
+
+RewriteEngine On
+RewriteBase /blp/
+
+RewriteRule ^$              pages_php/index.php       [L]
+RewriteRule ^catalog$       pages_php/catalog.php     [L]
+RewriteRule ^architect$     pages_php/architect.php   [L]
+RewriteRule ^devops$        pages_php/devops.php      [L]
+RewriteRule ^diler$         pages_php/diler.php       [L]
+RewriteRule ^kreplenie$     pages_php/kreplenie.php   [L]
+RewriteRule ^projects$      pages_php/projects.php    [L]
+RewriteRule ^sertificate$   pages_php/sertificate.php [L]
+RewriteRule ^contacts$      pages_php/contacts.php    [L]
+RewriteRule ^policy$        pages_php/policy.php      [L]

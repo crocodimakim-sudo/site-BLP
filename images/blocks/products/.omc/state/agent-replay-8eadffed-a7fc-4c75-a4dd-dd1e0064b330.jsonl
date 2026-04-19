@@ -1,0 +1,4 @@
+{"t":0,"agent":"adea945","agent_type":"executor","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"adea945","agent_type":"executor","event":"agent_stop","success":true,"duration_ms":383552}
+{"t":0,"agent":"ad95bcb","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"ad95bcb","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":29148}
