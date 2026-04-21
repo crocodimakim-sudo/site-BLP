@@ -1,8 +1,15 @@
 <?php
 $page_title = 'Объекты - Проекты с фасадом из фиброцементных панелей BLPboard';
 $page_desc  = 'Портфолио реализованных объектов с фасадом из фиброцементных панелей BLPboard: поликлиники, школы, здания судов, международные проекты';
+// 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
+$page_canonical = 'https://building-port.ru/blp/projects/';
 $extra_css  = '<link rel="stylesheet" href="/blp/css/pages/projects.css">';
 $extra_js   = '<script src="/blp/js/pages/projects.js" defer></script>';
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Объекты', 'url' => 'https://building-port.ru/blp/projects'],
+];
 
 ob_start();
 ?>

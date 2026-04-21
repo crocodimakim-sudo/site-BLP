@@ -1,0 +1,131 @@
+/* 2026-04-20: Stage 3 Group 3.B — Product comparison page styles */
+
+/* ===== HERO ===== */
+.compare-hero .blp-hero-content { grid-column: 1 / 8; }
+.compare-hero .blp-hero-image   { grid-column: 8 / 13; display: flex; align-items: center; justify-content: center; }
+
+.compare-hero-series { display: flex;
+    flex-direction: column;
+    gap: .75rem; }
+.compare-series-pill { display: block;
+    padding: .6rem 1.4rem;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .08em;
+    text-align: center; }
+
+/* ===== SHARED SECTION ===== */
+/* 2026-04-20: 80px → 20px */
+.compare-cards-section,
+.compare-matrix-section,
+.compare-usecase-section { padding: 20px 0; }
+.compare-matrix-section  { background: #fafafa; }
+
+.compare-section-title { font-size: 1.75rem;
+    font-weight: 700;
+    color: #00352F;
+    margin: 0 0 .75rem; }
+.compare-section-desc { font-size: 1rem;
+    color: #5a6968;
+    max-width: 720px;
+    line-height: 1.7;
+    margin: 0 0 3rem; }
+
+/* ===== SERIES CARDS ===== */
+.compare-cards-grid { display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; }
+.compare-card { border: 1px solid #e2e8e0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, transform .2s; }
+.compare-card:hover { box-shadow: 0 8px 32px rgba(0,53,47,.12); transform: translateY(-3px); }
+
+.compare-card-header { padding: 1.5rem 1.4rem 1.2rem;
+    background: #00352F;
+    color: #fff; }
+.compare-card-nature   { background: #2d4a3e; }
+.compare-card-polished { background: #1a3d52; }
+.compare-card-texture  { background: #3d2d1a; }
+.compare-card-walypan  { background: #1a1a3d; }
+
+.compare-card-name { font-size: 1.3rem; font-weight: 700; letter-spacing: .06em; margin: 0 0 .3rem; }
+.compare-card-tagline { font-size: .85rem; opacity: .85; margin: 0; }
+
+.compare-card-body { padding: 1.3rem 1.4rem; flex: 1; }
+.compare-card-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+.compare-card-list li { font-size: .9rem; color: #3a4a48; padding: .4rem 0; border-bottom: 1px solid #f0f4f2; }
+.compare-card-list li:last-child { border-bottom: none; }
+.compare-card-list strong { color: #1a2a28; }
+
+.compare-card-badge { display: inline-block;
+    padding: .25rem .75rem;
+    background: #00352F;
+    color: #fff;
+    border-radius: 20px;
+    font-size: .78rem;
+    font-weight: 600; }
+.compare-card-badge-alt  { background: #1a3d52; }
+.compare-card-badge-alt2 { background: #3d2d1a; }
+.compare-card-badge-premium { background: #1a1a3d; }
+
+.compare-card-footer { padding: .9rem 1.4rem 1.3rem; border-top: 1px solid #f0f4f2; }
+.compare-card-link { color: #00352F; font-size: .9rem; font-weight: 600; text-decoration: none; }
+.compare-card-link:hover { text-decoration: underline; }
+
+/* ===== MATRIX TABLE ===== */
+.compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.compare-matrix-table { width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+    min-width: 640px; }
+.compare-matrix-table th { padding: .85rem 1rem;
+    font-weight: 700;
+    font-size: .85rem;
+    letter-spacing: .05em;
+    border-bottom: 2px solid #e2e8e0;
+    text-align: left; }
+.compare-th-param   { background: #f5faf8; color: #1a2a28; width: 28%; }
+.compare-th-nature  { background: #2d4a3e; color: #fff; }
+.compare-th-polished{ background: #1a3d52; color: #fff; }
+.compare-th-texture { background: #3d2d1a; color: #fff; }
+.compare-th-walypan { background: #1a1a3d; color: #fff; }
+
+.compare-matrix-table td { padding: .7rem 1rem;
+    border-bottom: 1px solid #e2e8e0;
+    color: #3a4a48;
+    vertical-align: middle; }
+.compare-param { font-weight: 600; color: #1a2a28; background: #fafafa; }
+.compare-row-alt td { background: #f5faf8; }
+.compare-row-alt .compare-param { background: #eef4f0; }
+.compare-check { color: #00352F; font-weight: 600; }
+
+/* ===== USE CASE ===== */
+.compare-usecase-grid { display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; }
+.compare-usecase-card { background: #fff;
+    border: 1px solid #e2e8e0;
+    border-radius: 10px;
+    padding: 1.8rem; }
+.compare-usecase-title { font-size: 1.05rem; font-weight: 700; color: #00352F; margin: 0 0 .75rem; }
+.compare-usecase-card p { font-size: .95rem; color: #3a4a48; line-height: 1.65; margin: 0 0 .8rem; }
+.compare-usecase-link { color: #00352F; font-weight: 600; font-size: .9rem; text-decoration: none; }
+.compare-usecase-link:hover { text-decoration: underline; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) { .compare-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .compare-hero .blp-hero-content { grid-column: 1 / -1; }
+    .compare-hero .blp-hero-image   { grid-column: 1 / -1; }
+    .compare-hero-series { flex-direction: row; flex-wrap: wrap; }
+    .compare-usecase-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .compare-cards-section, .compare-matrix-section, .compare-usecase-section { padding: 50px 0; }
+    .compare-cards-grid { grid-template-columns: 1fr; }
+    .compare-section-title { font-size: 1.4rem; } }

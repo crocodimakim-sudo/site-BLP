@@ -1,7 +1,16 @@
 <?php
-$page_title = 'Дилерам — BLP Board';
-$page_desc = 'Дилерская программа по фиброцементным плитам. Долгосрочная работа через проектные продажи.';
+// 2026-04-20: added canonical, OG image
+// 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
+$page_title    = 'Дилерская программа BLP Board — фиброцементные панели';
+$page_canonical = 'https://building-port.ru/blp/diler';
+$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_desc = 'Дилерская программа по фиброцементным панелям BLP Board. Проектные продажи, техподдержка, прозрачные условия сотрудничества. Востребованный продукт для жилых и коммерческих объектов.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/diler.css">';
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Дилерам', 'url' => 'https://building-port.ru/blp/diler'],
+];
 
 ob_start();
 ?>
@@ -13,8 +22,9 @@ ob_start();
         <div class="blp-grid-12">
             <!-- Контент - левая часть -->
             <div class="blp-hero-content">
-                <h1 class="blp-hero-title">Дилерская программа&nbsp;<br>по фиброцементным плитам</h1>
-                <p class="blp-hero-subtitle">Долгосрочная работа через проектные продажи</p>
+                <!-- 2026-04-20: H1 обновлён — добавлен бренд -->
+                <h1 class="blp-hero-title">Дилерская программа BLP Board&nbsp;<br>по фиброцементным панелям</h1>
+                <p class="blp-hero-subtitle">Продавайте фиброцементные панели для жилых, коммерческих и социальных объектов — мы обеспечиваем техподдержку и сопровождение сделки</p>
                 <ul class="blp-hero-list">
                     <li class="blp-hero-list-item">
                         <span class="blp-hero-check">
@@ -33,11 +43,12 @@ ob_start();
                         <span>востребованный продукт для жилых, коммерческих и социальных объектов</span>
                     </li>
                 </ul>
-                <a href="#" class="blp-hero-button">Обсудить сотрудничество</a>
+                <!-- 2026-04-20: href="#" исправлен на форму контактов -->
+                <a href="/blp/contacts#form" class="blp-hero-button">Стать дилером BLP Board</a>
             </div>
             <!-- Изображение - правая часть -->
             <div class="blp-hero-image">
-                <img src="/blp/images-convert/pages/diler/diler_hero.jpg" alt="Объект с фиброцементными панелями" class="blp-hero-img">
+                <img src="/blp/images-convert/pages/diler/diler_hero.jpg" alt="Объект с фиброцементными панелями" class="blp-hero-img" width="600" height="450" fetchpriority="high" decoding="async">
             </div>
         </div>
     </div>

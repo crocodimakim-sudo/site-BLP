@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+Allow: /blp/
 
-Sitemap: https://blpboard.ru/sitemap.xml
+# 2026-04-20: updated Sitemap URL and Allow directive for production domain
+Sitemap: https://building-port.ru/blp/sitemap.xml

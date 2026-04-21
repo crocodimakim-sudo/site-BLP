@@ -1,48 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 2026-04-20: 13 URL; diler заменён на dealer (301); добавлены faq/compare/install -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://blpboard.ru/</loc>
+        <loc>https://building-port.ru/blp/</loc>
+        <lastmod>2026-04-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://blpboard.ru/catalog</loc>
+        <loc>https://building-port.ru/blp/catalog</loc>
+        <lastmod>2026-04-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://blpboard.ru/architect</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://blpboard.ru/devops</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://blpboard.ru/diler</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://blpboard.ru/kreplenie</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://blpboard.ru/projects</loc>
+        <loc>https://building-port.ru/blp/projects</loc>
+        <lastmod>2026-04-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://blpboard.ru/sertificate</loc>
+        <loc>https://building-port.ru/blp/architect</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/devops</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/dealer</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/kreplenie</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/contacts</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/sertificate</loc>
+        <lastmod>2026-04-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://blpboard.ru/contacts</loc>
+        <loc>https://building-port.ru/blp/faq</loc>
+        <lastmod>2026-04-20</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/compare</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/install</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blp/policy</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 </urlset>

@@ -1,15 +1,16 @@
     <header class="header">
         <div class="header-container">
             <a href="/blp/" class="logo" aria-label="Building Port - на главную">
-                <img src="https://static.tildacdn.com/tild6563-6337-4165-b430-643331353737/logo-3.svg" alt="Building Port">
+                <!-- 2026-04-20: migrated logo from tildacdn to local images -->
+                <img src="/blp/images/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">
             </a>
 
             <nav class="nav" aria-label="Главная навигация">
                 <div class="nav-item">
-                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" aria-label="Каталог продукции">
+                    <a href="/blp/catalog" class="nav-link" aria-haspopup="true" aria-expanded="false" aria-label="Каталог продукции">
                         Каталог
                         <span class="arrow" aria-hidden="true"></span>
-                    </button>
+                    </a>
                     <div class="dropdown" role="menu">
                         <a href="/blp/catalog#nature" class="dropdown-item" role="menuitem">Nature</a>
                         <a href="/blp/catalog#polished" class="dropdown-item" role="menuitem">Polished</a>

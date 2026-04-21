@@ -1,0 +1,198 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776637386290,
+  "projectRoot": "D:\\Claude Code\\site-blp\\site-kimi",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "scripts"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "blocks": {
+      "path": "blocks",
+      "purpose": null,
+      "fileCount": 16,
+      "lastAccessed": 1776637386264,
+      "keyFiles": [
+        "audience-section.html",
+        "audience-section.php",
+        "benefits-section.php",
+        "benefits.php",
+        "contact-form.php"
+      ]
+    },
+    "css": {
+      "path": "css",
+      "purpose": null,
+      "fileCount": 11,
+      "lastAccessed": 1776637386264,
+      "keyFiles": [
+        "animations.css",
+        "audience-section.css",
+        "benefits.css",
+        "contact-form.css",
+        "footer.css"
+      ]
+    },
+    "html": {
+      "path": "html",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776637386264,
+      "keyFiles": []
+    },
+    "html_preview": {
+      "path": "html_preview",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776637386265,
+      "keyFiles": [
+        "INDEX.md",
+        "PREVIEW_PLAN.md",
+        "README.md"
+      ]
+    },
+    "images": {
+      "path": "images",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1776637386265,
+      "keyFiles": [
+        "STRUKTURA.md"
+      ]
+    },
+    "images-convert": {
+      "path": "images-convert",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776637386266,
+      "keyFiles": []
+    },
+    "js": {
+      "path": "js",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1776637386266,
+      "keyFiles": [
+        "contact-form.js",
+        "header.js"
+      ]
+    },
+    "pages_php": {
+      "path": "pages_php",
+      "purpose": null,
+      "fileCount": 13,
+      "lastAccessed": 1776637386266,
+      "keyFiles": [
+        "architect.php",
+        "catalog.php",
+        "contacts.php",
+        "devops.php",
+        "diler.php"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 3,
+      "lastAccessed": 1776637386267,
+      "keyFiles": [
+        "cleanup_css.py",
+        "convert_devops.py",
+        "convert_images.php"
+      ]
+    },
+    "css\\pages": {
+      "path": "css\\pages",
+      "purpose": "Page components",
+      "fileCount": 10,
+      "lastAccessed": 1776637386267,
+      "keyFiles": [
+        "architect.css",
+        "catalog.css",
+        "contacts.css"
+      ]
+    },
+    "images\\pages": {
+      "path": "images\\pages",
+      "purpose": "Page components",
+      "fileCount": 0,
+      "lastAccessed": 1776637386269,
+      "keyFiles": []
+    },
+    "images-convert\\pages": {
+      "path": "images-convert\\pages",
+      "purpose": "Page components",
+      "fileCount": 0,
+      "lastAccessed": 1776637386272,
+      "keyFiles": []
+    },
+    "js\\pages": {
+      "path": "js\\pages",
+      "purpose": "Page components",
+      "fileCount": 7,
+      "lastAccessed": 1776637386273,
+      "keyFiles": [
+        "architect.js",
+        "catalog.js",
+        "contacts.js"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "GLOBAL_PLAN.md",
+      "accessCount": 4,
+      "lastAccessed": 1776662490673,
+      "type": "file"
+    },
+    {
+      "path": "MORNING_BRIEF.md",
+      "accessCount": 2,
+      "lastAccessed": 1776662299777,
+      "type": "file"
+    },
+    {
+      "path": "AUDIT_INTEGRATION_SUMMARY.md",
+      "accessCount": 1,
+      "lastAccessed": 1776662265629,
+      "type": "file"
+    },
+    {
+      "path": ".claude_work_log\\CONTEXT_SUMMARY.md",
+      "accessCount": 1,
+      "lastAccessed": 1776662306881,
+      "type": "file"
+    },
+    {
+      "path": "CONTEXT_RESTORE_PROMPT.md",
+      "accessCount": 1,
+      "lastAccessed": 1776664953273,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

@@ -2,85 +2,56 @@
    Блок объектов (общий)
    ======================================== */
 
-.objects-section {
-            max-width: 1200px;
+.objects-section { max-width: 1200px;
             margin: 0 auto;
-            padding: 10px 0;
-        }
+            padding: 10px 0; }
 
-        .section-header {
-            margin-bottom: 40px;
-            text-align: left;
-        }
+        .section-header { margin-bottom: 40px;
+            text-align: left; }
 
-        .section-title {
-            font-size: 37px;
-            font-weight: 600;
-            color: #1a1a1a;
-            line-height: 1.2;
-            word-spacing: 0.1em;
-            padding-left: 32px;
-        }
+        .section-title { color: #1a1a1a; line-height: 1.2; word-spacing: 0.1em; padding-left: 32px; }
 
-        .objects-grid {
-            display: grid;
+        .objects-grid { display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
+            gap: 24px; }
 
-        .object-card {
-            background: var(--color-surface);
+        .object-card { background: var(--color-surface);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             text-decoration: none;
-            color: inherit;
-        }
+            color: inherit; }
 
-        .object-card:hover {
-            box-shadow: var(--shadow-xl);
+        .object-card:hover { box-shadow: var(--shadow-xl);
             transform: translateY(-4px);
             text-decoration: none;
-            color: inherit;
-        }
+            color: inherit; }
 
-        .object-image {
-            width: 100%;
+        .object-image { width: 100%;
             height: 320px;
             object-fit: cover;
-            display: block;
-        }
+            display: block; }
 
-        .object-info {
-            padding: 20px 24px;
+        .object-info { padding: 20px 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-        }
+            justify-content: center; }
 
-        .object-label {
-            font-size: var(--font-size-md);
+        .object-label { font-size: var(--font-size-md);
             color: var(--color-primary);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
+            margin-bottom: 8px; }
 
-        .object-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1.4;
-        }
+        .object-title { color: #1a1a1a; line-height: 1.4; }
 
-        .cta-card {
-            background: var(--color-surface);
+        .cta-card { background: var(--color-surface);
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-md);
@@ -90,30 +61,24 @@
             justify-content: center;
             align-items: center;
             padding: 40px;
-            min-height: 100%;
-        }
+            min-height: 100%; }
 
-        .cta-card:hover {
-            box-shadow: var(--shadow-xl);
-            transform: translateY(-4px);
-        }
+        .cta-card:hover { box-shadow: var(--shadow-xl);
+            transform: translateY(-4px); }
 
-        .cta-text {
-            font-size: var(--font-size-lg);
+        .cta-text { font-size: var(--font-size-lg);
             font-weight: 600;
             color: var(--color-text);
             margin-bottom: 24px;
             text-align: center;
-            line-height: 1.4;
-        }
+            line-height: 1.4; }
 
-        .btn-cta {
-            display: inline-flex;
+        .btn-cta { display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 16px 40px;
             background: var(--color-primary);
-            color: #ffffff !important;
+            color: #ffffff;
             text-decoration: none;
             border-radius: var(--radius-sm);
             font-size: var(--font-size-base);
@@ -122,115 +87,70 @@
             border: 2px solid var(--color-primary);
             width: 100%;
             max-width: 280px;
-            text-align: center;
-        }
+            text-align: center; }
 
-        .btn-cta:hover {
-            background: transparent;
-            color: var(--color-primary) !important;
-        }
+        .btn-cta:hover { background: transparent;
+            color: var(--color-primary); }
 
-        @media (max-width: 960px) {
-            .objects-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-        }
+        @media (max-width: 960px) { .objects-grid { grid-template-columns: repeat(2, 1fr);
+                gap: 20px; } }
 
-        @media (max-width: 640px) {
-            .objects-section {
-                padding: 40px 16px;
-            }
+        @media (max-width: 640px) { .objects-section { padding: 40px 16px; }
 
-            .section-title {
-                font-size: var(--font-size-xl);
-            }
+            .section-title { font-size: var(--font-size-xl); }
 
-            .objects-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
+            .objects-grid { grid-template-columns: 1fr;
+                gap: 16px; }
 
-            .object-image {
-                height: 200px;
-            }
+            .object-image { height: 200px; }
 
-            .object-info {
-                padding: 16px 20px;
-            }
+            .object-info { padding: 16px 20px; }
 
-            .cta-card {
-                padding: 32px 24px;
-                min-height: auto;
-            }
+            .cta-card { padding: 32px 24px;
+                min-height: auto; }
 
-            .cta-text {
-                font-size: var(--font-size-base);
-                margin-bottom: 20px;
-            }
+            .cta-text { font-size: var(--font-size-base);
+                margin-bottom: 20px; }
 
-            .btn-cta {
-                max-width: 100%;
-            }
-        }
+            .btn-cta { max-width: 100%; } }
 
         /* ========================================
            ОБЩИЕ АНИМАЦИИ
            ======================================== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeInUp { from { opacity: 0;
+                transform: translateY(20px); }
+            to { opacity: 1;
+                transform: translateY(0); } }
 
         /* ========================================
            ДОСТУПНОСТЬ И REDUCED MOTION
            ======================================== */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                transition: none !important;
-                animation: none !important;
-            }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important;
+                animation: none !important; }
 
             .product-col,
             .audience-col,
-            .benefit-col {
-                animation: none;
-                opacity: 1;
-            }
+            .benefit-col { animation: none;
+                opacity: 1; }
 
             .product-card,
             .audience-card,
             .benefit-card,
             .card,
             .object-card,
-            .cta-card {
-                transition: none;
-            }
+            .cta-card { transition: none; }
 
             .card:hover,
             .product-card:hover,
             .audience-card:hover,
             .benefit-card:hover,
             .object-card:hover,
-            .cta-card:hover {
-                transform: none;
-            }
+            .cta-card:hover { transform: none; }
 
             .card-image,
             .product-image,
             .audience-image,
-            .benefit-icon {
-                transition: none;
-            }
-        }
+            .benefit-icon { transition: none; } }
 
-        :focus-visible {
-            outline: 3px solid var(--color-cta);
-            outline-offset: 2px;
-        }
+        :focus-visible { outline: 3px solid var(--color-cta);
+            outline-offset: 2px; }

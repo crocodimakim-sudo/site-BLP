@@ -1,14 +1,25 @@
 <?php
-$page_title = 'Каталог фиброцементных панелей | BLP';
+// 2026-04-20: added meta description, canonical, OG image
+// 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
+$page_title    = 'Каталог фиброцементных панелей BLP Board: NATURE, POLISHED, TEXTURE, WALYPAN';
+$page_desc     = 'Каталог фиброцементных панелей BLP Board. 4 серии, 10 цветов, толщина 8–15 мм, размеры до 3050 мм. Характеристики, палитра и сертификаты на каждую серию.';
+$page_canonical = 'https://building-port.ru/blp/catalog';
+// 2026-04-20: og_image → real hero instead of missing og-default
+$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/catalog/catalog_nature_render.jpg';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/catalog.css">';
 $extra_js = '<script src="/blp/js/pages/catalog.js" defer></script>';
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Каталог',  'url' => 'https://building-port.ru/blp/catalog'],
+];
 
 // Сканируем папку Walypan слайдера
 $walypanDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'images-convert' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'slider' . DIRECTORY_SEPARATOR;
 $walypanImages = [];
 if (is_dir($walypanDir)) {
     // Первичный способ: glob с фигурными скобками
-    $files = glob($walypanDir . 'walypan_slide_*.{jpg,jpeg,png,webp}', GLOB_BRACE);
+    $files = glob($walypanDir . 'walypan_slide_*.png');
     if (!$files) {
         // Фоллбек: scandir для Windows
         $entries = @scandir($walypanDir);
@@ -37,21 +48,30 @@ if (is_dir($walypanDir)) {
 ob_start();
 ?>
 
+<!-- 2026-04-20: H1 добавлен (критическая SEO-ошибка — ранее отсутствовал) -->
+<!-- 2026-04-20: ограничение ширины H1 до 1200px с отступом как у остальных блоков -->
+<div class="catalog-intro-header">
+    <h1 class="catalog-main-title">Каталог фиброцементных панелей BLP Board</h1>
+    <p class="catalog-intro-text">Крупноформатные фиброцементные панели НГ (К0) для навесных вентилируемых фасадов (НВФ). 4 серии, окрашены в массе — цвет проходит через весь слой материала, не выгорает. Соответствуют ГОСТ.</p>
+</div>
+
 <!-- Серия NATURE -->
 <div class="catalog-product-grid" id="nature">
         <div class="product-card-wrapper">
             <article class="product-card">
                 <div class="product-image">
-                    <img src="https://optim.tildacdn.com/tild3434-3965-4462-a566-313036636664/-/format/webp/1.jpg.webp" alt="Натуральные фиброцементные панели серия NATURE — фактура под бетон">
+                    <!-- 2026-04-20: migrated from tildacdn to local images-convert -->
+                    <img src="/blp/images-convert/pages/catalog/catalog_nature_render.jpg" alt="Натуральные фиброцементные панели серия NATURE — фактура под бетон" width="600" height="400" loading="lazy">
                 </div>
                 
                 <div class="product-info">
-                    <h2 class="product-title">Натуральные панели<br>серия NATURE</h2>
-                    
+                    <!-- 2026-04-20: H2 содержит «фиброцементные» + применение -->
+                    <h2 class="product-title">Фиброцементные панели серии NATURE</h2>
+
                     <p class="product-description">
-                        Фактура «под бетон» — индустриальная эстетика&nbsp;в ее естественном проявлении. Неповторимый рисунок каждой панели создает целостный&nbsp;и фактурный образ фасада.
+                        Фактура «под бетон» — индустриальная эстетика в естественном проявлении. Неповторимый рисунок каждой панели создаёт целостный фасад. Применяется для жилых комплексов, бизнес-центров, общественных зданий. Крупный формат до&nbsp;3050&nbsp;мм сокращает количество швов.
                     </p>
-                    
+
                     <div class="specs-section">
                         <div class="spec-row">
                             <span class="spec-label">Толщина, мм:</span>
@@ -63,7 +83,7 @@ ob_start();
                                 <span class="spec-value">15</span>
                             </div>
                         </div>
-                        
+
                         <div class="spec-row">
                             <span class="spec-label">Длина, мм:</span>
                             <div class="spec-values">
@@ -71,7 +91,7 @@ ob_start();
                                 <span class="spec-value">3050</span>
                             </div>
                         </div>
-                        
+
                         <div class="spec-row">
                             <span class="spec-label">Ширина, мм:</span>
                             <div class="spec-values">
@@ -79,20 +99,21 @@ ob_start();
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- 2026-04-20: палитра цветов возвращена на карточку -->
                     <div class="colors-section">
-                        <p class="colors-label">Доступные цвета:</p>
+                        <div class="colors-label">Палитра цветов:</div>
                         <div class="colors-grid">
-                            <div class="color-swatch color-1" title="Белый"></div>
-                            <div class="color-swatch color-2" title="Бежевый светлый"></div>
-                            <div class="color-swatch color-3" title="Бежевый"></div>
-                            <div class="color-swatch color-4" title="Песочный"></div>
-                            <div class="color-swatch color-5" title="Терракота светлая"></div>
-                            <div class="color-swatch color-6" title="Терракота"></div>
-                            <div class="color-swatch color-7" title="Серый светлый"></div>
-                            <div class="color-swatch color-8" title="Серый"></div>
+                            <div class="color-swatch color-1" title="Жемчужный"></div>
+                            <div class="color-swatch color-2" title="Бежевый"></div>
+                            <div class="color-swatch color-3" title="Оливковый"></div>
+                            <div class="color-swatch color-4" title="Горчичный"></div>
+                            <div class="color-swatch color-5" title="Кирпичный"></div>
+                            <div class="color-swatch color-6" title="Медный"></div>
+                            <div class="color-swatch color-7" title="Пепельно-серый"></div>
+                            <div class="color-swatch color-8" title="Дымчато-серый"></div>
                             <div class="color-swatch color-9" title="Графит"></div>
-                            <div class="color-swatch color-10" title="Коричневый"></div>
+                            <div class="color-swatch color-10" title="Шоколад"></div>
                         </div>
                     </div>
                 </div>
@@ -105,31 +126,34 @@ ob_start();
     <div class="product-card-wrapper">
         <article class="product-card mirrored">
             <div class="product-info">
-                <h2 class="product-title">Полированные плиты<br>серия POLISHED</h2>
-                <p class="product-description">Фиброцементные плиты&nbsp;в спокойных природных оттенках - сдержанная классика. Матовая поверхность усиливает декоративный эффект, подчеркивая гармонию изысканности&nbsp;и прочности.</p>
+                <!-- 2026-04-20: H2 содержит «фиброцементные» + применение -->
+                <h2 class="product-title">Фиброцементные панели серии POLISHED</h2>
+                <p class="product-description">Фиброцементные плиты в спокойных природных оттенках — сдержанная классика. Матовая поверхность усиливает декоративный эффект. Идеально для административных зданий, медицинских учреждений, школ.</p>
                 <div class="specs-section">
                     <div class="spec-row"><span class="spec-label">Толщина, мм:</span><div class="spec-static"><span class="spec-value-plate">8</span><span class="spec-value-plate">9</span><span class="spec-value-plate">10</span><span class="spec-value-plate">12</span><span class="spec-value-plate">15</span></div></div>
                     <div class="spec-row"><span class="spec-label">Длина, мм:</span><div class="spec-static"><span class="spec-value-plate">2440</span><span class="spec-value-plate">3050</span></div></div>
                     <div class="spec-row"><span class="spec-label">Ширина, мм:</span><div class="spec-static"><span class="spec-value-plate">1220</span></div></div>
                 </div>
+                <!-- 2026-04-20: палитра цветов возвращена на карточку -->
                 <div class="colors-section">
-                    <p class="colors-label">Доступные цвета:</p>
+                    <div class="colors-label">Палитра цветов:</div>
                     <div class="colors-grid">
-                        <div class="color-swatch color-1" title="Белый"></div>
-                        <div class="color-swatch color-2" title="Бежевый светлый"></div>
-                        <div class="color-swatch color-3" title="Бежевый"></div>
-                        <div class="color-swatch color-4" title="Песочный"></div>
-                        <div class="color-swatch color-5" title="Терракота светлая"></div>
-                        <div class="color-swatch color-6" title="Терракота"></div>
-                        <div class="color-swatch color-7" title="Серый светлый"></div>
-                        <div class="color-swatch color-8" title="Серый"></div>
+                        <div class="color-swatch color-1" title="Жемчужный"></div>
+                        <div class="color-swatch color-2" title="Бежевый"></div>
+                        <div class="color-swatch color-3" title="Оливковый"></div>
+                        <div class="color-swatch color-4" title="Горчичный"></div>
+                        <div class="color-swatch color-5" title="Кирпичный"></div>
+                        <div class="color-swatch color-6" title="Медный"></div>
+                        <div class="color-swatch color-7" title="Пепельно-серый"></div>
+                        <div class="color-swatch color-8" title="Дымчато-серый"></div>
                         <div class="color-swatch color-9" title="Графит"></div>
-                        <div class="color-swatch color-10" title="Коричневый"></div>
+                        <div class="color-swatch color-10" title="Шоколад"></div>
                     </div>
                 </div>
             </div>
             <div class="product-image">
-                <img src="https://static.tildacdn.com/tild6265-6665-4131-a137-366462346663/2.png" alt="Полированные панели серия BLP-POLISHED">
+                <!-- 2026-04-20: migrated from tildacdn to local images-convert -->
+                <img src="/blp/images-convert/pages/catalog/catalog_polished_render.png" alt="Полированные панели серия BLP-POLISHED" width="600" height="400" loading="lazy">
             </div>
         </article>
     </div>
@@ -141,19 +165,19 @@ ob_start();
     <div class="product-card-wrapper">
         <article class="product-card">
             <div class="product-image">
-                <img src="https://static.tildacdn.com/tild6263-3265-4130-b532-643136353730/3.png" alt="Текстурированные панели серия BLP-TEXTURE">
+                <!-- 2026-04-20: migrated from tildacdn to local images-convert -->
+                <img src="/blp/images-convert/pages/catalog/catalog_texture_render.png" alt="Текстурированные панели серия BLP-TEXTURE" width="600" height="400" loading="lazy">
             </div>
             
             <div class="product-info">
-                <h2 class="product-title">Текстурированные плиты<br>серия TEXTURE</h2>
-                
+                <!-- 2026-04-20: H2 содержит «фиброцементные» + применение -->
+                <h2 class="product-title">Фиброцементные панели серии TEXTURE</h2>
+
                 <p class="product-description">
-                    Стиль&nbsp;и функциональность. Естественная палитра&nbsp;и слегка шлифованная поверхность дарят фасаду статусный&nbsp;и завершённый вид.
+                    Стиль и функциональность. Слегка шлифованная поверхность с естественной палитрой даёт фасаду статусный вид. Востребованы в проектах коммерческой и жилой недвижимости бизнес-класса.
                 </p>
                 
-                <!-- Блок характеристик: статичные значения в рамке, не кликабельные -->
                 <div class="specs-section">
-                    <!-- Толщина -->
                     <div class="spec-row">
                         <span class="spec-label">Толщина, мм:</span>
                         <div class="spec-static">
@@ -164,8 +188,6 @@ ob_start();
                             <span class="spec-value-plate">15</span>
                         </div>
                     </div>
-                    
-                    <!-- Длина -->
                     <div class="spec-row">
                         <span class="spec-label">Длина, мм:</span>
                         <div class="spec-static">
@@ -173,8 +195,6 @@ ob_start();
                             <span class="spec-value-plate">3050</span>
                         </div>
                     </div>
-                    
-                    <!-- Ширина -->
                     <div class="spec-row">
                         <span class="spec-label">Ширина, мм:</span>
                         <div class="spec-static">
@@ -182,21 +202,20 @@ ob_start();
                         </div>
                     </div>
                 </div>
-                
-                <!-- Цвета: только чистые плашки без текстур и дополнительных полосок -->
+                <!-- 2026-04-20: палитра цветов возвращена на карточку -->
                 <div class="colors-section">
-                    <p class="colors-label">Доступные цвета:</p>
+                    <div class="colors-label">Палитра цветов:</div>
                     <div class="colors-grid">
-                        <div class="color-swatch color-1" title="Белый"></div>
-                        <div class="color-swatch color-2" title="Бежевый светлый"></div>
-                        <div class="color-swatch color-3" title="Бежевый"></div>
-                        <div class="color-swatch color-4" title="Песочный"></div>
-                        <div class="color-swatch color-5" title="Терракота светлая"></div>
-                        <div class="color-swatch color-6" title="Терракота"></div>
-                        <div class="color-swatch color-7" title="Серый светлый"></div>
-                        <div class="color-swatch color-8" title="Серый"></div>
+                        <div class="color-swatch color-1" title="Жемчужный"></div>
+                        <div class="color-swatch color-2" title="Бежевый"></div>
+                        <div class="color-swatch color-3" title="Оливковый"></div>
+                        <div class="color-swatch color-4" title="Горчичный"></div>
+                        <div class="color-swatch color-5" title="Кирпичный"></div>
+                        <div class="color-swatch color-6" title="Медный"></div>
+                        <div class="color-swatch color-7" title="Пепельно-серый"></div>
+                        <div class="color-swatch color-8" title="Дымчато-серый"></div>
                         <div class="color-swatch color-9" title="Графит"></div>
-                        <div class="color-swatch color-10" title="Коричневый"></div>
+                        <div class="color-swatch color-10" title="Шоколад"></div>
                     </div>
                 </div>
             </div>
@@ -290,9 +309,10 @@ ob_start();
       <div class="palette-wrapper">
         <h2 class="palette-title">Палитра цветов</h2>
         <img
-          src="https://optim.tildacdn.com/tild3339-6231-4135-a636-376435336162/-/format/webp/photo.png.webp"
+          src="/blp/images-convert/pages/catalog/color_palette.png"
           alt="Палитра цветов фиброцементных панелей"
           class="palette-image"
+          loading="lazy"
         >
 
         <div class="color-names-grid">
@@ -420,8 +440,12 @@ ob_start();
 
 </body>
 
+
 <?php include '../blocks/benefits-section.php'; ?>
 <?php include '../blocks/contact-form.php'; ?>
+
+<!-- 2026-04-20: ProductGroup + Product schemas for catalog page -->
+<?php include __DIR__ . '/schema_products.php'; ?>
 
 <?php
 $page_content = ob_get_clean();

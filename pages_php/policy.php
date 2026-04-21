@@ -1,6 +1,8 @@
 <?php
 $page_title = 'Политика конфиденциальности — BLP Board';
 $page_desc  = 'Политика конфиденциальности ООО «БИЛДИНГПОРТ».';
+// 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
+$page_canonical = 'https://building-port.ru/blp/policy/';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/policy.css">';
 
 ob_start();

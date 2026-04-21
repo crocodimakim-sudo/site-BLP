@@ -1,8 +1,7 @@
 /* ПОДКЛЮЧЕНИЕ ШРИФТА MONTSERRAT */
     
 
-    :root {
-        --bg-primary: #ffffff;
+    :root { --bg-primary: #ffffff;
         --bg-dark: #004d40;
         --text-primary: #1a1a1a;
         --text-secondary: #555555;
@@ -14,111 +13,81 @@
         --button-hover: #002420;
         --border-radius: 8px;
         --transition: all 0.25s ease;
-        --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
+        --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
 
-    * {
-        box-sizing: border-box;
+    * { box-sizing: border-box;
         margin: 0;
-        padding: 0;
-    }
+        padding: 0; }
 
-    .blp-hero-section {
-        font-family: var(--font-main);
+    .blp-hero-section { font-family: var(--font-main);
         background: var(--bg-primary);
         padding: 50px 0 80px;
         width: 100%;
-        overflow: hidden;
-    }
+        overflow: hidden; }
 
-    .blp-container {
-        max-width: 1200px;
+    .blp-container { max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
-    }
+        padding: 0 20px; }
 
-    .blp-hero-section .blp-grid-12 {
-        display: grid;
+    .blp-hero-section .blp-grid-12 { display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 20px;
-        align-items: stretch; /* Растягиваем колонки по высоте */
-    }
+        align-items: stretch; /* Растягиваем колонки по высоте */ }
 
-    .blp-hero-content {
-        grid-column: span 6;
+    .blp-hero-content { grid-column: span 6;
         display: flex;
-        flex-direction: column;
-    }
+        flex-direction: column; }
 
-    .blp-hero-image {
-        grid-column: span 6;
+    .blp-hero-image { grid-column: span 6;
         display: flex;
         justify-content: flex-end;
         align-items: stretch; /* Растягиваем изображение */
-        margin-left: 100px;
-    }
+        margin-left: 100px; }
 
-    .blp-hero-title {
-        font-size: 42px;
-        font-weight: 700;
-        color: var(--text-primary);
+    .blp-hero-title {color: var(--text-primary);
         line-height: 1.2;
         margin-bottom: 16px;
         letter-spacing: -0.02em;
-        padding-left: 32px;
-    }
+        padding-left: 32px;}
 
-    .blp-hero-subtitle {
-        font-size: 20px;
+    .blp-hero-subtitle { font-size: 20px;
         font-weight: 600;
         color: var(--accent-green);
         margin-bottom: 32px;
         line-height: 1.4;
-        padding-left: 32px;
-    }
+        padding-left: 32px; }
 
-    .blp-hero-list {
-        list-style: none;
+    .blp-hero-list { list-style: none;
         margin-bottom: 40px;
         flex-grow: 1; /* Занимаем доступное пространство */
-        padding-left: 32px;
-    }
+        padding-left: 32px; }
 
-    .blp-hero-list-item {
-        display: flex;
+    .blp-hero-list-item { display: flex;
         align-items: flex-start;
         gap: 12px;
         margin-bottom: 16px;
         font-size: 16px;
         font-weight: 500;
         color: var(--text-secondary);
-        line-height: 1.5;
-    }
+        line-height: 1.5; }
 
-    .blp-hero-list-item:last-child {
-        margin-bottom: 0;
-    }
+    .blp-hero-list-item:last-child { margin-bottom: 0; }
 
-    .blp-hero-check {
-        width: 20px;
+    .blp-hero-check { width: 20px;
         height: 20px;
         flex-shrink: 0;
-        margin-top: 2px;
-    }
+        margin-top: 2px; }
 
-    .blp-hero-check svg {
-        width: 100%;
+    .blp-hero-check svg { width: 100%;
         height: 100%;
         stroke: var(--accent-green);
         stroke-width: 2.5;
         fill: none;
         stroke-linecap: round;
-        stroke-linejoin: round;
-    }
+        stroke-linejoin: round; }
 
     /* КНОПКА - ИСПРАВЛЕННАЯ */
-    .blp-hero-button {
-        display: inline-flex;
+    .blp-hero-button { display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 16px 32px;
@@ -134,124 +103,74 @@
         margin-top: 0;
         margin-left: 32px;
         align-self: flex-start;
-        letter-spacing: 0.01em;
-    }
+        letter-spacing: 0.01em; }
 
-    .blp-hero-button:hover {
-        background: var(--button-hover);
+    .blp-hero-button:hover { background: var(--button-hover);
         color: #ffffff !important;
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 53, 47, 0.3);
-    }
+        box-shadow: 0 8px 24px rgba(0, 53, 47, 0.3); }
 
     /* КАРТИНКА - УВЕЛИЧЕННАЯ */
-    .blp-hero-img {
-        width: 100%;
+    .blp-hero-img { width: 100%;
         max-width: 560px;
         height: 100%; /* Растягиваем на всю высоту */
         min-height: 420px; /* Минимальная высота */
         border-radius: var(--border-radius);
-        object-fit: cover; /* Сохраняем пропорции */
-    }
+        object-fit: cover; /* Сохраняем пропорции */ }
 
     /* Адаптив */
-    @media (max-width: 1024px) {
-        .blp-hero-section {
-            padding: 48px 0 60px;
-        }
+    @media (max-width: 1024px) { .blp-hero-section { padding: 48px 0 60px; }
 
-        .blp-hero-content {
-            grid-column: span 12;
-            order: 1;
-        }
+        .blp-hero-content { grid-column: span 12;
+            order: 1; }
 
-        .blp-hero-image {
-            grid-column: span 12;
+        .blp-hero-image { grid-column: span 12;
             order: 0;
             justify-content: center;
-            margin-bottom: 32px;
-        }
+            margin-bottom: 32px; }
 
-        .blp-hero-title {
-            font-size: 36px;
-        }
+        .blp-hero-title {}
 
-        .blp-hero-subtitle {
-            font-size: 18px;
-        }
+        .blp-hero-subtitle { font-size: 18px; }
 
-        .blp-hero-img {
-            max-width: 100%;
+        .blp-hero-img { max-width: 100%;
             height: auto;
             min-height: 320px;
-            max-height: 400px;
-        }
-    }
+            max-height: 400px; } }
 
-    @media (max-width: 640px) {
-        .blp-hero-section {
-            padding: 32px 0 48px;
-        }
+    @media (max-width: 640px) { .blp-hero-section { padding: 32px 0 48px; }
 
-        .blp-container {
-            padding: 0 16px;
-        }
+        .blp-container { padding: 0 16px; }
 
-        .blp-grid-12 {
-            gap: 16px;
-        }
+        .blp-grid-12 { gap: 16px; }
 
-        .blp-hero-title {
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
+        .blp-hero-title {margin-bottom: 12px;}
 
-        .blp-hero-subtitle {
-            font-size: 16px;
-            margin-bottom: 24px;
-        }
+        .blp-hero-subtitle { font-size: 16px;
+            margin-bottom: 24px; }
 
-        .blp-hero-list {
-            margin-bottom: 32px;
-        }
+        .blp-hero-list { margin-bottom: 32px; }
 
-        .blp-hero-list-item {
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
+        .blp-hero-list-item { font-size: 14px;
+            margin-bottom: 12px; }
 
-        .blp-hero-button {
-            width: 100%;
+        .blp-hero-button { width: 100%;
             padding: 14px 24px;
-            margin-top: 30px;
-        }
+            margin-top: 30px; }
 
-        .blp-hero-img {
-            min-height: 240px;
-            max-height: 300px;
-        }
-    }
+        .blp-hero-img { min-height: 240px;
+            max-height: 300px; } }
 
     /* Анимация */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+    @keyframes fadeInUp { from { opacity: 0;
+            transform: translateY(30px); }
+        to { opacity: 1;
+            transform: translateY(0); } }
 
-    .blp-hero-content {
-        animation: fadeInUp 0.6s ease forwards;
-    }
+    .blp-hero-content { animation: fadeInUp 0.6s ease forwards; }
 
-    .blp-hero-image {
-        animation: fadeInUp 0.6s ease 0.2s forwards;
-        opacity: 0;
-    }
+    .blp-hero-image { animation: fadeInUp 0.6s ease 0.2s forwards;
+        opacity: 0; }
 
 /* ============================================
            БЛОК ПРЕИМУЩЕСТВ ДЛЯ ДИЛЕРОВ
@@ -259,72 +178,42 @@
            Зеленая цветовая схема, 12-колоночная сетка
            ============================================ */
 
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f5;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --accent-green: #00695c;
-            --accent-green-light: #00897b;
-            --accent-green-dark: #004d40;
-            --card-bg: #ffffff;
-            --card-border: #e0e0e0;
-            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
-            --border-radius: 8px;
-            --transition: all 0.25s ease;
-        }
 
-        * {
-            box-sizing: border-box;
+        * { box-sizing: border-box;
             margin: 0;
-            padding: 0;
-        }
+            padding: 0; }
 
         /* Основной контейнер блока */
-        .blp-benefits-section {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        .blp-benefits-section { font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg-primary);
             padding: 0 0 20px;
             margin-top: -50px;
-            width: 100%;
-        }
+            width: 100%; }
 
         /* Поднимаем заголовок "Почему дилеры работают с нами" */
-        .blp-benefits-title {
-            margin-top: 0;
-        }
+        .blp-benefits-title {margin-top: 0;}
 
         /* 12-колоночный контейнер Tilda */
-        .blp-container {
-            max-width: 1200px;
+        .blp-container { max-width: 1200px;
             margin: 0 auto;
-            padding: 0 10px;
-        }
+            padding: 0 10px; }
 
         /* 12-колоночная сетка benefits */
-        .blp-benefits-section .blp-grid-12 {
-            display: grid;
+        .blp-benefits-section .blp-grid-12 { display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 16px;
-            align-items: start;
-        }
+            align-items: start; }
 
         /* Заголовок блока - занимает все 12 колонок */
-        .blp-benefits-title {
-            grid-column: 1 / -1;
-            font-size: 32px;
-            font-weight: 600;
+        .blp-benefits-title {grid-column: 1 / -1;
             color: var(--text-primary);
             text-align: left;
             margin-bottom: 0;
             line-height: 1.3;
-            padding-left: 32px;
-        }
+            padding-left: 32px;}
 
         /* Карточка преимущества - 3 колонки из 12 (4 карточки в ряд) */
-        .blp-benefit-card {
-            grid-column: span 3;
+        .blp-benefit-card { grid-column: span 3;
             min-height: 180px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -337,163 +226,106 @@
             align-items: flex-start;
             height: 100%;
             width: 100%;
-            box-sizing: border-box;
-        }
+            box-sizing: border-box; }
 
 
-        .blp-benefit-card:hover {
-            transform: translateY(-4px);
+        .blp-benefit-card:hover { transform: translateY(-4px);
             box-shadow: var(--card-shadow-hover);
-            border-color: var(--accent-green);
-        }
+            border-color: var(--accent-green); }
 
         /* Иконка карточки */
-        .blp-benefit-icon {
-            width: 32px;
+        .blp-benefit-icon { width: 32px;
             height: 32px;
             margin-bottom: 16px;
-            flex-shrink: 0;
-        }
+            flex-shrink: 0; }
 
-        .blp-benefit-icon svg {
-            width: 100%;
+        .blp-benefit-icon svg { width: 100%;
             height: 100%;
             stroke: var(--accent-green);
             stroke-width: 1.5;
             fill: none;
             stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+            stroke-linejoin: round; }
 
         /* Контент карточки - flex контейнер */
-        .blp-benefit-content {
-            display: flex;
+        .blp-benefit-content { display: flex;
             flex-direction: column;
             flex: 1;
-            width: 100%;
-        }
+            width: 100%; }
 
         /* Блоки для выравнивания h3 и h4 */
-        .blp-benefit-heading-box {
-            height: 96px;
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 4px;
-            padding-top: 12px;
-        }
+        .blp-benefit-heading-box {height: 96px;
+   display: flex;
+   align-items: flex-start;
+   margin-bottom: 10px;
+   background: #f9f9f9;
+   padding: 12px;
+   border-radius: 4px;
+   padding-top: 12px;}
 
-        .blp-benefit-description-box {
-            height: 96px;
+        .blp-benefit-description-box { height: 96px;
             display: flex;
             align-items: flex-start;
             flex: 1;
             background: #f9f9f9;
             padding: 12px;
             border-radius: 4px;
-            padding-top: 12px;
-        }
+            padding-top: 12px; }
 
         /* H3 и H4 используют стили из main.css */
-        .blp-benefit-heading-box h3 {
-            margin: 0;
-        }
+        .blp-benefit-heading-box h3 {margin: 0;}
 
-        .blp-benefit-description-box h4 {
-            margin: 0;
-        }
+        .blp-benefit-description-box h4 {margin: 0;}
 
         /* H3 и H4 в 4-й карточке: заголовок вверху, описание внизу */
-        .blp-benefit-card:nth-child(5) .blp-benefit-content {
-            justify-content: space-between;
-        }
+        .blp-benefit-card:nth-child(5) .blp-benefit-content { justify-content: space-between; }
 
         /* ============================================
            АДАПТИВНАЯ ВЕРСТКА
            ============================================ */
 
         /* Планшеты: 2 карточки в ряд (6 колонок каждая) */
-        @media (max-width: 1024px) {
-            .blp-benefits-section {
-                padding: 60px 0;
-            }
+        @media (max-width: 1024px) { .blp-benefits-section { padding: 60px 0; }
 
-            .blp-benefits-title {
-                font-size: 32px;
-                margin-bottom: 40px;
-            }
+            .blp-benefits-title {margin-bottom: 40px;}
 
-            .blp-benefit-card {
-                grid-column: span 6;
-                padding: 28px 22px;
-            }
-        }
+            .blp-benefit-card { grid-column: span 6;
+                padding: 28px 22px; } }
 
         /* Мобильные: 1 карточка в ряд (12 колонок) */
-        @media (max-width: 640px) {
-            .blp-benefits-section {
-                padding: 48px 0;
-            }
+        @media (max-width: 640px) { .blp-benefits-section { padding: 48px 0; }
 
-            .blp-container {
-                padding: 0 16px;
-            }
+            .blp-container { padding: 0 16px; }
 
-            .blp-grid-12 {
-                gap: 16px;
-            }
+            .blp-grid-12 { gap: 16px; }
 
-            .blp-benefits-title {
-                font-size: 26px;
-                margin-bottom: 32px;
-            }
+            .blp-benefits-title {margin-bottom: 32px;}
 
-            .blp-benefit-card {
-                grid-column: span 12;
+            .blp-benefit-card { grid-column: span 12;
                 padding: 24px 20px;
                 flex-direction: row;
                 align-items: flex-start;
-                gap: 16px;
-            }
+                gap: 16px; }
 
-            .blp-benefit-icon {
-                width: 40px;
+            .blp-benefit-icon { width: 40px;
                 height: 40px;
-                margin-bottom: 0;
-            }
+                margin-bottom: 0; }
 
-            .blp-benefit-content {
-                flex: 1;
-            }
+            .blp-benefit-content { flex: 1; }
 
-            .blp-benefit-heading {
-                font-size: 16px;
-                margin-bottom: 6px;
-            }
+            .blp-benefit-heading { font-size: 16px;
+                margin-bottom: 6px; }
 
-            .blp-benefit-description {
-                font-size: 13px;
-            }
-        }
+            .blp-benefit-description { font-size: 13px; } }
 
         /* Анимация появления */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeInUp { from { opacity: 0;
+                transform: translateY(20px); }
+            to { opacity: 1;
+                transform: translateY(0); } }
 
-        .blp-benefit-card {
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
-        }
+        .blp-benefit-card { animation: fadeInUp 0.5s ease forwards;
+            opacity: 0; }
 
         .blp-benefit-card:nth-child(2) { animation-delay: 0.1s; }
         .blp-benefit-card:nth-child(3) { animation-delay: 0.2s; }
@@ -504,180 +336,105 @@
            БЛОК "ПОЧЕМУ ЭТО ИНТЕРЕСНО"
            BLP Board - Фиброцементные панели
            Зеленая цветовая схема, 12-колоночная сетка
-           ============================================ */
-
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f5;
-            --text-primary: #1a1a1a;
-            --text-secondary: #555555;
-            --accent-green: #00695c;
-            --accent-green-light: #00897b;
-            --border-radius: 8px;
-            --transition: all 0.25s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+           ============================================ */ }
 
         /* Основной контейнер блока */
-        .blp-interesting-section {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        .blp-interesting-section { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg-secondary);
             padding: 10px 0 20px;
-            width: 100%;
-        }
+            width: 100%; }
 
         /* Поднимаем заголовок "Почему это интересно?" */
-        .blp-interesting-title {
-            margin-top: 0;
-        }
+        .blp-interesting-title {margin-top: 0;}
 
         /* 12-колоночный контейнер Tilda */
-        .blp-container {
-            max-width: 1200px;
+        .blp-container { max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
+            padding: 0 20px; }
 
         /* 12-колоночная сетка */
-        .blp-grid-12 {
-            display: grid;
+        .blp-grid-12 { display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 20px;
-            align-items: start;
-        }
+            align-items: start; }
 
         /* Заголовок блока */
-        .blp-interesting-title {
-            grid-column: 1 / -1;
-            font-size: 36px;
-            font-weight: 600;
+        .blp-interesting-title {grid-column: 1 / -1;
             color: var(--text-primary);
             margin-bottom: 30px;
             line-height: 1.3;
             text-align: left;
-            padding-left: 32px;
-        }
+            padding-left: 32px;}
 
         /* Левая колонка с текстом - 7 колонок */
-        .blp-interesting-content {
-            grid-column: span 7;
-            padding-left: 32px;
-        }
+        .blp-interesting-content { grid-column: span 7;
+            padding-left: 32px; }
 
         /* Правая колонка - декоративный элемент или доп. инфо - 5 колонок */
-        .blp-interesting-visual {
-            grid-column: span 5;
+        .blp-interesting-visual { grid-column: span 5;
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
+            justify-content: center; }
 
         /* Основной текст */
-        .blp-interesting-text {
-            font-size: 18px;
+        .blp-interesting-text { font-size: 18px;
             line-height: 1.7;
             color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
+            margin-bottom: 20px; }
 
         /* Выделенный текст/преимущество */
-        .blp-interesting-highlight {
-            font-size: 18px;
+        .blp-interesting-highlight { font-size: 18px;
             line-height: 1.7;
             color: var(--text-primary);
             padding: 24px;
             background: var(--bg-primary);
             border-left: 4px solid var(--accent-green);
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-top: 24px;
-        }
+            margin-top: 24px; }
 
         /* Декоративная иконка/иллюстрация */
-        .blp-interesting-icon {
-            width: 180px;
+        .blp-interesting-icon { width: 180px;
             height: 180px;
-            opacity: 0.15;
-        }
+            opacity: 0.15; }
 
-        .blp-interesting-icon svg {
-            width: 100%;
+        .blp-interesting-icon svg { width: 100%;
             height: 100%;
-            fill: var(--accent-green);
-        }
+            fill: var(--accent-green); }
 
         /* ============================================
            АДАПТИВНАЯ ВЕРСТКА
            ============================================ */
 
         /* Планшеты */
-        @media (max-width: 1024px) {
-            .blp-interesting-section {
-                padding: 60px 0;
-            }
+        @media (max-width: 1024px) { .blp-interesting-section { padding: 60px 0; }
 
-            .blp-interesting-title {
-                font-size: 32px;
-                margin-bottom: 24px;
-            }
+            .blp-interesting-title {margin-bottom: 24px;}
 
-            .blp-interesting-content {
-                grid-column: span 12;
-            }
+            .blp-interesting-content { grid-column: span 12; }
 
-            .blp-interesting-visual {
-                display: none;
-            }
+            .blp-interesting-visual { display: none; }
 
             .blp-interesting-text,
-            .blp-interesting-highlight {
-                font-size: 17px;
-            }
-        }
+            .blp-interesting-highlight { font-size: 17px; } }
 
         /* Мобильные */
-        @media (max-width: 640px) {
-            .blp-interesting-section {
-                padding: 48px 0;
-            }
+        @media (max-width: 640px) { .blp-interesting-section { padding: 48px 0; }
 
-            .blp-container {
-                padding: 0 16px;
-            }
+            .blp-container { padding: 0 16px; }
 
-            .blp-interesting-title {
-                font-size: 26px;
-                margin-bottom: 20px;
-            }
+            .blp-interesting-title {margin-bottom: 20px;}
 
             .blp-interesting-text,
-            .blp-interesting-highlight {
-                font-size: 15px;
-                line-height: 1.6;
-            }
+            .blp-interesting-highlight { font-size: 15px;
+                line-height: 1.6; }
 
-            .blp-interesting-highlight {
-                padding: 20px;
-                margin-top: 20px;
-            }
-        }
+            .blp-interesting-highlight { padding: 20px;
+                margin-top: 20px; } }
 
         /* Анимация появления */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeInUp { from { opacity: 0;
+                transform: translateY(20px); }
+            to { opacity: 1;
+                transform: translateY(0); } }
 
-        .blp-interesting-content {
-            animation: fadeInUp 0.6s ease forwards;
-        }
+        .blp-interesting-content { animation: fadeInUp 0.6s ease forwards; }

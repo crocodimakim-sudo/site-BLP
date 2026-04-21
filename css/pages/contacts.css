@@ -3,204 +3,143 @@
 /* ===================================================
    Секция контактов
    =================================================== */
-.contacts-section {
-    padding: 60px 0 0;
-    background: #ffffff;
-}
+.contacts-section { padding: 60px 0 0;
+    background: #ffffff; }
 
-.contacts-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.contacts-container { max-width: 1200px;
+    margin: 0 auto; }
 
-.contacts-header {
-    margin-bottom: 20px;
-}
+.contacts-header { margin-bottom: 20px; }
 
 .contacts-title {
-    font-size: var(--fs-3xl);
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: 12px;
     line-height: 1.3;
-    padding-left: 32px;
-}
+    padding-left: 32px; }
 
-.contacts-subtitle {
-    font-size: var(--fs-md);
+.contacts-subtitle { font-size: var(--fs-md);
     color: var(--color-text-muted);
     line-height: 1.5;
-    padding-left: 32px;
-}
+    padding-left: 32px; }
 
 /* Карточки контактов */
-.contacts-grid {
-    display: grid;
+.contacts-grid { display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin-bottom: 24px;
-}
+    margin-bottom: 24px; }
 
-.contacts-card {
-    background: var(--color-background);
+.contacts-card { background: var(--color-background);
     border-radius: var(--radius-lg);
     padding: 12px 16px;
     text-align: center;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-md);
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
 
-.contacts-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
+.contacts-card:hover { transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); }
 
 /* 7.1: Иконки соцсетей — уменьшить до 32px */
-.contacts-icon {
-    width: 32px;
+.contacts-icon { width: 32px;
     height: 32px;
     margin: 0 auto 16px;
-    color: var(--color-brand);
-}
+    color: var(--color-brand); }
 
-.contacts-icon svg {
-    width: 100%;
-    height: 100%;
-}
+.contacts-icon svg { width: 100%;
+    height: 100%; }
 
 .contacts-label {
-    font-size: var(--fs-xs);
     font-weight: 600;
     color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 8px;
-}
+    display: block; }
 
-.contacts-value {
-    font-size: var(--fs-md);
+.contacts-value { font-size: var(--fs-md);
     font-weight: 600;
     color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s ease;
-}
+    display: block; }
 
-.contacts-value:hover {
-    color: var(--color-brand);
-}
+.contacts-value:hover { color: var(--color-brand); }
 
 /* ===================================================
    Яндекс Карта
    =================================================== */
-.map-section {
-    padding: 40px 20px 40px;
-    background: #ffffff;
-}
+.map-section { padding: 40px 20px 40px;
+    background: #ffffff; }
 
-.map-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.map-container { max-width: 1200px;
+    margin: 0 auto; }
 
-.yandex-map {
-    width: 100%;
+.yandex-map { width: 100%;
     height: 450px;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--color-background);
-}
+    background: var(--color-background); }
 
 /* ===================================================
    Форма обратной связи (страница контактов)
    =================================================== */
-.contacts-form-section {
-    padding: 0 20px;
-    background: #ffffff;
-}
+.contacts-form-section { padding: 0 20px;
+    background: #ffffff; }
 
-.contacts-form-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.contacts-form-wrapper { max-width: 1200px;
+    margin: 0 auto; }
 
 /* 7.4: Заголовок "Написать нам" — уменьшить размер */
 .contact-form-title {
-    font-size: 18px;
-    padding-top: 0;
-}
+    padding-top: 0; }
 
 /* Адаптация сетки формы под 3 колонки + полная ширина */
-.contact-form-grid--3col {
-    display: grid;
+.contact-form-grid--3col { display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
+    gap: 16px; }
 
-.form-group--full {
-    grid-column: 1 / -1;
-}
+.form-group--full { grid-column: 1 / -1; }
 
 /* 7.2: Чекбокс "Даю согласие" — на всю ширину, перенос текста */
-.form-checkbox-group--full {
-    grid-column: 1 / -1;
+.form-checkbox-group--full { grid-column: 1 / -1;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 8px;
-    width: 100%;
-}
+    width: 100%; }
 
-.form-checkbox-group--full .form-checkbox-label {
-    flex: 1;
-    min-width: 0;
-}
+.form-checkbox-group--full .form-checkbox-label { flex: 1;
+    min-width: 0; }
 
 /* 7.3: Кнопка submit — по центру */
-.contacts-form-section .form-submit-wrapper {
-    grid-column: 1 / -1;
+.contacts-form-section .form-submit-wrapper { grid-column: 1 / -1;
     display: flex;
-    justify-content: center;
-}
+    justify-content: center; }
 
-.contacts-form-section .form-submit-wrapper .btn-primary {
-    flex: none;
+.contacts-form-section .form-submit-wrapper .btn-primary { flex: none;
     width: auto;
-    min-width: 200px;
-}
+    min-width: 200px; }
 
-.form-textarea {
-    resize: vertical;
-    min-height: 100px;
-}
+.form-textarea { resize: vertical;
+    min-height: 100px; }
 
 /* ===================================================
    Адаптив
    =================================================== */
-@media (max-width: 768px) {
-    /* 7.5: Расстояние между карточками контактов */
-    .contacts-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+@media (max-width: 768px) { /* 7.5: Расстояние между карточками контактов */
+    .contacts-grid { grid-template-columns: 1fr;
+        gap: 16px; }
 
-    .contacts-title {
-        font-size: var(--fs-2xl);
-    }
+    .contacts-title { }
 
-    .contacts-section {
-        padding: 40px 16px 24px;
-    }
+    .contacts-section { padding: 40px 16px 24px; }
 
-    .yandex-map {
-        height: 300px;
-    }
+    .yandex-map { height: 300px; }
 
-    .contact-form-grid--3col {
-        grid-template-columns: 1fr;
-    }
+    .contact-form-grid--3col { grid-template-columns: 1fr; }
 
-    .form-checkbox-group--full {
-        grid-column: auto;
-    }
-}
+    .form-checkbox-group--full { grid-column: auto; } }

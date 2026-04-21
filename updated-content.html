@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Content Samples — BLP Board Audit</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { color: #00352F; border-bottom: 3px solid #00352F; padding-bottom: 10px; }
+        h2 { color: #004d44; margin-top: 30px; }
+        h3 { color: #666; }
+        .section { background: white; padding: 20px; margin: 20px 0; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+        .comparison > div { padding: 15px; border-radius: 4px; }
+        .current { background: #ffe6e6; border-left: 4px solid #d32f2f; }
+        .improved { background: #e6f7ff; border-left: 4px solid #1976d2; }
+        .note { background: #fff3e0; padding: 12px; border-radius: 4px; margin: 10px 0; border-left: 4px solid #f57c00; }
+        code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f5f5f5; font-weight: 600; }
+        .highlight { background: #fff9c4; padding: 2px 4px; }
+        ul { margin: 10px 0; padding-left: 20px; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+
+<h1>BLP Board — Updated Content Samples</h1>
+<p><em>2026-04-20 | Audit-based improvements for copy, CTAs, and messaging clarity</em></p>
+
+---
+
+<div class="section">
+    <h2>1. Meta Descriptions (Missing → Updated)</h2>
+    <p>All pages currently lack proper meta descriptions. Below are recommended 50–60 character versions for SEO and search preview.</p>
+
+    <table>
+        <tr>
+            <th>Page</th>
+            <th>Meta Description (English)</th>
+            <th>Length</th>
+        </tr>
+        <tr>
+            <td><strong>Homepage</strong></td>
+            <td>Fibre cement panels for ventilated facades. Non-combustible, large format, 0% asbestos. BLP Board.</td>
+            <td>58</td>
+        </tr>
+        <tr>
+            <td><strong>Catalog</strong></td>
+            <td>Fibre cement panel collections: NATURE, POLISHED, TEXTURE, WALYPAN. Colours, sizes, specs. BLP Board.</td>
+            <td>60</td>
+        </tr>
+        <tr>
+            <td><strong>Architect</strong></td>
+            <td>BLP Board supports architects & engineers. Technical docs, samples, fastening solutions, consultations.</td>
+            <td>59</td>
+        </tr>
+        <tr>
+            <td><strong>Dealer</strong></td>
+            <td>Dealer program for fibre cement panels. Project-based sales, support, transparent pricing. Join us.</td>
+            <td>59</td>
+        </tr>
+        <tr>
+            <td><strong>Developer</strong></td>
+            <td>Fibre cement solutions for developers. On-time delivery, GOST-compliant, all subsystems compatible.</td>
+            <td>60</td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <strong>Implementation:</strong> Add to <code>&lt;meta name="description" content="..."&gt;</code> in template.php or individual page headers.
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>2. Hero Section (Homepage)</h2>
+    <h3>Current vs. Improved</h3>
+
+    <div class="comparison">
+        <div class="current">
+            <h4>Current (Russian)</h4>
+            <p><strong>H1:</strong> Фиброцементные плиты для вентилируемых фасадов</p>
+            <p><strong>Subtitle:</strong> Архитектурные панели окрашенные в массе</p>
+            <p><strong>CTA:</strong> Оставить заявку</p>
+            <p style="font-size: 0.9em; margin-top: 10px;"><em>Issue: Functional, not persuasive. CTA is passive.</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved (English)</h4>
+            <p><strong>H1:</strong> Fibre Cement Facades Built to Last</p>
+            <p><strong>Subtitle:</strong> Non-combustible. Colour-through. Built for any climate.</p>
+            <p><strong>Tags:</strong> ✓ Non-combustible (NG) | ✓ Asbestos-free | ✓ Large format (3050 mm)</p>
+            <p><strong>CTA:</strong> Get a Free Specification</p>
+            <p style="font-size: 0.9em; margin-top: 10px;"><em>Benefit: Confidence + specific value. CTA is action-oriented.</em></p>
+        </div>
+    </div>
+
+    <h3>Russian Version (Improved)</h3>
+    <div class="improved">
+        <p><strong>H1:</strong> Фиброцементные фасады, которые выдерживают испытание временем</p>
+        <p><strong>Subtitle:</strong> Негорючие, окрашенные в массе, рассчитаны на любой климат</p>
+        <p><strong>CTA:</strong> Получить бесплатное техническое предложение</p>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>3. Product Cards (Homepage)</h2>
+    <p>Add unique value proposition to each series. Current cards only show titles; improved versions add specific benefits.</p>
+
+    <h3>NATURE Series</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> NATURE</p>
+            <p><strong>Description:</strong> Натуральные плиты</p>
+            <p><strong>CTA:</strong> Подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> NATURE — Concrete-Effect</p>
+            <p><strong>Tagline:</strong> Industrial aesthetic that ages beautifully</p>
+            <p><strong>CTA:</strong> See available colours →</p>
+        </div>
+    </div>
+
+    <h3>POLISHED Series</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> POLISHED</p>
+            <p><strong>Description:</strong> Полированные плиты</p>
+            <p><strong>CTA:</strong> Подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> POLISHED — Refined Sophistication</p>
+            <p><strong>Tagline:</strong> Matte finish in calming natural tones</p>
+            <p><strong>CTA:</strong> View specifications →</p>
+        </div>
+    </div>
+
+    <h3>TEXTURE Series</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> TEXTURE</p>
+            <p><strong>Description:</strong> Текстурированные плиты</p>
+            <p><strong>CTA:</strong> Подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> TEXTURE — Lightly Sanded</p>
+            <p><strong>Tagline:</strong> Elegant and tactile surface finish</p>
+            <p><strong>CTA:</strong> Explore finishes →</p>
+        </div>
+    </div>
+
+    <h3>WALYPAN Series</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> WALYPAN</p>
+            <p><strong>Description:</strong> Линеарные плиты</p>
+            <p><strong>CTA:</strong> Подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> WALYPAN — Dimensional Patterns</p>
+            <p><strong>Tagline:</strong> Create geometric facades with linear depth</p>
+            <p><strong>CTA:</strong> View facade patterns →</p>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>4. Audience Section (Homepage)</h2>
+    <p>Reframe from feature lists to benefit-focused messaging per persona.</p>
+
+    <h3>Architects & Engineers</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> Архитекторам и проектировщикам</p>
+            <p><strong>Description:</strong> Документация, узлы, комплексная поддержка</p>
+            <p><strong>CTA:</strong> подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> Architects & Engineers</p>
+            <p><strong>Description:</strong> Bring your design to life. We provide specs, details, and full technical support.</p>
+            <p><strong>CTA:</strong> Get Technical Support →</p>
+        </div>
+    </div>
+
+    <h3>Developers & Contractors</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> Застройщикам и подрядчикам</p>
+            <p><strong>Description:</strong> Прямые поставки, фиксация цены и сопровождение на всех этапах</p>
+            <p><strong>CTA:</strong> подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> Developers & Contractors</p>
+            <p><strong>Description:</strong> Stay on budget and schedule. Direct supply, fixed pricing, and full support every step.</p>
+            <p><strong>CTA:</strong> Request Delivery Schedule →</p>
+        </div>
+    </div>
+
+    <h3>Dealers</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> Дилерам</p>
+            <p><strong>Description:</strong> Стабильные поставки, тех.поддержка и полная вовлеченность в каждый объект</p>
+            <p><strong>CTA:</strong> подробнее</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> Dealers</p>
+            <p><strong>Description:</strong> Build long-term projects. Reliable stock, sales support, and full project involvement.</p>
+            <p><strong>CTA:</strong> Explore Dealer Program →</p>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>5. Benefits Section (Improved Technical Clarity)</h2>
+    <p>Add context for non-expert readers. Example: Fire safety certification.</p>
+
+    <h3>Non-Combustible Material (NG)</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Text:</strong> Высшая группа пожарной безопасности для фасадных плит, К0 в составе с подсистемой</p>
+            <p style="font-size: 0.9em;"><em>Problem: Uses Russian jargon (НГ, К0) without explanation.</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Text:</strong> Certified K0 fire safety (highest class) as part of ventilated facade systems. Exceeds building code requirements in most climates.</p>
+            <p style="font-size: 0.9em;"><em>Benefit: Explains what K0 is and why it matters.</em></p>
+        </div>
+    </div>
+
+    <h3>Frost Resistance</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Text:</strong> Долговечность в условиях российского климата</p>
+            <p style="font-size: 0.9em;"><em>Problem: Vague. What does "Russian climate" mean for international readers?</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Text:</strong> Tested for 150+ freeze-thaw cycles. Built for harsh climates — from Siberia to coastal zones with salt spray.</p>
+            <p style="font-size: 0.9em;"><em>Benefit: Specific number + real-world context.</em></p>
+        </div>
+    </div>
+
+    <h3>Large Format</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Text:</strong> Панели до 3050 мм — меньше стыков и быстрее монтаж</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Text:</strong> Panels up to 3050 mm = fewer joints, faster installation, reduced labour cost</p>
+            <p style="font-size: 0.9em;"><em>Benefit: Connects feature to developer economics (labour cost).</em></p>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>6. Contact Form (Improved Title & Description)</h2>
+
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> Получить предложение</p>
+            <p><strong>Description:</strong> Специалисты нашей компании всегда на связи, готовы оперативно и подробно ответить на все ваши вопросы.</p>
+            <p style="font-size: 0.9em;"><em>Issue: Transactional, not consultative. Generic description.</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> Get Expert Advice</p>
+            <p><strong>Description:</strong> Our technical team responds within 24 hours. Tell us about your project — we'll recommend the right solution.</p>
+            <p style="font-size: 0.9em;"><em>Benefit: Advisory tone + clear response time + CTA embedded in description.</em></p>
+        </div>
+    </div>
+
+    <h3>Recommended Form Structure</h3>
+    <ul>
+        <li><span class="highlight">Email</span> ✓ (required)</li>
+        <li><span class="highlight">Name</span> ✓ (required)</li>
+        <li><span class="highlight">Phone</span> ✓ (required)</li>
+        <li>Company (optional)</li>
+        <li>Tax ID / Registration (optional)</li>
+        <li><strong>NEW:</strong> Project Type (optional) — dropdown: Residential / Commercial / Public / Other</li>
+        <li><strong>NEW:</strong> Message (optional) — text area: "Tell us about your project"</li>
+    </ul>
+
+    <h3>Success Message</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p>✓ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 24 часов.</p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p>✓ Thanks! Your request has been received. Our team will respond within 24 hours. Watch your email for a detailed proposal.</p>
+            <p style="font-size: 0.9em;"><em>Benefit: Resets expectations + adds confidence.</em></p>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>7. Catalog Page — Product Descriptions (Improved)</h2>
+    <p>Move technical descriptions from extended text into main card. Add benefits + guidance.</p>
+
+    <h3>NATURE Series</h3>
+    <div class="improved">
+        <p><strong>Current extended description:</strong></p>
+        <blockquote>Фактура «под бетон» — индустриальная эстетика в её естественном проявлении. Неповторимый рисунок каждой панели создает целостный и фактурный образ фасада.</blockquote>
+
+        <p><strong>Recommended for catalog card:</strong></p>
+        <blockquote>NATURE combines industrial aesthetic with the durability of fibre cement. Each panel's unique concrete-effect surface creates authentic character — without the cost or maintenance headaches of real concrete. Available in 10 colours, sizes 1220 × 2440–3050 mm.</blockquote>
+    </div>
+
+    <h3>Thickness Guide (Add to Spec Section)</h3>
+    <div class="note">
+        <p><strong>Standard specifications for residential projects:</strong></p>
+        <ul>
+            <li><strong>8–10 mm:</strong> Standard residential (with proper subsystem support)</li>
+            <li><strong>12–15 mm:</strong> High-traffic areas, coastal zones (salt spray), or when additional rigidity needed</li>
+        </ul>
+        <p style="margin-top: 10px;"><em>Note: Not sure which thickness? <a href="/contacts">Contact our technical team</a> — we'll recommend based on your climate and subsystem.</em></p>
+    </div>
+
+    <h3>Colour Naming (Improved)</h3>
+    <p>Current: Mix of descriptive (Белый) and vague (Бежевый светлый) names. Recommended: standardised names + context.</p>
+    <ul>
+        <li><strong>Pearl</strong> — soft, neutral (95% of residential projects)</li>
+        <li><strong>Ash Grey</strong> — medium tone, pairs well with natural materials</li>
+        <li><strong>Graphite</strong> — dark, dramatic look, hides weathering</li>
+        <li><strong>Brick Red</strong> — warm accent, traditional aesthetic</li>
+        <li><strong>Chocolate Brown</strong> — rich, warm, premium feel</li>
+    </ul>
+    <p style="margin-top: 10px;"><em>Add: "Request colour samples" button next to swatches.</em></p>
+</div>
+
+---
+
+<div class="section">
+    <h2>8. Architect Page — Partner Card (Clearer Value)</h2>
+
+    <h3>Current vs. Improved</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p>Мы выстраиваем долгосрочное сотрудничество с авторскими коллективами. Фиксация условий на этапе согласования.</p>
+            <p style="font-size: 0.9em;"><em>Problem: Generic partnership language. Doesn't explain HOW or WHY.</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>How it works:</strong></p>
+            <ol>
+                <li>You submit the project brief — we review specs, suggest optimisations</li>
+                <li>We agree pricing & terms — fixed in the contract</li>
+                <li>We support your team — samples, technical questions, revisions</li>
+                <li>You stay in full control — we're here to enable your design, not influence it</li>
+            </ol>
+            <p style="margin-top: 10px;"><strong>Why architects choose us:</strong></p>
+            <ul>
+                <li>✓ No limits on design freedom — we support, not dictate</li>
+                <li>✓ Fixed pricing — no surprises mid-project</li>
+                <li>✓ Direct access to technical team</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>9. Dealer Page — Benefits Section (Reframed for Economics)</h2>
+    <p>Current benefits sound like customer service promises. Reframe for dealer revenue/margin focus.</p>
+
+    <table>
+        <tr>
+            <th>Current Benefit</th>
+            <th>Issue</th>
+            <th>Reframed for Dealers</th>
+        </tr>
+        <tr>
+            <td>Работа с проектом, а не просто поставка</td>
+            <td>Vague service promise</td>
+            <td><strong>Project-Aligned Pricing</strong> — we work your margins, not ours</td>
+        </tr>
+        <tr>
+            <td>Поддержка в продаже</td>
+            <td>Generic support</td>
+            <td><strong>Sales Enablement</strong> — specs, architect contacts, case studies to close deals faster</td>
+        </tr>
+        <tr>
+            <td>Гибкое подключение</td>
+            <td>Unclear advantage</td>
+            <td><strong>Flexible Stock Models</strong> — consignment, pre-order, or just-in-time, pick what works</td>
+        </tr>
+        <tr>
+            <td>Понятное взаимодействие</td>
+            <td>Too generic</td>
+            <td><strong>Zero Surprises</strong> — transparent pricing, locked-in delivery dates</td>
+        </tr>
+    </table>
+
+    <h3>Improved "Why Is This Attractive?" Section</h3>
+    <div class="improved">
+        <p><strong>Why This Matters for You:</strong></p>
+        <blockquote>Most facade decisions come down to three things: look, reliability, and ease of installation. Price is fourth. This positions you as the advisor, not the commodity supplier — higher margins, stickier relationships, recurring business.</blockquote>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>10. Developer Page — Specific CTA & Tech Section</h2>
+
+    <h3>Hero CTA (More Specific)</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>CTA:</strong> Задать вопрос (Ask a question)</p>
+            <p style="font-size: 0.9em;"><em>Issue: Lazy, low conversion.</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved Options (A/B test)</h4>
+            <ul>
+                <li><strong>Request Delivery Schedule</strong> — specific, action-oriented</li>
+                <li><strong>Get Budget Estimate</strong> — speaks to developer economics</li>
+                <li><strong>Consult Our Team</strong> — advisory tone</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Tech Benefits — Reframed (Eliminate Decision Friction)</h3>
+    <div class="comparison">
+        <div class="current">
+            <h4>Current</h4>
+            <p><strong>Title:</strong> Совместимость с подсистемами</p>
+            <p><strong>Text:</strong> Панели работают со всеми типами фасадных подсистем без ограничений.</p>
+            <p style="font-size: 0.9em;"><em>Problem: Developers don't care about subsystem types. They care about decisions avoided.</em></p>
+        </div>
+        <div class="improved">
+            <h4>Improved</h4>
+            <p><strong>Title:</strong> Subsystem-Agnostic</p>
+            <p><strong>Text:</strong> Works with 95% of facade suppliers — eliminates the "are these panels compatible?" conversation. Your contractor can choose their preferred subsystem.</p>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>11. Navigation & CTA Standardisation</h2>
+    <p>Currently inconsistent CTAs: "подробнее", "Смотреть", "Обсудить". Standardise for clarity + consistency.</p>
+
+    <table>
+        <tr>
+            <th>Context</th>
+            <th>Current (Russian)</th>
+            <th>Recommended</th>
+        </tr>
+        <tr>
+            <td>Learn more about product</td>
+            <td>Подробнее</td>
+            <td><strong>View details →</strong> or <strong>See colours →</strong></td>
+        </tr>
+        <tr>
+            <td>View full list / catalog</td>
+            <td>Смотреть</td>
+            <td><strong>View all →</strong></td>
+        </tr>
+        <tr>
+            <td>Request support / consultation</td>
+            <td>Обратный звонок</td>
+            <td><strong>Request consultation →</strong></td>
+        </tr>
+        <tr>
+            <td>Submit info / apply</td>
+            <td>Оставить заявку</td>
+            <td><strong>Submit a request →</strong> or <strong>Apply now →</strong></td>
+        </tr>
+        <tr>
+            <td>Navigate to partnership page</td>
+            <td>подробнее</td>
+            <td><strong>Explore program →</strong> or <strong>Learn more →</strong></td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <p><strong>Rationale:</strong> Use specific verbs (View, Request, Submit, Explore) instead of generic "Learn more". Adds →arrow to signal navigation. Improves UX clarity.</p>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>12. Terminology Glossary (for internal use)</h2>
+    <p>Standardise these terms across all content to avoid confusion.</p>
+
+    <table>
+        <tr>
+            <th>Concept</th>
+            <th>Use Consistently</th>
+            <th>Avoid</th>
+        </tr>
+        <tr>
+            <td>Dealer partners</td>
+            <td><strong>Dealer Program</strong></td>
+            <td>Дилеры, Дилерам, Дилерская программа (mix)</td>
+        </tr>
+        <tr>
+            <td>Developers / builders</td>
+            <td><strong>Developers</strong> (English) or <strong>Застройщики</strong> (Russian)</td>
+            <td>Застройщикам, Застройщиков, Builders (mixed)</td>
+        </tr>
+        <tr>
+            <td>Architects + Engineers</td>
+            <td><strong>Architects & Engineers</strong> (EN) or <strong>Архитекторы и проектировщики</strong> (RU)</td>
+            <td>Архитекторам, Дизайнерам (fragmented roles)</td>
+        </tr>
+        <tr>
+            <td>Installation / mounting</td>
+            <td><strong>Fastening Methods</strong> or <strong>Connection Details</strong></td>
+            <td>Способы крепления, Узлы крепления, Крепление (mixed)</td>
+        </tr>
+        <tr>
+            <td>Non-combustible</td>
+            <td><strong>Non-combustible (NG)</strong> — explain first use</td>
+            <td>НГ, Негорючий (unexplained jargon)</td>
+        </tr>
+        <tr>
+            <td>Fire safety class</td>
+            <td><strong>K0 fire safety class</strong> — with explanation in first use</td>
+            <td>К0, Класс пожарной опасности (jargon)</td>
+        </tr>
+    </table>
+</div>
+
+---
+
+<div class="section">
+    <h2>Summary: Priority Updates</h2>
+
+    <h3>HIGH (Implement First — High Impact, Low Effort)</h3>
+    <ul>
+        <li>✓ Add meta descriptions to all pages (50–60 chars)</li>
+        <li>✓ Rewrite all CTAs (replace "подробнее" with specific actions)</li>
+        <li>✓ Update contact form title: "Получить консультацию" (Consultative, not transactional)</li>
+        <li>✓ Add project type dropdown to contact form</li>
+        <li>✓ Fix product card descriptions (add unique benefit per series)</li>
+    </ul>
+
+    <h3>MEDIUM (Important — Medium Impact, Medium Effort)</h3>
+    <ul>
+        <li>√ Reframe audience section (benefit-focused descriptions)</li>
+        <li>√ Improve benefits section copy (add context, avoid jargon)</li>
+        <li>√ Clarify dealer page benefits (focus on margin/economics)</li>
+        <li>√ Add thickness/colour guidance to catalog page</li>
+        <li>√ Standardise terminology across all pages</li>
+    </ul>
+
+    <h3>LOW (Nice-to-Have — Medium Impact, High Effort)</h3>
+    <ul>
+        <li>○ Rewrite hero section (more persuasive H1)</li>
+        <li>○ Add case study descriptions to projects page</li>
+        <li>○ Create FAQ section (targets long-tail search)</li>
+        <li>○ Improve footer tagline (simplify or rephrase)</li>
+    </ul>
+</div>
+
+---
+
+<div class="section" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+    <h2>Final Notes</h2>
+
+    <h3>Testing Recommendations</h3>
+    <ul>
+        <li><strong>A/B Test Hero CTA:</strong> "Get a Quote" vs. "Get Expert Advice" vs. "Schedule Consultation" — measure form submissions</li>
+        <li><strong>A/B Test Contact Form Title:</strong> "Get a Quote" vs. "Request Consultation" — measure form abandonment</li>
+        <li><strong>Measure:** Form completion rate, time-on-page, bounce rate (before/after)</li>
+    </ul>
+
+    <h3>Brand Voice Guidelines</h3>
+    <ul>
+        <li>✓ Use active voice ("We certify…" vs. "Certified…")</li>
+        <li>✓ Lead with benefits, then features</li>
+        <li>✓ Be specific (use numbers: 3050 mm, 150 cycles, K0)</li>
+        <li>✓ Speak to each persona's pain point</li>
+        <li>✗ Avoid Russian jargon (НГ, К0, ГОСТ) without explanation</li>
+        <li>✗ Don't use passive voice or vague terms</li>
+    </ul>
+
+    <h3>Implementation Timeline</h3>
+    <p><strong>Week 1:</strong> Add meta descriptions, standardise CTAs, improve contact form</p>
+    <p><strong>Week 2:</strong> Rewrite product descriptions, audience section</p>
+    <p><strong>Week 3:</strong> Launch A/B tests on hero CTA + form title</p>
+    <p><strong>Week 4:</strong> Measure results, implement winning variations</p>
+
+    <p style="margin-top: 20px;"><em>Prepared: 2026-04-20 | Audit based on homepage, catalog, architect, dealer, developer pages</em></p>
+</div>
+
+</body>
+</html>

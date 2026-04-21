@@ -1,6 +1,4 @@
-<section class="products-section" style="
-    padding-bottom: 0px;
-    padding-top: 32px;">
+<section class="products-section">
     <div class="section-header">
         <h2>BLPboard</h2>
     </div>

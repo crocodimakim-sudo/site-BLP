@@ -1,6 +1,4 @@
-<section class="audience-section" aria-labelledby="audience-heading" style="
-    padding-top: 0px;
-    padding-bottom: 0px;">
+<section class="audience-section" aria-labelledby="audience-heading">
     <div class="section-header">
         <h2 id="audience-heading">Кому подойдут наши решения</h2>
     </div>

@@ -1,8 +1,15 @@
 <?php
 $page_title = "Способы крепления — BLP Board";
 $page_desc = "Варианты крепления фиброцементных панелей BLP Board к подсистеме: видимый и скрытый способы. Совместимость с алюминиевыми, оцинкованными и нержавеющими подсистемами.";
+// 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
+$page_canonical = 'https://building-port.ru/blp/kreplenie/';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/kreplenie.css">';
 $extra_js = "";
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная',           'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Способы крепления', 'url' => 'https://building-port.ru/blp/kreplenie'],
+];
 
 ob_start();
 ?>

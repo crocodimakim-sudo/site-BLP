@@ -1,7 +1,8 @@
     <header class="header">
         <div class="header-container">
             <a href="/blp/" class="logo" aria-label="Building Port - на главную">
-                <img src="https://static.tildacdn.com/tild6563-6337-4165-b430-643331353737/logo-3.svg" alt="Building Port">
+                <!-- 2026-04-20: migrated logo from tildacdn to local images -->
+                <img src="/blp/images/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">
             </a>
 
             <nav class="nav" aria-label="Главная навигация">
@@ -28,7 +29,8 @@
                     <div class="dropdown" role="menu">
                         <a href="/blp/architect" class="dropdown-item" role="menuitem">Архитекторам&nbsp;и проектировщикам</a>
                         <a href="/blp/devops" class="dropdown-item" role="menuitem">Застройщикам</a>
-                        <a href="/blp/diler" class="dropdown-item" role="menuitem">Дилерам</a>
+                        <!-- 2026-04-20: Stage 3 — diler.php removed, dealer.php is canonical -->
+                        <a href="/blp/dealer" class="dropdown-item" role="menuitem">Дилерам</a>
                     </div>
                 </div>
 
@@ -40,6 +42,10 @@
                     <div class="dropdown" role="menu">
                         <a href="/blp/sertificate" class="dropdown-item" role="menuitem">Сертификаты</a>
                         <a href="/blp/kreplenie" class="dropdown-item" role="menuitem">Способы крепления</a>
+                        <!-- 2026-04-20: Stage 3 — added install, compare, faq to nav -->
+                        <a href="/blp/install" class="dropdown-item" role="menuitem">Инструкция по монтажу</a>
+                        <a href="/blp/compare" class="dropdown-item" role="menuitem">Сравнение материалов</a>
+                        <a href="/blp/faq" class="dropdown-item" role="menuitem">Вопросы и ответы</a>
                     </div>
                 </div>
 
@@ -94,7 +100,8 @@
                 <div class="mobile-dropdown">
                     <a href="/blp/architect" class="mobile-dropdown-item">Архитекторам&nbsp;и проектировщикам</a>
                     <a href="/blp/devops" class="mobile-dropdown-item">Застройщикам</a>
-                    <a href="/blp/diler" class="mobile-dropdown-item">Дилерам</a>
+                    <!-- 2026-04-20: Stage 3 — diler.php removed, dealer.php is canonical -->
+                    <a href="/blp/dealer" class="mobile-dropdown-item">Дилерам</a>
                 </div>
             </div>
 
@@ -108,6 +115,10 @@
                 <div class="mobile-dropdown">
                     <a href="/blp/sertificate" class="mobile-dropdown-item">Сертификаты</a>
                     <a href="/blp/kreplenie" class="mobile-dropdown-item">Способы крепления</a>
+                    <!-- 2026-04-20: Stage 3 — added install, compare, faq to mobile nav -->
+                    <a href="/blp/install" class="mobile-dropdown-item">Инструкция по монтажу</a>
+                    <a href="/blp/compare" class="mobile-dropdown-item">Сравнение материалов</a>
+                    <a href="/blp/faq" class="mobile-dropdown-item">Вопросы и ответы</a>
                 </div>
             </div>
 

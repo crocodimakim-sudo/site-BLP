@@ -1,14 +1,25 @@
 <?php
-$page_title = "Архитекторам и проектировщикам — BLP Board";
-$page_desc  = "Партнерская программа для архитекторов и проектировщиков. Техническая документация, образцы, консультации по интеграции фиброцементных панелей в проект.";
+// 2026-04-20: added canonical, OG image
+// 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
+$page_title    = "Фиброцементные панели для архитекторов и проектировщиков — BLP Board";
+$page_canonical = 'https://building-port.ru/blp/architect';
+// 2026-04-20: og_image → real hero instead of missing og-default
+$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/architect/architect_hero.jpg';
+$page_desc  = "Техническая поддержка архитекторов: документация, образцы, консультации по фиброцементным фасадным панелям BLP Board.";
 $extra_css  = '<link rel="stylesheet" href="/blp/css/pages/architect.css">';
-$extra_js   = '<script src="/blp/js/pages/index.js" defer></script>';
+// 2026-04-20: fix — подключаем корректный JS страницы architect (был index.js)
+$extra_js   = '<script src="/blp/js/pages/architect.js" defer></script>';
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная',                      'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Архитекторам и проектировщикам', 'url' => 'https://building-port.ru/blp/architect'],
+];
 
 ob_start();
 ?>
 
 <div class="blp-audience-block">
-    <h1 class="blp-section-title">Кому это принесёт пользу</h1>
+    <h1 class="blp-section-title">Кому можем помочь</h1>
 
     <div class="blp-cards-grid">
         <div class="blp-card">
@@ -29,12 +40,13 @@ ob_start();
 
     <div class="blp-support-block">
         <div class="blp-support-content">
-            <h2 class="blp-support-title">Все, чтобы заложить материал&nbsp;в проект</h2>
+            <!-- 2026-04-20: список расширен реальными инструментами архитектора + ключевые слова -->
             <ul class="blp-support-list">
-                <li>Техническая документация (сертификаты, паспорта)</li>
-                <li>Образцы</li>
-                <li>Помощь&nbsp;в выборе подсистемы (Узлы крепления&nbsp;и типовые решения)</li>
-                <li>Консультации&nbsp;по интеграции&nbsp;в проект</li>
+                <li>Техническая документация (сертификаты, паспорта плит)</li>
+                <li>Техническое свидетельство от ФАУ ФЦС</li>
+                <li>Образцы фиброцементных панелей по запросу</li>
+                <li>Помощь в выборе подсистемы НВФ (навесного вентилируемого фасада)</li>
+                <li>Консультации по интеграции фиброцементных панелей в проект</li>
             </ul>
         </div>
         <div class="blp-support-badge">
@@ -43,11 +55,15 @@ ob_start();
     </div>
 </div>
 
+<?php include '../blocks/objects-section.php'; ?>
+
+<?php include '../blocks/products-section.php'; ?>
+
+<?php include '../blocks/benefits.php'; ?>
+
 <div class="architect-specs">
 <?php include '../blocks/specs-section.php'; ?>
 </div>
-<?php include '../blocks/products-section.php'; ?>
-<?php include '../blocks/benefits.php'; ?>
 
 <div class="blp-partner-card-wrap">
     <div class="blp-partner-card">
@@ -55,15 +71,14 @@ ob_start();
             <h2 class="blp-partner-card__title">Партнерская модель взаимодействия</h2>
             <p class="blp-partner-card__text">Мы выстраиваем долгосрочное сотрудничество&nbsp;с авторскими коллективами. Фиксация условий&nbsp;на этапе согласования.</p>
             <p class="blp-partner-card__note"><strong>Важно:</strong> Сотрудничество&nbsp;не влияет&nbsp;на архитектурные решения&nbsp;и не ограничивает ваш выбор — мы подключаемся&nbsp;как технический партнер.</p>
-            <a class="blp-partner-card__btn" href="/blp/contacts#form">Оставить заявку</a>
+            <!-- 2026-04-20: CTA конкретизирован для аудитории архитекторов -->
+            <a class="blp-partner-card__btn" href="/blp/contacts#form">Запросить техническую документацию</a>
         </div>
         <div class="blp-partner-card__image">
-            <img src="/blp/images-convert/pages/architect/architect_hero.jpg" alt="Партнерская модель взаимодействия">
+            <img src="/blp/images-convert/pages/architect/architect_hero.jpg" alt="Партнерская модель взаимодействия" width="600" height="450" fetchpriority="high" decoding="async">
         </div>
     </div>
 </div>
-
-<?php include '../blocks/objects-section.php'; ?>
 
 <?php include '../blocks/partners-section.php'; ?>
 

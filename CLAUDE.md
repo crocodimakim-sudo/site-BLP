@@ -81,6 +81,34 @@ images-convert/
 
 ---
 
+## ⚠️ КРИТИЧЕСКОЕ ПРАВИЛО: Удаление фотографий
+
+**Скрипт `convert_images.php` НЕ удаляет orphaned файлы автоматически, если оригинал был удалён из `images/`.**
+
+### Что происходит
+1. Менеджер загружает фото в `images/pages/[папка]/`
+2. Скрипт создаёт оптимизированные копии в `images-convert/pages/[папка]/`
+3. Менеджер удаляет фото из `images/pages/[папка]/`
+4. **ОПАСНОСТЬ:** Конвертированные копии остаются в `images-convert/` и продолжают отображаться на сайте
+
+### Решение — Запускать скрипт с удалением orphaned:
+```bash
+php D:\Claude Code\site-blp\site-kimi\scripts\convert_images.php
+```
+Скрипт теперь автоматически удаляет из `images-convert/` все файлы, оригиналов которых нет в `images/`.
+
+### Ручная синхронизация (если скрипт не запускался)
+```powershell
+# Сравнить папки и удалить лишнее
+$src = Get-ChildItem "D:\Claude Code\site-blp\site-kimi\images\pages\projects\sapronova" -Filter *.jpg | Select-Object -ExpandProperty BaseName
+$conv = "D:\Claude Code\site-blp\site-kimi\images-convert\pages\projects\sapronova"
+Get-ChildItem $conv | Where-Object { $_.Extension -in '.jpg','.webp' } | ForEach-Object { if ($src -notcontains $_.BaseName) { Remove-Item $_.FullName } }
+```
+
+**Правило:** После любого удаления фото из `images/` — обязательно перезапустить `convert_images.php` и скопировать `images-convert/` в XAMPP.
+
+---
+
 ## 📋 ПРОЕКТ: Восстановление сайта BLP Board для XAMPP
 
 ### Цель
@@ -288,13 +316,6 @@ images/
 │   └── common/
 └── STRUKTURA.md
 ```
-
-**ПРАВИЛО ПОИСКА КАРТИНОК:**
-1. Открыть `/d/Claude Code/site-blp/site-kimi/images/pages/[страница]/` → если файл там есть = берём оттуда
-2. Если файла нет = проверить HTML оригинал что там должно быть
-3. Если в HTML ссылка на tildacdn.com = скачать оттуда вручную/скриптом
-4. Переименовать по смыслу и положить в папку страницы
-5. Обновить путь в PHP файле
 
 ### 5. Файлы НЕ менять без проверки
 - `template.php` — общий шаблон (только если критично)

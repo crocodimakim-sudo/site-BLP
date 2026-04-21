@@ -1,0 +1,364 @@
+/*
+  PREVIEW MOBILE STYLES — My interpretation of adaptive fixes
+  NOT applied to main code — for visual review only
+  2026-04-20
+*/
+
+/* ========================================
+   ГЛОБАЛЬНЫЕ ШРИФТЫ (Lane 2 fix)
+   ======================================== */
+
+/* Убираем !important и добавляем адаптивные sizes */
+@media (max-width: 900px) {
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 24px !important; }
+  h3 { font-size: 18px !important; }
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 16px !important; }
+  h4 { font-size: 13px !important; }
+  p  { font-size: 14px; }
+}
+
+/* ========================================
+   ГЛАВНАЯ СТРАНИЦА (index.php) — Lane 1 fix
+   ======================================== */
+
+/* Hero блок — прижимаем к хедеру */
+@media (max-width: 640px) {
+  .hero-main {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .hero-content {
+    padding: 20px 16px !important;
+  }
+
+  /* Секции — единый отступ 16px */
+  .products-section,
+  .audience-section,
+  .benefits-section,
+  .objects-section,
+  .partners-section,
+  .contact-form-section {
+    padding: 0 16px !important;
+  }
+
+  .section-container {
+    padding: 16px !important;
+  }
+}
+
+/* ========================================
+   КАТАЛОГ (catalog.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Карточки растягиваются на всю ширину */
+  .product-card {
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+
+  /* Информация в карточке — отступ 16px */
+  .product-info {
+    padding: 20px 16px !important;
+  }
+
+  /* Зазоры между карточками меньше */
+  .catalog-product-grid {
+    gap: 12px !important;
+  }
+
+  /* WALYPAN карточка */
+  .blp-card {
+    flex-direction: column !important;
+  }
+
+  .blp-info {
+    padding: 20px 16px !important;
+  }
+
+  .blp-image-section {
+    width: 100% !important;
+    min-height: 200px !important;
+  }
+
+  /* Палитра цветов — показываем названия */
+  .color-names-grid {
+    display: flex !important;
+  }
+}
+
+/* ========================================
+   АРХИТЕКТОР (architect.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Блок "вложить материал в проект" */
+  .blp-partner-card {
+    margin: 0 16px !important;
+  }
+
+  .blp-partner-card__content {
+    padding: 20px 16px !important;
+  }
+
+  /* Все блоки страницы — единый отступ */
+  .blp-audience-block {
+    padding: 0 16px !important;
+  }
+
+  .blp-cards-grid {
+    gap: 16px !important;
+  }
+}
+
+/* ========================================
+   ЗАСТРОЙЩИКИ (devops.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Hero блок — отступ сверху */
+  .hero-main {
+    padding-top: 16px !important;
+  }
+
+  /* Блок "Почему работают с нами" — убираем лишний margin */
+  .interesting-section {
+    margin-top: 0 !important;
+    padding-top: 16px !important;
+  }
+}
+
+/* ========================================
+   ДИЛЕРЫ (diler.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Hero изображение */
+  .blp-hero-img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    object-fit: cover !important;
+  }
+
+  /* Hero секция — единый отступ */
+  .blp-hero-section {
+    padding: 16px !important;
+    margin: 0 !important;
+  }
+
+  .blp-grid-12 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Блоки преимуществ */
+  .blp-benefit-card {
+    margin: 0 !important;
+    padding: 16px !important;
+  }
+}
+
+/* ========================================
+   СЕРТИФИКАТЫ (sertificate.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Контейнер — единый отступ */
+  .cert-container {
+    padding: 16px !important;
+  }
+
+  /* Заголовок */
+  .cert-header {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Карусель */
+  .carousel-wrapper {
+    padding: 0 !important;
+  }
+
+  .carousel-track {
+    gap: 12px !important;
+  }
+
+  /* Кнопки карусели */
+  .carousel-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* ========================================
+   КРЕПЛЕНИЯ (kreplenie.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Единый отступ */
+  .blp-mounting-block {
+    padding: 0 16px !important;
+  }
+
+  /* Методы крепления */
+  .blp-method-section {
+    margin: 16px 0 !important;
+  }
+
+  .blp-method-info {
+    padding: 16px !important;
+  }
+
+  /* Сетка оборудования */
+  .blp-hardware-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+/* ========================================
+   КОНТАКТЫ (contacts.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  .contacts-section {
+    padding: 0 16px !important;
+  }
+
+  .contact-form {
+    padding: 20px 16px !important;
+  }
+
+  .contact-form-section {
+    padding: 16px !important;
+    margin: 0 !important;
+  }
+}
+
+/* ========================================
+   ПРОЕКТЫ (projects.php) — Lane 1 fix
+   ======================================== */
+
+@media (max-width: 640px) {
+  .projects-section {
+    padding: 0 16px !important;
+  }
+
+  .project-card {
+    margin: 0 !important;
+  }
+}
+
+/* ========================================
+   ОБЩИЕ БЛОКИ
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* Footer */
+  footer {
+    padding: 24px 16px !important;
+  }
+
+  /* Header */
+  header {
+    padding: 12px 16px !important;
+  }
+
+  /* Contact form (глобально) */
+  .contact-form-section {
+    padding: 16px !important;
+  }
+
+  .contact-form {
+    padding: 20px 16px !important;
+  }
+
+  /* Partners блок — 16px вместо 15px */
+  .partners-title {
+    padding: 0 16px !important;
+  }
+
+  .slider-wrapper {
+    padding: 0 16px !important;
+  }
+
+  /* Remove hover translateY на touch devices */
+  @media (hover: none) {
+    .card:hover,
+    .audience-card:hover,
+    .product-card:hover {
+      transform: none !important;
+    }
+  }
+}
+
+/* ========================================
+   Lane 3: Унифицированные breakpoints
+   ======================================== */
+
+/* Стандартная система: 1200px, 960px, 640px */
+/* Все компоненты должны переходить одновременно */
+
+@media (max-width: 1199px) {
+  /* Tablet: 960px — 1199px */
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 28px !important; }
+}
+
+@media (max-width: 960px) {
+  /* Small tablet: 640px — 960px */
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 24px !important; }
+  h3 { font-size: 18px !important; }
+}
+
+@media (max-width: 640px) {
+  /* Mobile: до 640px */
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 16px; }
+  h4 { font-size: 13px; }
+
+  /* Все блоки — 16px горизонтально */
+  main > * {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ========================================
+   PREVIEW INDICATOR
+   ======================================== */
+
+body::before {
+  content: "🔍 PREVIEW MODE — Mobile Adaptive (375px/390px)";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #FFD700;
+  color: #000;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 9999;
+  text-align: center;
+}
+
+main {
+  padding-top: 40px;
+}

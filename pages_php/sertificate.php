@@ -1,8 +1,17 @@
 <?php
 $page_title = 'Сертификаты фиброцементных панелей — НГ, соответствие требованиям';
 $page_desc = 'Полный комплект технической документации, соответствующий требованиям органов строительного надзора и подтверждающий пригодность для применения в строительстве на территории РФ.';
+// 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
+$page_canonical = 'https://building-port.ru/blp/sertificate/';
+// 2026-04-20: og_image added (Stage 2 SEO)
+$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/sertificate/cert_fire_safety.png';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/sertificate.css">';
 $extra_js = '<script src="/blp/js/pages/sertificate.js" defer></script>';
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная',      'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Сертификаты',  'url' => 'https://building-port.ru/blp/sertificate'],
+];
 ob_start();
 ?>
 
@@ -17,7 +26,6 @@ ob_start();
                 <div class="cert-header-left">
                     <div class="cert-header-accent"></div>
                     <h1 class="cert-title">Сертификаты фиброцементных панелей — НГ, соответствие требованиям</h1>
-                    <h2 class="cert-section-title">Техническое свидетельство&nbsp;и сертификаты</h2>
                     <p class="cert-subtitle">Полный комплект технической документации, соответствующий требованиям органов строительного надзора&nbsp;и подтверждающий<br> пригодность для применения в строительстве на территории РФ.</p>
                 </div>
                 <div class="cert-button-wrapper">
@@ -46,7 +54,6 @@ ob_start();
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
                                 <img src="/blp/images-convert/pages/sertificate/cert_declaration_trts.png" alt="Декларация ТР ТС" loading="lazy">
-                                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="watermark" class="watermark-logo">
                             </div>
                             <div class="slide-number">01</div>
                         </div>
@@ -57,7 +64,6 @@ ob_start();
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
                                 <img src="/blp/images-convert/pages/sertificate/cert_technical_passport.png" alt="Технический паспорт" loading="lazy">
-                                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="watermark" class="watermark-logo">
                             </div>
                             <div class="slide-number">02</div>
                         </div>
@@ -68,7 +74,6 @@ ob_start();
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
                                 <img src="/blp/images-convert/pages/sertificate/cert_mchs_conclusion.png" alt="Заключение МЧС" loading="lazy">
-                                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="watermark" class="watermark-logo">
                             </div>
                             <div class="slide-number">03</div>
                         </div>
@@ -79,7 +84,6 @@ ob_start();
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
                                 <img src="/blp/images-convert/pages/sertificate/cert_registration.png" alt="Свидетельство о регистрации" loading="lazy">
-                                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="watermark" class="watermark-logo">
                             </div>
                             <div class="slide-number">04</div>
                         </div>
@@ -90,7 +94,6 @@ ob_start();
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
                                 <img src="/blp/images-convert/pages/sertificate/cert_test_protocol.png" alt="Протокол испытаний" loading="lazy">
-                                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="watermark" class="watermark-logo">
                             </div>
                             <div class="slide-number">05</div>
                         </div>
@@ -101,7 +104,6 @@ ob_start();
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
                                 <img src="/blp/images-convert/pages/sertificate/cert_fire_safety.png" alt="Сертификат пожарной безопасности" loading="lazy">
-                                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="watermark" class="watermark-logo">
                             </div>
                             <div class="slide-number">06</div>
                         </div>

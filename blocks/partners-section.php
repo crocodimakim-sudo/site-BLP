@@ -1,10 +1,5 @@
-<div class="partners-section section-card" style="
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-bottom: 40px;">
-    <h2 class="partners-title" style="
-    margin-top: 16px;
-    margin-bottom: 0;">Партнеры</h2>
+<div class="partners-section section-card">
+    <h2 class="partners-title">Партнеры</h2>
 
     <div class="slider-wrapper">
         <button class="slider-btn prev" onclick="moveSlide(-1)">‹</button>

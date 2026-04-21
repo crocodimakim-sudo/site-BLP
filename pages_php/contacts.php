@@ -1,8 +1,17 @@
 <?php
-$page_title = 'Контакты — BLP Board';
-$page_desc = 'Контакты компании BLP Board. Адрес: Одинцово, ул. Неделина, 6А. Телефон: +7 (495) 984-96-89. Email: info@building-port.ru';
+// 2026-04-20: added canonical, OG image
+// 2026-04-20: SEO — title geo-enriched, meta desc 155-160 chars
+$page_title    = 'Контакты BLP Board — Одинцово, Московская область';
+$page_canonical = 'https://building-port.ru/blp/contacts';
+$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_desc = 'Контакты BLP Board: +7 (495) 984-96-89, Одинцово, ул. Неделина 6А. Работаем с архитекторами, застройщиками и дилерами. Заявка онлайн — ответим в течение рабочего дня.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/contacts.css">';
 $extra_js = '<script src="/blp/js/pages/contacts.js" defer></script>';
+// 2026-04-20: breadcrumbs for schema
+$breadcrumbs = [
+    ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Контакты', 'url' => 'https://building-port.ru/blp/contacts'],
+];
 
 ob_start();
 ?>
@@ -11,8 +20,9 @@ ob_start();
 <section class="contacts-section">
     <div class="contacts-container">
         <div class="contacts-header">
-            <h1 class="contacts-title">Контакты</h1>
-            <p class="contacts-subtitle">Свяжитесь&nbsp;с нами удобным способом</p>
+            <!-- 2026-04-20: H1 расширен для локального SEO (было: «Контакты») -->
+            <h1 class="contacts-title">Контакты BLP Board</h1>
+            <p class="contacts-subtitle">Одинцово, Московская область. Работаем с архитекторами, застройщиками и дилерами.</p>
         </div>
 
         <div class="contacts-grid">
@@ -22,7 +32,7 @@ ob_start();
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                     </svg>
                 </div>
-                <h3 class="contacts-label">Телефон</h3>
+                <span class="contacts-label">Телефон</span>
                 <a href="tel:+74959849689" class="contacts-value">+7 (495) 984-96-89</a>
             </div>
 
@@ -33,7 +43,7 @@ ob_start();
                         <polyline points="22,6 12,13 2,6"/>
                     </svg>
                 </div>
-                <h3 class="contacts-label">E-mail</h3>
+                <span class="contacts-label">E-mail</span>
                 <a href="mailto:info@building-port.ru" class="contacts-value">info@building-port.ru</a>
             </div>
 
@@ -44,7 +54,7 @@ ob_start();
                         <circle cx="12" cy="10" r="3"/>
                     </svg>
                 </div>
-                <h3 class="contacts-label">Адрес</h3>
+                <span class="contacts-label">Адрес</span>
                 <p class="contacts-value">Одинцово, ул. Неделина, 6А</p>
             </div>
         </div>
@@ -132,7 +142,7 @@ ob_start();
                         class="form-checkbox"
                         required
                     />
-                    <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия <a href="/policy" target="_blank">Политики конфиденциальности</a></label>
+                    <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия <a href="/blp/policy" target="_blank" rel="noopener">Политики конфиденциальности</a></label>
                     <span class="field-error" data-field="consent"></span>
                 </div>
 
@@ -161,6 +171,9 @@ ob_start();
 </section>
 
 <?php include '../blocks/contact-form.php'; ?>
+
+<!-- 2026-04-20: LocalBusiness schema for contacts page -->
+<?php include __DIR__ . '/schema_localbusiness.php'; ?>
 
 <?php
 $page_content = ob_get_clean();

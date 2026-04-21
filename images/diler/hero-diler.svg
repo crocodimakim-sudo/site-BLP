@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <!-- 2026-04-20: hero для страницы дилера BLP Board -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00352f;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#004d44;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#006b5e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c8a96e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8c98e;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="gridPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <pattern id="logoPattern" x="0" y="0" width="320" height="200" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
+      <g opacity="0.06" transform="translate(80,50) scale(0.65)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M62.22 48.34H103.49V70.01H114.27V37.56H71.2L62.22 48.34Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M44.25 0V70.01H96.3V59.23H55.03V10.78H103.49V21.67H71.2L62.22 32.45H114.27V0H44.25Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M25.81 95.13H18.44V84.19H15.2V98.37H29.04V84.19H25.81V95.13Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.84 88.54C13.84 87.34 13.35 86.25 12.56 85.46C11.77 84.67 10.68 84.19 9.48 84.19H0V87.42H9.48C9.79 87.42 10.07 87.55 10.27 87.75C10.47 87.95 10.6 88.23 10.6 88.54C10.6 88.85 10.48 89.13 10.27 89.33C10.07 89.53 9.79 89.66 9.48 89.66H9.21V92.89H9.48C9.79 92.89 10.07 93.02 10.27 93.22C10.47 93.42 10.6 93.7 10.6 94.01C10.6 94.32 10.48 94.6 10.27 94.8C10.07 95 9.79 95.13 9.48 95.13H3.23V92.89H7.69V89.66H0V98.36H9.48C10.68 98.36 11.77 97.88 12.56 97.09C13.35 96.3 13.84 95.21 13.84 94.01C13.84 93.46 13.74 92.93 13.55 92.45C13.39 92.02 13.16 91.63 12.87 91.28C13.15 90.93 13.38 90.53 13.55 90.11C13.74 89.62 13.84 89.1 13.84 88.55V88.54Z" fill="white"/>
+        <path d="M33.6399 84.19H30.4099V98.37H33.6399V84.19Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M38.25 84.19H35.01V98.37H46.97V95.13H38.25V84.19Z" fill="white"/>
+      </g>
+    </pattern>
+    <clipPath id="heroClip">
+      <rect width="1200" height="600"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bgGrad)"/>
+  <rect width="1200" height="600" fill="url(#gridPattern)"/>
+  <rect width="1200" height="600" fill="url(#logoPattern)"/>
+
+  <!-- Decorative accent line -->
+  <rect x="0" y="0" width="6" height="600" fill="url(#accentGrad)"/>
+
+  <!-- Right side decorative panels (fibrocement texture suggestion) -->
+  <rect x="680" y="0" width="520" height="600" fill="rgba(0,0,0,0.15)" clip-path="url(#heroClip)"/>
+  <rect x="700" y="40" width="460" height="520" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="720" y="60" width="420" height="480" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Panel grid decoration -->
+  <line x1="700" y1="200" x2="1160" y2="200" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="700" y1="400" x2="1160" y2="400" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="900" y1="40" x2="900" y2="560" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Logo -->
+  <g transform="translate(80, 60) scale(1.1)">
+    <g clip-path="url(#logoClip)">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M62.22 48.34H103.49V70.01H114.27V37.56H71.2L62.22 48.34Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M44.25 0V70.01H96.3V59.23H55.03V10.78H103.49V21.67H71.2L62.22 32.45H114.27V0H44.25Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M25.81 95.13H18.44V84.19H15.2V98.37H29.04V84.19H25.81V95.13Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.84 88.54C13.84 87.34 13.35 86.25 12.56 85.46C11.77 84.67 10.68 84.19 9.48 84.19H0V87.42H9.48C9.79 87.42 10.07 87.55 10.27 87.75C10.47 87.95 10.6 88.23 10.6 88.54C10.6 88.85 10.48 89.13 10.27 89.33C10.07 89.53 9.79 89.66 9.48 89.66H9.21V92.89H9.48C9.79 92.89 10.07 93.02 10.27 93.22C10.47 93.42 10.6 93.7 10.6 94.01C10.6 94.32 10.48 94.6 10.27 94.8C10.07 95 9.79 95.13 9.48 95.13H3.23V92.89H7.69V89.66H0V98.36H9.48C10.68 98.36 11.77 97.88 12.56 97.09C13.35 96.3 13.84 95.21 13.84 94.01C13.84 93.46 13.74 92.93 13.55 92.45C13.39 92.02 13.16 91.63 12.87 91.28C13.15 90.93 13.38 90.53 13.55 90.11C13.74 89.62 13.84 89.1 13.84 88.55V88.54Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M57.8201 84.18H48.3401V98.36H57.8201C60.2201 98.36 62.1701 96.41 62.1701 94.01V88.53C62.1701 86.13 60.2201 84.18 57.8201 84.18ZM58.9401 94.01C58.9401 94.63 58.4401 95.13 57.8201 95.13H51.5701V87.41H57.8201C58.4401 87.41 58.9401 87.91 58.9401 88.53V94.01Z" fill="white"/>
+      <path d="M33.6399 84.19H30.4099V98.37H33.6399V84.19Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M38.25 84.19H35.01V98.37H46.97V95.13H38.25V84.19Z" fill="white"/>
+      <path d="M66.77 84.19H63.54V98.37H66.77V84.19Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M79.2599 93.4L71.3799 84.19H68.1399V98.37H71.3799V89.16L79.2599 98.37H82.4999V84.19H79.2599V93.4Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M83.8601 98.37H97.7001V89.66H89.5301V92.89H94.4701V95.13H87.1001V87.42H97.7001V84.18H83.8601V98.37Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M99.0701 87.42H109.67V89.66H99.0701V98.09V98.37H102.3V92.89H112.91V84.19H99.0701V87.42Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M114.27 98.37H128.11V84.19H114.27V98.37ZM117.51 87.42H124.88V95.13H117.51V87.42Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M129.48 87.42H140.08V89.66H129.48V98.37H132.71V92.89H134.37L139.06 98.37H143.31L138.63 92.89H143.31V84.19H129.48V87.42Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M144.68 84.18V87.42H149.98V98.37H153.22V87.42H158.52V84.18H144.68Z" fill="white"/>
+    </g>
+    <defs>
+      <clipPath id="logoClip"><rect width="158.52" height="98.37"/></clipPath>
+    </defs>
+  </g>
+
+  <!-- Accent line under logo -->
+  <rect x="80" y="185" width="200" height="3" fill="url(#accentGrad)" rx="2"/>
+
+  <!-- Main heading -->
+  <text x="80" y="260" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="white" letter-spacing="-0.5">Дилерская программа</text>
+  <text x="80" y="315" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="white" letter-spacing="-0.5">BLP Board</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="370" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.75)" letter-spacing="0.3">Фиброцементные панели для фасадов</text>
+
+  <!-- CTA Button -->
+  <rect x="80" y="410" width="220" height="54" rx="4" fill="url(#accentGrad)"/>
+  <text x="190" y="443" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#00352f" text-anchor="middle">Стать дилером</text>
+
+  <!-- Stats -->
+  <g transform="translate(80, 510)">
+    <text font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="white">10+</text>
+    <text y="26" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">лет на рынке</text>
+  </g>
+  <g transform="translate(200, 510)">
+    <text font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="white">40+</text>
+    <text y="26" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">дилеров в РФ</text>
+  </g>
+  <g transform="translate(330, 510)">
+    <text font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="white">3</text>
+    <text y="26" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">серии панелей</text>
+  </g>
+</svg>

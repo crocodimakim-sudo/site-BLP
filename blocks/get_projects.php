@@ -91,6 +91,21 @@ function scanProjectFolders() {
         );
         sort($imageFiles);
 
+        // Убираем дубли: одинаковое имя файла, разные расширения (jpg/png vs webp)
+        $unique = [];
+        foreach ($imageFiles as $file) {
+            $base = pathinfo($file, PATHINFO_FILENAME);
+            $ext  = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            if (!isset($unique[$base])) {
+                $unique[$base] = $file;
+            } elseif ($ext === 'webp') {
+                // Предпочитаем webp как оптимизированный вариант
+                $unique[$base] = $file;
+            }
+        }
+        $imageFiles = array_values($unique);
+        sort($imageFiles);
+
         $images = array_map(function($file) use ($useConvert) {
             $rel    = str_replace('\\', '/', $file);
             $needle = $useConvert ? '/images-convert/pages/projects/' : '/images/pages/projects/';

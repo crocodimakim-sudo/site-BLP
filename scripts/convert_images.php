@@ -70,6 +70,35 @@ function convertImages(): void {
         }
     }
 
+    // Удалить orphaned файлы из images-convert/, которых больше нет в images/
+    $dstFiles = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator(DST_DIR, RecursiveDirectoryIterator::SKIP_DOTS)
+    );
+    foreach ($dstFiles as $file) {
+        if (!$file->isFile()) continue;
+        $dstPath = $file->getPathname();
+        $relativePath = substr($dstPath, strlen(DST_DIR) + 1);
+        $srcPath = SRC_DIR . '/' . $relativePath;
+
+        // Для .webp проверяем оригинал с расширением .jpg/.jpeg/.png
+        $ext = strtolower($file->getExtension());
+        if ($ext === 'webp') {
+            $base = preg_replace('/\.webp$/i', '', $relativePath);
+            $srcPath = SRC_DIR . '/' . $base . '.jpg';
+            if (!file_exists($srcPath)) {
+                $srcPath = SRC_DIR . '/' . $base . '.jpeg';
+            }
+            if (!file_exists($srcPath)) {
+                $srcPath = SRC_DIR . '/' . $base . '.png';
+            }
+        }
+
+        if (!file_exists($srcPath)) {
+            unlink($dstPath);
+            echo "[DELETE ORPHANED] $relativePath\n";
+        }
+    }
+
     echo "[DONE] Конвертация завершена\n";
 }
 
@@ -103,6 +132,14 @@ function createOptimized(string $src, string $dst, string $ext): bool {
         'jpg', 'jpeg'   => imagejpeg($dstImg, $dst, 80),
         default         => false,
     };
+
+    // 2026-04-20: Stage 2 — создаём .webp рядом (quality 82) для <picture> fallback
+    if ($result && function_exists('imagewebp')) {
+        $webpPath = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $dst);
+        if ($webpPath && $webpPath !== $dst) {
+            imagewebp($dstImg, $webpPath, 82);
+        }
+    }
 
     imagedestroy($srcImg);
     imagedestroy($dstImg);
