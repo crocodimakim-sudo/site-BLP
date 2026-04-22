@@ -83,7 +83,10 @@
             .slider-btn { font-size: 28px;
                 height: 70px; } }
 
-        @media (max-width: 640px) { .partners-section { padding: 0 16px; }
+        @media (max-width: 640px) { .partners-section { padding: 0;
+                margin-left: 16px;
+                margin-right: 16px;
+                width: calc(100% - 32px); }
 
             .partners-title {padding: 0 15px;}
 
