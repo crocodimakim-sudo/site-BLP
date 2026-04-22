@@ -8,7 +8,7 @@
             <a href="/blp/catalog#nature" class="product-card-link">
                 <article class="product-card">
                     <img
-                        src="/blp/images-convert/blocks/products/1.jpg"
+                        src="/blp/images-convert/blocks/products/series-nature.png"
                         alt="Натуральные плиты серия NATURE"
                         class="product-image"
                     >
@@ -26,7 +26,7 @@
             <a href="/blp/catalog#polished" class="product-card-link">
                 <article class="product-card">
                     <img
-                        src="/blp/images-convert/blocks/products/2.png"
+                        src="/blp/images-convert/blocks/products/series-polished.png"
                         alt="Полированные плиты серия POLISHED"
                         class="product-image"
                     >
@@ -44,7 +44,7 @@
             <a href="/blp/catalog#texture" class="product-card-link">
                 <article class="product-card">
                     <img
-                        src="/blp/images-convert/blocks/products/3.png"
+                        src="/blp/images-convert/blocks/products/series-texture.png"
                         alt="Текстурированные плиты серия TEXTURE"
                         class="product-image"
                     >
@@ -62,7 +62,7 @@
             <a href="/blp/catalog#walypan" class="product-card-link">
                 <article class="product-card">
                     <img
-                        src="/blp/images-convert/blocks/products/mask_group_walypan.png"
+                        src="/blp/images-convert/blocks/products/series-walypan.png"
                         alt="Линеарные плиты серия WALYPAN"
                         class="product-image"
                     >

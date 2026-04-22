@@ -65,7 +65,7 @@ ob_start();
                 <div class="product-image">
                     <!-- 2026-04-22: WebP + lazy via render_image() -->
                     <?php echo render_image(
-                        '/blp/images-convert/pages/catalog/catalog_nature_render.jpg',
+                        '/blp/images-convert/pages/catalog/series-nature.png',
                         'Натуральные фиброцементные панели серия NATURE — фактура под бетон',
                         ['sizes' => '(max-width: 768px) 100vw, 600px']
                     ); ?>
@@ -161,7 +161,7 @@ ob_start();
             <div class="product-image">
                 <!-- 2026-04-22: WebP + lazy via render_image() -->
                 <?php echo render_image(
-                    '/blp/images-convert/pages/catalog/catalog_polished_render.png',
+                    '/blp/images-convert/pages/catalog/series-polished.png',
                     'Полированные панели серия BLP-POLISHED',
                     ['sizes' => '(max-width: 768px) 100vw, 600px']
                 ); ?>
@@ -178,7 +178,7 @@ ob_start();
             <div class="product-image">
                 <!-- 2026-04-22: WebP + lazy via render_image() -->
                 <?php echo render_image(
-                    '/blp/images-convert/pages/catalog/catalog_texture_render.png',
+                    '/blp/images-convert/pages/catalog/series-texture.png',
                     'Текстурированные панели серия BLP-TEXTURE',
                     ['sizes' => '(max-width: 768px) 100vw, 600px']
                 ); ?>
