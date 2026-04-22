@@ -170,27 +170,27 @@
   },
   "hotPaths": [
     {
+      "path": "css\\pages\\index.css",
+      "accessCount": 42,
+      "lastAccessed": 1776879238792,
+      "type": "file"
+    },
+    {
+      "path": "css\\pages\\catalog.css",
+      "accessCount": 35,
+      "lastAccessed": 1776879689825,
+      "type": "file"
+    },
+    {
       "path": "pages_php\\catalog.php",
       "accessCount": 28,
       "lastAccessed": 1776871742812,
       "type": "file"
     },
     {
-      "path": "css\\pages\\catalog.css",
-      "accessCount": 26,
-      "lastAccessed": 1776872000369,
-      "type": "file"
-    },
-    {
       "path": "scripts\\convert_images.php",
       "accessCount": 19,
       "lastAccessed": 1776873098598,
-      "type": "file"
-    },
-    {
-      "path": "css\\pages\\index.css",
-      "accessCount": 15,
-      "lastAccessed": 1776870913883,
       "type": "file"
     },
     {
@@ -278,6 +278,18 @@
       "type": "directory"
     },
     {
+      "path": "css\\products-section.css",
+      "accessCount": 5,
+      "lastAccessed": 1776878234760,
+      "type": "file"
+    },
+    {
+      "path": "css\\footer.css",
+      "accessCount": 5,
+      "lastAccessed": 1776878261711,
+      "type": "file"
+    },
+    {
       "path": "GLOBAL_PLAN.md",
       "accessCount": 4,
       "lastAccessed": 1776662490673,
@@ -314,9 +326,15 @@
       "type": "directory"
     },
     {
+      "path": "pages_php\\index.php",
+      "accessCount": 4,
+      "lastAccessed": 1776877356167,
+      "type": "file"
+    },
+    {
       "path": "pages_php\\architect.php",
-      "accessCount": 3,
-      "lastAccessed": 1776840348489,
+      "accessCount": 4,
+      "lastAccessed": 1776877566289,
       "type": "file"
     },
     {
@@ -326,27 +344,9 @@
       "type": "file"
     },
     {
-      "path": "css\\footer.css",
-      "accessCount": 3,
-      "lastAccessed": 1776842081867,
-      "type": "file"
-    },
-    {
       "path": "blocks\\contact-form.php",
       "accessCount": 3,
       "lastAccessed": 1776842655048,
-      "type": "file"
-    },
-    {
-      "path": "css\\products-section.css",
-      "accessCount": 3,
-      "lastAccessed": 1776856196853,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\index.php",
-      "accessCount": 3,
-      "lastAccessed": 1776856701239,
       "type": "file"
     },
     {
@@ -389,6 +389,12 @@
       "path": "blocks\\get_projects.php",
       "accessCount": 2,
       "lastAccessed": 1776868624403,
+      "type": "file"
+    },
+    {
+      "path": "css\\hero-section.css",
+      "accessCount": 2,
+      "lastAccessed": 1776877290342,
       "type": "file"
     },
     {
@@ -455,12 +461,6 @@
       "path": "C:\\Users\\thems\\.claude\\plans\\rippling-greeting-parrot.md",
       "accessCount": 1,
       "lastAccessed": 1776851639245,
-      "type": "file"
-    },
-    {
-      "path": "css\\hero-section.css",
-      "accessCount": 1,
-      "lastAccessed": 1776855510781,
       "type": "file"
     },
     {
