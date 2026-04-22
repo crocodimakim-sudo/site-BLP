@@ -261,7 +261,9 @@ letter-spacing: -0.01em;
 
 color: var(--color-text);
 
-font-family: 'Montserrat', sans-serif; }
+font-family: 'Montserrat', sans-serif;
+
+margin-bottom: 0; }
 
 .section-subtitle { font-size: 18px;
 
