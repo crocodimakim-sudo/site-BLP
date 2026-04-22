@@ -171,8 +171,14 @@
   "hotPaths": [
     {
       "path": "css\\pages\\catalog.css",
-      "accessCount": 14,
-      "lastAccessed": 1776840569870,
+      "accessCount": 16,
+      "lastAccessed": 1776847485258,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\catalog.php",
+      "accessCount": 16,
+      "lastAccessed": 1776847497319,
       "type": "file"
     },
     {
@@ -197,6 +203,12 @@
       "path": "blocks\\template.php",
       "accessCount": 5,
       "lastAccessed": 1776841400193,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\products-section.php",
+      "accessCount": 5,
+      "lastAccessed": 1776844753105,
       "type": "file"
     },
     {
@@ -281,6 +293,12 @@
       "path": "css\\pages\\policy.css",
       "accessCount": 2,
       "lastAccessed": 1776842228963,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 2,
+      "lastAccessed": 1776847563246,
       "type": "file"
     },
     {

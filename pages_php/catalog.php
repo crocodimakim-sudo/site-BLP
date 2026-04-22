@@ -21,17 +21,19 @@ if (is_dir($walypanDir)) {
     $entries = @scandir($walypanDir);
     if ($entries) {
         $files = [];
+        $basenames = [];
         foreach ($entries as $entry) {
-            // Подхватываем ВСЕ изображения (любые имена)
-            if (preg_match('/\.(jpg|jpeg|png|webp)$/i', $entry) && !preg_match('/^\./', $entry)) {
+            // Подхватываем только основные форматы (PNG/JPG), WebP подставится автоматически
+            if (preg_match('/\.(jpg|jpeg|png)$/i', $entry) && !preg_match('/^\./', $entry)) {
                 $files[] = $walypanDir . $entry;
+                $basenames[] = basename($entry);
             }
         }
         if ($files) {
             // Натуральная сортировка по имени файла
-            natsort($files);
-            foreach ($files as $f) {
-                $walypanImages[] = '/blp/images-convert/pages/catalog/slider/' . basename($f);
+            natsort($basenames);
+            foreach ($basenames as $basename) {
+                $walypanImages[] = '/blp/images-convert/pages/catalog/slider/' . $basename;
             }
         }
     }
