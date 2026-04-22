@@ -81,22 +81,24 @@ images-convert/
    echo $?  # Должно быть 0
    ```
 
-**Этап 3: Полная очистка и синхронизация в XAMPP**
+**Этап 3: Быстрая синхронизация только измененных файлов в XAMPP**
 
-⚠️ **КРИТИЧНО:** Нужно полностью очистить старые файлы на XAMPP перед копированием!
+⚠️ **ОПТИМИЗАЦИЯ:** Копируем ТОЛЬКО измененные файлы (не целые папки) — для скорости!
 
 ```bash
-# Шаг 1: ПОЛНОСТЬЮ удалить старую папку на XAMPP
-rm -rf "C:\xampp\htdocs\blp\images-convert"
+# Шаг 1: Синхронизировать файлы (копирует только новые/измененные, удаляет orphaned)
+robocopy "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\images-convert" /E /PURGE /R:1 /W:1
 
-# Шаг 2: Скопировать НОВУЮ папку (без старых файлов)
-cp -r "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\"
+# Или более быстрый вариант через rsync (если установлен):
+rsync -av --delete "D:/Claude Code/site-blp/site-kimi/images-convert/" "C:/xampp/htdocs/blp/images-convert/"
 
-# Шаг 3: Проверить что синхронизация прошла
+# Шаг 2: Проверить что синхронизация прошла
 ls -1 "C:\xampp\htdocs\blp\images-convert\pages\catalog\slider\" | wc -l
 # Должно совпадать с:
 ls -1 "D:\Claude Code\site-blp\site-kimi\images-convert\pages\catalog\slider\" | wc -l
 ```
+
+⏱️ **Скорость:** robocopy копирует ТОЛЬКО измененные файлы ~3-5 сек (вместо 10 минут на полное удаление+копирование)
 
 **Этап 4: Проверка на браузере**
 - Открыть http://localhost/blp/[страница]
@@ -158,24 +160,26 @@ cp -f "D:\Claude Code\site-blp\site-kimi\css\pages\catalog.css" "C:\xampp\htdocs
 
 ---
 
-## 📋 ПОЛНЫЙ ПРОЦЕСС (КОПИПАСТА)
+## 📋 ПОЛНЫЙ ПРОЦЕСС (КОПИПАСТА) — БЫСТРЫЙ
 
 Когда менеджер говорит "обновил фотографии":
 
 ```bash
-# Шаг 1: Конвертация с очисткой
-php D:\Claude\ Code\site-blp\site-kimi\scripts\convert_images.php
+# Шаг 1: Удалить старую images-convert/ ПОЛНОСТЬЮ (один раз в начале сессии)
+rm -rf "D:\Claude Code\site-blp\site-kimi\images-convert"
 
-# Шаг 2: Полная синхронизация (с удалением старого)
-rm -rf "C:\xampp\htdocs\blp\images-convert" && cp -r "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\"
+# Шаг 2: Конвертация с нуля (создаст PNG + WebP из images/)
+"C:\xampp\php\php.exe" "D:\Claude Code\site-blp\site-kimi\scripts\convert_images.php"
 
-# Шаг 3: Проверка что файлы скопированы
-ls -1 "C:\xampp\htdocs\blp\images-convert\" | head -5
+# Шаг 3: Быстрая синхронизация (копирует ТОЛЬКО измененные файлы ~3-5 сек)
+robocopy "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\images-convert" /E /PURGE /R:1 /W:1
 
 # Шаг 4: Проверка на браузере
 curl -s "http://localhost/blp/catalog" | grep -o "images-convert" | wc -l
 # Должно быть > 0
 ```
+
+⏱️ **Время выполнения:** ~10-15 секунд (вместо 10+ минут)
 
 После этого можно говорить пользователю "готово, проверяй".
 
