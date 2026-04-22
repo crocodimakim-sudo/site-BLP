@@ -9,8 +9,8 @@ $page_desc = 'Форма согласия на обработку персона
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/policy.css">';
 
 $breadcrumbs = [
-    ['name' => 'Главная',           'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Согласие на данные', 'url' => 'https://building-port.ru/blp/consent'],
+    ['name' => 'Главная',                           'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Согласие на обработку данных', 'url' => 'https://building-port.ru/blp/consent'],
 ];
 
 ob_start();
