@@ -148,6 +148,16 @@
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+@media (max-width: 640px) { .contact-form-wrapper { padding: 0 16px; }
+
+  .contact-form { padding: 20px 16px; }
+
+  .contact-form-grid { grid-template-columns: 1fr; }
+
+  .form-checkbox-group { grid-column: 1; }
+
+  .form-submit-wrapper { grid-column: 1; } }
+
 /* Messages */
 .form-message { padding: 16px;
   border-radius: var(--radius-sm);

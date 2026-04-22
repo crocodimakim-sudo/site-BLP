@@ -83,7 +83,9 @@
             .slider-btn { font-size: 28px;
                 height: 70px; } }
 
-        @media (max-width: 640px) { .partners-title {padding: 0 15px;}
+        @media (max-width: 640px) { .partners-section { padding: 0 16px; }
+
+            .partners-title {padding: 0 15px;}
 
             .slider-wrapper { padding: 0 15px;
                 gap: 15px; }
