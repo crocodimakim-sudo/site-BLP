@@ -188,6 +188,12 @@
       "type": "file"
     },
     {
+      "path": "css\\pages\\index.css",
+      "accessCount": 15,
+      "lastAccessed": 1776870913883,
+      "type": "file"
+    },
+    {
       "path": "css\\pages\\kreplenie.css",
       "accessCount": 12,
       "lastAccessed": 1776858413051,
@@ -236,6 +242,12 @@
       "type": "file"
     },
     {
+      "path": "pages_php\\dealer.php",
+      "accessCount": 6,
+      "lastAccessed": 1776870375331,
+      "type": "file"
+    },
+    {
       "path": "blocks\\template.php",
       "accessCount": 5,
       "lastAccessed": 1776841400193,
@@ -254,16 +266,10 @@
       "type": "file"
     },
     {
-      "path": "css\\pages\\index.css",
+      "path": "pages_php",
       "accessCount": 5,
-      "lastAccessed": 1776856204018,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\dealer.php",
-      "accessCount": 5,
-      "lastAccessed": 1776862413105,
-      "type": "file"
+      "lastAccessed": 1776870371193,
+      "type": "directory"
     },
     {
       "path": "GLOBAL_PLAN.md",
@@ -299,12 +305,6 @@
       "path": "",
       "accessCount": 4,
       "lastAccessed": 1776868587002,
-      "type": "directory"
-    },
-    {
-      "path": "pages_php",
-      "accessCount": 4,
-      "lastAccessed": 1776868598418,
       "type": "directory"
     },
     {
@@ -353,6 +353,12 @@
       "path": "css\\objects-section.css",
       "accessCount": 3,
       "lastAccessed": 1776864960985,
+      "type": "file"
+    },
+    {
+      "path": "css\\main.css",
+      "accessCount": 3,
+      "lastAccessed": 1776870328228,
       "type": "file"
     },
     {
@@ -425,12 +431,6 @@
       "path": "blocks\\header.php",
       "accessCount": 1,
       "lastAccessed": 1776841362215,
-      "type": "file"
-    },
-    {
-      "path": "css\\main.css",
-      "accessCount": 1,
-      "lastAccessed": 1776841522730,
       "type": "file"
     },
     {

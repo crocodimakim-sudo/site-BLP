@@ -28,10 +28,11 @@ main > section.contact-form-section > .contact-form-wrapper { padding-left: 0;
     padding-right: 0; }
 
 /* Hero на всю ширину */
+/* 2026-04-22: reduced padding-top from 40px to 20px */
 main > section.hero-main { max-width: none;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 40px;
+    padding-top: 20px;
     margin-top: 0; }
 
 /* Внутренние контейнеры hero */
@@ -256,12 +257,14 @@ main > section.hero-main { max-width: none;
             align-items: stretch;
             gap: 0; }
 
+        /* 2026-04-22: added padding-right: 32px */
         .hero-main .hero-content { padding: 10px 20px 20px 32px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
-            z-index: 2; }
+            z-index: 2;
+            padding-right: 32px; }
 
         .hero-subtitle { font-size: var(--font-size-lg);
             color: var(--color-text-secondary);
@@ -522,9 +525,11 @@ main > section.hero-main { max-width: none;
 .index-mb-card p  { font-size: .9rem; color: #3a4a48; line-height: 1.65; margin: 0; }
 
 .index-mb-compare { margin-top: 1rem; }
-.index-mb-compare-title {color: #1a2a28; margin: 0 0 1.2rem; padding-left: 32px;}
+/* 2026-04-22: hide compare title on mobile */
+.index-mb-compare-title { display: none; color: #1a2a28; margin: 0 0 1.2rem; padding-left: 32px; }
 .index-mb-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
-.index-mb-table { width: 100%; border-collapse: collapse;
+/* 2026-04-22: hide table on mobile */
+.index-mb-table { display: none; width: 100%; border-collapse: collapse;
     font-size: .88rem; min-width: 560px;
     margin-bottom: 0;
     border-radius: var(--radius-lg);

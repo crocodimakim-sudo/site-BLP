@@ -3,3 +3,6 @@
 {"t":0,"agent":"a5de6c4","agent_type":"unknown","event":"agent_stop","success":true}
 {"t":0,"agent":"a15d460","agent_type":"unknown","event":"agent_stop","success":true}
 {"t":0,"agent":"a5d8370","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"ad4b4a5","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"aa53aec","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"browse"}
