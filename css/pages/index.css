@@ -351,7 +351,8 @@ main > section.hero-main { max-width: none;
 
         .objects-grid { display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px; }
+            gap: 24px;
+            padding: 0 32px; }
 
         .object-card { background: var(--color-surface);
             border-radius: var(--radius-lg);
