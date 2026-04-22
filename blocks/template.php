@@ -108,6 +108,9 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     ?>
 </head>
 <body>
+    <!-- 2026-04-22: Cookie consent banner -->
+    <?php include 'cookie-consent-banner.php'; ?>
+
     <?php include 'header.php'; ?>
     <div class="header-spacer"></div>
 

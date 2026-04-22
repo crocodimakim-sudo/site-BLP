@@ -81,7 +81,12 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
             class="form-checkbox"
             required
           />
-          <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия <a href="/blp/policy" target="_blank">Политики конфиденциальности</a></label>
+          <label for="consent" class="form-checkbox-label">
+            Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия
+            <a href="/blp/policy" target="_blank">Политики конфиденциальности</a>,
+            <a href="/blp/cookies" target="_blank">Политики в отношении cookies</a>
+            и <a href="/blp/consent" target="_blank">Согласие на обработку данных</a>
+          </label>
           <span class="field-error" data-field="consent"></span>
         </div>
 

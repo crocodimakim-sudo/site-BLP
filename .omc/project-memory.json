@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776637386290,
+  "lastScanned": 1776841086634,
   "projectRoot": "D:\\Claude Code\\site-blp\\site-kimi",
   "techStack": {
     "languages": [],
@@ -34,8 +34,8 @@
     "blocks": {
       "path": "blocks",
       "purpose": null,
-      "fileCount": 16,
-      "lastAccessed": 1776637386264,
+      "fileCount": 17,
+      "lastAccessed": 1776841086610,
       "keyFiles": [
         "audience-section.html",
         "audience-section.php",
@@ -47,8 +47,8 @@
     "css": {
       "path": "css",
       "purpose": null,
-      "fileCount": 11,
-      "lastAccessed": 1776637386264,
+      "fileCount": 12,
+      "lastAccessed": 1776841086611,
       "keyFiles": [
         "animations.css",
         "audience-section.css",
@@ -61,14 +61,14 @@
       "path": "html",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1776637386264,
+      "lastAccessed": 1776841086611,
       "keyFiles": []
     },
     "html_preview": {
       "path": "html_preview",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776637386265,
+      "lastAccessed": 1776841086611,
       "keyFiles": [
         "INDEX.md",
         "PREVIEW_PLAN.md",
@@ -78,25 +78,31 @@
     "images": {
       "path": "images",
       "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1776637386265,
+      "fileCount": 3,
+      "lastAccessed": 1776841086612,
       "keyFiles": [
-        "STRUKTURA.md"
+        "og-default.jpg",
+        "STRUKTURA.md",
+        "watermark-pattern.svg"
       ]
     },
     "images-convert": {
       "path": "images-convert",
       "purpose": null,
-      "fileCount": 0,
-      "lastAccessed": 1776637386266,
-      "keyFiles": []
+      "fileCount": 2,
+      "lastAccessed": 1776841086612,
+      "keyFiles": [
+        "og-default.jpg",
+        "og-default.webp"
+      ]
     },
     "js": {
       "path": "js",
       "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1776637386266,
+      "fileCount": 3,
+      "lastAccessed": 1776841086612,
       "keyFiles": [
+        "analytics.js",
         "contact-form.js",
         "header.js"
       ]
@@ -104,57 +110,57 @@
     "pages_php": {
       "path": "pages_php",
       "purpose": null,
-      "fileCount": 13,
-      "lastAccessed": 1776637386266,
+      "fileCount": 26,
+      "lastAccessed": 1776841086612,
       "keyFiles": [
         "architect.php",
         "catalog.php",
-        "contacts.php",
-        "devops.php",
-        "diler.php"
+        "compare.php",
+        "consent-personal-data-template.md",
+        "contacts.php"
       ]
     },
     "scripts": {
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 3,
-      "lastAccessed": 1776637386267,
+      "lastAccessed": 1776841086613,
       "keyFiles": [
-        "cleanup_css.py",
-        "convert_devops.py",
-        "convert_images.php"
+        "convert_images.php",
+        "generate_og_default.php",
+        "generate_webp.php"
       ]
     },
     "css\\pages": {
       "path": "css\\pages",
       "purpose": "Page components",
-      "fileCount": 10,
-      "lastAccessed": 1776637386267,
+      "fileCount": 15,
+      "lastAccessed": 1776841086614,
       "keyFiles": [
         "architect.css",
         "catalog.css",
-        "contacts.css"
+        "compare.css"
       ]
     },
     "images\\pages": {
       "path": "images\\pages",
       "purpose": "Page components",
       "fileCount": 0,
-      "lastAccessed": 1776637386269,
+      "lastAccessed": 1776841086615,
       "keyFiles": []
     },
     "images-convert\\pages": {
       "path": "images-convert\\pages",
       "purpose": "Page components",
       "fileCount": 0,
-      "lastAccessed": 1776637386272,
+      "lastAccessed": 1776841086615,
       "keyFiles": []
     },
     "js\\pages": {
       "path": "js\\pages",
       "purpose": "Page components",
-      "fileCount": 7,
-      "lastAccessed": 1776637386273,
+      "fileCount": 8,
+      "lastAccessed": 1776841086616,
       "keyFiles": [
         "architect.js",
         "catalog.js",
@@ -182,6 +188,12 @@
       "type": "file"
     },
     {
+      "path": "blocks\\template.php",
+      "accessCount": 5,
+      "lastAccessed": 1776841400193,
+      "type": "file"
+    },
+    {
       "path": "GLOBAL_PLAN.md",
       "accessCount": 4,
       "lastAccessed": 1776662490673,
@@ -206,15 +218,33 @@
       "type": "file"
     },
     {
+      "path": "pages_php\\cookies-policy-template.md",
+      "accessCount": 3,
+      "lastAccessed": 1776841091049,
+      "type": "file"
+    },
+    {
       "path": "MORNING_BRIEF.md",
       "accessCount": 2,
       "lastAccessed": 1776662299777,
       "type": "file"
     },
     {
-      "path": "blocks\\template.php",
+      "path": "pages_php\\policy.php",
       "accessCount": 2,
-      "lastAccessed": 1776840699882,
+      "lastAccessed": 1776841174521,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\contact-form.php",
+      "accessCount": 2,
+      "lastAccessed": 1776841402675,
+      "type": "file"
+    },
+    {
+      "path": ".htaccess",
+      "accessCount": 2,
+      "lastAccessed": 1776841428087,
       "type": "file"
     },
     {
@@ -257,6 +287,42 @@
       "path": "pages_php\\template.php",
       "accessCount": 1,
       "lastAccessed": 1776840689002,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\consent-personal-data-template.md",
+      "accessCount": 1,
+      "lastAccessed": 1776841091337,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\privacy-policy-template.md",
+      "accessCount": 1,
+      "lastAccessed": 1776841091450,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\cookies.php",
+      "accessCount": 1,
+      "lastAccessed": 1776841122845,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\consent.php",
+      "accessCount": 1,
+      "lastAccessed": 1776841139265,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\cookie-consent-banner.php",
+      "accessCount": 1,
+      "lastAccessed": 1776841329427,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\header.php",
+      "accessCount": 1,
+      "lastAccessed": 1776841362215,
       "type": "file"
     }
   ],

@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"ls -1 \\\"D:/Claude Code/site-blp/site-kimi/\\\" | grep -v \\\"^blocks$\\\\|^pages_php$\\\\|^css$\\\\|^js$\\\\|^images$\\\\|^images-convert$\\\\|^scripts$\\\" && echo \\\"\\\" && echo \\\"=== Проверка использования...",
-  "error": "Exit code 2\n/usr/bin/bash: eval: line 1: syntax error near unexpected token `2'\n/usr/bin/bash: eval: line 1: `ls -1 \"D:/Claude Code/site-blp/site-kimi/\" | grep -v \"^blocks$\\|^pages_php$\\|^css$\\|^js$\\|^images$\\|^images-convert$\\|^scripts$\" && echo \"\" && echo \"=== Проверка использования ===\" && for file in \"D:/Claude Code/site-blp/site-kimi/\"*.{md,txt,py,json} 2>/dev/null; do [ -f \"$file\" ] && echo \"$(basename \"$file\")\"; done'",
-  "timestamp": "2026-04-19T21:28:55.800Z",
+  "tool_input_preview": "{\"command\":\"\\n# Check policy pages HTTP status\\necho \\\"=== Policy Pages HTTP Status ===\\\"\\ncurl -s -o /dev/null -w \\\"policy.php: %{http_code}\\\\n\\\" \\\"http://localhost/blp/policy/\\\"\\ncurl -s -o /dev/nul...",
+  "error": "Exit code 1\n=== Policy Pages HTTP Status ===\npolicy.php: 404\r\ncookies.php: 404\r\nconsent.php: 404\r\n\n=== Checking for PHP syntax errors ===\n✓ policy.php loads correctly\n\n=== Checking cookie banner integration ===\n✓ Cookie banner included in index.php\n✓ Cookie banner included in catalog.php\n\n=== Checking policy links in forms ===\n✓ Policy links in contact form\n✓ Cookies policy link present",
+  "timestamp": "2026-04-22T07:03:36.695Z",
   "retry_count": 1
 }

@@ -18,6 +18,9 @@ RewriteRule ^projects$      pages_php/projects.php    [L]
 RewriteRule ^sertificate$   pages_php/sertificate.php [L]
 RewriteRule ^contacts$      pages_php/contacts.php    [L]
 RewriteRule ^policy$        pages_php/policy.php      [L]
+# 2026-04-22: Legal compliance — 3 policy pages (cookies, consent, privacy)
+RewriteRule ^cookies$       pages_php/cookies.php     [L]
+RewriteRule ^consent$       pages_php/consent.php     [L]
 # 2026-04-20: Stage 3 — 5 new pages + diler→dealer migration (301)
 RewriteRule ^dealer$        pages_php/dealer.php      [L]
 RewriteRule ^diler$         /blp/dealer               [R=301,L]
