@@ -570,9 +570,7 @@ main > section.hero-main { max-width: none;
         margin-left: 16px;
         margin-right: 16px;
         width: calc(100% - 32px); }
-    .index-material-benefits .blp-container { margin-left: 16px;
-        margin-right: 16px;
-        padding-left: 0;
+    .index-material-benefits .blp-container { padding-left: 0;
         padding-right: 0; }
     .index-mb-grid { grid-template-columns: 1fr; }
     .index-mb-title { padding-left: 16px; }
