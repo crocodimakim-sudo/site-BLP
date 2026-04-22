@@ -105,9 +105,7 @@
     box-shadow: 0 8px 24px rgba(0, 53, 47, 0.3); }
 
 .blp-hero-img { width: 100%;
-    max-width: 560px;
     height: 100%;
-    min-height: 420px;
     border-radius: var(--border-radius);
     object-fit: cover; }
 
@@ -150,9 +148,10 @@
 .dealer-hero .blp-hero-button { background: var(--button-bg, #00352F); color: #ffffff !important; margin-left: 0; }
 .dealer-hero .blp-hero-button:hover { background: var(--button-hover, #002420); color: #ffffff !important; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 53, 47, 0.3); }
 
-.dealer-hero .blp-hero-content { grid-column: 1 / 8; padding-right: 20px; }
-.dealer-hero-visual { grid-column: 8 / 13; display: flex; align-items: center; justify-content: flex-end; transform: translateX(-100px); }
-.dealer-hero-visual img { width: 100%; max-width: 100%; height: auto; border-radius: 12px; object-fit: cover; display: block; }
+.dealer-hero .blp-hero-content { grid-column: 1 / 8; padding-right: 20px; display: flex; flex-direction: column; justify-content: center; }
+.dealer-hero-visual { grid-column: 8 / 13; display: flex; align-items: stretch; overflow: hidden; min-height: 300px; border-radius: 12px; }
+.dealer-hero-visual picture { display: flex; width: 100%; height: 100%; }
+.dealer-hero-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 
 /* ===== SHARED ===== */
 .dealer-why-section,

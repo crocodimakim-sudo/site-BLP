@@ -42,7 +42,10 @@
         display: flex;
         justify-content: flex-end;
         align-items: stretch; /* Растягиваем изображение */
-        margin-left: 100px; }
+        height: 100%;
+        margin-left: 100px;
+        overflow: hidden;
+        border-radius: 16px; }
 
     .blp-hero-title {color: var(--text-primary);
         line-height: 1.2;
@@ -112,10 +115,8 @@
 
     /* КАРТИНКА - УВЕЛИЧЕННАЯ */
     .blp-hero-img { width: 100%;
-        max-width: 560px;
         height: 100%; /* Растягиваем на всю высоту */
-        min-height: 420px; /* Минимальная высота */
-        border-radius: var(--border-radius);
+        border-radius: 16px;
         object-fit: cover; /* Сохраняем пропорции */ }
 
     /* Адаптив */

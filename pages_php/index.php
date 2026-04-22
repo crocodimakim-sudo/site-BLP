@@ -34,7 +34,7 @@ ob_start();
                 </div>
 
 
-                <a href="/blp/contacts" class="btn btn-primary" style="margin-top: 20px;">Получить техническое предложение</a>
+                <a href="/blp/contacts" class="btn btn-primary" style="margin-top: 0;">Получить техническое предложение</a>
             </div>
 
             <div class="hero-image-wrapper">

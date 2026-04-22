@@ -8,6 +8,7 @@
 define('BASE_DIR', __DIR__ . '/..');
 define('SRC_DIR', BASE_DIR . '/images');
 define('DST_DIR', BASE_DIR . '/images-convert');
+define('THUMB_DIR', DST_DIR . '/thumbnails');
 
 function convertImages(): void {
     if (!extension_loaded('gd')) {
@@ -44,8 +45,15 @@ function convertImages(): void {
             echo "[DELETE] $relativePath\n";
         }
 
-        if (createOptimized($srcPath, $dstPath, $ext)) {
+        // 2026-04-22: Копировать PNG/JPG оригиналы как есть (полный размер) + создать WebP
+        if (copy($srcPath, $dstPath)) {
             echo "[OK] $relativePath\n";
+
+            // Создать WebP версию для браузера
+            if (function_exists('imagewebp')) {
+                createWebP($srcPath, preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $dstPath), $ext);
+                createThumbnail($srcPath, $ext);
+            }
         } else {
             echo "[FAIL] $relativePath\n";
         }
@@ -99,7 +107,103 @@ function convertImages(): void {
         }
     }
 
+    cleanOrphanedThumbnails();
+
     echo "[DONE] Конвертация завершена\n";
+}
+
+// 2026-04-22: Create 100x100px WebP thumbnail, delete orphaned thumbnails when original is missing
+function createThumbnail(string $srcPath, string $ext): void {
+    $relativePath = substr($srcPath, strlen(SRC_DIR) + 1);
+    $thumbName = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', str_replace(DIRECTORY_SEPARATOR, '_', $relativePath));
+    $thumbPath = THUMB_DIR . '/' . $thumbName;
+
+    if (!is_dir(THUMB_DIR)) {
+        mkdir(THUMB_DIR, 0755, true);
+    }
+
+    // Skip if thumbnail is up to date
+    if (file_exists($thumbPath) && filemtime($srcPath) <= filemtime($thumbPath)) {
+        return;
+    }
+
+    $img = match ($ext) {
+        'png'         => imagecreatefrompng($srcPath),
+        'jpg', 'jpeg' => imagecreatefromjpeg($srcPath),
+        default       => null,
+    };
+
+    if (!$img) return;
+
+    $srcW = imagesx($img);
+    $srcH = imagesy($img);
+
+    $thumb = imagecreatetruecolor(100, 100);
+    imagecopyresampled($thumb, $img, 0, 0, 0, 0, 100, 100, $srcW, $srcH);
+    imagedestroy($img);
+
+    @imagewebp($thumb, $thumbPath, 82);
+    imagedestroy($thumb);
+
+    echo "[THUMB] $thumbName\n";
+}
+
+// 2026-04-22: Delete orphaned thumbnails whose originals no longer exist in images/
+function cleanOrphanedThumbnails(): void {
+    $thumbDir = DST_DIR . '/thumbnails';
+    if (!is_dir($thumbDir)) return;
+
+    foreach (new DirectoryIterator($thumbDir) as $file) {
+        if (!$file->isFile() || $file->getExtension() !== 'webp') continue;
+
+        // Reverse the flat name back to relative path
+        $base = preg_replace('/\.webp$/i', '', $file->getFilename());
+        $relativeWithSep = str_replace('_', DIRECTORY_SEPARATOR, $base);
+
+        $found = false;
+        foreach (['jpg', 'jpeg', 'png'] as $ext) {
+            if (file_exists(SRC_DIR . '/' . $relativeWithSep . '.' . $ext)) {
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
+            unlink($file->getPathname());
+            echo "[DELETE THUMB ORPHANED] " . $file->getFilename() . "\n";
+        }
+    }
+}
+
+// 2026-04-22: Create WebP version without resizing (for browser optimization only)
+function createWebP(string $src, string $dst, string $ext): bool {
+    try {
+        $img = match ($ext) {
+            'png'           => imagecreatefrompng($src),
+            'jpg', 'jpeg'   => imagecreatefromjpeg($src),
+            default         => null,
+        };
+
+        if (!$img) return false;
+
+        // Check if image has alpha channel (PNG with transparency) or palette mode
+        // WebP doesn't support palette mode, so convert to truecolor if needed
+        if ($ext === 'png' && !imageistruecolor($img)) {
+            // Convert from palette/indexed to truecolor
+            $w = imagesx($img);
+            $h = imagesy($img);
+            $newImg = imagecreatetruecolor($w, $h);
+            imagecopy($newImg, $img, 0, 0, 0, 0, $w, $h);
+            imagedestroy($img);
+            $img = $newImg;
+        }
+
+        @imagewebp($img, $dst, 82);
+        imagedestroy($img);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
 }
 
 function createOptimized(string $src, string $dst, string $ext): bool {

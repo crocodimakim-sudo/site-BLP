@@ -9,6 +9,9 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 RewriteBase /blp/
 
+# 2026-04-22: API endpoints
+RewriteRule ^api/slider$    pages_php/api/slider.php  [L]
+
 RewriteRule ^$              pages_php/index.php       [L]
 RewriteRule ^catalog$       pages_php/catalog.php     [L]
 RewriteRule ^architect$     pages_php/architect.php   [L]

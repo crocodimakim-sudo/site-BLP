@@ -97,10 +97,12 @@
         .blp-product-block .blp-spec-label { color: var(--color-text-muted); min-width: 120px; font-weight: 500; font-family: 'Montserrat', sans-serif; }
         .blp-product-block .blp-spec-options { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
         .blp-product-block .blp-spec-plate { display: inline-block; padding: 6px 14px; border: 1px solid var(--color-border); background: var(--color-bg-soft); font-size: 14px; font-weight: 500; color: var(--color-text); border-radius: 6px; line-height: 1.2; cursor: default; user-select: text; transition: none; font-family: 'Montserrat', sans-serif; }
-        .blp-product-block .blp-image-section { display: flex; flex-direction: column; background: var(--color-bg-soft); max-width: 600px; position: relative; }
-        .blp-product-block .blp-main-image { position: relative; width: 100%; aspect-ratio: auto; min-height: 500px; overflow: hidden; margin: 0; padding: 0; background: var(--color-bg-soft); }
+        .blp-product-block .blp-image-section { display: flex; flex-direction: column; background: var(--color-bg-soft); width: 600px; height: 600px; position: relative; }
+        .blp-product-block .blp-main-image { position: relative; width: 100%; height: 600px; overflow: hidden; margin: 0; padding: 0; background: var(--color-bg-soft); }
         .blp-product-block .blp-card { padding: 0; }
-        .blp-product-block .blp-main-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+        .blp-product-block .blp-main-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.15s ease, transform 0.5s ease; }
+        /* 2026-04-22: класс для плавного fade при смене слайда */
+        .blp-product-block .blp-main-image img.blp-img-fade { opacity: 0; }
         .blp-product-block .blp-card:hover .blp-main-image img { transform: none; }
         .blp-product-block .blp-image-number { display: none; }
         .blp-product-block .blp-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255, 255, 255, 0.95); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 15; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: all 0.2s ease; padding: 0; }
@@ -233,3 +235,149 @@
 @media (max-width: 700px) { .catalog-usecases { padding: 50px 0; }
     .catalog-uc-grid { grid-template-columns: 1fr; }
     .catalog-uc-title { font-size: 1.4rem; } }
+
+/* 2026-04-22: WALYPAN динамический слайдер */
+#slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--color-surface);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.blp-main-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--color-bg-soft);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#blpImg {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+.blp-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.blp-img-fade {
+    opacity: 0 !important;
+}
+
+.blp-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+.blp-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.blp-arrow.prev {
+    left: 10px;
+}
+
+.blp-arrow.next {
+    right: 10px;
+}
+
+.blp-arrow svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+.blp-thumbnails {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: var(--color-surface);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.blp-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+
+.blp-thumbnails::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.blp-thumb {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.blp-thumb:hover {
+    border-color: #ccc;
+}
+
+.blp-thumb.active {
+    border-color: #00352F;
+}
+
+.blp-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.blp-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    background: var(--color-surface);
+}
+
+.blp-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.blp-dot:hover {
+    background: #999;
+}
+
+.blp-dot.active {
+    background: #00352F;
+}

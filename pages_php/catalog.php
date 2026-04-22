@@ -277,37 +277,21 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Правая колонка: слайдер с миниатюрами -->
+            <!-- Правая колонка: слайдер с миниатюрами — 2026-04-22: динамически из /blp/api/slider -->
             <div class="blp-image-section">
-                <div class="blp-main-image" id="blpMainImage">
-                    <?php if (!empty($walypanImages)): ?>
-                    <span class="blp-image-number" id="blpImageNumber">1</span>
-                    <button class="blp-arrow prev" id="blpPrev" aria-label="Предыдущее">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                    </button>
-                    <button class="blp-arrow next" id="blpNext" aria-label="Следующее">
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </button>
-                    <img id="blpImg" src="<?= htmlspecialchars($walypanImages[0]) ?>" alt="Линеарные панели">
-                    <?php else: ?>
-                    <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-size:16px;font-family:'Montserrat',sans-serif;">Нет изображений</div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="blp-dots" id="blpDots"></div>
-
-                <div class="blp-thumbnails" id="blpThumbs">
-                  <?php if (!empty($walypanImages)): ?>
-                  <?php foreach ($walypanImages as $i => $imgUrl): ?>
-                  <div class="blp-thumb <?= $i === 0 ? 'active' : '' ?>" data-index="<?= $i ?>">
-                    <img src="<?= htmlspecialchars($imgUrl) ?>" alt="Walypan <?= $i+1 ?>" loading="lazy" class="blp-thumb-img">
-                  </div>
-                  <?php endforeach; ?>
-                  <?php else: ?>
-                  <div class="blp-thumb active" data-index="0">
-                    <div class="blp-thumb-content" style="background-color: #00352f; color: #ffffff;">—</div>
-                  </div>
-                  <?php endif; ?>
+                <div id="slider-container">
+                    <div class="blp-main-image" id="blpMainImage">
+                        <span class="blp-image-number" id="blpImageNumber">1</span>
+                        <button class="blp-arrow prev" id="blpPrev" aria-label="Предыдущее">
+                            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                        </button>
+                        <button class="blp-arrow next" id="blpNext" aria-label="Следующее">
+                            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                        </button>
+                        <img id="blpImg" src="" alt="Линеарные панели">
+                    </div>
+                    <div class="blp-dots" id="blpDots"></div>
+                    <div class="blp-thumbnails" id="blpThumbs"></div>
                 </div>
             </div>
         </article>
@@ -368,23 +352,47 @@ ob_start();
 
 
 <script>
+// 2026-04-22: слайдер загружается динамически из /blp/api/slider
 (function() {
-    const images = <?= json_encode(array_map(fn($url) => ['url' => $url], $walypanImages), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
-    if (!images.length) return;
-
+    let slides = [];
     let currentIndex = 0;
+
     const mainImage = document.getElementById('blpImg');
     const mainImageNumber = document.getElementById('blpImageNumber');
-    const thumbnails = document.querySelectorAll('#blpThumbs .blp-thumb');
     const prevArrow = document.getElementById('blpPrev');
     const nextArrow = document.getElementById('blpNext');
     const mainImageContainer = document.getElementById('blpMainImage');
     const sliderDotsContainer = document.getElementById('blpDots');
+    const thumbsContainer = document.getElementById('blpThumbs');
+
+    function buildSlider(data) {
+        slides = data.slides || [];
+        if (!slides.length) {
+            if (mainImageContainer) mainImageContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-size:16px;font-family:\'Montserrat\',sans-serif;">Нет изображений</div>';
+            return;
+        }
+        thumbsContainer.innerHTML = '';
+        slides.forEach((slide, i) => {
+            const div = document.createElement('div');
+            div.className = 'blp-thumb' + (i === 0 ? ' active' : '');
+            div.dataset.index = i;
+            const img = document.createElement('img');
+            img.src = slide.thumbnail;
+            img.alt = slide.title;
+            img.loading = 'lazy';
+            img.className = 'blp-thumb-img';
+            div.appendChild(img);
+            div.addEventListener('click', () => goToSlide(i));
+            thumbsContainer.appendChild(div);
+        });
+        createDots();
+        goToSlide(0);
+    }
 
     function createDots() {
         if (!sliderDotsContainer) return;
         sliderDotsContainer.innerHTML = '';
-        images.forEach((_, index) => {
+        slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.className = 'blp-dot' + (index === currentIndex ? ' active' : '');
             dot.addEventListener('click', () => goToSlide(index));
@@ -394,55 +402,44 @@ ob_start();
 
     function updateDots() {
         if (!sliderDotsContainer) return;
-        const dots = sliderDotsContainer.querySelectorAll('.blp-dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+        sliderDotsContainer.querySelectorAll('.blp-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
         });
     }
 
     function goToSlide(index) {
-        if (index < 0) index = images.length - 1;
-        if (index >= images.length) index = 0;
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
         currentIndex = index;
-        mainImage.src = images[currentIndex].url;
+        if (mainImage) mainImage.src = slides[currentIndex].image;
         if (mainImageNumber) mainImageNumber.textContent = currentIndex + 1;
-        thumbnails.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
+        thumbsContainer.querySelectorAll('.blp-thumb').forEach((t, i) => t.classList.toggle('active', i === currentIndex));
         updateDots();
-        const thumbsContainer = document.getElementById('blpThumbs');
-        const activeThumb = thumbnails[currentIndex];
-        if (thumbsContainer && activeThumb) {
-            const containerWidth = thumbsContainer.offsetWidth;
-            const thumbWidth = activeThumb.offsetWidth;
-            const thumbLeft = activeThumb.offsetLeft;
-            const scrollPos = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
+        const activeThumb = thumbsContainer.querySelectorAll('.blp-thumb')[currentIndex];
+        if (activeThumb) {
+            const scrollPos = activeThumb.offsetLeft - (thumbsContainer.offsetWidth / 2) + (activeThumb.offsetWidth / 2);
             thumbsContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
         }
     }
-
-    thumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            goToSlide(parseInt(thumb.dataset.index));
-        });
-    });
 
     if (prevArrow) prevArrow.addEventListener('click', () => goToSlide(currentIndex - 1));
     if (nextArrow) nextArrow.addEventListener('click', () => goToSlide(currentIndex + 1));
 
     let touchStartX = 0;
     if (mainImageContainer) {
-        mainImageContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
+        mainImageContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
         mainImageContainer.addEventListener('touchend', (e) => {
             const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) {
-                goToSlide(diff > 0 ? currentIndex + 1 : currentIndex - 1);
-            }
+            if (Math.abs(diff) > 50) goToSlide(diff > 0 ? currentIndex + 1 : currentIndex - 1);
         }, { passive: true });
     }
 
-    createDots();
+    fetch('/blp/api/slider')
+        .then(r => r.json())
+        .then(buildSlider)
+        .catch(() => {
+            if (mainImageContainer) mainImageContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;">Ошибка загрузки</div>';
+        });
 })();
 </script>
 
