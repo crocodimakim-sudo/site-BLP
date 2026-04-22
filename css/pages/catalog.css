@@ -71,7 +71,7 @@
         .product-card.mirrored .product-info { order: 1; }
         .product-card.mirrored .product-image { order: 2; }
 
-        @media (max-width: 900px) { .catalog-product-grid { padding: 20px 16px; gap: 15px; }
+        @media (max-width: 900px) { .catalog-product-grid { padding: 20px 16px; gap: 15px; margin-top: 0; }
             .product-card { grid-template-columns: 1fr; max-height: none; }
             .product-card.mirrored .product-info, .product-card.mirrored .product-image { order: unset; }
             .product-image {}
