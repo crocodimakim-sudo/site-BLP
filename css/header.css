@@ -308,6 +308,11 @@
     text-decoration: none;
     text-align: center; }
 
+/* 2026-04-22: spacer для фиксированного хедера (компенсирует высоту) */
+.header-spacer { height: 80px; }
+
+@media (max-width: 1200px) { .header-spacer { height: 56px; } }
+
 @media (max-width: 1200px) { .header .nav, .header .contacts, .header .cta-button { display: none; }
     
     .header .mobile-toggle { display: flex; }
