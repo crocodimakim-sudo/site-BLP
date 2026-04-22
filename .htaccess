@@ -47,8 +47,14 @@ RedirectMatch 404 /html/
 ErrorDocument 404 /blp/pages_php/index.php
 ErrorDocument 500 /blp/pages_php/index.php
 
-# 2026-04-20: Gzip compression for text assets
+# 2026-04-22: Gzip compression — extended with AddEncoding + mod_filter wrapper
 <IfModule mod_deflate.c>
+    AddEncoding gzip .gz
+    AddType application/gzip .gz
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml image/svg+xml
+    </IfModule>
+    # fallback if mod_filter not available
     AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript
     AddOutputFilterByType DEFLATE application/javascript application/x-javascript
     AddOutputFilterByType DEFLATE application/json application/xml text/xml

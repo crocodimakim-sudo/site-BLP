@@ -164,15 +164,57 @@
   },
   "hotPaths": [
     {
+      "path": "css\\pages\\catalog.css",
+      "accessCount": 14,
+      "lastAccessed": 1776840569870,
+      "type": "file"
+    },
+    {
+      "path": "js\\pages\\projects.js",
+      "accessCount": 7,
+      "lastAccessed": 1776840259354,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\kreplenie.php",
+      "accessCount": 5,
+      "lastAccessed": 1776840388337,
+      "type": "file"
+    },
+    {
       "path": "GLOBAL_PLAN.md",
       "accessCount": 4,
       "lastAccessed": 1776662490673,
       "type": "file"
     },
     {
+      "path": "pages_php\\sertificate.php",
+      "accessCount": 4,
+      "lastAccessed": 1776840324329,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\architect.php",
+      "accessCount": 3,
+      "lastAccessed": 1776840348489,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\dealer.php",
+      "accessCount": 3,
+      "lastAccessed": 1776840424715,
+      "type": "file"
+    },
+    {
       "path": "MORNING_BRIEF.md",
       "accessCount": 2,
       "lastAccessed": 1776662299777,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\template.php",
+      "accessCount": 2,
+      "lastAccessed": 1776840699882,
       "type": "file"
     },
     {
@@ -191,6 +233,30 @@
       "path": "CONTEXT_RESTORE_PROMPT.md",
       "accessCount": 1,
       "lastAccessed": 1776664953273,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\index.php",
+      "accessCount": 1,
+      "lastAccessed": 1776840206597,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\projects.php",
+      "accessCount": 1,
+      "lastAccessed": 1776840214174,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\get_projects.php",
+      "accessCount": 1,
+      "lastAccessed": 1776840232210,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\template.php",
+      "accessCount": 1,
+      "lastAccessed": 1776840689002,
       "type": "file"
     }
   ],

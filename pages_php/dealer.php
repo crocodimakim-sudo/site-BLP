@@ -1,4 +1,7 @@
 <?php
+// 2026-04-22: image-helper for WebP + lazy-loading support
+require_once __DIR__ . '/../blocks/image-helper.php';
+
 // 2026-04-20: Stage 3 Group 3.B — Dealer/partner benefits page with LocalBusiness schema
 $page_title    = 'Дилерская программа BLP Board — фиброцементные панели для партнёров';
 $page_canonical = 'https://building-port.ru/blp/dealer';
@@ -35,7 +38,7 @@ ob_start();
                 <a href="/blp/contacts#form" class="blp-hero-button">Обсудить сотрудничество</a>
             </div>
             <div class="blp-hero-image dealer-hero-visual">
-                <img src="/blp/images-convert/pages/diler/diler_hero.jpg" alt="Объект с фиброцементными панелями BLP Board" class="blp-hero-img" width="600" height="450" loading="eager">
+                <?php echo render_image('/blp/images-convert/pages/diler/diler_hero.jpg', 'Объект с фиброцементными панелями BLP Board', ['fetchpriority' => 'high']); ?>
             </div>
         </div>
     </div>

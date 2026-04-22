@@ -1,4 +1,7 @@
 <?php
+// 2026-04-22: image-helper for WebP + lazy-loading support
+require_once __DIR__ . '/../blocks/image-helper.php';
+
 // 2026-04-20: added canonical, OG image
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = "Фиброцементные панели для архитекторов и проектировщиков — BLP Board";
@@ -75,7 +78,7 @@ ob_start();
             <a class="blp-partner-card__btn" href="/blp/contacts#form">Запросить техническую документацию</a>
         </div>
         <div class="blp-partner-card__image">
-            <img src="/blp/images-convert/pages/architect/architect_hero.jpg" alt="Партнерская модель взаимодействия" width="600" height="450" fetchpriority="high" decoding="async">
+            <?php echo render_image('/blp/images-convert/pages/architect/architect_hero.jpg', 'Партнерская модель взаимодействия', ['fetchpriority' => 'high']); ?>
         </div>
     </div>
 </div>

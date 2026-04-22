@@ -23,7 +23,7 @@
                     <div class="footer-column-title">Сотрудничество</div>
                     <a href="/blp/architect" class="footer-link">Архитекторам</a>
                     <a href="/blp/devops" class="footer-link">Застройщикам</a>
-                    <a href="/blp/diler" class="footer-link">Дилерам</a>
+                    <a href="/blp/dealer" class="footer-link">Дилерам</a>
                 </div>
 
                 <div class="footer-column">

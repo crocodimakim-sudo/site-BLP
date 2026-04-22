@@ -4,6 +4,18 @@
  * Принимает POST-данные (JSON или form-data), валидирует и отправляет письмо
  */
 
+// 2026-04-22: CSRF token validation
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $csrf_input = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
+    if (!$csrf_input || !isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $csrf_input)) {
+        header('Content-Type: application/json; charset=utf-8');
+        http_response_code(403);
+        echo json_encode(['error' => 'CSRF token validation failed']);
+        exit;
+    }
+}
+
 header('Content-Type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

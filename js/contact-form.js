@@ -142,11 +142,13 @@
       name: form.name.value.trim(),
       phone: form.phone.value.trim(),
       company: form.company.value.trim(),
-      consent: form.consent.checked
+      consent: form.consent.checked,
+      // 2026-04-22: добавлен csrf_token для защиты формы
+      csrf_token: (document.querySelector('input[name="csrf_token"]') || {}).value || ''
     };
 
     try {
-      const response = await fetch('blocks/send-form.php', {
+      const response = await fetch('/blp/blocks/send-form.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

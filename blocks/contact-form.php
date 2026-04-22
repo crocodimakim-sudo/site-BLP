@@ -9,7 +9,7 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
 
 <section class="contact-form-section">
   <div class="contact-form-wrapper">
-    <form class="contact-form" id="contactForm" action="blocks/send-form.php" method="POST" novalidate>
+    <form class="contact-form" id="contactForm" action="/blp/blocks/send-form.php" method="POST" novalidate>
       <h2 class="contact-form-title"><?php echo htmlspecialchars($form_title); ?></h2>
       <p class="contact-form-desc"><?php echo htmlspecialchars($form_desc); ?></p>
       <div class="contact-form-grid">
@@ -84,6 +84,9 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
           <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия <a href="/blp/policy" target="_blank">Политики конфиденциальности</a></label>
           <span class="field-error" data-field="consent"></span>
         </div>
+
+        <!-- 2026-04-22: CSRF token -->
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">
 
         <!-- Submit Button -->
         <div class="form-submit-wrapper">

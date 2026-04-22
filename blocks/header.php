@@ -29,7 +29,7 @@
                     <div class="dropdown" role="menu">
                         <a href="/blp/architect" class="dropdown-item" role="menuitem">Архитекторам&nbsp;и проектировщикам</a>
                         <a href="/blp/devops" class="dropdown-item" role="menuitem">Застройщикам</a>
-                        <a href="/blp/diler" class="dropdown-item" role="menuitem">Дилерам</a>
+                        <a href="/blp/dealer" class="dropdown-item" role="menuitem">Дилерам</a>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                 <div class="mobile-dropdown">
                     <a href="/blp/architect" class="mobile-dropdown-item">Архитекторам&nbsp;и проектировщикам</a>
                     <a href="/blp/devops" class="mobile-dropdown-item">Застройщикам</a>
-                    <a href="/blp/diler" class="mobile-dropdown-item">Дилерам</a>
+                    <a href="/blp/dealer" class="mobile-dropdown-item">Дилерам</a>
                 </div>
             </div>
 

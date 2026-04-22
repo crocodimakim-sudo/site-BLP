@@ -1,4 +1,6 @@
 <?php
+// 2026-04-22: image-helper for WebP + lazy-loading support
+require_once __DIR__ . '/../blocks/image-helper.php';
 // 2026-04-20: added meta description, OG image, canonical
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = 'Фиброцементные панели для вентилируемых фасадов — BLP Board';
@@ -36,12 +38,18 @@ ob_start();
             </div>
 
             <div class="hero-image-wrapper">
-                <img src="/blp/images-convert/pages/index/index_hero.jpg"
-                     alt="Фиброцементные плиты BLP Board"
-                     class="hero-image"
-                     width="600" height="450"
-                     fetchpriority="high"
-                     decoding="async">
+                <?php echo render_image(
+                    '/blp/images-convert/pages/index/index_hero.jpg',
+                    'Фиброцементные плиты BLP Board',
+                    [
+                        'class'         => 'hero-image',
+                        'width'         => '600',
+                        'height'        => '450',
+                        'lazy'          => false,
+                        'fetchpriority' => 'high',
+                        'sizes'         => '(max-width: 768px) 100vw, 600px',
+                    ]
+                ); ?>
             </div>
         </div>
     </div>

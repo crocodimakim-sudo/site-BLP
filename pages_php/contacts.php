@@ -158,6 +158,9 @@ ob_start();
                     ✓ Спасибо! Ваше сообщение отправлено. Мы свяжемся&nbsp;с вами&nbsp;в ближайшее время.
                 </div>
                 <div class="form-message error" id="errorMessage"></div>
+
+                <!-- 2026-04-22: CSRF token protection -->
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">
             </div>
         </form>
     </div>
@@ -169,8 +172,6 @@ ob_start();
         <div id="yandex-map" class="yandex-map"></div>
     </div>
 </section>
-
-<?php include '../blocks/contact-form.php'; ?>
 
 <!-- 2026-04-20: LocalBusiness schema for contacts page -->
 <?php include __DIR__ . '/schema_localbusiness.php'; ?>

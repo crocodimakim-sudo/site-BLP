@@ -1,4 +1,7 @@
 <?php
+// 2026-04-22: image-helper for WebP + lazy-loading support
+require_once __DIR__ . '/../blocks/image-helper.php';
+
 $page_title = "Способы крепления — BLP Board";
 $page_desc = "Варианты крепления фиброцементных панелей BLP Board к подсистеме: видимый и скрытый способы. Совместимость с алюминиевыми, оцинкованными и нержавеющими подсистемами.";
 // 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
@@ -25,10 +28,10 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <img src="/blp/images-convert/pages/kreplenie/mount_visible_facade.png" alt="Фасад с видимыми заклёпками">
+                    <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_visible_facade.png', 'Фасад с видимыми заклёпками'); ?>
                 </div>
                 <div class="blp-img-small">
-                    <img src="/blp/images-convert/pages/kreplenie/mount_visible_rivets.png" alt="Заклёпки">
+                    <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_visible_rivets.png', 'Заклёпки'); ?>
                 </div>
             </div>
             <div class="blp-method-info">
@@ -43,7 +46,7 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <img src="/blp/images-convert/pages/kreplenie/mount_hidden_scheme.png" alt="Скрытый способ крепления">
+                    <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_hidden_scheme.png', 'Скрытый способ крепления'); ?>
                 </div>
             </div>
             <div class="blp-method-info">
@@ -53,10 +56,10 @@ ob_start();
                         <p class="blp-hardware-title">Кляммер «КРАБ»</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <img src="/blp/images-convert/pages/kreplenie/mount_krab_1.png" alt="Кляммер КРАБ">
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_krab_1.png', 'Кляммер КРАБ'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <img src="/blp/images-convert/pages/kreplenie/mount_krab_2.png" alt="Кляммер КРАБ вид 2">
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_krab_2.png', 'Кляммер КРАБ вид 2'); ?>
                             </div>
                         </div>
                     </div>
@@ -64,10 +67,10 @@ ob_start();
                         <p class="blp-hardware-title">KEIL</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <img src="/blp/images-convert/pages/kreplenie/mount_keil_1.png" alt="KEIL крепёж">
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_keil_1.png', 'KEIL крепёж'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <img src="/blp/images-convert/pages/kreplenie/mount_keil_2.png" alt="KEIL крепёж вид 2">
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_keil_2.png', 'KEIL крепёж вид 2'); ?>
                             </div>
                         </div>
                     </div>
@@ -75,10 +78,10 @@ ob_start();
                         <p class="blp-hardware-title">Аграфы NORDFox</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <img src="/blp/images-convert/pages/kreplenie/mount_nordfox_1.png" alt="Аграфы NORDFox схема">
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_nordfox_1.png', 'Аграфы NORDFox схема'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <img src="/blp/images-convert/pages/kreplenie/mount_nordfox_2.png" alt="Аграфы NORDFox">
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_nordfox_2.png', 'Аграфы NORDFox'); ?>
                             </div>
                         </div>
                     </div>

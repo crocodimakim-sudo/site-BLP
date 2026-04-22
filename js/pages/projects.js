@@ -3,6 +3,15 @@ let projects = [];
 let currentProject = null;
 let currentSlideIndex = 0;
 
+// 2026-04-22: Helper to generate picture element with WebP support
+function createPictureHtml(imagePath, alt) {
+    const webpPath = imagePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    return `<picture>
+        <source type="image/webp" srcset="${webpPath}" sizes="(max-width: 768px) 100vw, 600px">
+        <img src="${imagePath}" alt="${alt}" loading="lazy">
+    </picture>`;
+}
+
 function renderProjects() {
     const grid = document.getElementById("projectsGrid");
 
@@ -31,7 +40,8 @@ function renderProjects() {
 
         const slidesHtml = project.images.map((img, i) => {
             const activeClass = i === 0 ? "active" : "";
-            return '<div class="mini-slide ' + activeClass + '" data-index="' + i + '"><img src="' + img + '" alt="' + project.name + ' - фото ' + (i+1) + '" loading="lazy"></div>';
+            const pictureHtml = createPictureHtml(img, project.name + ' - фото ' + (i+1));
+            return '<div class="mini-slide ' + activeClass + '" data-index="' + i + '">' + pictureHtml + '</div>';
         }).join("");
 
         card.innerHTML =
@@ -77,19 +87,25 @@ function openModal(projectIndex) {
         return;
     }
 
-    const slidesHtml = currentProject.images.map((img, i) => `
+    const slidesHtml = currentProject.images.map((img, i) => {
+        const pictureHtml = createPictureHtml(img, currentProject.name + ' - ' + (i+1));
+        return `
         <div class="fullscreen-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
-            <img src="${img}" alt="${currentProject.name} - ${i+1}">
+            ${pictureHtml}
         </div>
-    `).join("");
+    `;
+    }).join("");
 
     slider.innerHTML = slidesHtml;
 
-    const thumbsHtml = currentProject.images.map((img, i) => `
+    const thumbsHtml = currentProject.images.map((img, i) => {
+        const pictureHtml = createPictureHtml(img, 'thumbnail ' + (i+1));
+        return `
         <div class="modal-thumb ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})">
-            <img src="${img}" alt="thumbnail ${i+1}">
+            ${pictureHtml}
         </div>
-    `).join("");
+    `;
+    }).join("");
 
     thumbs.innerHTML = thumbsHtml;
 

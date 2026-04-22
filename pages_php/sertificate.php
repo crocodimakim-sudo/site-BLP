@@ -1,4 +1,7 @@
 <?php
+// 2026-04-22: image-helper for WebP + lazy-loading support
+require_once __DIR__ . '/../blocks/image-helper.php';
+
 $page_title = 'Сертификаты фиброцементных панелей — НГ, соответствие требованиям';
 $page_desc = 'Полный комплект технической документации, соответствующий требованиям органов строительного надзора и подтверждающий пригодность для применения в строительстве на территории РФ.';
 // 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
@@ -53,7 +56,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <img src="/blp/images-convert/pages/sertificate/cert_declaration_trts.png" alt="Декларация ТР ТС" loading="lazy">
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_declaration_trts.png', 'Декларация ТР ТС'); ?>
                             </div>
                             <div class="slide-number">01</div>
                         </div>
@@ -63,7 +66,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <img src="/blp/images-convert/pages/sertificate/cert_technical_passport.png" alt="Технический паспорт" loading="lazy">
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_technical_passport.png', 'Технический паспорт'); ?>
                             </div>
                             <div class="slide-number">02</div>
                         </div>
@@ -73,7 +76,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <img src="/blp/images-convert/pages/sertificate/cert_mchs_conclusion.png" alt="Заключение МЧС" loading="lazy">
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_mchs_conclusion.png', 'Заключение МЧС'); ?>
                             </div>
                             <div class="slide-number">03</div>
                         </div>
@@ -83,7 +86,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <img src="/blp/images-convert/pages/sertificate/cert_registration.png" alt="Свидетельство о регистрации" loading="lazy">
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_registration.png', 'Свидетельство о регистрации'); ?>
                             </div>
                             <div class="slide-number">04</div>
                         </div>
@@ -93,7 +96,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <img src="/blp/images-convert/pages/sertificate/cert_test_protocol.png" alt="Протокол испытаний" loading="lazy">
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_test_protocol.png', 'Протокол испытаний'); ?>
                             </div>
                             <div class="slide-number">05</div>
                         </div>

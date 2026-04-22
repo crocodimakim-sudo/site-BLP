@@ -1,3 +1,9 @@
+<?php
+// 2026-04-22: require image-helper (may already be loaded by parent page)
+if (!function_exists('render_image')) {
+    require_once __DIR__ . '/image-helper.php';
+}
+?>
 <section class="audience-section" aria-labelledby="audience-heading">
     <div class="section-header">
         <h2 id="audience-heading">Кому подойдут наши решения</h2>
@@ -8,12 +14,11 @@
             <a href="/blp/architect" class="audience-card-link">
                 <article class="audience-card">
                     <div class="audience-image-wrapper">
-                        <img
-                            src="/blp/images-convert/pages/index/audience/audience_architect.png"
-                            alt="Архитекторы работают над проектом"
-                            class="audience-image"
-                            loading="lazy"
-                        >
+                        <?php echo render_image(
+                            '/blp/images-convert/pages/index/audience/audience_architect.png',
+                            'Архитекторы работают над проектом',
+                            ['class' => 'audience-image', 'sizes' => '(max-width: 768px) 100vw, 400px']
+                        ); ?>
                     </div>
                     <div class="audience-content">
                         <h3 class="audience-title">Архитекторам&nbsp;и проектировщикам</h3>
@@ -28,12 +33,11 @@
             <a href="/blp/devops" class="audience-card-link">
                 <article class="audience-card">
                     <div class="audience-image-wrapper">
-                        <img
-                            src="/blp/images-convert/pages/index/audience/audience_developer.png"
-                            alt="Застройщики обсуждают проект"
-                            class="audience-image"
-                            loading="lazy"
-                        >
+                        <?php echo render_image(
+                            '/blp/images-convert/pages/index/audience/audience_developer.png',
+                            'Застройщики обсуждают проект',
+                            ['class' => 'audience-image', 'sizes' => '(max-width: 768px) 100vw, 400px']
+                        ); ?>
                     </div>
                     <div class="audience-content">
                         <h3 class="audience-title">Застройщикам&nbsp;и подрядчикам</h3>
@@ -45,15 +49,14 @@
         </div>
 
         <div class="audience-col">
-            <a href="/blp/diler" class="audience-card-link">
+            <a href="/blp/dealer" class="audience-card-link">
                 <article class="audience-card">
                     <div class="audience-image-wrapper">
-                        <img
-                            src="/blp/images-convert/pages/index/audience/audience_dealer.png"
-                            alt="Дилеры на встрече"
-                            class="audience-image"
-                            loading="lazy"
-                        >
+                        <?php echo render_image(
+                            '/blp/images-convert/pages/index/audience/audience_dealer.png',
+                            'Дилеры на встрече',
+                            ['class' => 'audience-image', 'sizes' => '(max-width: 768px) 100vw, 400px']
+                        ); ?>
                     </div>
                     <div class="audience-content">
                         <h3 class="audience-title">Дилерам</h3>

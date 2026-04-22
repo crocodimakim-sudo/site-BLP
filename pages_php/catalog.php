@@ -45,6 +45,9 @@ if (is_dir($walypanDir)) {
     }
 }
 
+// 2026-04-22: image-helper for WebP + lazy-loading support
+require_once __DIR__ . '/../blocks/image-helper.php';
+
 ob_start();
 ?>
 
@@ -60,8 +63,12 @@ ob_start();
         <div class="product-card-wrapper">
             <article class="product-card">
                 <div class="product-image">
-                    <!-- 2026-04-20: migrated from tildacdn to local images-convert -->
-                    <img src="/blp/images-convert/pages/catalog/catalog_nature_render.jpg" alt="Натуральные фиброцементные панели серия NATURE — фактура под бетон" width="600" height="400" loading="lazy">
+                    <!-- 2026-04-22: WebP + lazy via render_image() -->
+                    <?php echo render_image(
+                        '/blp/images-convert/pages/catalog/catalog_nature_render.jpg',
+                        'Натуральные фиброцементные панели серия NATURE — фактура под бетон',
+                        ['sizes' => '(max-width: 768px) 100vw, 600px']
+                    ); ?>
                 </div>
                 
                 <div class="product-info">
@@ -152,8 +159,12 @@ ob_start();
                 </div>
             </div>
             <div class="product-image">
-                <!-- 2026-04-20: migrated from tildacdn to local images-convert -->
-                <img src="/blp/images-convert/pages/catalog/catalog_polished_render.png" alt="Полированные панели серия BLP-POLISHED" width="600" height="400" loading="lazy">
+                <!-- 2026-04-22: WebP + lazy via render_image() -->
+                <?php echo render_image(
+                    '/blp/images-convert/pages/catalog/catalog_polished_render.png',
+                    'Полированные панели серия BLP-POLISHED',
+                    ['sizes' => '(max-width: 768px) 100vw, 600px']
+                ); ?>
             </div>
         </article>
     </div>
@@ -165,8 +176,12 @@ ob_start();
     <div class="product-card-wrapper">
         <article class="product-card">
             <div class="product-image">
-                <!-- 2026-04-20: migrated from tildacdn to local images-convert -->
-                <img src="/blp/images-convert/pages/catalog/catalog_texture_render.png" alt="Текстурированные панели серия BLP-TEXTURE" width="600" height="400" loading="lazy">
+                <!-- 2026-04-22: WebP + lazy via render_image() -->
+                <?php echo render_image(
+                    '/blp/images-convert/pages/catalog/catalog_texture_render.png',
+                    'Текстурированные панели серия BLP-TEXTURE',
+                    ['sizes' => '(max-width: 768px) 100vw, 600px']
+                ); ?>
             </div>
             
             <div class="product-info">
@@ -308,12 +323,11 @@ ob_start();
     <div class="palette-section" id="palette">
       <div class="palette-wrapper">
         <h2 class="palette-title">Палитра цветов</h2>
-        <img
-          src="/blp/images-convert/pages/catalog/color_palette.png"
-          alt="Палитра цветов фиброцементных панелей"
-          class="palette-image"
-          loading="lazy"
-        >
+        <?php echo render_image(
+          '/blp/images-convert/pages/catalog/color_palette.png',
+          'Палитра цветов фиброцементных панелей',
+          ['class' => 'palette-image', 'sizes' => '(max-width: 768px) 100vw, 900px']
+        ); ?>
 
         <div class="color-names-grid">
           <div class="color-name">Жемчужный</div>

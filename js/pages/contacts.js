@@ -147,12 +147,14 @@ function initContactForm() {
             name: form.querySelector('[name="name"]').value.trim(),
             phone: form.querySelector('[name="phone"]').value.trim(),
             email: form.querySelector('[name="email"]').value.trim(),
-            message: form.querySelector('[name="message"]').value.trim(),
-            consent: true
+            message: form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value.trim() : '',
+            consent: true,
+            // 2026-04-22: добавлен csrf_token для защиты формы
+            csrf_token: (document.querySelector('input[name="csrf_token"]') || {}).value || ''
         };
 
         // Отправка на сервер
-        fetch('blocks/send-form.php', {
+        fetch('/blp/blocks/send-form.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

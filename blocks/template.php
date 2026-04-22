@@ -1,4 +1,10 @@
 <?php
+// 2026-04-22: CSRF token initialization
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // 2026-04-20: GA4, OG/Twitter meta, canonical support added
 $page_title    = isset($page_title)    ? $page_title    : 'BLP Board';
 $page_desc     = isset($page_desc)     ? $page_desc     : '';
@@ -92,6 +98,14 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
 
     <!-- Page-specific -->
     <?php if (isset($extra_css)) echo $extra_css; ?>
+
+    <?php
+    // 2026-04-22: Schema.org markup for SEO
+    $schema_dir = __DIR__ . '/../pages_php/';
+    include $schema_dir . 'schema_organization.php';
+    include $schema_dir . 'schema_webpage.php';
+    if (isset($breadcrumbs)) include $schema_dir . 'schema_breadcrumbs.php';
+    ?>
 </head>
 <body>
     <?php include 'header.php'; ?>

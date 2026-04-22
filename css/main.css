@@ -40,6 +40,23 @@
   --color-primary-light: var(--color-brand-mid);
   --color-secondary:     var(--color-cta);
 
+  /* --- 2026-04-22: Color system consolidation — семантические алиасы ---
+     --color-primary      → навигация, кнопки, заголовки (используй для brand)
+     --color-secondary    → CTA кнопки, акценты действий
+     --color-accent       → декоративные акценты (золото)
+     --color-text-primary → основной текст страниц
+     --color-text-secondary → второстепенный текст, подписи
+     --color-bg-light     → светлый фон секций
+     --color-success      → успешные действия, галочки
+     --color-error        → ошибки форм, предупреждения
+  --- */
+  --color-accent:        #B8860B;   /* золотой — декоративные элементы */
+  --color-text-primary:  var(--color-text);       /* #1a1a1a — основной текст */
+  --color-text-secondary: var(--color-text-muted); /* #5a5a5a — второстепенный */
+  --color-bg-light:      var(--color-bg-soft);    /* #f8f9fa — светлый фон */
+  --color-success:       #4CAF50;   /* успех, подтверждения */
+  --color-error:         #F44336;   /* ошибки, предупреждения */
+
   /* --- Типографика --- */
   --font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
