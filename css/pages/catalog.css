@@ -15,7 +15,8 @@
         h1.catalog-main-title {max-width: 1200px;
    margin-left: auto;
    margin-right: auto;
-   padding: 32px 32px 0;
+   /* 2026-04-22: убран padding 32px */
+   padding: 0;
    color: var(--color-text);}
 
         .catalog-section-heading,
