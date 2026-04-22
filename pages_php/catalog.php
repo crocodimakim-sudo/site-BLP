@@ -14,33 +14,25 @@ $breadcrumbs = [
     ['name' => 'Каталог',  'url' => 'https://building-port.ru/blp/catalog'],
 ];
 
-// Сканируем папку Walypan слайдера
+// 2026-04-22: Сканируем папку Walypan слайдера — поддерживаем ВСЕ имена файлов
 $walypanDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'images-convert' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'slider' . DIRECTORY_SEPARATOR;
 $walypanImages = [];
 if (is_dir($walypanDir)) {
-    // Первичный способ: glob с фигурными скобками
-    $files = glob($walypanDir . 'walypan_slide_*.png');
-    if (!$files) {
-        // Фоллбек: scandir для Windows
-        $entries = @scandir($walypanDir);
-        if ($entries) {
-            $files = [];
-            foreach ($entries as $entry) {
-                if (preg_match('/^walypan_slide_\d+\.(jpg|jpeg|png|webp)$/i', $entry)) {
-                    $files[] = $walypanDir . $entry;
-                }
+    $entries = @scandir($walypanDir);
+    if ($entries) {
+        $files = [];
+        foreach ($entries as $entry) {
+            // Подхватываем ВСЕ изображения (любые имена)
+            if (preg_match('/\.(jpg|jpeg|png|webp)$/i', $entry) && !preg_match('/^\./', $entry)) {
+                $files[] = $walypanDir . $entry;
             }
         }
-    }
-    if ($files) {
-        // Натуральная сортировка: slide_2 < slide_10
-        usort($files, function($a, $b) {
-            preg_match('/walypan_slide_(\d+)/', $a, $mA);
-            preg_match('/walypan_slide_(\d+)/', $b, $mB);
-            return ((int)($mA[1] ?? 0)) - ((int)($mB[1] ?? 0));
-        });
-        foreach ($files as $f) {
-            $walypanImages[] = '/blp/images-convert/pages/catalog/slider/' . basename($f);
+        if ($files) {
+            // Натуральная сортировка по имени файла
+            natsort($files);
+            foreach ($files as $f) {
+                $walypanImages[] = '/blp/images-convert/pages/catalog/slider/' . basename($f);
+            }
         }
     }
 }
