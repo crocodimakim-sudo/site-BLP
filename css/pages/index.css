@@ -563,7 +563,10 @@ main > section.hero-main { max-width: none;
 .index-mb-cta-btn:hover { background: #00352F; color: #fff; }
 
 @media (max-width: 900px) { .index-mb-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .index-material-benefits { padding: 50px 0; }
+@media (max-width: 600px) { .index-material-benefits { padding: 0;
+        margin-left: 16px;
+        margin-right: 16px;
+        width: calc(100% - 32px); }
     .index-mb-grid { grid-template-columns: 1fr; }
     .index-mb-title { padding-left: 16px; }
     .index-mb-desc { padding-left: 16px; } }
