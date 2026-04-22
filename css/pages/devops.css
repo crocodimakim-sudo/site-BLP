@@ -251,7 +251,7 @@ margin: 0 auto;
 
 padding: 20px 0 0 0; }
 
-.devops-section .section-header { margin-bottom: 40px; }
+.devops-section .section-header { margin-bottom: 0; }
 
 .devops-section .section-title { font-size: 32px;
 
@@ -283,7 +283,8 @@ gap: 24px; }
 
 margin-bottom: 0; }
 
-@media (max-width: 960px) { .tech-grid { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .tech-grid { grid-template-columns: 1fr; }
+  .tech-section { margin-left: 16px; margin-right: 16px; width: calc(100% - 32px); } }
 
 /* Карточка */
 
