@@ -91,6 +91,12 @@
     font-size: 13px;
     font-weight: 400; }
 
+.footer-policies { display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end; }
+
 .footer-policy,
 .footer-policy:visited,
 .footer-policy:active { color: rgba(255, 255, 255, 0.6);
@@ -100,6 +106,10 @@
     transition: color 0.3s ease; }
 
 .footer-policy:hover { color: white; }
+
+.footer-policy-divider { color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    margin: 0 4px; }
 
 @media (max-width: 1200px) { .footer-top { flex-direction: column;
         gap: 40px; }
@@ -119,7 +129,10 @@
 
     .footer-bottom { flex-direction: column;
         text-align: center;
-        gap: 15px; } }
+        gap: 15px; }
+
+    .footer-policies { justify-content: center;
+        gap: 12px; } }
 
 @media (max-width: 480px) { .footer-container { padding: 0 16px; }
 
