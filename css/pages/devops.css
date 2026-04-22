@@ -253,6 +253,9 @@ padding: 20px 0 0 0; }
 
 .devops-section .section-header { margin-bottom: 0; }
 
+.tech-section .section-header { margin-bottom: 0; }
+.tech-section .section-title { margin-bottom: 0; }
+
 .devops-section .section-title { font-size: 32px;
 
 font-weight: 600;
