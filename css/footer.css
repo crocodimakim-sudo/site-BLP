@@ -134,9 +134,7 @@
     .footer-policies { justify-content: center;
         gap: 12px; } }
 
-@media (max-width: 480px) { .footer-container { padding: 0 16px; }
-
-    .footer-columns { gap: 30px; }
+@media (max-width: 480px) { .footer-columns { gap: 30px; }
 
     .footer-column { min-width: 120px; }
 

@@ -67,11 +67,18 @@
 
         @media (max-width: 640px) { .benefits-section { padding: 16px; }
 
+            .benefits-section > h2 { padding-left: 0;
+                text-align: center; }
+
             .benefits-grid { grid-template-columns: 1fr;
                 gap: 16px;
                 margin: 0; }
 
-            .benefit-col { padding: 0; } }
+            .benefit-col { padding: 0; }
+
+            .benefit-card { text-align: center; }
+
+            .benefit-icon { margin-left: auto; margin-right: auto; } }
 
         /* ========================================
            БЛОК 5: PARTNERS SLIDER

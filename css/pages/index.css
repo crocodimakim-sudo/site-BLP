@@ -311,9 +311,13 @@ main > section.hero-main { max-width: none;
             .hero-image { position: absolute;
                 inset: 0; } }
 
-        @media (max-width: 640px) { .hero-main { padding: 0; }
+        @media (max-width: 640px) { .hero-main { padding: 0;
+                margin-left: 16px;
+                margin-right: 16px;
+                border-radius: 12px;
+                overflow: hidden; }
 
-            .hero-container { border-radius: 0; }
+            .hero-container { border-radius: 12px; }
 
             .hero-content { padding: 28px 20px; }
 
@@ -430,7 +434,8 @@ main > section.hero-main { max-width: none;
         @media (max-width: 960px) { .objects-grid { grid-template-columns: repeat(2, 1fr);
                 gap: 20px; } }
 
-        @media (max-width: 640px) { .objects-section { padding: 40px 16px; }
+        @media (max-width: 640px) { .objects-section { padding: 40px 16px;
+                margin-top: 20px; }
 
             .objects-section .section-title { font-size: var(--font-size-xl); }
 
@@ -560,4 +565,5 @@ main > section.hero-main { max-width: none;
 @media (max-width: 900px) { .index-mb-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .index-material-benefits { padding: 50px 0; }
     .index-mb-grid { grid-template-columns: 1fr; }
-    .index-mb-title {} }
+    .index-mb-title { padding-left: 16px; }
+    .index-mb-desc { padding-left: 16px; } }
