@@ -28,10 +28,10 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_visible_facade.png', 'Фасад с видимыми заклёпками'); ?>
+                    <?php echo render_image('/blp/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png', 'Фасад с видимыми заклёпками'); ?>
                 </div>
                 <div class="blp-img-small">
-                    <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_visible_rivets.png', 'Заклёпки'); ?>
+                    <?php echo render_image('/blp/images-convert/pages/kreplenie/vidimoe/mount_visible_rivets.png', 'Заклёпки'); ?>
                 </div>
             </div>
             <div class="blp-method-info">
@@ -46,7 +46,7 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_hidden_scheme.png', 'Скрытый способ крепления'); ?>
+                    <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_hidden_scheme.png', 'Скрытый способ крепления'); ?>
                 </div>
             </div>
             <div class="blp-method-info">
@@ -56,10 +56,10 @@ ob_start();
                         <p class="blp-hardware-title">Кляммер «КРАБ»</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_krab_1.png', 'Кляммер КРАБ'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_krab_1.png', 'Кляммер КРАБ'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_krab_2.png', 'Кляммер КРАБ вид 2'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_krab_2.png', 'Кляммер КРАБ вид 2'); ?>
                             </div>
                         </div>
                     </div>
@@ -67,10 +67,10 @@ ob_start();
                         <p class="blp-hardware-title">KEIL</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_keil_1.png', 'KEIL крепёж'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_keil_1.png', 'KEIL крепёж'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_keil_2.png', 'KEIL крепёж вид 2'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_keil_2.png', 'KEIL крепёж вид 2'); ?>
                             </div>
                         </div>
                     </div>
@@ -78,10 +78,10 @@ ob_start();
                         <p class="blp-hardware-title">Аграфы NORDFox</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_nordfox_1.png', 'Аграфы NORDFox схема'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_nordfox_1.png', 'Аграфы NORDFox схема'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/mount_nordfox_2.png', 'Аграфы NORDFox'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_nordfox_2.png', 'Аграфы NORDFox'); ?>
                             </div>
                         </div>
                     </div>

@@ -20,11 +20,13 @@ function convertImages(): void {
         new RecursiveDirectoryIterator(SRC_DIR, RecursiveDirectoryIterator::SKIP_DOTS)
     );
 
+    $count = 0;
     foreach ($files as $file) {
         if (!$file->isFile()) continue;
 
         $ext = strtolower($file->getExtension());
-        if (!in_array($ext, ['jpg', 'jpeg', 'png'])) continue;
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'svg'])) continue;
+        $count++;
 
         $srcPath = $file->getPathname();
         $relativePath = substr($srcPath, strlen(SRC_DIR) + 1);
@@ -45,12 +47,12 @@ function convertImages(): void {
             echo "[DELETE] $relativePath\n";
         }
 
-        // 2026-04-22: Копировать PNG/JPG оригиналы как есть (полный размер) + создать WebP
+        // 2026-04-22: Копировать оригиналы как есть (полный размер) + создать WebP (только для растров)
         if (copy($srcPath, $dstPath)) {
             echo "[OK] $relativePath\n";
 
-            // Создать WebP версию для браузера
-            if (function_exists('imagewebp')) {
+            // Создать WebP версию для браузера (только для jpg/png, не для svg)
+            if ($ext !== 'svg' && function_exists('imagewebp')) {
                 createWebP($srcPath, preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $dstPath), $ext);
                 createThumbnail($srcPath, $ext);
             }
@@ -58,6 +60,7 @@ function convertImages(): void {
             echo "[FAIL] $relativePath\n";
         }
     }
+    echo "[STATS] Processed: $count files\n";
 
     // Копировать meta.json из images/ в images-convert/ (зеркально)
     $metaFiles = new RecursiveIteratorIterator(

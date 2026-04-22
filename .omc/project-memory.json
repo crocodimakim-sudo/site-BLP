@@ -171,14 +171,20 @@
   "hotPaths": [
     {
       "path": "pages_php\\catalog.php",
-      "accessCount": 24,
-      "lastAccessed": 1776851594360,
+      "accessCount": 27,
+      "lastAccessed": 1776868617382,
       "type": "file"
     },
     {
       "path": "css\\pages\\catalog.css",
       "accessCount": 22,
       "lastAccessed": 1776857174515,
+      "type": "file"
+    },
+    {
+      "path": "scripts\\convert_images.php",
+      "accessCount": 17,
+      "lastAccessed": 1776867483092,
       "type": "file"
     },
     {
@@ -206,27 +212,21 @@
       "type": "file"
     },
     {
-      "path": "scripts\\convert_images.php",
-      "accessCount": 9,
-      "lastAccessed": 1776863911939,
+      "path": "pages_php\\kreplenie.php",
+      "accessCount": 10,
+      "lastAccessed": 1776868530237,
       "type": "file"
     },
     {
       "path": "js\\pages\\projects.js",
-      "accessCount": 7,
-      "lastAccessed": 1776840259354,
+      "accessCount": 8,
+      "lastAccessed": 1776868603986,
       "type": "file"
     },
     {
       "path": "blocks\\products-section.php",
       "accessCount": 6,
       "lastAccessed": 1776855350167,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\kreplenie.php",
-      "accessCount": 6,
-      "lastAccessed": 1776859819009,
       "type": "file"
     },
     {
@@ -290,6 +290,24 @@
       "type": "file"
     },
     {
+      "path": "blocks\\footer.php",
+      "accessCount": 4,
+      "lastAccessed": 1776867545019,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 4,
+      "lastAccessed": 1776868587002,
+      "type": "directory"
+    },
+    {
+      "path": "pages_php",
+      "accessCount": 4,
+      "lastAccessed": 1776868598418,
+      "type": "directory"
+    },
+    {
       "path": "pages_php\\architect.php",
       "accessCount": 3,
       "lastAccessed": 1776840348489,
@@ -308,12 +326,6 @@
       "type": "file"
     },
     {
-      "path": "blocks\\footer.php",
-      "accessCount": 3,
-      "lastAccessed": 1776842616523,
-      "type": "file"
-    },
-    {
       "path": "blocks\\contact-form.php",
       "accessCount": 3,
       "lastAccessed": 1776842655048,
@@ -326,12 +338,6 @@
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 3,
-      "lastAccessed": 1776855486192,
-      "type": "directory"
-    },
-    {
       "path": "css\\products-section.css",
       "accessCount": 3,
       "lastAccessed": 1776856196853,
@@ -341,6 +347,12 @@
       "path": "pages_php\\index.php",
       "accessCount": 3,
       "lastAccessed": 1776856701239,
+      "type": "file"
+    },
+    {
+      "path": "css\\objects-section.css",
+      "accessCount": 3,
+      "lastAccessed": 1776864960985,
       "type": "file"
     },
     {
@@ -362,6 +374,18 @@
       "type": "file"
     },
     {
+      "path": "pages_php\\projects.php",
+      "accessCount": 2,
+      "lastAccessed": 1776868598347,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\get_projects.php",
+      "accessCount": 2,
+      "lastAccessed": 1776868624403,
+      "type": "file"
+    },
+    {
       "path": "AUDIT_INTEGRATION_SUMMARY.md",
       "accessCount": 1,
       "lastAccessed": 1776662265629,
@@ -377,18 +401,6 @@
       "path": "CONTEXT_RESTORE_PROMPT.md",
       "accessCount": 1,
       "lastAccessed": 1776664953273,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\projects.php",
-      "accessCount": 1,
-      "lastAccessed": 1776840214174,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\get_projects.php",
-      "accessCount": 1,
-      "lastAccessed": 1776840232210,
       "type": "file"
     },
     {
@@ -428,12 +440,6 @@
       "type": "file"
     },
     {
-      "path": "pages_php",
-      "accessCount": 1,
-      "lastAccessed": 1776851260978,
-      "type": "directory"
-    },
-    {
       "path": "pages_php\\schema_webpage.php",
       "accessCount": 1,
       "lastAccessed": 1776851265847,
@@ -458,10 +464,10 @@
       "type": "file"
     },
     {
-      "path": "css\\objects-section.css",
+      "path": "blocks\\partners-section.php",
       "accessCount": 1,
-      "lastAccessed": 1776864073503,
-      "type": "file"
+      "lastAccessed": 1776867089812,
+      "type": "directory"
     }
   ],
   "userDirectives": []

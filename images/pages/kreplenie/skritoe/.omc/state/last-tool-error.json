@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cp \\\"D:/Claude Code/site-blp/site-kimi/images-convert/pages/kreplenie/skritoe/hidden_mount_scheme.png\\\" \\\"C:/xampp/htdocs/blp/images-convert/pages/kreplenie/skritoe/\\\" && cp \\\"D:/Claude Co...",
+  "error": "Exit code 1\ncp: cannot stat 'D:/Claude Code/site-blp/site-kimi/images-convert/pages/kreplenie/skritoe/hidden_mount_scheme.png': No such file or directory",
+  "timestamp": "2026-04-22T14:35:20.770Z",
+  "retry_count": 3
+}
