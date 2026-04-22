@@ -56,12 +56,11 @@
             if (index >= images.length) index = 0;
             currentIndex = index;
 
-            // 2026-04-22: плавный переход через opacity
-            mainImage.classList.add('blp-img-fade');
-            setTimeout(() => {
-                mainImage.src = images[currentIndex].image;
-                mainImage.classList.remove('blp-img-fade');
-            }, 150);
+            // 2026-04-22: логирование для отладки бесконечного слайдера
+            console.log('[slider] goToSlide:', { index, total: images.length, currentIndex });
+
+            // 2026-04-22: убрана анимация fade — картинка показывается сразу без белого фона
+            mainImage.src = images[currentIndex].image;
 
             thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
             dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
