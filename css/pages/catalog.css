@@ -1,7 +1,8 @@
 /* catalog.css - специфичные стили для страницы catalog */
 
 /* 2026-04-20: H1 intro-header ограничен шириной 1200px с отступом 32px как у остальных блоков */
-.catalog-intro-header { max-width: 1200px; margin: 0 auto; padding: 40px 32px 0; }
+/* 2026-04-22: добавлен padding-top: 10px */
+.catalog-intro-header { max-width: 1200px; margin: 0 auto; padding: 50px 32px 0; }
 .catalog-main-title {color: var(--color-text); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em;}
 .catalog-intro-text { font-size: 16px; line-height: 1.6; color: var(--color-text-muted); max-width: 1200px; margin-bottom: 0; }
 @media (max-width: 900px) { .catalog-intro-header { padding: 24px 20px 0; } .catalog-main-title {} }
