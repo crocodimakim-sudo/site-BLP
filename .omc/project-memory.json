@@ -176,6 +176,12 @@
       "type": "file"
     },
     {
+      "path": "pages_php\\consent.php",
+      "accessCount": 10,
+      "lastAccessed": 1776842871823,
+      "type": "file"
+    },
+    {
       "path": "js\\pages\\projects.js",
       "accessCount": 7,
       "lastAccessed": 1776840259354,
@@ -206,6 +212,18 @@
       "type": "file"
     },
     {
+      "path": "pages_php\\policy.php",
+      "accessCount": 4,
+      "lastAccessed": 1776842756730,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\cookies.php",
+      "accessCount": 4,
+      "lastAccessed": 1776842804497,
+      "type": "file"
+    },
+    {
       "path": "pages_php\\architect.php",
       "accessCount": 3,
       "lastAccessed": 1776840348489,
@@ -224,27 +242,45 @@
       "type": "file"
     },
     {
+      "path": "css\\footer.css",
+      "accessCount": 3,
+      "lastAccessed": 1776842081867,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\footer.php",
+      "accessCount": 3,
+      "lastAccessed": 1776842616523,
+      "type": "file"
+    },
+    {
+      "path": ".htaccess",
+      "accessCount": 3,
+      "lastAccessed": 1776842616679,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\contact-form.php",
+      "accessCount": 3,
+      "lastAccessed": 1776842655048,
+      "type": "file"
+    },
+    {
       "path": "MORNING_BRIEF.md",
       "accessCount": 2,
       "lastAccessed": 1776662299777,
       "type": "file"
     },
     {
-      "path": "pages_php\\policy.php",
+      "path": "blocks\\cookie-consent-banner.php",
       "accessCount": 2,
-      "lastAccessed": 1776841174521,
+      "lastAccessed": 1776841559541,
       "type": "file"
     },
     {
-      "path": "blocks\\contact-form.php",
+      "path": "css\\pages\\policy.css",
       "accessCount": 2,
-      "lastAccessed": 1776841402675,
-      "type": "file"
-    },
-    {
-      "path": ".htaccess",
-      "accessCount": 2,
-      "lastAccessed": 1776841428087,
+      "lastAccessed": 1776842228963,
       "type": "file"
     },
     {
@@ -302,27 +338,15 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\cookies.php",
-      "accessCount": 1,
-      "lastAccessed": 1776841122845,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\consent.php",
-      "accessCount": 1,
-      "lastAccessed": 1776841139265,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\cookie-consent-banner.php",
-      "accessCount": 1,
-      "lastAccessed": 1776841329427,
-      "type": "file"
-    },
-    {
       "path": "blocks\\header.php",
       "accessCount": 1,
       "lastAccessed": 1776841362215,
+      "type": "file"
+    },
+    {
+      "path": "css\\main.css",
+      "accessCount": 1,
+      "lastAccessed": 1776841522730,
       "type": "file"
     }
   ],
