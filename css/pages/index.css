@@ -32,7 +32,7 @@ main > section.contact-form-section > .contact-form-wrapper { padding-left: 0;
 main > section.hero-main { max-width: none;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 20px;
+    padding-top: 0;
     margin-top: 0; }
 
 /* Внутренние контейнеры hero */
