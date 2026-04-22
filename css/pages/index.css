@@ -311,7 +311,10 @@ main > section.hero-main { max-width: none;
             .hero-image { position: absolute;
                 inset: 0; } }
 
-        @media (max-width: 640px) { .hero-main { padding: 0 16px;
+        @media (max-width: 640px) { .hero-main { padding: 0;
+                margin-left: 16px;
+                margin-right: 16px;
+                width: calc(100% - 32px);
                 border-radius: 12px; }
 
             .hero-container { border-radius: 12px; }
