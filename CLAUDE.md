@@ -160,28 +160,107 @@ cp -f "D:\Claude Code\site-blp\site-kimi\css\pages\catalog.css" "C:\xampp\htdocs
 
 ---
 
-## 📋 ПОЛНЫЙ ПРОЦЕСС (КОПИПАСТА) — БЫСТРЫЙ
+## 📋 АВТОМАТИЧЕСКАЯ СИНХРОНИЗАЦИЯ (Production-Ready)
 
-Когда менеджер говорит "обновил фотографии":
+### ✨ Новая архитектура (2026-04-22)
 
-```bash
-# Шаг 1: Удалить старую images-convert/ ПОЛНОСТЬЮ (один раз в начале сессии)
-rm -rf "D:\Claude Code\site-blp\site-kimi\images-convert"
+**Как это работает:**
+1. Менеджер загружает фотографии в `images/`
+2. Windows Task Scheduler запускает `auto_sync.php` каждый час
+3. Скрипт конвертирует только НОВЫЕ файлы
+4. Копирует только новые файлы на XAMPP (~0.14 сек)
+5. ✅ Всё готово на сайте
 
-# Шаг 2: Конвертация с нуля (создаст PNG + WebP из images/)
-"C:\xampp\php\php.exe" "D:\Claude Code\site-blp\site-kimi\scripts\convert_images.php"
+**Процесс полностью автоматический — менеджер ничего не нажимает!**
 
-# Шаг 3: Быстрая синхронизация (копирует ТОЛЬКО измененные файлы ~3-5 сек)
-robocopy "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\images-convert" /E /PURGE /R:1 /W:1
+---
 
-# Шаг 4: Проверка на браузере
-curl -s "http://localhost/blp/catalog" | grep -o "images-convert" | wc -l
-# Должно быть > 0
+### 🔧 Настройка Windows Task Scheduler (один раз)
+
+**Шаг 1: Открыть Task Scheduler**
+```
+Win + R → taskschd.msc
 ```
 
-⏱️ **Время выполнения:** ~10-15 секунд (вместо 10+ минут)
+**Шаг 2: Создать новую задачу**
+- Right-click на "Task Scheduler" → "Create Basic Task"
+- Name: "BLP Board Auto Sync Images"
+- Description: "Automatically converts and syncs new images"
 
-После этого можно говорить пользователю "готово, проверяй".
+**Шаг 3: Триггер (когда запускать)**
+- Trigger: "Daily" OR "On a schedule"
+- Repeat task every: 1 hour
+- Start: 08:00 (или любое время)
+
+**Шаг 4: Действие (что запускать)**
+- Action: "Start a program"
+- Program: `D:\Claude Code\site-blp\site-kimi\scripts\run_sync.bat`
+- Start in: `D:\Claude Code\site-blp\site-kimi\scripts`
+
+**Шаг 5: Сохранить**
+- Finish
+- Будет просить пароль Windows — введи
+
+**Проверка:**
+- Task Scheduler покажет последний запуск
+- Логи сохраняются в `scripts/sync.log`
+
+---
+
+### 📋 Ручной запуск (если нужно срочно)
+
+```bash
+"D:\Claude Code\site-blp\site-kimi\scripts\run_sync.bat"
+```
+
+или
+
+```bash
+"C:\xampp\php\php.exe" "D:\Claude Code\site-blp\site-kimi\scripts\auto_sync.php"
+```
+
+---
+
+### 📊 Как это работает на домене
+
+**На боевом сервере (Linux/Ubuntu):**
+```bash
+# Добавить в crontab
+0 * * * * php /var/www/site-blp/scripts/auto_sync.php >> /var/www/site-blp/scripts/sync.log 2>&1
+```
+
+Это запустит скрипт каждый час в фоне. CPU нагрузка = почти 0.
+
+---
+
+### ✅ Преимущества этого подхода
+
+1. **Менеджер просто загружает** — не нажимает кнопок
+2. **Быстро** — 0.14 сек на синхронизацию
+3. **Надежно** — только новые файлы копируются
+4. **Масштабируется** — работает на домене без проблем
+5. **Логирует** — всё записывается в sync.log
+6. **Автоматический откат** — orphaned файлы удаляются
+
+---
+
+### 📝 Логи синхронизации
+
+Проверить что произошло:
+```bash
+tail "D:\Claude Code\site-blp\site-kimi\scripts\sync.log"
+```
+
+Пример лога:
+```
+[2026-04-22 14:00:01] === SYNC START ===
+[2026-04-22 14:00:01] Step 1: Converting images...
+[2026-04-22 14:00:01] Conversion done
+[2026-04-22 14:00:02] Step 2: Syncing to XAMPP...
+[2026-04-22 14:00:02] Sync completed successfully
+[2026-04-22 14:00:02] Files: src=221, xampp=221
+[2026-04-22 14:00:02] === SYNC DONE (0.14 sec) ===
+```
 
 ---
 
