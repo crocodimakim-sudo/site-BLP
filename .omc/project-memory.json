@@ -177,14 +177,14 @@
     },
     {
       "path": "css\\pages\\catalog.css",
-      "accessCount": 25,
-      "lastAccessed": 1776871776430,
+      "accessCount": 26,
+      "lastAccessed": 1776872000369,
       "type": "file"
     },
     {
       "path": "scripts\\convert_images.php",
-      "accessCount": 17,
-      "lastAccessed": 1776867483092,
+      "accessCount": 19,
+      "lastAccessed": 1776873098598,
       "type": "file"
     },
     {
@@ -227,6 +227,12 @@
       "path": "js\\pages\\projects.js",
       "accessCount": 8,
       "lastAccessed": 1776868603986,
+      "type": "file"
+    },
+    {
+      "path": "js\\pages\\catalog.js",
+      "accessCount": 7,
+      "lastAccessed": 1776872259463,
       "type": "file"
     },
     {
@@ -306,12 +312,6 @@
       "accessCount": 4,
       "lastAccessed": 1776868587002,
       "type": "directory"
-    },
-    {
-      "path": "js\\pages\\catalog.js",
-      "accessCount": 4,
-      "lastAccessed": 1776871760060,
-      "type": "file"
     },
     {
       "path": "pages_php\\architect.php",

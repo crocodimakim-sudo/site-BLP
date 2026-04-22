@@ -25,7 +25,8 @@ function convertImages(): void {
         if (!$file->isFile()) continue;
 
         $ext = strtolower($file->getExtension());
-        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'svg'])) continue;
+        /* 2026-04-22: добавлен webp в список разрешенных расширений */
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'svg', 'webp'])) continue;
         $count++;
 
         $srcPath = $file->getPathname();
