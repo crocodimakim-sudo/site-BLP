@@ -1,41 +1,50 @@
 <?php
-// 2026-04-22: Cookie consent banner component
+// 2026-04-22: Cookie consent banner component with BLP Board design
 // Include this in header.php or after <body> tag
+// Design: matches BLP Board color scheme and typography
 ?>
 
 <div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none;">
-    <div class="cookie-consent-container">
-        <div class="cookie-consent-content">
-            <h3 class="cookie-consent-title">Мы используем файлы cookies</h3>
-            <p class="cookie-consent-text">
-                На нашем сайте используются файлы cookies для улучшения вашего опыта, анализа трафика и персонализации контента.
-                Продолжив использование сайта, вы соглашаетесь с использованием cookies.
-            </p>
-            <p class="cookie-consent-link">
-                <a href="/blp/cookies" target="_blank">Узнать больше о cookies</a> |
-                <a href="/blp/policy" target="_blank">Политика конфиденциальности</a>
-            </p>
-        </div>
-        <div class="cookie-consent-actions">
-            <button id="cookie-consent-accept-all" class="cookie-consent-btn cookie-consent-btn-primary">
-                Принять всё
-            </button>
-            <button id="cookie-consent-reject" class="cookie-consent-btn cookie-consent-btn-secondary">
-                Отклонить
-            </button>
-            <button id="cookie-consent-manage" class="cookie-consent-btn cookie-consent-btn-tertiary">
-                Настройки
-            </button>
+    <div class="blp-container">
+        <div class="cookie-consent-wrapper">
+            <div class="cookie-consent-content">
+                <h3 class="cookie-consent-title">🍪 Мы используем файлы cookies</h3>
+                <p class="cookie-consent-text">
+                    На нашем сайте используются файлы cookies для улучшения вашего опыта, анализа трафика и персонализации контента. Продолжив использование сайта, вы соглашаетесь с использованием cookies.
+                </p>
+                <div class="cookie-consent-links">
+                    <a href="/blp/cookies" target="_blank" class="cookie-link">Политика cookies</a>
+                    <a href="/blp/policy" target="_blank" class="cookie-link">Политика конфиденциальности</a>
+                </div>
+            </div>
+
+            <div class="cookie-consent-actions">
+                <button id="cookie-consent-accept-all" class="btn-primary cookie-btn">
+                    Принять всё
+                </button>
+                <button id="cookie-consent-reject" class="btn-secondary cookie-btn">
+                    Отклонить
+                </button>
+                <button id="cookie-consent-manage" class="btn-outline cookie-btn">
+                    Настройки
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Cookie Settings Modal -->
 <div id="cookie-settings-modal" class="cookie-settings-modal" style="display: none;">
+    <div class="cookie-settings-overlay"></div>
     <div class="cookie-settings-content">
         <div class="cookie-settings-header">
             <h2>Управление cookies</h2>
-            <button id="cookie-settings-close" class="cookie-settings-close">&times;</button>
+            <button id="cookie-settings-close" class="cookie-settings-close" aria-label="Закрыть">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
         </div>
 
         <div class="cookie-settings-body">
@@ -47,8 +56,7 @@
                     </label>
                 </div>
                 <p class="cookie-category-description">
-                    Необходимы для функционирования сайта, безопасности и защиты от мошенничества.
-                    Не могут быть отключены.
+                    Необходимы для функционирования сайта, безопасности и защиты от мошенничества. Не могут быть отключены.
                 </p>
             </div>
 
@@ -60,8 +68,7 @@
                     </label>
                 </div>
                 <p class="cookie-category-description">
-                    Помогают нам понять, как вы используете сайт, какие страницы наиболее популярны.
-                    Используется Google Analytics и Яндекс.Метрика.
+                    Помогают нам понять, как вы используете сайт, какие страницы наиболее популярны. Используется Google Analytics и Яндекс.Метрика.
                 </p>
             </div>
 
@@ -73,13 +80,13 @@
                     </label>
                 </div>
                 <p class="cookie-category-description">
-                    Используются для показа релевантной рекламы и отслеживания эффективности кампаний.
+                    Используются для показа релевантной рекламы и отслеживания эффективности рекламных кампаний.
                 </p>
             </div>
         </div>
 
         <div class="cookie-settings-footer">
-            <button id="cookie-settings-save" class="cookie-consent-btn cookie-consent-btn-primary">
+            <button id="cookie-settings-save" class="btn-primary">
                 Сохранить настройки
             </button>
         </div>
@@ -87,17 +94,19 @@
 </div>
 
 <style>
+/* 2026-04-22: Cookie Consent Banner — BLP Board Design System */
+
 /* Cookie Consent Banner */
 .cookie-consent-banner {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #1a1a1a;
-    color: #fff;
-    padding: 20px;
+    background: var(--color-surface, #ffffff);
+    border-top: 1px solid var(--color-border, #e5e7eb);
+    padding: 24px 20px;
     z-index: 9999;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.12));
     animation: slideUp 0.3s ease-out;
 }
 
@@ -112,13 +121,11 @@
     }
 }
 
-.cookie-consent-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.cookie-consent-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 30px;
+    gap: 40px;
 }
 
 .cookie-consent-content {
@@ -126,83 +133,96 @@
 }
 
 .cookie-consent-title {
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--color-text, #1a1a1a);
+    line-height: 1.3;
 }
 
 .cookie-consent-text {
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 14px;
-    line-height: 1.5;
-    color: #ddd;
+    line-height: 1.6;
+    color: var(--color-text-secondary, #5a5a5a);
 }
 
-.cookie-consent-link {
-    margin: 0;
+.cookie-consent-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cookie-link {
     font-size: 13px;
-}
-
-.cookie-consent-link a {
-    color: #00d4ff;
+    color: var(--color-brand, #00352F);
     text-decoration: none;
-    border-bottom: 1px solid #00d4ff;
-    transition: color 0.2s;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-base, 200ms ease);
 }
 
-.cookie-consent-link a:hover {
-    color: #00b8d4;
+.cookie-link:hover {
+    border-bottom-color: var(--color-brand, #00352F);
 }
 
 .cookie-consent-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     align-items: center;
-    min-width: 400px;
+    min-width: 350px;
 }
 
-.cookie-consent-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+.cookie-btn {
+    padding: 11px 24px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    border-radius: var(--border-radius, 8px);
+    transition: all var(--transition-base, 200ms ease);
     white-space: nowrap;
+    border: none;
 }
 
-.cookie-consent-btn-primary {
-    background: #00d4ff;
-    color: #000;
+.btn-primary {
+    background: var(--color-brand, #00352F);
+    color: white;
 }
 
-.cookie-consent-btn-primary:hover {
-    background: #00b8d4;
-    transform: translateY(-1px);
+.btn-primary:hover {
+    background: var(--color-brand-dark, #002420);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
-.cookie-consent-btn-secondary {
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--color-bg-soft, #f8f9fa);
+    color: var(--color-text, #1a1a1a);
+    border: 1px solid var(--color-border, #e5e7eb);
+}
+
+.btn-secondary:hover {
+    background: var(--color-border, #e5e7eb);
+    border-color: var(--color-text-muted, #5a5a5a);
+}
+
+.btn-outline {
     background: transparent;
-    color: #ddd;
-    border: 1px solid #555;
+    color: var(--color-brand, #00352F);
+    border: 1.5px solid var(--color-brand, #00352F);
 }
 
-.cookie-consent-btn-secondary:hover {
-    background: #333;
-    border-color: #777;
-}
-
-.cookie-consent-btn-tertiary {
-    background: transparent;
-    color: #00d4ff;
-    border: 1px solid #00d4ff;
-}
-
-.cookie-consent-btn-tertiary:hover {
-    background: #00d4ff;
-    color: #000;
+.btn-outline:hover {
+    background: var(--color-brand, #00352F);
+    color: white;
 }
 
 /* Cookie Settings Modal */
@@ -212,7 +232,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
     z-index: 10000;
     display: flex;
     align-items: center;
@@ -220,22 +239,25 @@
     animation: fadeIn 0.2s ease-out;
 }
 
+.cookie-settings-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .cookie-settings-content {
-    background: #fff;
-    border-radius: 8px;
-    max-width: 500px;
+    position: relative;
+    background: var(--color-surface, #ffffff);
+    border-radius: var(--radius-lg, 16px);
+    max-width: 520px;
     width: 90%;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    max-height: 80vh;
+    box-shadow: var(--shadow-xl, 0 16px 48px rgba(0, 0, 0, 0.15));
+    max-height: 85vh;
     overflow-y: auto;
 }
 
@@ -243,100 +265,132 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px;
-    border-bottom: 1px solid #eee;
+    padding: 28px;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
 }
 
 .cookie-settings-header h2 {
     margin: 0;
-    font-size: 20px;
-    color: #1a1a1a;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text, #1a1a1a);
 }
 
 .cookie-settings-close {
     background: none;
     border: none;
-    font-size: 28px;
-    color: #999;
+    color: var(--color-text-muted, #5a5a5a);
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s;
+    transition: color var(--transition-base, 200ms ease);
 }
 
 .cookie-settings-close:hover {
-    color: #1a1a1a;
+    color: var(--color-text, #1a1a1a);
 }
 
 .cookie-settings-body {
-    padding: 25px;
+    padding: 28px;
 }
 
 .cookie-category {
-    margin-bottom: 25px;
+    margin-bottom: 28px;
+}
+
+.cookie-category:last-child {
+    margin-bottom: 0;
 }
 
 .cookie-category-header {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 14px;
+    margin-bottom: 12px;
 }
 
 .cookie-category-header input[type="checkbox"] {
-    margin-top: 2px;
+    margin-top: 4px;
     cursor: pointer;
     width: 18px;
     height: 18px;
+    accent-color: var(--color-brand, #00352F);
 }
 
 .cookie-category-header label {
     cursor: pointer;
-    color: #1a1a1a;
+    color: var(--color-text, #1a1a1a);
     margin: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .cookie-category-description {
-    margin: 0 0 0 30px;
+    margin: 0 0 0 32px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 13px;
-    color: #666;
-    line-height: 1.5;
+    color: var(--color-text-secondary, #5a5a5a);
+    line-height: 1.6;
 }
 
 .cookie-settings-footer {
-    padding: 20px 25px;
-    border-top: 1px solid #eee;
+    padding: 24px 28px;
+    border-top: 1px solid var(--color-border, #e5e7eb);
     display: flex;
     justify-content: flex-end;
 }
 
-.cookie-settings-footer .cookie-consent-btn {
-    min-width: 150px;
-}
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .cookie-consent-container {
+    .cookie-consent-banner {
+        padding: 20px 16px;
+    }
+
+    .cookie-consent-wrapper {
         flex-direction: column;
         gap: 20px;
     }
 
     .cookie-consent-actions {
-        min-width: auto;
         width: 100%;
         flex-direction: column;
+        min-width: auto;
     }
 
-    .cookie-consent-btn {
+    .cookie-btn {
         width: 100%;
+    }
+
+    .cookie-consent-links {
+        gap: 12px;
     }
 
     .cookie-settings-content {
         max-height: 90vh;
+        max-width: 95vw;
+    }
+
+    .cookie-settings-header,
+    .cookie-settings-body,
+    .cookie-settings-footer {
+        padding: 20px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .cookie-consent-banner,
+    .cookie-settings-modal,
+    .cookie-btn,
+    .cookie-link {
+        animation: none;
+        transition: none;
     }
 }
 </style>
