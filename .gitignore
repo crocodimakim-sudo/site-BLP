@@ -1,0 +1,9 @@
+.omc/
+.DS_Store
+*.log
+node_modules/
+.env
+*.swp
+*.swo
+*~
+.vscode/settings.json
