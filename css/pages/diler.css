@@ -21,7 +21,7 @@
 
     .blp-hero-section { font-family: var(--font-main);
         background: var(--bg-primary);
-        padding: 50px 0 80px;
+        padding: 20px 0 80px;
         width: 100%;
         overflow: hidden; }
 
