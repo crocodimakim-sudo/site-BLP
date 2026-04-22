@@ -171,14 +171,14 @@
   "hotPaths": [
     {
       "path": "pages_php\\catalog.php",
-      "accessCount": 27,
-      "lastAccessed": 1776868617382,
+      "accessCount": 28,
+      "lastAccessed": 1776871742812,
       "type": "file"
     },
     {
       "path": "css\\pages\\catalog.css",
-      "accessCount": 22,
-      "lastAccessed": 1776857174515,
+      "accessCount": 25,
+      "lastAccessed": 1776871776430,
       "type": "file"
     },
     {
@@ -308,6 +308,12 @@
       "type": "directory"
     },
     {
+      "path": "js\\pages\\catalog.js",
+      "accessCount": 4,
+      "lastAccessed": 1776871760060,
+      "type": "file"
+    },
+    {
       "path": "pages_php\\architect.php",
       "accessCount": 3,
       "lastAccessed": 1776840348489,
@@ -329,12 +335,6 @@
       "path": "blocks\\contact-form.php",
       "accessCount": 3,
       "lastAccessed": 1776842655048,
-      "type": "file"
-    },
-    {
-      "path": "js\\pages\\catalog.js",
-      "accessCount": 3,
-      "lastAccessed": 1776851592922,
       "type": "file"
     },
     {

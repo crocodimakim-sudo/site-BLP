@@ -31,7 +31,8 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
         /* === Общие стили карточек продуктов === */
-        .catalog-product-grid { max-width: 1200px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+        /* 2026-04-22: увеличен gap между карточками с 2px на 30px */
+        .catalog-product-grid { max-width: 1200px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 30px; }
         .catalog-product-grid { margin-top: 30px; }
         .catalog-product-grid:first-of-type { margin-top: 50px; }
         .product-card-wrapper { grid-column: 1 / -1; }
@@ -70,7 +71,7 @@
         .product-card.mirrored .product-info { order: 1; }
         .product-card.mirrored .product-image { order: 2; }
 
-        @media (max-width: 900px) { .catalog-product-grid { padding: 20px 16px; }
+        @media (max-width: 900px) { .catalog-product-grid { padding: 20px 16px; gap: 15px; }
             .product-card { grid-template-columns: 1fr; max-height: none; }
             .product-card.mirrored .product-info, .product-card.mirrored .product-image { order: unset; }
             .product-image {}
