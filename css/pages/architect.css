@@ -158,7 +158,10 @@ h2.blp-support-title {color: #1a1a1a;
 .blp-partner-card-wrap { font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     box-sizing: border-box; }
 
@@ -221,4 +224,3 @@ h2.blp-support-title {color: #1a1a1a;
 
 /* Блок характеристик — стили перенесены в css/specs-section.css (глобальные) */
 .architect-specs { margin-bottom: 0; }
-.blp-partner-card-wrap { margin-bottom: 40px; }
