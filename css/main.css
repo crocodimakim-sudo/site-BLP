@@ -400,3 +400,27 @@ p {
     opacity: 1;
   }
 }
+
+/* 2026-04-23: дополнительные breakpoints — мелкие телефоны и широкие экраны */
+
+/* Очень маленькие телефоны (≤375px) */
+@media (max-width: 375px) {
+  h1 { font-size: 22px; }
+  h2 { font-size: 18px; }
+  .blp-container { padding-left: 12px; padding-right: 12px; }
+  .blp-breadcrumbs { padding: 6px 12px; }
+}
+
+/* Широкие мониторы (≥1440px) */
+@media (min-width: 1440px) {
+  .blp-container { max-width: 1320px; }
+  h1 { font-size: 48px; }
+  h2 { font-size: 38px; }
+}
+
+/* Очень широкие мониторы (≥1920px) */
+@media (min-width: 1920px) {
+  .blp-container { max-width: 1600px; }
+  h1 { font-size: 54px; }
+  h2 { font-size: 42px; }
+}
