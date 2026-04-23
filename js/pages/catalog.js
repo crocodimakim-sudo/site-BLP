@@ -29,7 +29,7 @@
 
         return `
             <div id="blpMainImage" class="blp-main-image">
-                <img id="blpImg" src="${slides[0].image}" alt="WALYPAN слайд 1">
+                <img id="blpImg" src="${slides[0].image}" alt="${slides[0].title || 'Линеарные панели WALYPAN серия 1'}">
                 <button class="blp-arrow prev" id="blpPrev" aria-label="Назад">
                     <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
@@ -60,7 +60,9 @@
             console.log('[slider] goToSlide:', { index, total: images.length, currentIndex });
 
             // 2026-04-22: убрана анимация fade — картинка показывается сразу без белого фона
+            // 2026-04-23: обновляем alt при смене слайда для доступности и SEO
             mainImage.src = images[currentIndex].image;
+            mainImage.alt = images[currentIndex].title || ('Линеарные панели WALYPAN серия ' + (currentIndex + 1));
 
             thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
             dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
@@ -114,6 +116,7 @@
             // 2026-04-22: fallback — статические пути если API недоступен
             images = Array.from({ length: 16 }, (_, i) => ({
                 image: `/blp/images-convert/pages/catalog/slider/walypan_slide_${i + 1}.png`,
+                title: `Линеарные панели WALYPAN серия ${i + 1}`,
                 num: i + 1
             }));
             sliderRoot.innerHTML = buildSliderHTML(images);
