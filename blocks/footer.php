@@ -45,11 +45,11 @@
         <div class="footer-bottom">
             <div class="footer-copyright">© 2023 - 2026 ООО «БИЛДИНГПОРТ» ИНН: 7708427307, ОГРН: 1237700843390</div>
             <div class="footer-policies">
-                <a href="/blp/policy" class="footer-policy" target="_blank">Политика конфиденциальности</a>
+                <a href="/blp/policy" class="footer-policy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
                 <span class="footer-policy-divider">•</span>
-                <a href="/blp/cookies" class="footer-policy" target="_blank">Политика cookies</a>
+                <a href="/blp/cookies" class="footer-policy" target="_blank" rel="noopener noreferrer">Политика cookies</a>
                 <span class="footer-policy-divider">•</span>
-                <a href="/blp/consent" class="footer-policy" target="_blank">Согласие на данные</a>
+                <a href="/blp/consent" class="footer-policy" target="_blank" rel="noopener noreferrer">Согласие на данные</a>
             </div>
         </div>
     </div>

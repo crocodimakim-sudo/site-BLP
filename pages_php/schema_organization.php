@@ -32,8 +32,7 @@
         "@type": "ContactPoint",
         "telephone": "+74959849689",
         "contactType": "customer service",
-        "availableLanguage": "Russian",
-        "contactOption": "TollFree"
+        "availableLanguage": "Russian"
       },
       "areaServed": {
         "@type": "Country",
@@ -46,7 +45,10 @@
         "Строительные материалы"
       ],
       "taxID": "7708427307",
-      "vatID": "1237700843390"
+      "identifier": [
+        {"@type": "PropertyValue", "name": "ИНН", "value": "7708427307"},
+        {"@type": "PropertyValue", "name": "ОГРН", "value": "1237700843390"}
+      ]
     },
     {
       "@type": "WebSite",

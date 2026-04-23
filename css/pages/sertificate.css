@@ -12,9 +12,8 @@
         -ms-user-select: none;
         user-select: none; }
 
-    .cert-container { max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 30px;
+    .cert-container { margin: 0 16px;
+        padding: 40px 24px;
         background: #ffffff;
         border: 1px solid #f0f0f0;
         border-radius: 16px;
@@ -169,11 +168,11 @@
         height: 20px; }
 
     /* Кнопка справа */
-    .cert-button-wrapper { flex-shrink: 0;
-        display: flex;
-        align-items: flex-end;
-        margin-top: auto;
-        margin-right: 55px; }
+    .cert-button-wrapper { display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 24px;
+        margin-bottom: 16px; }
 
     .cert-button { display: inline-flex;
         align-items: center;

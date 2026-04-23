@@ -83,9 +83,8 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
           />
           <label for="consent" class="form-checkbox-label">
             Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия
-            <a href="/blp/policy" target="_blank">Политики конфиденциальности</a>,
-            <a href="/blp/cookies" target="_blank">Политики в отношении cookies</a>
-            и <a href="/blp/consent" target="_blank">Согласие на обработку данных</a>
+            <a href="/blp/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a>
+            и <a href="/blp/consent" target="_blank" rel="noopener noreferrer">Согласия на обработку данных</a>
           </label>
           <span class="field-error" data-field="consent"></span>
         </div>
@@ -98,6 +97,7 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
           <button type="submit" class="btn-primary" id="submitBtn">
             <span class="btn-text">Получить предложение</span>
           </button>
+          <p class="form-submit-note">После нажатия «Отправить», форма будет отправлена на указанный адрес электронной почты.</p>
         </div>
 
         <!-- Messages -->

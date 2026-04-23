@@ -24,7 +24,7 @@ ob_start();
             <div class="hero-content">
                 <div class="badge">BLP Board</div>
                 <!-- 2026-04-20: H1 обновлён (+НВФ), subtitle переписан с ключевыми словами, CTA конкретизирован -->
-                <h1 style="margin-bottom: 20px;">Фиброцементные плиты&nbsp;для навесных вентилируемых фасадов</h1>
+                <h1>Фиброцементные плиты&nbsp;для навесных вентилируемых фасадов</h1>
 
                 <div class="hero-tags">
                     <span class="tag">НГ (негорючие)</span>
@@ -34,7 +34,7 @@ ob_start();
                 </div>
 
 
-                <a href="/blp/contacts" class="btn btn-primary" style="margin-top: 0;">Получить техническое предложение</a>
+                <a href="/blp/contacts" class="btn btn-primary">Получить техническое предложение</a>
             </div>
 
             <div class="hero-image-wrapper">

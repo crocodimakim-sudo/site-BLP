@@ -4,27 +4,15 @@
  * Принимает POST-данные (JSON или form-data), валидирует и отправляет письмо
  */
 
-// 2026-04-22: CSRF token validation
-session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $csrf_input = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
-    if (!$csrf_input || !isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $csrf_input)) {
-        header('Content-Type: application/json; charset=utf-8');
-        http_response_code(403);
-        echo json_encode(['error' => 'CSRF token validation failed']);
-        exit;
-    }
-}
-
 header('Content-Type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['ok' => false, 'error' => 'Метод&nbsp;не поддерживается']);
+    echo json_encode(['ok' => false, 'error' => 'Метод не поддерживается']);
     exit;
 }
 
-// Определяем источник данных: JSON&nbsp;или обычная форма
+// 2026-04-23: определяем источник данных ДО CSRF-проверки — JSON body или form-data
 $contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
 if (strpos($contentType, 'application/json') !== false) {
     $raw = file_get_contents('php://input');
@@ -36,6 +24,17 @@ if (strpos($contentType, 'application/json') !== false) {
     }
 } else {
     $input = $_POST;
+}
+
+// 2026-04-23: CSRF-проверка после парсинга input (работает для JSON и form-data)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$csrf_input = isset($input['csrf_token']) ? $input['csrf_token'] : '';
+if (!$csrf_input || !isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $csrf_input)) {
+    http_response_code(403);
+    echo json_encode(['error' => 'CSRF token validation failed']);
+    exit;
 }
 
 // Получаем&nbsp;и очищаем данные
@@ -91,13 +90,28 @@ if (!empty($message)) {
 $headers = "From: noreply@building-port.ru\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-// Пытаемся отправить письмо
+// Отправляем письмо
 $mailSent = @mail($to, $subject, $body, $headers);
 
-// Возвращаем JSON-ответ
+// 2026-04-23: лог заявки в файл независимо от результата mail()
+$logDir = dirname(__DIR__) . '/logs';
+if (!is_dir($logDir)) {
+    @mkdir($logDir, 0755, true);
+}
+$logFile = $logDir . '/leads_' . date('Y-m') . '.log';
+$logLine = date('Y-m-d H:i:s')
+    . ' | ' . $name
+    . ' | ' . $phone
+    . ' | ' . $email
+    . ' | ' . ($company ?: '-')
+    . ' | mail:' . ($mailSent ? 'ok' : 'FAIL')
+    . "\n";
+@file_put_contents($logFile, $logLine, FILE_APPEND | LOCK_EX);
+
 if ($mailSent) {
     echo json_encode(['ok' => true, 'message' => 'Заявка успешно отправлена']);
 } else {
-    // Если mail() не сработал — считаем заявку принятой, но предупреждаем
-    echo json_encode(['ok' => true, 'message' => 'Заявка принята. Мы свяжемся с вами в ближайшее время.']);
+    // 2026-04-23: честный ответ при ошибке mail() — заявка сохранена в лог
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => 'Не удалось отправить заявку. Позвоните нам: +7 (495) 984-96-89']);
 }

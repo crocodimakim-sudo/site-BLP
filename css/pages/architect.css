@@ -38,7 +38,7 @@
     height: 300px;
     object-fit: cover;
     display: block; }
-@media (max-width: 900px) { .blp-architect-hero__container { flex-direction: column; }
+@media (max-width: 900px) { .blp-architect-hero__container { flex-direction: column; gap: 8px; }
     .blp-architect-hero__image { width: 100%; }
     .blp-architect-hero__title { font-size: 26px; } }
 
@@ -48,7 +48,12 @@
     margin: 0 auto;
     padding: 20px 0 0;
     box-sizing: border-box;
-    background: transparent; }
+    background: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+    row-gap: 0; }
 
 .blp-audience-block *,
 .blp-audience-block *::before,
@@ -57,25 +62,35 @@
 .blp-section-title {
     font-weight: 700;
     color: #1a1a1a;
-    margin: 0 0 32px 0;
-    margin-left: 24px;
-    line-height: 1.3; }
+    margin: 0 0 16px 0;
+    margin-left: 32px;
+    line-height: 1.3;
+    grid-column: 1 / -1; }
 
-/* Карточки сверху */
-.blp-cards-grid { display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 20px; }
+/* 2026-04-22: Диптих редизайн — левая колонка карточек, правая колонка услуг */
+
+/* Левая колонка — три карточки вертикально */
+.blp-cards-grid { display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    min-width: 0; }
 
 .blp-card { background: #ffffff;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e5e7eb; }
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #00352F;
+    transition: all 0.2s; }
 
-h2.blp-card-title {color: #1a1a1a;
- margin: 0 0 12px 0;
- line-height: 1.4;}
+.blp-card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+
+h2.blp-card-title { color: #1a1a1a;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    font-size: 16px;
+    font-weight: 600; }
 
 .blp-card-title {
     font-weight: 600;
@@ -88,69 +103,80 @@ h2.blp-card-title {color: #1a1a1a;
     line-height: 1.6;
     margin: 0; }
 
-/* Блок снизу */
+/* Правая колонка — панель услуг */
 .blp-support-block { background: #e5e7eb;
     border-radius: 12px;
     padding: 28px 32px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px; }
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    flex: 1;
+    min-width: 280px; }
 
-.blp-support-content { flex: 1; }
+.blp-support-content { flex: 1;
+    width: 100%; }
 
-h2.blp-support-title {color: #1a1a1a;
- margin: 0 0 16px 0;
- line-height: 1.4;}
+h2.blp-support-title { color: #1a1a1a;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+    font-size: 18px;
+    font-weight: 600; }
 
-.blp-support-title { font-size: 20px;
-    font-weight: 700;
+.blp-support-title { font-size: 18px;
+    font-weight: 600;
     color: #1a1a1a;
     margin: 0 0 16px 0;
     line-height: 1.4; }
 
 .blp-support-list { list-style: none;
     padding: 0;
-    margin: 0; }
+    margin: 0 0 20px 0; }
 
 .blp-support-list li { font-size: 15px;
-    color: #374151;
+    color: #4b5563;
     line-height: 1.7;
     position: relative;
-    padding-left: 16px; }
+    padding-left: 16px;
+    margin-bottom: 8px; }
+
+.blp-support-list li:last-child { margin-bottom: 0; }
 
 .blp-support-list li::before { content: "—";
     position: absolute;
     left: 0;
-    color: #6b7280; }
+    color: #4b5563; }
 
-.blp-support-badge { background: #ffffff;
-    border-radius: 12px;
-    padding: 24px 32px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    flex-shrink: 0; }
+.blp-support-badge { background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    flex-shrink: 0;
+    margin-top: auto;
+    width: 100%;
+    text-align: left; }
 
-.blp-support-badge-text { font-size: 16px;
+.blp-support-badge-text { font-size: 15px;
     font-weight: 600;
-    color: #0f3d2e;
+    color: #00352F;
     line-height: 1.5;
-    margin: 0;
-    text-align: center; }
+    margin: 0; }
 
-/* Mobile */
-@media (max-width: 900px) { .blp-cards-grid { grid-template-columns: 1fr; }
+/* Mobile — переключение на вертикальный стек */
+@media (max-width: 900px) { .blp-audience-block { flex-direction: column;
+        gap: 8px;
+        align-items: stretch; }
 
-    .blp-support-block { flex-direction: column;
-        align-items: flex-start;
-        gap: 24px; }
+    .blp-cards-grid { gap: 16px; }
 
-    .blp-support-badge { width: 100%; } }
+    .blp-support-block { min-width: unset;
+        flex: unset; }
+
+    .blp-support-badge-text { text-align: left; } }
 
 @media (max-width: 480px) { .blp-audience-block { padding: 24px 16px; }
 
-    .blp-section-title { }
-
-    .blp-card { padding: 20px; }
+    .blp-card { padding: 16px; }
 
     .blp-support-block { padding: 20px; } }
 

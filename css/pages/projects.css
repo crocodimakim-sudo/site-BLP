@@ -1,7 +1,7 @@
 /* projects.css - Стили для страницы Объекты */
 
 .projects-modern { max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 16px;
     padding: 20px 0 0 0; }
 
 .projects-section .section-header { margin-bottom: 40px; }

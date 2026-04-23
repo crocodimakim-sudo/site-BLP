@@ -7,6 +7,15 @@ $page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
 $page_desc = 'Контакты BLP Board: +7 (495) 984-96-89, Одинцово, ул. Неделина 6А. Работаем с архитекторами, застройщиками и дилерами. Заявка онлайн — ответим в течение рабочего дня.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/contacts.css">';
 $extra_js = '<script src="/blp/js/pages/contacts.js" defer></script>';
+
+// 2026-04-23: session_start() до ob_start() — иначе CSRF-токен в форме будет пустым
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
     ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
@@ -64,7 +73,8 @@ ob_start();
 <!-- Форма обратной связи -->
 <section class="contacts-form-section">
     <div class="contacts-form-wrapper">
-        <form class="contact-form" id="contactsPageForm" novalidate>
+        <!-- 2026-04-23: добавлены action/method для fallback без JS -->
+        <form class="contact-form" id="contactsPageForm" action="/blp/blocks/send-form.php" method="POST" novalidate>
             <h2 class="contact-form-title">Написать нам</h2>
             <p class="contact-form-desc">Заполните форму — мы ответим&nbsp;в течение рабочего дня</p>
             <div class="contact-form-grid contact-form-grid--3col">

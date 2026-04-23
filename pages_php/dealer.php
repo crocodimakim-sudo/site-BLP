@@ -49,7 +49,7 @@ ob_start();
      ============================================ -->
 <section class="dealer-why-section">
     <div class="blp-container">
-        <h2 class="dealer-section-title">Почему дилеры выбирают BLP Board</h2>
+        <h2 class="dealer-section-title">Почему дилеры выбирают<br>BLP Board</h2>
         <div class="dealer-why-grid">
             <div class="dealer-why-card">
                 <div class="dealer-why-icon">
@@ -77,33 +77,77 @@ ob_start();
 </section>
 
 <!-- ============================================
-     HOW TO BECOME A DEALER
+     HOW TO BECOME A DEALER — 2026-04-22: Timeline redesign
      ============================================ -->
 <section class="dealer-steps-section">
     <div class="blp-container">
         <h2 class="dealer-section-title">Всё просто:</h2>
 
         <div class="dealer-steps-grid">
+
+            <!-- Шаг 1: Подайте заявку — иконка: форма/конверт -->
             <div class="dealer-step-card">
-                <div class="dealer-step-num">1</div>
-                <h3>Подайте заявку</h3>
-                <p>Позвоните или заполните форму.</p>
+                <div class="dealer-step-icon-wrap">
+                    <span class="dealer-step-num">1</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <polyline points="2,4 12,13 22,4"/>
+                    </svg>
+                </div>
+                <div class="dealer-step-text">
+                    <h3>Подайте заявку</h3>
+                    <p>Позвоните или заполните форму.</p>
+                </div>
             </div>
+
+            <!-- Шаг 2: Встреча с менеджером — иконка: рукопожатие/люди -->
             <div class="dealer-step-card">
-                <div class="dealer-step-num">2</div>
-                <h3>Встреча с менеджером</h3>
-                <p>Обсудим условия: в офисе или онлайн.</p>
+                <div class="dealer-step-icon-wrap">
+                    <span class="dealer-step-num">2</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <div class="dealer-step-text">
+                    <h3>Встреча с менеджером</h3>
+                    <p>Обсудим условия: в офисе или онлайн.</p>
+                </div>
             </div>
+
+            <!-- Шаг 3: Подписание договора — иконка: документ с подписью -->
             <div class="dealer-step-card">
-                <div class="dealer-step-num">3</div>
-                <h3>Подписание договора</h3>
-                <p>Фиксируем цены и сроки в договоре.</p>
+                <div class="dealer-step-icon-wrap">
+                    <span class="dealer-step-num">3</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <path d="M8 17c.5-1 1.5-1 2 0s1.5 1 2 0"/>
+                    </svg>
+                </div>
+                <div class="dealer-step-text">
+                    <h3>Подписание договора</h3>
+                    <p>Фиксируем цены и сроки в договоре.</p>
+                </div>
             </div>
-            <div class="dealer-step-card">
-                <div class="dealer-step-num">4</div>
-                <h3>Старт продаж</h3>
-                <p>Получаете образцы и документацию. Продаём вместе.</p>
+
+            <!-- Шаг 4: Старт продаж — акцентная карточка, иконка: ракета/старт -->
+            <div class="dealer-step-card dealer-step-card--final">
+                <div class="dealer-step-icon-wrap">
+                    <span class="dealer-step-num">4</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 3l14 9-14 9V3z"/>
+                    </svg>
+                </div>
+                <div class="dealer-step-text">
+                    <h3>Старт продаж</h3>
+                    <p>Получаете образцы и документацию. Продаём вместе.</p>
+                </div>
             </div>
+
         </div>
     </div>
 </section>

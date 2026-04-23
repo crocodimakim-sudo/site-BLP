@@ -39,6 +39,8 @@ RewriteRule ^install$       pages_php/install.php     [L]
     Header always set X-Content-Type-Options "nosniff"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    # 2026-04-23: CSP Report-Only — собирать нарушения 2 недели, затем перевести в enforce
+    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://api-maps.yandex.ru https://yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.yandex.net https://*.googleapis.com; connect-src 'self' https://www.google-analytics.com; frame-src https://yandex.ru"
 </IfModule>
 
 # 2026-04-20: block access to service files (docs, scripts, backups, git)
@@ -48,9 +50,15 @@ RewriteRule ^install$       pages_php/install.php     [L]
 RedirectMatch 404 /\.git
 RedirectMatch 404 /scripts/
 RedirectMatch 404 /html/
+# 2026-04-23: закрыть служебные папки Claude/OMC/gstack — не попадать в деплой
+RedirectMatch 404 /\.omc
+RedirectMatch 404 /\.gstack
+RedirectMatch 404 /\.claude_work_log
+# 2026-04-23: лог-файлы заявок — только сервер
+RedirectMatch 404 /blp/logs/
 
-# 2026-04-20: custom error pages
-ErrorDocument 404 /blp/pages_php/index.php
+# 2026-04-23: правильная 404-страница (возвращает HTTP 404, не 200)
+ErrorDocument 404 /blp/pages_php/404.php
 ErrorDocument 500 /blp/pages_php/index.php
 
 # 2026-04-22: Gzip compression — extended with AddEncoding + mod_filter wrapper

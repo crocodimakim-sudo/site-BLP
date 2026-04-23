@@ -31,14 +31,6 @@ ob_start();
                     <h1 class="cert-title">Сертификаты фиброцементных панелей — НГ, соответствие требованиям</h1>
                     <p class="cert-subtitle">Полный комплект технической документации, соответствующий требованиям органов строительного надзора&nbsp;и подтверждающий<br> пригодность для применения в строительстве на территории РФ.</p>
                 </div>
-                <div class="cert-button-wrapper">
-                    <a href="/blp/contacts#form" class="cert-button">
-                        <span>Запросить документы</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-                </div>
             </div>
         </div>
 
@@ -119,6 +111,15 @@ ob_start();
                     <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
             </button>
+        </div>
+
+        <div class="cert-button-wrapper">
+            <a href="/blp/contacts#form" class="cert-button">
+                <span>Запросить документы</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
         </div>
 
     </div>

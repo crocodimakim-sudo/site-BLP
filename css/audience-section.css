@@ -4,8 +4,10 @@
 
 .audience-section { width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 16px auto 0;
             padding: 0; }
+
+        .audience-section h2 { margin-bottom: 0; }
 
         /* 2026-04-20: переход на CSS grid, убраны padding-хаки для выравнивания */
         .audience-grid { display: grid;

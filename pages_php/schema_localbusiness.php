@@ -6,6 +6,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://building-port.ru/blp/#localbusiness",
+  "parentOrganization": {"@id": "https://building-port.ru/blp/#organization"},
   "name": "BLP Board",
   "legalName": "ООО «БИЛДИНГПОРТ»",
   "description": "Поставщик фиброцементных панелей для вентилируемых фасадов. Серии NATURE, POLISHED, TEXTURE, WALYPAN.",
@@ -18,13 +19,13 @@
     "streetAddress": "ул. Неделина, 6А",
     "addressLocality": "Одинцово",
     "addressRegion": "Московская область",
-    "postalCode": "143006",
+    "postalCode": "143003",
     "addressCountry": "RU"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "55.6778",
-    "longitude": "37.2734"
+    "latitude": "55.6789",
+    "longitude": "37.2725"
   },
   "openingHoursSpecification": [
     {

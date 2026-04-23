@@ -139,6 +139,7 @@ main > section.hero-main { max-width: none;
            БЕЙДЖИ И ТЕГИ
            ======================================== */
         .badge { display: inline-flex;
+            margin-top: 10px;
             align-items: center;
             gap: 8px;
             color: var(--color-cta);

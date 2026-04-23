@@ -1,6 +1,11 @@
 <?php
-// 2026-04-22: CSRF token initialization
-session_start();
+// 2026-04-23: session с флагами безопасности, идемпотентный старт
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_secure', 1);
+    ini_set('session.cookie_samesite', 'Strict');
+    session_start();
+}
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -99,6 +104,12 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <!-- Page-specific -->
     <?php if (isset($extra_css)) echo $extra_css; ?>
 
+    <!-- 2026-04-23: skip-to-content — WCAG 2.4.1, keyboard navigation -->
+    <style>
+    .skip-to-content{position:absolute;top:-100%;left:1rem;z-index:99999;padding:10px 20px;background:#00352F;color:#fff;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;border-radius:0 0 8px 8px;text-decoration:none;transition:top .15s ease;}
+    .skip-to-content:focus{top:0;outline:3px solid #fff;outline-offset:2px;}
+    </style>
+
     <?php
     // 2026-04-22: Schema.org markup for SEO
     $schema_dir = __DIR__ . '/../pages_php/';
@@ -108,13 +119,15 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     ?>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Перейти к содержимому</a>
+
     <!-- 2026-04-22: Cookie consent banner -->
     <?php include 'cookie-consent-banner.php'; ?>
 
     <?php include 'header.php'; ?>
     <div class="header-spacer"></div>
 
-    <main>
+    <main id="main-content">
         <?php if (isset($page_content)) echo $page_content; ?>
     </main>
 
