@@ -424,3 +424,12 @@ p {
   h1 { font-size: 54px; }
   h2 { font-size: 42px; }
 }
+
+/* 2026-04-23: визуальные breadcrumbs */
+.blp-breadcrumbs { padding: 8px 32px; background: transparent; }
+.blp-breadcrumbs__list { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.blp-breadcrumbs__item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #6b7280; }
+.blp-breadcrumbs__item--current { color: #1a1a1a; font-weight: 500; }
+.blp-breadcrumbs__link { color: #6b7280; text-decoration: none; transition: color 0.15s; }
+.blp-breadcrumbs__link:hover { color: #00352F; }
+.blp-breadcrumbs__sep { color: #9ca3af; }

@@ -126,6 +126,7 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
 
     <?php include 'header.php'; ?>
     <div class="header-spacer"></div>
+    <?php include 'breadcrumbs.php'; ?>
 
     <main id="main-content">
         <?php if (isset($page_content)) echo $page_content; ?>
