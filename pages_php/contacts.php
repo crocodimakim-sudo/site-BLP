@@ -25,6 +25,13 @@ $breadcrumbs = [
 ob_start();
 ?>
 
+<!-- 2026-04-24: CSS scroll-margin-top вместо JS — smooth-scroll браузера затирал JS-скролл -->
+<style>
+@media (max-width: 768px) {
+    #form { scroll-margin-top: 65px !important; }
+}
+</style>
+
 <!-- Контакты -->
 <section class="contacts-section">
     <div class="contacts-container">
@@ -71,7 +78,7 @@ ob_start();
 </section>
 
 <!-- Форма обратной связи -->
-<section class="contacts-form-section">
+<section class="contacts-form-section" id="form">
     <div class="contacts-form-wrapper">
         <!-- 2026-04-23: добавлены action/method для fallback без JS -->
         <form class="contact-form" id="contactsPageForm" action="/blp/blocks/send-form.php" method="POST" novalidate>
@@ -152,7 +159,7 @@ ob_start();
                         class="form-checkbox"
                         required
                     />
-                    <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на обработку персональных данных&nbsp;и принимаю условия <a href="/blp/policy" target="_blank" rel="noopener">Политики конфиденциальности</a></label>
+                    <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на <a href="/blp/consent" target="_blank" rel="noopener noreferrer">обработку персональных данных</a>&nbsp;и принимаю условия <a href="/blp/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a></label>
                     <span class="field-error" data-field="consent"></span>
                 </div>
 

@@ -2,11 +2,11 @@
 
 /* 2026-04-20: H1 intro-header ограничен шириной 1200px с отступом 32px как у остальных блоков */
 /* 2026-04-22: добавлен padding-top: 10px */
-.catalog-intro-header { max-width: 1200px; margin: 0 auto; padding: 20px 32px 0; }
+.catalog-intro-header { max-width: 1200px; margin: 0 auto; padding: 0 32px 0; }
 .catalog-main-title {color: var(--color-text); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em;}
 .catalog-intro-text { font-size: 16px; line-height: 1.6; color: var(--color-text-muted); max-width: 1200px; margin-bottom: 0; }
-@media (max-width: 900px) { .catalog-intro-header { padding: 24px 20px 0; } .catalog-main-title {} }
-@media (max-width: 550px) { .catalog-intro-header { padding: 20px 16px 0; } .catalog-main-title {} }
+@media (max-width: 900px) { .catalog-intro-header { padding: 0 20px 0; } .catalog-main-title {} }
+@media (max-width: 550px) { .catalog-intro-header { padding: 0 16px 0; } .catalog-main-title {} }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--color-bg-soft); font-weight: 500; }
@@ -37,6 +37,8 @@
         .catalog-product-grid { max-width: 1200px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 30px; }
         .catalog-product-grid { margin-top: 30px; }
         .catalog-product-grid:first-of-type { margin-top: 50px; }
+        /* 2026-04-24: scroll-margin-top для мобильной навигации по якорям */
+        @media (max-width: 768px) { .catalog-product-grid { scroll-margin-top: 30px; } }
         .product-card-wrapper { grid-column: 1 / -1; }
         .product-card { width: 100%; background: var(--color-surface); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; transition: box-shadow 0.3s ease; }
         .product-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
@@ -101,7 +103,8 @@
         .blp-product-block .blp-spec-options { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
         .blp-product-block .blp-spec-plate { display: inline-block; padding: 6px 14px; border: 1px solid var(--color-border); background: var(--color-bg-soft); font-size: 14px; font-weight: 500; color: var(--color-text); border-radius: 6px; line-height: 1.2; cursor: default; user-select: text; transition: none; font-family: 'Montserrat', sans-serif; }
         .blp-product-block .blp-image-section { display: flex; flex-direction: column; background: var(--color-bg-soft); width: 600px; height: 600px; position: relative; }
-        .blp-product-block .blp-main-image { position: relative; width: 100%; height: 600px; overflow: hidden; margin: 0; padding: 0; background: var(--color-bg-soft); }
+        .blp-product-block #slider-container { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+        .blp-product-block .blp-main-image { position: relative; width: 100%; flex: 1; min-height: 0; overflow: hidden; margin: 0; padding: 0; background: var(--color-bg-soft); }
         .blp-product-block .blp-card { padding: 0; }
         .blp-product-block .blp-main-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.15s ease, transform 0.5s ease; }
         /* 2026-04-22: класс для плавного fade при смене слайда */

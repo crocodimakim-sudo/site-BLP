@@ -1,5 +1,5 @@
 <!-- Блок характеристик -->
-<div class="blp-specs-block">
+<div class="blp-specs-block" id="characteristics">
     <h2 class="blp-specs-title">Характеристики</h2>
     <div class="blp-specs-layout">
         <div class="blp-specs-table">

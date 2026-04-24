@@ -45,10 +45,17 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 ob_start();
 ?>
 
+<!-- 2026-04-24: CSS scroll-margin-top вместо JS — smooth-scroll браузера затирал JS-скролл -->
+<style>
+@media (max-width: 768px) {
+    #nature, #polished, #texture, #walypan { scroll-margin-top: 65px !important; }
+}
+</style>
+
 <!-- 2026-04-20: H1 добавлен (критическая SEO-ошибка — ранее отсутствовал) -->
 <!-- 2026-04-20: ограничение ширины H1 до 1200px с отступом как у остальных блоков -->
 <div class="catalog-intro-header">
-    <h1 class="catalog-main-title">Каталог фиброцементных панелей BLP Board</h1>
+    <h1 class="catalog-main-title">Каталог фиброцементных панелей<br>BLP Board</h1>
     <p class="catalog-intro-text">Крупноформатные фиброцементные панели НГ (К0) для навесных вентилируемых фасадов (НВФ). 4 серии, окрашены в массе — цвет проходит через весь слой материала, не выгорает. Соответствуют ГОСТ.</p>
 </div>
 

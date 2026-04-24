@@ -2,7 +2,7 @@
 // 2026-04-22: Privacy policy page with structured HTML content
 require_once __DIR__ . '/../blocks/image-helper.php';
 
-$page_title    = 'Политика конфиденциальности и обработки персональных данных — BLP Board';
+$page_title    = 'Политика конфиденциальности — BLP Board';
 $page_canonical = 'https://building-port.ru/blp/policy/';
 $page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
 $page_desc = 'Политика конфиденциальности BLP Board. Как мы обрабатываем ваши персональные данные, какие права вы имеете, и как связаться с нами.';
@@ -18,8 +18,8 @@ ob_start();
 
 <div class="policy-container">
     <div class="policy-header">
-        <h1 class="policy-title">Политика конфиденциальности и обработки персональных данных</h1>
-        <p class="policy-subtitle">BLP Board | Дата последнего обновления: 22 апреля 2026 г.</p>
+        <h1 class="policy-title">Политика конфиденциальности</h1>
+        <p class="policy-subtitle">BLP Board</p>
     </div>
 
     <div class="policy-content">
@@ -219,7 +219,6 @@ ob_start();
         <hr>
 
         <p><strong>© 2026 BLP Board. Все права защищены.</strong></p>
-        <p><strong>Версия 2.0</strong> / Дата создания: 22 апреля 2026 г.</p>
     </div>
 </div>
 

@@ -19,7 +19,7 @@ ob_start();
 
 <!-- Блок MOUNTING -->
 <div class="blp-mounting-block">
-    <h1 class="blp-mounting-title">Варианты крепления панелей&nbsp;к подсистеме</h1>
+    <h2 class="blp-mounting-title">Варианты крепления панелей&nbsp;к подсистеме</h2>
     <div class="blp-mounting-divider"></div>
 
     <!-- Видимый способ -->

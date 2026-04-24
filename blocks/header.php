@@ -58,7 +58,7 @@
                     <a href="tel:+74959849689" class="phone">+7 (495) 984-96-89</a>
                     <a href="mailto:info@building-port.ru" class="email">info@building-port.ru</a>
                 </div>
-                <a href="/blp/contacts" class="cta-button" rel="noopener noreferrer">Обратный звонок</a>
+                <a href="/blp/contacts#form" class="cta-button" rel="noopener noreferrer">Обратный звонок</a>
                 <button class="mobile-toggle" aria-label="Открыть меню навигации" aria-expanded="false" aria-controls="mobileNav">
                     <span></span>
                     <span></span>
@@ -123,7 +123,7 @@
             <div class="mobile-contacts">
                 <a href="tel:+74959849689" class="mobile-phone">+7 (495) 984-96-89</a>
                 <a href="mailto:info@building-port.ru" class="mobile-email">info@building-port.ru</a>
-                <a href="/blp/contacts" class="mobile-cta" rel="noopener noreferrer">Обратный звонок</a>
+                <a href="/blp/contacts#form" class="mobile-cta" rel="noopener noreferrer">Обратный звонок</a>
             </div>
         </nav>
     </header>

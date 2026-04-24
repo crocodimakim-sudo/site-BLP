@@ -178,11 +178,11 @@
 
 .header .email:hover { opacity: 0.7; }
 
-/* 2026-04-22: removed border from cta-button for mobile */
+/* 2026-04-24: thin white border on desktop CTA button */
 .header .cta-button { display: inline-block;
     background: transparent;
     color: white;
-    border: none;
+    border: 1px solid rgba(255,255,255,0.6);
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 14px;

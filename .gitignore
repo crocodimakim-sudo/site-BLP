@@ -1,4 +1,5 @@
 .omc/
+.claude_work_log/
 .DS_Store
 *.log
 node_modules/

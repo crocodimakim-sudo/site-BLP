@@ -1,793 +1,153 @@
-# Site-Kimi Project Instructions
+# Site-Kimi — BLP Board (XAMPP локально)
 
-**Язык общения:** Русский 🇷🇺
+**Язык:** Русский | **XAMPP:** `http://localhost/blp/`  
+**Бэкап:** `D:/Claude Code/site-blp/site-kimi-backup/`
 
-## 🔴 ПРАВИЛО СИНХРОНИЗАЦИИ XAMPP — ОБЯЗАТЕЛЬНО
+---
 
-**После каждого изменения файла — СРАЗУ копировать в XAMPP:**
+## 🔴 ПРАВИЛО №1 — SYNC ПОСЛЕ КАЖДОГО ИЗМЕНЕНИЯ
+
 ```bash
 cp -f "D:/Claude Code/site-blp/site-kimi/[файл]" "C:/xampp/htdocs/blp/[файл]"
 ```
-**Если говоришь пользователю "проверяй" — значит ты УЖЕ скопировал ВСЕ изменённые файлы в XAMPP и проверил через curl или grep что изменения там есть. Никогда не говори "проверяй" до синхронизации.**
+Никогда не говорить "проверяй" без синхронизации.
 
 ---
 
-**🔴 ГЛАВНОЕ ПРАВИЛО — БЕЗ ИСКЛЮЧЕНИЙ:**
-**ВСЕ ИЗОБРАЖЕНИЯ ЛЕЖАТ В:** `D:\Claude Code\site-blp\site-kimi\images\`
-**И БОЛЬШЕ НИГДЕ!**
-- НЕ берём из других мест
-- НЕ ищем в интернете
-- НЕ скачиваем из tildacdn без распределения по папкам
-- Смотрим что там лежит → используем то что есть
+## 🔴 ПРАВИЛО №2 — ИЗОБРАЖЕНИЯ
+
+- Оригиналы: `images/` (только загрузка, не трогать скриптами)
+- Оптимизированные: `images-convert/` (всегда использовать в PHP)
+- Пути в PHP → всегда `/blp/images-convert/...`
+
+Обновление: `php scripts/convert_images.php` + `robocopy images-convert C:/xampp/htdocs/blp/images-convert /E /PURGE`
 
 ---
 
-## Архитектура изображений
-
-**Два каталога — разные роли:**
-
-| Папка | Кто работает | Назначение |
-|-------|-------------|------------|
-| `images/` | Менеджер | Оригиналы — только загрузка, не трогать скриптами |
-| `images-convert/` | Скрипт | Оптимизированные копии (50% размера) — создаются автоматически |
-
-**Правила:**
-- Менеджер загружает оригиналы в `images/` — и больше ничего не делает
-- Скрипт `scripts/convert_images.php` автоматически создаёт оптимизированные версии в `images-convert/`
-- `images-convert/` можно полностью удалить и пересоздать — данные не потеряются
-- **Все пути в PHP/JS ссылаются на `images-convert/`**, не на `images/`
-
----
-
-## 🔴 ПОЛНЫЙ АЛГОРИТМ ЗАГРУЗКИ И ОБНОВЛЕНИЯ ФОТОГРАФИЙ (2026-04-22)
-
-**ПРОБЛЕМА:** Скрипт `convert_images.php` имел логику `if (filemtime($src) <= filemtime($dst)) continue` которая ПРОПУСКАЛА пересоздание если images-convert/ файл был новый. Это приводило к сохранению старых данных даже после обновления исходников.
-
-**РЕШЕНИЕ:** Полная переделка workflow.
-
-### ШАГ 1: Менеджер загружает в `images/`
-```
-D:\Claude Code\site-blp\site-kimi\images\
-├── pages\
-│   ├── index\
-│   ├── catalog\
-│   └── kreplenie\
-│       ├── vidimoe\
-│       │   ├── mount_visible_facade.png  ← ОРИГИНАЛ (переписать файл с новым контентом)
-│       │   └── mount_visible_rivets.png
-│       └── skritoe\
-│           └── big.jpg
-└── blocks\
-    └── objects\
-        └── object_commercial.png  ← ОБНОВЛЯЕТСЯ МЕНЕДЖЕРОМ
-```
-
-**КРИТИЧНО:** Когда обновляешь файл, просто перезаписываешь его (Ctrl+V поверх старого) или используешь `cp` для замены. Дата модификации автоматически обновляется.
-
-### ШАГ 2: ПОЛНАЯ ОЧИСТКА images-convert/ и пересоздание с нуля
-```bash
-# 1. Удалить images-convert/ полностью (КЛЮЧЕВОЙ ШАГ)
-rm -rf "D:\Claude Code\site-blp\site-kimi\images-convert"
-
-# 2. Запустить скрипт (пересоздаст все файлы)
-php "D:\Claude Code\site-blp\site-kimi\scripts\convert_images.php"
-
-# 3. Проверка
-echo "Source: $(find 'D:\Claude Code\site-blp\site-kimi\images' -type f | wc -l) файлов"
-echo "Convert: $(find 'D:\Claude Code\site-blp\site-kimi\images-convert' -type f | wc -l) файлов"
-```
-
-**Почему DELETE перед запуском?**
-- Скрипт пропускает файлы если они "не старше" исходников
-- Удаление заставляет скрипт пересоздавать ВСЕ файлы
-- Таким образом уходят старые данные, кэши, ошибки конвертации
-
-### ШАГ 3: Синхронизировать в XAMPP
-```bash
-# Удалить старую копию в XAMPP
-rm -rf "C:\xampp\htdocs\blp\images-convert"
-
-# Копировать свежую
-cp -r "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\"
-
-# Проверка
-ls "C:\xampp\htdocs\blp\images-convert\pages\kreplenie\vidimoe\"
-ls "C:\xampp\htdocs\blp\images-convert\blocks\objects\"
-```
-
-### ШАГ 4: Очистка браузера и XAMPP кэша
-```bash
-# Браузер: Ctrl+Shift+Delete → очистить кэш
-# ИЛИ: Ctrl+F5 (hard refresh) на нужной странице
-
-# XAMPP PHP opcache (если включён):
-# C:\xampp\php\php.exe -r "opcache_reset();"  # сбросить opcache
-```
-
-### Итоговая проверка
-```bash
-# 1. HTTP 200
-curl -sI "http://localhost/blp/kreplenie" | head -1
-
-# 2. Картинки загружаются (должно быть 9 для kreplenie)
-curl -s "http://localhost/blp/kreplenie" | grep -o '<img[^>]*kreplenie' | wc -l
-
-# 3. Objects загружаются
-curl -s "http://localhost/blp/" | grep -o 'object_commercial' | wc -l
-```
-
----
-
-**Запуск конвертации (старый способ, НЕ ИСПОЛЬЗУЙ):**
-```bash
-php scripts/convert_images.php
-```
-⚠️ **Используй вместо этого:** ШАГ 2 выше (с DELETE перед скриптом)
-
-**Структура `images-convert/` зеркалирует `images/`:**
-```
-images-convert/
-├── pages/
-│   ├── index/, catalog/, projects/, devops/, architect/
-│   ├── kreplenie/, diler/, sertificate/, contacts/, policy/
-└── blocks/
-    ├── products/, objects/, partners/
-```
-
----
-
-## 📋 WORKFLOW: Обновление контента и изображений
-
-### ⚠️ СТРОГИЙ АЛГОРИТМ (БЕЗ ИСКЛЮЧЕНИЙ)
-
-**Этап 1: Менеджер загружает оригиналы**
-1. Загрузить новые фото в `D:\Claude Code\site-blp\site-kimi\images\[путь]\`
-2. Переименовать файлы по смыслу (walypan_slide_1.png, series-nature.png и т.д.)
-3. **СТОП.** Менеджер НЕ трогает эти файлы больше
-
-**Этап 2: Claude Code запускает конвертацию**
-1. Запустить скрипт:
-   ```bash
-   php D:\Claude Code\site-blp\site-kimi\scripts\convert_images.php
-   ```
-   
-2. Скрипт выполняет **в точном порядке**:
-   - **Шаг A (СКАНИРОВАНИЕ):** Сканирует все файлы в `images/`
-   - **Шаг B (СОЗДАНИЕ):** Создаёт PNG + WebP версии в `images-convert/` (50% размера)
-   - **Шаг C (УДАЛЕНИЕ):** Удаляет из `images-convert/` все файлы, оригиналов которых больше нет в `images/`
-   - **Шаг D (ГОТОВО):** images-convert/ содержит только актуальные файлы (не более, не менее)
-
-3. **Проверка после скрипта:**
-   ```bash
-   # Убедиться что скрипт завершился успешно
-   echo $?  # Должно быть 0
-   ```
-
-**Этап 3: Быстрая синхронизация только измененных файлов в XAMPP**
-
-⚠️ **ОПТИМИЗАЦИЯ:** Копируем ТОЛЬКО измененные файлы (не целые папки) — для скорости!
-
-```bash
-# Шаг 1: Синхронизировать файлы (копирует только новые/измененные, удаляет orphaned)
-robocopy "D:\Claude Code\site-blp\site-kimi\images-convert" "C:\xampp\htdocs\blp\images-convert" /E /PURGE /R:1 /W:1
-
-# Или более быстрый вариант через rsync (если установлен):
-rsync -av --delete "D:/Claude Code/site-blp/site-kimi/images-convert/" "C:/xampp/htdocs/blp/images-convert/"
-
-# Шаг 2: Проверить что синхронизация прошла
-ls -1 "C:\xampp\htdocs\blp\images-convert\pages\catalog\slider\" | wc -l
-# Должно совпадать с:
-ls -1 "D:\Claude Code\site-blp\site-kimi\images-convert\pages\catalog\slider\" | wc -l
-```
-
-⏱️ **Скорость:** robocopy копирует ТОЛЬКО измененные файлы ~3-5 сек (вместо 10 минут на полное удаление+копирование)
-
-**Этап 4: Проверка на браузере**
-- Открыть http://localhost/blp/[страница]
-- Визуально убедиться: картинки загружаются, нет broken-image иконок
-- Проверить консоль браузера (F12) — нет 404 ошибок
-
----
-
-## ⚠️ ЧАСТЫЕ ОШИБКИ (КОТОРЫЕ УЖЕ СЛУЧАЛИСЬ)
-
-### ❌ Ошибка 1: Дубликаты WebP в слайдере
-**Проблема:** В images-convert/ создаётся PNG + WebP, но код загружает обе версии как отдельные слайды (32 вместо 16).
-
-**Причина:** convert_images.php создаёт альтернативный формат WebP, но PHP код не фильтрует его.
-
-**Решение:** В `pages_php/catalog.php` строке ~27 должен быть **только PNG/JPG**, БЕЗ WebP:
-```php
-if (preg_match('/\.(jpg|jpeg|png)$/i', $entry) && !preg_match('/^\./', $entry)) {
-    // WebP будет загружен автоматически через render_image()
-}
-```
-✅ **Эта строка уже правильная.**
-
-### ❌ Ошибка 2: Старые файлы остаются в XAMPP
-**Проблема:** После обновления контента, старые файлы всё ещё видны на сайте.
-
-**Причина:** Копировали новые файлы поверх старых (cp -r dest/*), не удаляя старое.
-
-**Решение:** ВСЕГДА полностью удалять старую папку на XAMPP **перед** копированием новой:
-```bash
-rm -rf "C:\xampp\htdocs\blp\images-convert"  # Удалить полностью
-cp -r "..." "C:\xampp\htdocs\blp\"          # Копировать свежую
-```
-✅ **Эта процедура теперь прописана выше.**
-
-### ❌ Ошибка 3: Неправильные пути в PHP после смены имён файлов
-**Проблема:** Менеджер переименует файл в `images/`, но `pages_php/` всё ещё ссылается на старое имя.
-
-**Причина:** Пути в PHP кодируются вручную, а convert_images.php только копирует файлы (не обновляет PHP).
-
-**Решение:** Если менеджер переименовал файл — ВСЕГДА проверить и обновить пути в `pages_php/`:
-```bash
-grep -r "старое_имя.jpg" "D:\Claude Code\site-blp\site-kimi\pages_php\"
-# Если найдено — обновить на новое имя
-```
-✅ **Эту проверку нужно добавить в процесс.**
-
-### ❌ Ошибка 4: Забыли скопировать PHP файл в XAMPP
-**Проблема:** Обновили код PHP, синхронизировали images/, но PHP файл остался старый на XAMPP.
-
-**Причина:** Синхронизация images/ не касается pages_php/, blocks/, css/ — их нужно копировать отдельно.
-
-**Решение:** Если менял PHP/CSS/JS — ВСЕГДА отдельно копировать:
-```bash
-cp -f "D:\Claude Code\site-blp\site-kimi\pages_php\catalog.php" "C:\xampp\htdocs\blp\pages_php\catalog.php"
-cp -f "D:\Claude Code\site-blp\site-kimi\css\pages\catalog.css" "C:\xampp\htdocs\blp\css\pages\catalog.css"
-```
-✅ **Это уже в ПРАВИЛЕ СИНХРОНИЗАЦИИ выше.**
-
----
-
-## 📋 АВТОМАТИЧЕСКАЯ СИНХРОНИЗАЦИЯ (Production-Ready)
-
-### ✨ Новая архитектура (2026-04-22)
-
-**Как это работает:**
-1. Менеджер загружает фотографии в `images/`
-2. Windows Task Scheduler запускает `auto_sync.php` каждый час
-3. Скрипт конвертирует только НОВЫЕ файлы
-4. Копирует только новые файлы на XAMPP (~0.14 сек)
-5. ✅ Всё готово на сайте
-
-**Процесс полностью автоматический — менеджер ничего не нажимает!**
-
----
-
-### 🔧 Настройка Windows Task Scheduler (один раз)
-
-**Шаг 1: Открыть Task Scheduler**
-```
-Win + R → taskschd.msc
-```
-
-**Шаг 2: Создать новую задачу**
-- Right-click на "Task Scheduler" → "Create Basic Task"
-- Name: "BLP Board Auto Sync Images"
-- Description: "Automatically converts and syncs new images"
-
-**Шаг 3: Триггер (когда запускать)**
-- Trigger: "Daily" OR "On a schedule"
-- Repeat task every: 1 hour
-- Start: 08:00 (или любое время)
-
-**Шаг 4: Действие (что запускать)**
-- Action: "Start a program"
-- Program: `D:\Claude Code\site-blp\site-kimi\scripts\run_sync.bat`
-- Start in: `D:\Claude Code\site-blp\site-kimi\scripts`
-
-**Шаг 5: Сохранить**
-- Finish
-- Будет просить пароль Windows — введи
-
-**Проверка:**
-- Task Scheduler покажет последний запуск
-- Логи сохраняются в `scripts/sync.log`
-
----
-
-### 📋 Ручной запуск (если нужно срочно)
-
-```bash
-"D:\Claude Code\site-blp\site-kimi\scripts\run_sync.bat"
-```
-
-или
-
-```bash
-"C:\xampp\php\php.exe" "D:\Claude Code\site-blp\site-kimi\scripts\auto_sync.php"
-```
-
----
-
-### 📊 Как это работает на домене
-
-**На боевом сервере (Linux/Ubuntu):**
-```bash
-# Добавить в crontab
-0 * * * * php /var/www/site-blp/scripts/auto_sync.php >> /var/www/site-blp/scripts/sync.log 2>&1
-```
-
-Это запустит скрипт каждый час в фоне. CPU нагрузка = почти 0.
-
----
-
-### ✅ Преимущества этого подхода
-
-1. **Менеджер просто загружает** — не нажимает кнопок
-2. **Быстро** — 0.14 сек на синхронизацию
-3. **Надежно** — только новые файлы копируются
-4. **Масштабируется** — работает на домене без проблем
-5. **Логирует** — всё записывается в sync.log
-6. **Автоматический откат** — orphaned файлы удаляются
-
----
-
-### 📝 Логи синхронизации
-
-Проверить что произошло:
-```bash
-tail "D:\Claude Code\site-blp\site-kimi\scripts\sync.log"
-```
-
-Пример лога:
-```
-[2026-04-22 14:00:01] === SYNC START ===
-[2026-04-22 14:00:01] Step 1: Converting images...
-[2026-04-22 14:00:01] Conversion done
-[2026-04-22 14:00:02] Step 2: Syncing to XAMPP...
-[2026-04-22 14:00:02] Sync completed successfully
-[2026-04-22 14:00:02] Files: src=221, xampp=221
-[2026-04-22 14:00:02] === SYNC DONE (0.14 sec) ===
-```
-
----
-
-## ⚠️ КРИТИЧЕСКОЕ ПРАВИЛО: Удаление фотографий
-
-**Скрипт `convert_images.php` НЕ удаляет orphaned файлы автоматически, если оригинал был удалён из `images/`.**
-
-### Что происходит
-1. Менеджер загружает фото в `images/pages/[папка]/`
-2. Скрипт создаёт оптимизированные копии в `images-convert/pages/[папка]/`
-3. Менеджер удаляет фото из `images/pages/[папка]/`
-4. **ОПАСНОСТЬ:** Конвертированные копии остаются в `images-convert/` и продолжают отображаться на сайте
-
-### Решение — Запускать скрипт с удалением orphaned:
-```bash
-php D:\Claude Code\site-blp\site-kimi\scripts\convert_images.php
-```
-Скрипт теперь автоматически удаляет из `images-convert/` все файлы, оригиналов которых нет в `images/`.
-
-### Ручная синхронизация (если скрипт не запускался)
-```powershell
-# Сравнить папки и удалить лишнее
-$src = Get-ChildItem "D:\Claude Code\site-blp\site-kimi\images\pages\projects\sapronova" -Filter *.jpg | Select-Object -ExpandProperty BaseName
-$conv = "D:\Claude Code\site-blp\site-kimi\images-convert\pages\projects\sapronova"
-Get-ChildItem $conv | Where-Object { $_.Extension -in '.jpg','.webp' } | ForEach-Object { if ($src -notcontains $_.BaseName) { Remove-Item $_.FullName } }
-```
-
-**Правило:** После любого удаления фото из `images/` — обязательно перезапустить `convert_images.php` и скопировать `images-convert/` в XAMPP.
-
----
-
-## 📋 ПРОЕКТ: Восстановление сайта BLP Board для XAMPP
-
-### Цель
-Привести сайт в рабочее состояние на XAMPP локально, исправить все ошибки, и подготовить к переносу на боевой сервер с сохранением утверждённого дизайна.
-
-### 🔗 СПРАВОЧНЫЕ САЙТЫ (для сверки дизайна и функционала)
-- **https://blpboard.tilda.ws/** — исходный сайт (эталон дизайна, блоков, порядка)
-- **http://localhost/blp/** — локальная версия на XAMPP (текущая работа)
-
-**ПРАВИЛО:** Если что-то не совпадает → смотри tilda.ws как должно быть!
-
-### Текущий статус
-- **Wave 1 (Ошибки):** ✅ 7 исправлено
-- **Wave 2 (Страницы):** ✅ 10 утверждено  
-- **Wave 3.1 (Структура):** ✅ images/ создана (93 файла)
-- **Wave 3.2 (Пути):** ✅ 75 URL замен (tildacdn → /blp/images/)
-- **template.php:** ✅ Исправлены пути header/footer
-- **.htaccess:** ✅ DirectoryIndex добавлен
-- **WALYPAN слайдер:** ✅ Переименованы файлы (walypan_slide_1.png-16.png), обновлён JavaScript
-- **Изображения:** ✅ Синхронизированы, конвертированы PNG+WebP версии
-- **XAMPP:** ✅ Сайт открывается на http://localhost/blp/
-- **Прогресс:** ~90% завершено (ожидает визуальной проверки в браузере)
-
----
-
-## ⚠️ КРИТИЧНАЯ ИНСТРУКЦИЯ: НИКОГДА НЕ ПИСАТЬ "ГОТОВО" ЕСЛИ НЕ ГОТОВО
-
-**ОБЯЗАТЕЛЬНЫЙ ЧЕКЛИСТ ПЕРЕД ТЕМ КАК СКАЗАТЬ "ГОТОВО":**
-
-1. ✅ Открыть В БРАУЗЕРЕ и ВИЗУАЛЬНО проверить:
-   - Картинка ЗАГРУЖАЕТСЯ (не пусто, не broken image)
-   - Текст на странице совпадает с HTML оригиналом
-   - Блоки в правильном порядке
-   - Все ссылки меню кликабельны
-
-2. ✅ ВСЕГДА синхронизировать в XAMPP СРАЗУ:
-   - PHP файл скопирован
-   - Картинки скопированы в /images/
-   - CSS обновлён если менялся
-
-3. ✅ ВСЕГДА проверить CURL на HTTP 200:
-   ```bash
-   curl -s "http://localhost/blp/страница" | grep "ошибки" || echo "OK"
-   ```
-
-4. ✅ НИКОГДА не говорить "готово" если:
-   - Картинка не загружается (broken image, 404)
-   - Ссылки возвращают 404
-   - Синтаксис ошибка в консоли
-   - HTML не совпадает с оригиналом
-   - Что-то из списка TODO ещё не сделано
-
-**ЕСЛИ НАПИСАЛ "ГОТОВО" И ЭТО ЛОЖЬ — потрачены токены впустую. Не делай так.**
-
-## 🔑 КЛЮЧЕВЫЕ ПРАВИЛА
-
-### 1. HTML файлы — источник истины
-**ВСЕ** HTML превью-файлы находятся в `site-kimi/html/` и содержат **правильный контент**:
-- `main-page.html` → index.php
-- `catalog.html` → catalog.php
-- `devops_fixed_final.html` → devops.php
-- И так далее (9 страниц)
-
-**Правило:** При проверке/исправлении страниц — смотри HTML файл как эталон. Тексты, блоки, анимации, стили — всё берёшь из HTML.
-
-### 2. ⚠️ КРИТИЧНО: HTML файлы — ИСТОЧНИК ИСТИНЫ ДЛЯ КАЖДОЙ СТРАНИЦЫ
-Прежде чем менять PHP или блоки — **СРАВНИ с HTML оригиналом**:
-- `html/main-page.html` → как должна выглядеть главная (порядок блоков, дизайн, картинки)
-- `html/catalog.html` → как должен выглядеть каталог
-- `html/diler.html` и т.д. для других страниц
-
-**НИКОГДА** не предполагай что блоки в правильном порядке или дизайне — **ВСЕГДА** проверь HTML!
-
-Процесс:
-1. Открыть html/[страница].html в браузере
-2. Посмотреть порядок блоков, стили, картинки
-3. PHP файл должен точно повторять этот порядок
-4. Все картинки должны быть в `/images/` с правильными путями
-5. ТОЛЬКО ПОТОМ проверить на XAMPP
-
-### 3. Кракозябры — проблема обработки, не исходных файлов
-Если видишь кракозябры (искажённый русский текст, иероглифы):
-- **Причина:** PowerShell или неправильная кодировка при чтении/записи
-- **Решение:** Всегда использовать Python или правильный UTF-8 при работе с русским текстом
-- **Проверка:** Исходный HTML файл в папке `html/` — там всегда правильный текст
-
-### 4. ⚠️ КРИТИЧНО: ПРАВИЛО СТРУКТУРЫ ИЗОБРАЖЕНИЙ
-
-**ГЛАВНОЕ: Имена файлов внутри папок НЕ ВАЖНЫ. Важно СОДЕРЖИМОЕ и ПУТЬ.**
-
-**Правило:**
-- Если в папке есть файлы → **ВСЕ ОНИ** должны отображаться в соответствующем блоке
-- Порядок файлов = порядок вывода на странице
-- Переименовывать файлы смысла нет — просто копируй что есть
-
-**Примеры:**
-
-#### БЛОКИ (повторяются на нескольких страницах)
-```
-images/blocks/products/          ← файлы для блока продуктов (главная, каталог)
-images/blocks/objects/           ← файлы для блока объектов (главная, проекты)
-images/blocks/partners/          ← логотипы партнеров (главная)
-```
-
-#### СТРАНИЦЫ (уникальные файлы + структурированные подпапки)
-```
-images/pages/index/              ← главная
-  ├── index_hero.jpg             (фон hero - ОБЯЗАТЕЛЕН)
-  └── audience/                  (подпапка - картинки для блока Кому подойдут)
-      ├── *.png                  (ВСЕ файлы → все картинки в блоке audience)
-
-images/pages/catalog/            ← каталог
-  ├── 1.jpg, 2.png, 3.png        (для серий NATURE/POLISHED/TEXTURE)
-  └── slider/                    (подпапка WALYPAN слайдер)
-      └── *.png                  (ВСЕ файлы → ВСЕ слайды WALYPAN на странице)
-
-images/pages/projects/           ← проекты
-  ├── sapronova/                 (подпапка проекта 1)
-  │   └── *.jpg                  (ВСЕ файлы → блок проекта Sapronova)
-  ├── school/                    (подпапка проекта 2)
-  │   └── *.jpg                  (ВСЕ файлы → блок проекта School)
-  ├── sud/                       (подпапка проекта 3)
-  │   └── *.jpg/png              (ВСЕ файлы → блок проекта Sud)
-  └── intl/                      (подпапка проекта 4)
-      └── *.jpg/png              (ВСЕ файлы → блок проекта International)
-
-images/pages/kreplenie/          ← крепления
-  └── *.png                      (ВСЕ файлы → все методы крепления в таблице)
-
-images/pages/sertificate/        ← сертификаты
-  └── *.png/jpg                  (ВСЕ файлы → все сертификаты в галерее)
-
-images/pages/architect/          ← архитекторам
-  └── architect_hero.jpg         (+ остальные уникальные файлы)
-
-images/pages/diler/              ← дилерам
-  └── diler_hero.jpg             (+ остальные)
-
-images/pages/devops/             ← девелоперам
-  └── devops_hero.jpg            (+ остальные)
-
-images/pages/contacts/           ← контакты
-  └── *.jpg                      (если нужны)
-
-images/pages/policy/             ← политика
-  └── *.jpg                      (если нужны)
-```
-
-**ПРАВИЛО ДЕЙСТВИЯ:**
-1. Файлы лежат в папке → автоматически все выводятся на странице
-2. Чем больше файлов в папке = чем больше блоков/слайдов на странице
-3. Порядок вывода = алфавитный порядок файлов
-4. Удалил файл из папки = исчез из блока на странице
-5. Добавил файл в папку = появился в блоке на странице
-
-**ПРИМЕРЫ ОШИБОК (которые больше НИКОГДА):**
-- ❌ Брать картинки из других папок (objects → products)
-- ❌ Игнорировать что в папке лежит
-- ❌ Переименовывать файлы в папке projects/*/  (они автоматически все выводятся)
-- ❌ Не синхронизировать папку в XAMPP сразу же
-
-### 📁 СТРУКТУРА ПАПОК ИЗОБРАЖЕНИЙ — ПОЛНЫЙ СПРАВОЧНИК
-
-```
-images/
-├── pages/
-│   ├── index/                    ← фото для главной
-│   │   ├── index_hero.jpg        (фон hero, обязательно)
-│   │   ├── audience_architect.png    (Архитекторам, обязательно)
-│   │   ├── audience_developer.png    (Застройщикам, обязательно)
-│   │   ├── audience_dealer.png       (Дилерам, обязательно)
-│   │   └── who/                  (фото команды если нужны)
-│   ├── catalog/
-│   │   ├── 1.jpg, 2.png, 3.png   (серии NATURE, POLISHED, TEXTURE)
-│   │   ├── walypan_slide_*.png   (варианты WALYPAN если нужны)
-│   │   └── color_palette.png     (палитра цветов)
-│   ├── catalog_slider/           (если есть слайдер)
-│   ├── projects/
-│   │   ├── project_sapronova_*.jpg
-│   │   ├── project_school_*.jpg
-│   │   └── project_*.jpg
-│   ├── devops/, diler/, architect/, kreplenie/, sertificate/, contacts/, policy/
-│   │   ├── [страница]_hero.jpg
-│   │   └── [страница]_*.jpg (по смыслу блока)
-├── blocks/
-│   ├── products/
-│   │   ├── image_product_nature.jpg
-│   │   ├── image_product_polished.png
-│   │   ├── image_product_texture.png
-│   │   └── image_product_walypan_mask.png
-│   ├── objects/
-│   │   ├── object_residential.png
-│   │   ├── object_admin.png
-│   │   ├── object_commercial.png
-│   │   ├── object_healthcare.jpg
-│   │   └── object_education.jpg
-│   ├── partners/
-│   │   ├── partner_logo_1.png ... partner_logo_18.png
-│   ├── benefits/, specs/, contact-form/, color/
-│   │   └── [блок]_*.png/jpg
-├── shared/
-│   ├── header/
-│   │   └── logo-3.svg
-│   ├── footer/
-│   │   └── logo-3.svg
-│   └── common/
-└── STRUKTURA.md
-```
-
-### 5. Файлы НЕ менять без проверки
-- `template.php` — общий шаблон (только если критично)
-- `header.php` — навигация (только если критично)
-- `footer.php` — футер (только если критично)
-
-Новые страницы создавать по паттерну:
-```php
-<?php
-$page_title = '...';
-$page_desc = '...';
-$extra_css = '<link rel="stylesheet" href="css/pages/[страница].css">';
-
-ob_start();
-?>
-<!-- контент из HTML файла -->
-<?php
-$page_content = ob_get_clean();
-include 'template.php';
-```
-
-### 6. Кодировка везде UTF-8 без BOM
-- PHP файлы: UTF-8 без BOM
-- CSS файлы: UTF-8 без BOM
-- JS файлы: UTF-8 без BOM
-- HTML файлы: `<meta charset="UTF-8">`
-
-### 7. Проверка на XAMPP
-Папка скопирована в `C:\xampp\htdocs\blp\`
-Сайт открывается на `http://localhost/blp/`
-
----
-
-## 📊 ПОЛНЫЙ ПЛАН ЗАВЕРШЕНИЯ
-
-Подробно см. в файле **ОТЧЁТ_И_ПЛАН_ФИНАЛЬНЫЙ.md**
-
-### ЭТАП 1: ✅ Критические ошибки (ГОТОВО)
-- K1: Путь send-form.php ✅
-- K2: CSS-анимация fadeInUp ✅
-- K3: Путь CSS kreplenie.php ✅
-- O1: Form action/method ✅
-- O2: Ссылки /privacy → /policy ✅
-- A8.1: $page_desc architect.php ✅
-- P10.1: CSS policy.php ✅
-
-### ЭТАП 2: ✅ Проверка и утверждение 10 страниц (ГОТОВО)
-Волна 1: ✅ Все 10 страниц проверены и утверждены
-- ✅ 2.1-2.6: diler, kreplenie, projects, sertificate, architect, contacts
-- ✅ 2.7-2.8: index, catalog
-- ✅ 2.9: devops
-- ✅ 2.10: policy
-
-Волна 2: ✅ 
-- ✅ 2б.1: Навигация (header/footer) работает
-- ✅ 2б.2: Формы валидированы
-
-Волна 3: ✅
-- ✅ 2в.1: Структура images/ создана (93 файла)
-- ✅ 2в.2: 75 URL замен (tildacdn → /blp/images/)
-
-### ЭТАП 3: ✅ Локализация изображений (ГОТОВО)
-- ✅ Все изображения скачаны и распределены по папкам
-- ✅ Структура images/ создана и заполнена
-- ✅ Имена файлов переименованы по смыслу (image_product_nature.jpg и т.д.)
-- ✅ Пути в PHP обновлены на /blp/images/...
-
-### ЭТАП 3б: 🔄 ТЕКУЩАЯ ЗАДАЧА — Исправление архитектуры путей (В ПРОЦЕССЕ)
-**Проблема:** PHP файлы рассчитаны на запуск из pages_php/ (`include '../blocks/'`),
-но .htaccess ссылается на корневые дубликаты → ошибки include().
-
-**Решение:**
-- 🔄 Удалить дубликаты PHP из корня XAMPP
-- 🔄 Обновить .htaccess → pages_php/catalog.php (не catalog.php)
-- ⏳ Проверить 10 страниц HTTP 200
-
-### ЭТАП 4: ⏳ SEO и мета-теги
-- Добавить canonical URL на все страницы
-- Добавить Open Graph теги
-- Добавить Schema.org JSON-LD разметка
-
-### ЭТАП 5: ⏳ Финальная проверка
-- Все 10 страниц HTTP 200 без ошибок
-- Все ссылки живые
-- Формы отправляют
-- Нет консольных ошибок
-- Мобильная версия
-
-### ЭТАП 6: ⏳ Очистка и перенос на продакшн
-- Удалить .py файлы
-- Удалить вспомогательные .md файлы
-- Оставить: pages_php/, blocks/, css/, js/, images/, .htaccess
-
----
-
-## 📝 СЕССИЯ: 2026-04-18 (текущая)
-
-### Выполнено в этой сессии:
-1. ✅ Wave 3.2: Замена 75 URL (tildacdn → /blp/images/)
-   - Обновлены: header, footer, catalog, kreplenie, sertificate, diler, architect, products, objects, partners (×2)
-2. ✅ Создана полная копия в XAMPP
-3. ✅ Исправлены пути в template.php (header/footer includes)
-4. ✅ Исправлен .htaccess (добавлен DirectoryIndex)
-5. ✅ Переименован логотип (logo-3.svg)
-6. 🔄 Начало скачивания изображений с tildacdn (25+ основных фото)
-
----
-
-## 🔧 ТРЕБУЕМЫЕ ДАННЫЕ ОТ ПОЛЬЗОВАТЕЛЯ
-
-### 1. Проекты (для projects.php)
-Укажите 4 реальных проекта с названиями, городами и категориями:
-```javascript
-{
-  id: 1,
-  name: "???",        // Например: "Поликлиника №5"
-  location: "???",    // Например: "г. Видное, Московская область"
-  tag: "???",         // Например: "Медицина"
-  images: [...]       // URL изображений
+## ⚠️ ВАЖНЫЕ ТЕХНИЧЕСКИЕ НЮАНСЫ
+
+### Мобильный скролл к якорям
+`html { scroll-behavior: smooth }` в main.css + `[id] { scroll-margin-top: 90px }` в catalog.css → JS-скролл (`window.scrollTo`, `scrollTop`) **не работает** — браузерная анимация затирает его.
+
+**Решение:** только CSS `scroll-margin-top` в inline `<style>` на каждой странице:
+```css
+@media (max-width: 768px) {
+    #nature, #polished, #texture, #walypan { scroll-margin-top: 65px !important; }
 }
 ```
 
-### 2. Каталог (для catalog.php)
-Нужно ли создавать полноценный каталог с:
-- 4 серии панелей (NATURE, POLISHED, TEXTURE, WALYPAN)
-- Слайдер для переключения серий
-- Палитра цветов для каждой серии
-- Таблица характеристик
+### WALYPAN слайдер — цепочка flex
+`.blp-image-section { height: 600px; display: flex; flex-direction: column }`
+→ `#slider-container { flex: 1; min-height: 0; display: flex; flex-direction: column }`
+→ `.blp-main-image { flex: 1; min-height: 0 }` (без `height: auto` — ломает `img { height: 100% }`)
 
-Или это может быть позже?
-
-### 3. Крепления (для kreplenie.php)
-Нужна ли таблица характеристик (толщина, длина, плотность и т.д.)?
-
-### 4. Изображения
-Когда папка images/ создана — предоставить все фотографии, распределив по папкам по структуре выше.
+### html { overflow-x: hidden } в main.css
+Создаёт BFC. Не использовать `window.scrollTo()` для позиционирования — не работает на мобиле.
 
 ---
 
-## 🎯 БЫСТРЫЙ СТАРТ
+## ⏳ P0 БАГИ
 
-1. Прочитай этот файл полностью
-2. Посмотри `ОТЧЁТ_И_ПЛАН_ФИНАЛЬНЫЙ.md` для подробного плана
-3. Запусти агентов параллельно (ultrawork/team)
-4. По результатам — исправь найденные ошибки
-5. После завершения Этапа 2 — переходи на Этап 3
-
----
-
-## 📁 ВАЖНЫЕ ФАЙЛЫ
-
-| Файл | Назначение |
-|------|-----------|
-| `ОТЧЁТ_И_ПЛАН_ФИНАЛЬНЫЙ.md` | Подробный план всех этапов |
-| `html/` | Исходные HTML превью (ИСТОЧНИК ИСТИНЫ) |
-| `pages_php/` | PHP страницы |
-| `css/` | Стили |
-| `js/` | JavaScript |
-| `blocks/` | Повторяемые блоки (header, footer, contact-form и т.д.) |
+1. Форма `/contacts`: `contactsPageForm` ≠ `contactForm` в JS → лиды теряются
+2. CSRF+JSON конфликт → все AJAX формы падают с 403
+3. GA4 `G-PLACEHOLDER20260420` → заменить на реальный ID
+4. Изображения проектов до 13 МБ → нужен srcset + compress
 
 ---
 
-## 👥 АГЕНТЫ И СКИЛЫ
+## 📁 СТРУКТУРА ПРОЕКТА
 
-- **Executor (sonnet):** Реализация, исправления, создание файлов
-- **Designer (sonnet):** Визуальная проверка, дизайн
-- **QA-Tester (sonnet):** Функциональное тестирование
-- **Writer (haiku):** Контент, документация
-- **Document-Specialist (sonnet):** SEO, мета-теги
-- **Ultrawork (скилл):** Параллельное выполнение независимых задач
+```
+blocks/
+  template.php          — общий шаблон (header → breadcrumbs → main → footer)
+  header.php            — шапка сайта
+  footer.php            — подвал сайта
+  breadcrumbs.php       — крошки (рендерит если >1 элемента в $breadcrumbs)
+  contact-form.php      — форма обратной связи (переиспользуется)
+  send-form.php         — обработчик формы (AJAX + fallback)
+  benefits.php          — преимущества (index, architect, devops, projects)
+  benefits-section.php  — вариант для catalog (p вместо h4)
+  specs-section.php     — технические характеристики (id="characteristics")
+  objects-section.php   — объекты/проекты
+  partners-section.php  — партнёры
+  partners-slider.php   — слайдер партнёров
+  products-section.php  — блок продуктов
+  audience-section.php  — блок аудитории
+  cookie-consent-banner.php
+  get_projects.php      — API получения проектов
+  image-helper.php      — WebP + lazy load хелпер
 
----
+css/
+  main.css              — reset, типографика, глобальные правила
+  hero-section.css      — загружается глобально
+  header.css, footer.css, contact-form.css
+  benefits.css, specs-section.css, objects-section.css
+  partners-section.css, products-section.css, audience-section.css, animations.css
+  pages/                — постраничные стили (подключаются через $extra_css)
 
-## 🚀 СЛЕДУЮЩИЕ ШАГИ
+js/
+  header.js             — бургер, sticky header
+  contact-form.js       — AJAX отправка формы
+  analytics.js          — GA4
+  pages/                — постраничные скрипты (подключаются через $extra_js)
 
-1. **Волна 1:** Запустить 10 агентов параллельно на проверку всех страниц
-2. **Исправления:** Вторая волна агентов исправляет найденные ошибки
-3. **Утверждение:** После каждой страницы — утверждение ✅ или возврат на исправление
-4. **Финал:** Этапы 3-6 для локализации, SEO и очистки
+pages_php/
+  template.php          — layout-обёртка (включает blocks/template.php)
+  index.php, catalog.php, contacts.php, kreplenie.php
+  architect.php, devops.php, dealer.php, projects.php
+  sertificate.php, policy.php, cookies.php, consent.php, 404.php
+  schema_*.php          — JSON-LD схемы (breadcrumbs, localbusiness, org, products, webpage)
+  — Будущие страницы: compare.php, faq.php, install.php, showcase.php
 
----
-
-## 📦 ВЕРСИОНИРОВАНИЕ И ОТКАТ
-
-**Git репозиторий создан: 2026-04-20**
-
-Проект использует git для сохранения истории и возможности отката при критических ошибках.
-
-### Восстановление последней сохранённой версии
-```bash
-cd D:\Claude Code\site-blp\site-kimi
-git log --oneline          # Показать историю коммитов
-git reset --hard HEAD~1    # Откатить на предыдущий коммит
-git reset --hard [hash]    # Откатить на конкретный коммит
+images/                 — оригиналы (не трогать)
+images-convert/         — оптимизированные WebP + fallback JPG/PNG
+scripts/
+  convert_images.php    — конвертация в WebP
+  generate_webp.php     — генерация WebP
+  generate_og_default.php
+  auto_sync.php, run_sync.bat
+robots.txt, sitemap.xml, .htaccess
+.well-known/llms.txt
 ```
 
-### Проверка статуса
-```bash
-git status                  # Показать изменённые файлы
-git diff                    # Показать различия
-```
+---
 
-**ВАЖНО:** Откат git удалит все несохранённые изменения в файлах, которые были в последнем коммите.
+## ⚙️ СТРАНИЦЫ
+
+| URL | PHP файл | CSS | JS |
+|-----|----------|-----|----|
+| `/` | index.php | css/pages/index.css | js/pages/index.js |
+| `/catalog` | catalog.php | css/pages/catalog.css | js/pages/catalog.js |
+| `/kreplenie` | kreplenie.php | css/pages/kreplenie.css | js/pages/kreplenie.js |
+| `/devops` | devops.php | css/pages/devops.css | — |
+| `/architect` | architect.php | css/pages/architect.css | js/pages/architect.js |
+| `/projects` | projects.php | css/pages/projects.css | js/pages/projects.js |
+| `/dealer` | dealer.php | css/pages/dealer.css | — |
+| `/sertificate` | sertificate.php | css/pages/sertificate.css | js/pages/sertificate.js |
+| `/contacts` | contacts.php | css/pages/contacts.css | js/pages/contacts.js |
+| `/policy` | policy.php | css/pages/policy.css | — |
+| `/cookies` | cookies.php | css/pages/policy.css | — |
+| `/consent` | consent.php | css/pages/policy.css | — |
+| `/404` | 404.php | — | — |
 
 ---
 
-*Файл создан: 2026-04-18*  
-*Обновлен: 2026-04-20*  
-*Версия: 1.1*
+## 📋 БЭКЛОГ
+
+### 🔧 Инфраструктура
+- [ ] База данных — MySQL/SQLite для хранения заявок из форм
+- [ ] Почтовые отбивки — "Спасибо, ваше обращение принято"
+
+### 🖥️ Админ-панель
+- [ ] Редактирование контента (для контент-менеджера)
+- [ ] Управление проектами/объектами и заявками
+
+### 📄 Новые страницы
+- [ ] Блог (структура не определена)
+- [ ] 404 с брендированным дизайном
+
+### 📦 Контент
+- [ ] Объекты — загрузить больше проектов с фото (сейчас до 13 МБ, нужен compress)
+
+### 🧹 Очистка от Tilda
+- [ ] Найти и удалить классы `t-*`, `tl-*`, ссылки на tildacdn.com

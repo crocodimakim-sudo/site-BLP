@@ -5,20 +5,16 @@
 .blp-mounting-block { font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 0;
     box-sizing: border-box; }
 
 .blp-mounting-block *,
 .blp-mounting-block *::before,
 .blp-mounting-block *::after { box-sizing: border-box; }
 
-.blp-mounting-title { font-size: 14px;
-    font-weight: 500;
-    color: #1a1a1a;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0 0 16px 0;
-    line-height: 1.4;
+.blp-mounting-title { color: #1a1a1a;
+    margin: 0 0 24px 0;
+    line-height: 1.3;
     padding-left: 32px; }
 
 .blp-mounting-divider { height: 1px;
@@ -253,8 +249,10 @@
     .blp-compatibility-block { padding: 24px 16px; }
 
     .blp-mounting-title,
-    .blp-compatibility-title { font-size: 12px;
-        font-weight: 500; }
+    .blp-compatibility-title { font-size: 22px;
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: normal; }
 
     .blp-method-header { font-size: 22px; }
 

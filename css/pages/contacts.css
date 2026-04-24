@@ -3,7 +3,7 @@
 /* ===================================================
    Секция контактов
    =================================================== */
-.contacts-section { padding: 20px 0 0;
+.contacts-section { padding: 0;
     background: #ffffff; }
 
 .contacts-container { max-width: 1200px;

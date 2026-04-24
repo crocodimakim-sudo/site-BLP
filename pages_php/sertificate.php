@@ -2,7 +2,7 @@
 // 2026-04-22: image-helper for WebP + lazy-loading support
 require_once __DIR__ . '/../blocks/image-helper.php';
 
-$page_title = 'Сертификаты фиброцементных панелей — НГ, соответствие требованиям';
+$page_title = 'Сертификаты фиброцементных панелей — НГ, техническое свидетельство от ФАУ ФЦС';
 $page_desc = 'Полный комплект технической документации, соответствующий требованиям органов строительного надзора и подтверждающий пригодность для применения в строительстве на территории РФ.';
 // 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
 $page_canonical = 'https://building-port.ru/blp/sertificate/';
@@ -28,7 +28,7 @@ ob_start();
             <div class="cert-header-top">
                 <div class="cert-header-left">
                     <div class="cert-header-accent"></div>
-                    <h1 class="cert-title">Сертификаты фиброцементных панелей — НГ, соответствие требованиям</h1>
+                    <h1 class="cert-title">Сертификаты фиброцементных панелей — НГ, техническое свидетельство от ФАУ ФЦС</h1>
                     <p class="cert-subtitle">Полный комплект технической документации, соответствующий требованиям органов строительного надзора&nbsp;и подтверждающий<br> пригодность для применения в строительстве на территории РФ.</p>
                 </div>
             </div>
@@ -48,7 +48,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_declaration_trts.png', 'Декларация ТР ТС'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_technical_passport.png', 'Технический паспорт (Техническое свидетельство ФАУ ФЦС)'); ?>
                             </div>
                             <div class="slide-number">01</div>
                         </div>
@@ -58,7 +58,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_technical_passport.png', 'Технический паспорт'); ?>
+                                <?php echo render_image('/blp/images-convert/pages/sertificate/cert_declaration_trts.png', 'Декларация ТР ТС'); ?>
                             </div>
                             <div class="slide-number">02</div>
                         </div>

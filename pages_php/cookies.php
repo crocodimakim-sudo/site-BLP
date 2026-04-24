@@ -19,7 +19,7 @@ ob_start();
 <div class="policy-container">
     <div class="policy-header">
         <h1 class="policy-title">Политика в отношении файлов cookies</h1>
-        <p class="policy-subtitle">BLP Board | Дата последнего обновления: 22 апреля 2026 г.</p>
+        <p class="policy-subtitle">BLP Board</p>
     </div>
 
     <div class="policy-content">
@@ -209,10 +209,16 @@ ob_start();
         </ul>
         <p>Мы рассмотрим Ваш вопрос в течение 3 рабочих дней.</p>
 
+        <h2>10. Связанные документы</h2>
+        <p>Ознакомьтесь также с нашими политиками:</p>
+        <ul>
+            <li><a href="/blp/policy"><strong>Политика конфиденциальности и обработки персональных данных</strong></a> — Как мы обрабатываем ваши данные</li>
+            <li><a href="/blp/consent"><strong>Согласие на обработку персональных данных</strong></a> — Форма согласия</li>
+        </ul>
+
         <hr>
 
         <p><strong>© 2026 BLP Board. Все права защищены.</strong></p>
-        <p><strong>Версия 1.0</strong> / Дата создания: 22 апреля 2026 г.</p>
     </div>
 </div>
 

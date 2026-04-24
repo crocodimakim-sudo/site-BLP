@@ -5,7 +5,7 @@
                 <a href="/blp/" class="footer-logo">
                     <img src="/blp/images-convert/shared/header/logo-3.svg" alt="Building Port">
                 </a>
-                <p class="footer-tagline">Архитектурные панели окрашенные&nbsp;в массе&nbsp;и крупным форматом</p>
+                <p class="footer-tagline">Архитектурные панели фиброцементные, окрашенные&nbsp;в массе&nbsp;и крупным форматом</p>
             </div>
 
             <div class="footer-columns">
@@ -16,7 +16,7 @@
                     <a href="/blp/catalog#texture" class="footer-link">TEXTURE</a>
                     <a href="/blp/catalog#walypan" class="footer-link">WALYPAN</a>
                     <a href="/blp/catalog#palette" class="footer-link">Палитра цветов</a>
-                    <a href="/blp/catalog#specs" class="footer-link">Характеристики</a>
+                    <a href="/blp/catalog#characteristics" class="footer-link">Характеристики</a>
                 </div>
 
                 <div class="footer-column">
@@ -43,13 +43,16 @@
         <div class="footer-divider"></div>
 
         <div class="footer-bottom">
-            <div class="footer-copyright">© 2023 - 2026 ООО «БИЛДИНГПОРТ» ИНН: 7708427307, ОГРН: 1237700843390</div>
+            <div class="footer-copyright">
+                <span>© 2026 ООО «БИЛДИНГПОРТ»</span>
+                <span class="footer-copyright-meta">ИНН: 7708427307 · ОГРН: 1237700843390</span>
+            </div>
             <div class="footer-policies">
                 <a href="/blp/policy" class="footer-policy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
                 <span class="footer-policy-divider">•</span>
                 <a href="/blp/cookies" class="footer-policy" target="_blank" rel="noopener noreferrer">Политика cookies</a>
                 <span class="footer-policy-divider">•</span>
-                <a href="/blp/consent" class="footer-policy" target="_blank" rel="noopener noreferrer">Согласие на данные</a>
+                <a href="/blp/consent" class="footer-policy" target="_blank" rel="noopener noreferrer">Согласие на обработку персональных данных</a>
             </div>
         </div>
     </div>
