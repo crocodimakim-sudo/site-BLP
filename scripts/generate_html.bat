@@ -21,42 +21,47 @@ set BASE=http://localhost/blp
 
 echo Скачиваю страницы с localhost...
 
-curl -s -o html\index.html    "%BASE%/"
+curl -s -o html\index.html       "%BASE%/"
 echo   [OK] index.html
 
-curl -s -o html\catalog.html  "%BASE%/catalog"
+curl -s -o html\catalog.html     "%BASE%/catalog"
 echo   [OK] catalog.html
 
-curl -s -o html\kreplenie.html "%BASE%/kreplenie"
+curl -s -o html\kreplenie.html   "%BASE%/kreplenie"
 echo   [OK] kreplenie.html
 
-curl -s -o html\devops.html   "%BASE%/devops"
+curl -s -o html\devops.html      "%BASE%/devops"
 echo   [OK] devops.html
 
-curl -s -o html\architect.html "%BASE%/architect"
+curl -s -o html\architect.html   "%BASE%/architect"
 echo   [OK] architect.html
 
-curl -s -o html\projects.html "%BASE%/projects"
+curl -s -o html\projects.html    "%BASE%/projects"
 echo   [OK] projects.html
 
-curl -s -o html\dealer.html   "%BASE%/dealer"
+curl -s -o html\dealer.html      "%BASE%/dealer"
 echo   [OK] dealer.html
 
 curl -s -o html\sertificate.html "%BASE%/sertificate"
 echo   [OK] sertificate.html
 
-curl -s -o html\contacts.html "%BASE%/contacts"
+curl -s -o html\contacts.html    "%BASE%/contacts"
 echo   [OK] contacts.html
 
-curl -s -o html\policy.html   "%BASE%/policy"
+curl -s -o html\policy.html      "%BASE%/policy"
 echo   [OK] policy.html
 
-curl -s -o html\cookies.html  "%BASE%/cookies"
+curl -s -o html\cookies.html     "%BASE%/cookies"
 echo   [OK] cookies.html
 
-curl -s -o html\consent.html  "%BASE%/consent"
+curl -s -o html\consent.html     "%BASE%/consent"
 echo   [OK] consent.html
 
 echo.
+echo Фиксирую пути (localhost → сервер) для портабельности...
+powershell -NoProfile -Command "Get-ChildItem 'html\*.html' | ForEach-Object { (Get-Content $_.FullName -Encoding UTF8) -replace [regex]::Escape('/blp/'), 'http://204.168.247.38/blp/' | Set-Content $_.FullName -Encoding UTF8 }; Write-Host '  [OK] Пути исправлены'"
+
+echo.
 echo === ГОТОВО! HTML-превью сохранены в папку html\ ===
+echo === Файлы можно открыть на любом компьютере с интернетом ===
 echo.
