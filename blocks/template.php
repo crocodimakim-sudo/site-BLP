@@ -1,12 +1,14 @@
 <?php
-// 2026-04-23: session с флагами безопасности, идемпотентный старт
 if (session_status() === PHP_SESSION_NONE) {
+    // 2026-04-24: cookie security — httponly, samesite strict, strict mode
     ini_set('session.cookie_httponly', 1);
-    ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_samesite', 'Strict');
+    ini_set('session.use_strict_mode', 1);
     session_start();
 }
 if (empty($_SESSION['csrf_token'])) {
+    // 2026-04-24: session_regenerate_id — защита от session fixation
+    session_regenerate_id(true);
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 

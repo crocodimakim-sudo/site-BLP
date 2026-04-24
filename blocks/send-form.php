@@ -37,11 +37,38 @@ if (!$csrf_input || !isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['c
     exit;
 }
 
-// Получаем&nbsp;и очищаем данные
-$name    = isset($input['name'])    ? trim(strip_tags($input['name']))    : '';
-$phone   = isset($input['phone'])   ? trim(strip_tags($input['phone']))   : '';
-$email   = isset($input['email'])   ? trim(strip_tags($input['email']))   : '';
-$company = isset($input['company']) ? trim(strip_tags($input['company'])) : '';
+// 2026-04-24: honeypot — тихо игнорируем ботов
+if (!empty($input['website'])) {
+    echo json_encode(['ok' => true, 'message' => 'Спасибо!']);
+    exit;
+}
+
+// 2026-04-24: rate limit — максимум 5 отправок в час с одного IP
+$_rl_ip   = preg_replace('/[^a-f0-9:.]/', '', $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
+$_rl_dir  = __DIR__ . '/../logs';
+if (!is_dir($_rl_dir)) @mkdir($_rl_dir, 0755, true);
+$_rl_file = $_rl_dir . '/rl_' . md5($_rl_ip) . '.json';
+$_rl_now  = time();
+$_rl_hits = is_file($_rl_file) ? (json_decode(file_get_contents($_rl_file), true) ?: []) : [];
+$_rl_hits = array_values(array_filter($_rl_hits, fn($t) => $_rl_now - $t < 3600));
+if (count($_rl_hits) >= 5) {
+    http_response_code(429);
+    echo json_encode(['ok' => false, 'error' => 'Слишком много запросов. Попробуйте через час.']);
+    exit;
+}
+
+// 2026-04-24: защита от SMTP header injection (CRLF)
+function sanitize_header_field(string $v): string {
+    $v = trim((string)$v);
+    if (preg_match('/[\r\n\0]/', $v)) return '';
+    return strip_tags($v);
+}
+
+// Получаем и очищаем данные
+$name    = sanitize_header_field($input['name']    ?? '');
+$phone   = sanitize_header_field($input['phone']   ?? '');
+$email   = sanitize_header_field($input['email']   ?? '');
+$company = sanitize_header_field($input['company'] ?? '');
 $message = isset($input['message']) ? trim(strip_tags($input['message'])) : '';
 $consent = isset($input['consent']) ? $input['consent'] : false;
 
@@ -107,6 +134,11 @@ $logLine = date('Y-m-d H:i:s')
     . ' | mail:' . ($mailSent ? 'ok' : 'FAIL')
     . "\n";
 @file_put_contents($logFile, $logLine, FILE_APPEND | LOCK_EX);
+
+// 2026-04-24: записать в rate limit + ротация CSRF
+$_rl_hits[] = $_rl_now;
+@file_put_contents($_rl_file, json_encode($_rl_hits), LOCK_EX);
+unset($_SESSION['csrf_token']);
 
 if ($mailSent) {
     echo json_encode(['ok' => true, 'message' => 'Заявка успешно отправлена']);

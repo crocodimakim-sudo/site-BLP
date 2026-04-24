@@ -10,6 +10,9 @@
  * Или добавить в cron: 0 * * * * php /path/to/scripts/auto_sync.php
  */
 
+// 2026-04-24: этот скрипт только для CLI
+if (php_sapi_name() !== 'cli') { http_response_code(403); exit('CLI only'); }
+
 define('BASE_DIR', __DIR__ . '/..');
 define('SRC_DIR', BASE_DIR . '/images');
 define('DST_DIR', BASE_DIR . '/images-convert');

@@ -10,8 +10,8 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
 <section class="contact-form-section">
   <div class="contact-form-wrapper">
     <form class="contact-form" id="contactForm" action="/blp/blocks/send-form.php" method="POST" novalidate>
-      <h2 class="contact-form-title"><?php echo htmlspecialchars($form_title); ?></h2>
-      <p class="contact-form-desc"><?php echo htmlspecialchars($form_desc); ?></p>
+      <h2 class="contact-form-title"><?php echo htmlspecialchars($form_title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></h2>
+      <p class="contact-form-desc"><?php echo htmlspecialchars($form_desc, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></p>
       <div class="contact-form-grid">
 
         <!-- Email -->
@@ -86,6 +86,9 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
           </label>
           <span class="field-error" data-field="consent"></span>
         </div>
+
+        <!-- 2026-04-24: honeypot — ботозащита, не трогать -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
 
         <!-- 2026-04-22: CSRF token -->
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">
