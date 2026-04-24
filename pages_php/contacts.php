@@ -38,7 +38,7 @@ ob_start();
         <div class="contacts-header">
             <!-- 2026-04-20: H1 расширен для локального SEO (было: «Контакты») -->
             <h1 class="contacts-title">Контакты BLP Board</h1>
-            <p class="contacts-subtitle">Одинцово, Московская область. Работаем с архитекторами, застройщиками и дилерами.</p>
+            <p class="contacts-subtitle">Работаем с архитекторами, застройщиками и дилерами. Доставка по всей России.</p>
         </div>
 
         <div class="contacts-grid">
@@ -74,6 +74,7 @@ ob_start();
                 <p class="contacts-value">Одинцово, ул. Неделина, 6А</p>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -187,6 +188,28 @@ ob_start();
 <section class="map-section">
     <div class="map-container">
         <div id="yandex-map" class="yandex-map"></div>
+    </div>
+</section>
+
+<!-- 2026-04-24: реквизиты ООО «Билдингпорт» -->
+<section class="contacts-requisites-section">
+    <div class="contacts-container">
+        <div class="contacts-requisites">
+            <h2 class="contacts-requisites-title">Реквизиты организации</h2>
+            <div class="contacts-requisites-grid">
+                <div class="contacts-requisites-col">
+                    <p><strong>Полное наименование:</strong><br>Общество с ограниченной ответственностью «Билдингпорт»</p>
+                    <p><strong>Краткое наименование:</strong> ООО «Билдингпорт»</p>
+                    <p><strong>ИНН:</strong> 7708427307</p>
+                    <p><strong>КПП:</strong> 770801001</p>
+                    <p><strong>ОГРН:</strong> 1237700843390</p>
+                </div>
+                <div class="contacts-requisites-col">
+                    <p><strong>Юридический и почтовый адрес:</strong><br>107140, г. Москва, ул. Краснопрудная, д. 15, помещ. 3А/2</p>
+                    <p><strong>Фактический адрес:</strong><br>143003, Московская область, г. Одинцово, ул. Неделина, д. 6А</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

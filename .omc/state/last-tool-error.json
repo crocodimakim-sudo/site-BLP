@@ -1,7 +1,7 @@
 {
   "tool_name": "mcp__plugin_mempalace_mempalace__mempalace_diary_write",
-  "tool_input_preview": "{\"agent_name\":\"claude-main\",\"entry\":\"SESSION:2026-04-24|site-kimi.deploy+html|consent.php:fixed(sec1.req+sec5.3yr+sec6.2.ga4+sec10.req)|html/:created(12files,curl)|scripts/generate_html.bat:created|de...",
+  "tool_input_preview": "{\"agent_name\":\"claude-main\",\"entry\":\"SESSION:2026-04-24|site-kimi.contacts.fixes|contacts.php:subtitle→\\\"Работаем.с.архитекторами..Доставка.по.всей.России\\\"|requisites.block:moved.after.map|css.requis...",
   "error": "MCP error -32000: Internal tool error",
-  "timestamp": "2026-04-24T11:15:39.914Z",
+  "timestamp": "2026-04-24T11:42:30.470Z",
   "retry_count": 1
 }

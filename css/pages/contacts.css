@@ -143,3 +143,44 @@
     .contact-form-grid--3col { grid-template-columns: 1fr; }
 
     .form-checkbox-group--full { grid-column: auto; } }
+
+/* 2026-04-24: реквизиты организации */
+.contacts-requisites {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 28px 32px;
+    background: #f8f8f8;
+    border-left: 3px solid #2d6a4f;
+}
+
+.contacts-requisites-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 20px;
+}
+
+.contacts-requisites-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.contacts-requisites-col p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.contacts-requisites-col p:last-child { margin-bottom: 0; }
+
+@media (max-width: 768px) {
+    .contacts-requisites { padding: 20px 16px; }
+    .contacts-requisites-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* 2026-04-24: секция-обёртка для реквизитов */
+.contacts-requisites-section {
+    padding: 0;
+}

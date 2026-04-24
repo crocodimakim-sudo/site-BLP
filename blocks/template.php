@@ -137,6 +137,7 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <?php include 'footer.php'; ?>
     <script src="/blp/js/header.js" defer></script>
     <script src="/blp/js/analytics.js" defer></script>
+    <script src="/blp/js/contact-form.js" defer></script>
     <?php if (isset($extra_js)) echo $extra_js; ?>
 </body>
 </html>
