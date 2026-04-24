@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776841086634,
+  "lastScanned": 1776976489412,
   "projectRoot": "D:\\Claude Code\\site-blp\\site-kimi",
   "techStack": {
     "languages": [],
@@ -34,21 +34,21 @@
     "blocks": {
       "path": "blocks",
       "purpose": null,
-      "fileCount": 17,
-      "lastAccessed": 1776841086610,
+      "fileCount": 19,
+      "lastAccessed": 1776976489396,
       "keyFiles": [
         "audience-section.html",
         "audience-section.php",
         "benefits-section.php",
         "benefits.php",
-        "contact-form.php"
+        "breadcrumbs.php"
       ]
     },
     "css": {
       "path": "css",
       "purpose": null,
       "fileCount": 12,
-      "lastAccessed": 1776841086611,
+      "lastAccessed": 1776976489396,
       "keyFiles": [
         "animations.css",
         "audience-section.css",
@@ -61,14 +61,14 @@
       "path": "html",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1776841086611,
+      "lastAccessed": 1776976489397,
       "keyFiles": []
     },
     "html_preview": {
       "path": "html_preview",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776841086611,
+      "lastAccessed": 1776976489397,
       "keyFiles": [
         "INDEX.md",
         "PREVIEW_PLAN.md",
@@ -79,7 +79,7 @@
       "path": "images",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776841086612,
+      "lastAccessed": 1776976489397,
       "keyFiles": [
         "og-default.jpg",
         "STRUKTURA.md",
@@ -89,18 +89,19 @@
     "images-convert": {
       "path": "images-convert",
       "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1776841086612,
+      "fileCount": 3,
+      "lastAccessed": 1776976489397,
       "keyFiles": [
         "og-default.jpg",
-        "og-default.webp"
+        "og-default.webp",
+        "watermark-pattern.svg"
       ]
     },
     "js": {
       "path": "js",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776841086612,
+      "lastAccessed": 1776976489397,
       "keyFiles": [
         "analytics.js",
         "contact-form.js",
@@ -110,81 +111,130 @@
     "pages_php": {
       "path": "pages_php",
       "purpose": null,
-      "fileCount": 26,
-      "lastAccessed": 1776841086612,
+      "fileCount": 29,
+      "lastAccessed": 1776976489398,
       "keyFiles": [
+        "404.php",
         "architect.php",
         "catalog.php",
         "compare.php",
-        "consent-personal-data-template.md",
-        "contacts.php"
+        "consent-personal-data-template.md"
       ]
     },
     "scripts": {
       "path": "scripts",
       "purpose": "Build/utility scripts",
-      "fileCount": 3,
-      "lastAccessed": 1776841086613,
+      "fileCount": 6,
+      "lastAccessed": 1776976489398,
       "keyFiles": [
+        "auto_sync.php",
         "convert_images.php",
         "generate_og_default.php",
-        "generate_webp.php"
+        "generate_webp.php",
+        "run_sync.bat"
       ]
     },
-    "css\\pages": {
-      "path": "css\\pages",
-      "purpose": "Page components",
-      "fileCount": 15,
-      "lastAccessed": 1776841086614,
+    "аудиты": {
+      "path": "аудиты",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1776976489398,
       "keyFiles": [
-        "architect.css",
-        "catalog.css",
-        "compare.css"
+        "audit-site-kimi-local-2026-04-23.md",
+        "AUDIT_REPORT_2026-04-23.md",
+        "АУДИТ_BLP_BOARD_2026-04-23.md",
+        "АУДИТ_СВОДНЫЙ_2026-04-23.md",
+        "МЕТА-АУДИТ_оценка_двух_аудитов.md"
       ]
     },
     "images\\pages": {
       "path": "images\\pages",
       "purpose": "Page components",
       "fileCount": 0,
-      "lastAccessed": 1776841086615,
+      "lastAccessed": 1776976489400,
       "keyFiles": []
     },
     "images-convert\\pages": {
       "path": "images-convert\\pages",
       "purpose": "Page components",
       "fileCount": 0,
-      "lastAccessed": 1776841086615,
+      "lastAccessed": 1776976489401,
       "keyFiles": []
     },
     "js\\pages": {
       "path": "js\\pages",
       "purpose": "Page components",
       "fileCount": 8,
-      "lastAccessed": 1776841086616,
+      "lastAccessed": 1776976489401,
       "keyFiles": [
         "architect.js",
         "catalog.js",
         "contacts.js"
+      ]
+    },
+    "pages_php\\api": {
+      "path": "pages_php\\api",
+      "purpose": "API routes",
+      "fileCount": 1,
+      "lastAccessed": 1776976489402,
+      "keyFiles": [
+        "slider.php"
       ]
     }
   },
   "hotPaths": [
     {
       "path": "css\\pages\\index.css",
-      "accessCount": 42,
-      "lastAccessed": 1776879238792,
+      "accessCount": 56,
+      "lastAccessed": 1777009681689,
       "type": "file"
     },
     {
       "path": "css\\pages\\catalog.css",
-      "accessCount": 37,
-      "lastAccessed": 1776879834139,
+      "accessCount": 55,
+      "lastAccessed": 1777014646878,
       "type": "file"
     },
     {
       "path": "pages_php\\catalog.php",
-      "accessCount": 30,
-      "lastAccessed": 1776880688753,
+      "accessCount": 54,
+      "lastAccessed": 1777010437174,
+      "type": "file"
+    },
+    {
+      "path": "css\\pages\\dealer.css",
+      "accessCount": 39,
+      "lastAccessed": 1776976528356,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 32,
+      "lastAccessed": 1777015479093,
+      "type": "directory"
+    },
+    {
+      "path": "pages_php\\consent.php",
+      "accessCount": 25,
+      "lastAccessed": 1777026326703,
+      "type": "file"
+    },
+    {
+      "path": "css\\main.css",
+      "accessCount": 24,
+      "lastAccessed": 1777008996780,
+      "type": "file"
+    },
+    {
+      "path": "js\\pages\\catalog.js",
+      "accessCount": 22,
+      "lastAccessed": 1777015473677,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 21,
+      "lastAccessed": 1777011245763,
       "type": "file"
     },
     {
@@ -194,88 +244,124 @@
       "type": "file"
     },
     {
+      "path": "pages_php\\policy.php",
+      "accessCount": 19,
+      "lastAccessed": 1777026174755,
+      "type": "file"
+    },
+    {
       "path": "css\\pages\\kreplenie.css",
-      "accessCount": 12,
-      "lastAccessed": 1776858413051,
+      "accessCount": 17,
+      "lastAccessed": 1776979634666,
       "type": "file"
     },
     {
-      "path": "css\\pages\\diler.css",
-      "accessCount": 12,
-      "lastAccessed": 1776859583025,
+      "path": "pages_php\\sertificate.php",
+      "accessCount": 16,
+      "lastAccessed": 1777006109358,
       "type": "file"
     },
     {
-      "path": "pages_php\\consent.php",
-      "accessCount": 10,
-      "lastAccessed": 1776842871823,
+      "path": "blocks\\contact-form.php",
+      "accessCount": 15,
+      "lastAccessed": 1777016060268,
       "type": "file"
     },
     {
-      "path": "CLAUDE.md",
-      "accessCount": 10,
-      "lastAccessed": 1776864061413,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\kreplenie.php",
-      "accessCount": 10,
-      "lastAccessed": 1776868530237,
-      "type": "file"
-    },
-    {
-      "path": "css\\pages\\dealer.css",
-      "accessCount": 9,
-      "lastAccessed": 1776881089705,
-      "type": "file"
-    },
-    {
-      "path": "js\\pages\\projects.js",
-      "accessCount": 8,
-      "lastAccessed": 1776868603986,
-      "type": "file"
-    },
-    {
-      "path": "js\\pages\\catalog.js",
-      "accessCount": 7,
-      "lastAccessed": 1776872259463,
+      "path": "pages_php\\cookies.php",
+      "accessCount": 15,
+      "lastAccessed": 1777024350431,
       "type": "file"
     },
     {
       "path": "pages_php\\dealer.php",
-      "accessCount": 7,
-      "lastAccessed": 1776881048882,
+      "accessCount": 14,
+      "lastAccessed": 1776884075611,
       "type": "file"
     },
     {
-      "path": "blocks\\products-section.php",
-      "accessCount": 6,
-      "lastAccessed": 1776855350167,
+      "path": "css\\pages\\diler.css",
+      "accessCount": 13,
+      "lastAccessed": 1776883415995,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\kreplenie.php",
+      "accessCount": 13,
+      "lastAccessed": 1776978673022,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\index.php",
+      "accessCount": 12,
+      "lastAccessed": 1777015439036,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\cookie-consent-banner.php",
+      "accessCount": 12,
+      "lastAccessed": 1777015446629,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\footer.php",
+      "accessCount": 11,
+      "lastAccessed": 1777007682721,
       "type": "file"
     },
     {
       "path": "blocks\\template.php",
-      "accessCount": 5,
-      "lastAccessed": 1776841400193,
+      "accessCount": 11,
+      "lastAccessed": 1777016049847,
       "type": "file"
     },
     {
-      "path": "scripts\\auto_sync.php",
-      "accessCount": 5,
-      "lastAccessed": 1776851274108,
+      "path": "pages_php\\architect.php",
+      "accessCount": 10,
+      "lastAccessed": 1776886073762,
       "type": "file"
     },
     {
       "path": ".htaccess",
-      "accessCount": 5,
-      "lastAccessed": 1776855694116,
+      "accessCount": 10,
+      "lastAccessed": 1777023468693,
+      "type": "file"
+    },
+    {
+      "path": "js\\pages\\projects.js",
+      "accessCount": 9,
+      "lastAccessed": 1777015473514,
+      "type": "file"
+    },
+    {
+      "path": "scripts\\auto_sync.php",
+      "accessCount": 9,
+      "lastAccessed": 1777023466036,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\products-section.php",
+      "accessCount": 7,
+      "lastAccessed": 1777005777695,
       "type": "file"
     },
     {
       "path": "pages_php",
-      "accessCount": 5,
-      "lastAccessed": 1776870371193,
+      "accessCount": 7,
+      "lastAccessed": 1777006863059,
       "type": "directory"
+    },
+    {
+      "path": "css\\footer.css",
+      "accessCount": 7,
+      "lastAccessed": 1777007684296,
+      "type": "file"
+    },
+    {
+      "path": "css\\hero-section.css",
+      "accessCount": 6,
+      "lastAccessed": 1776976986247,
+      "type": "file"
     },
     {
       "path": "css\\products-section.css",
@@ -284,9 +370,9 @@
       "type": "file"
     },
     {
-      "path": "css\\footer.css",
+      "path": "blocks\\header.php",
       "accessCount": 5,
-      "lastAccessed": 1776878261711,
+      "lastAccessed": 1777006103480,
       "type": "file"
     },
     {
@@ -296,45 +382,15 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\sertificate.php",
+      "path": "css\\pages\\policy.css",
       "accessCount": 4,
-      "lastAccessed": 1776840324329,
+      "lastAccessed": 1776977155722,
       "type": "file"
     },
     {
-      "path": "pages_php\\policy.php",
+      "path": "pages_php\\projects.php",
       "accessCount": 4,
-      "lastAccessed": 1776842756730,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\cookies.php",
-      "accessCount": 4,
-      "lastAccessed": 1776842804497,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\footer.php",
-      "accessCount": 4,
-      "lastAccessed": 1776867545019,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 4,
-      "lastAccessed": 1776868587002,
-      "type": "directory"
-    },
-    {
-      "path": "pages_php\\index.php",
-      "accessCount": 4,
-      "lastAccessed": 1776877356167,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\architect.php",
-      "accessCount": 4,
-      "lastAccessed": 1776877566289,
+      "lastAccessed": 1776980410108,
       "type": "file"
     },
     {
@@ -344,21 +400,15 @@
       "type": "file"
     },
     {
-      "path": "blocks\\contact-form.php",
-      "accessCount": 3,
-      "lastAccessed": 1776842655048,
-      "type": "file"
-    },
-    {
       "path": "css\\objects-section.css",
       "accessCount": 3,
       "lastAccessed": 1776864960985,
       "type": "file"
     },
     {
-      "path": "css\\main.css",
+      "path": "blocks\\get_projects.php",
       "accessCount": 3,
-      "lastAccessed": 1776870328228,
+      "lastAccessed": 1777015440878,
       "type": "file"
     },
     {
@@ -368,33 +418,9 @@
       "type": "file"
     },
     {
-      "path": "blocks\\cookie-consent-banner.php",
+      "path": "pages_php\\template.php",
       "accessCount": 2,
-      "lastAccessed": 1776841559541,
-      "type": "file"
-    },
-    {
-      "path": "css\\pages\\policy.css",
-      "accessCount": 2,
-      "lastAccessed": 1776842228963,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\projects.php",
-      "accessCount": 2,
-      "lastAccessed": 1776868598347,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\get_projects.php",
-      "accessCount": 2,
-      "lastAccessed": 1776868624403,
-      "type": "file"
-    },
-    {
-      "path": "css\\hero-section.css",
-      "accessCount": 2,
-      "lastAccessed": 1776877290342,
+      "lastAccessed": 1777015447387,
       "type": "file"
     },
     {
@@ -416,12 +442,6 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\template.php",
-      "accessCount": 1,
-      "lastAccessed": 1776840689002,
-      "type": "file"
-    },
-    {
       "path": "pages_php\\consent-personal-data-template.md",
       "accessCount": 1,
       "lastAccessed": 1776841091337,
@@ -431,12 +451,6 @@
       "path": "pages_php\\privacy-policy-template.md",
       "accessCount": 1,
       "lastAccessed": 1776841091450,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\header.php",
-      "accessCount": 1,
-      "lastAccessed": 1776841362215,
       "type": "file"
     },
     {
