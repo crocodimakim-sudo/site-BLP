@@ -143,6 +143,7 @@
       phone: form.phone.value.trim(),
       company: form.company.value.trim(),
       consent: form.consent.checked,
+      marketing: form.marketing ? form.marketing.checked : false,
       // 2026-04-22: добавлен csrf_token для защиты формы
       csrf_token: (document.querySelector('input[name="csrf_token"]') || {}).value || ''
     };

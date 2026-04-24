@@ -87,6 +87,14 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
           <span class="field-error" data-field="consent"></span>
         </div>
 
+        <!-- 2026-04-24: согласие на маркетинговую рассылку -->
+        <div class="form-checkbox-group form-checkbox-group--full">
+            <label class="form-checkbox-label">
+                <input type="checkbox" name="marketing" id="marketing" class="form-checkbox">
+                <span class="form-checkbox-text">Согласен(на) получать информационные материалы и специальные предложения BLP Board</span>
+            </label>
+        </div>
+
         <!-- 2026-04-24: honeypot — ботозащита, не трогать -->
         <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
 

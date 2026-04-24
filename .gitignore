@@ -12,3 +12,4 @@ node_modules/
 images/
 deploy.bat
 rollback.bat
+database/leads.db

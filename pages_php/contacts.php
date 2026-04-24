@@ -164,6 +164,14 @@ ob_start();
                     <span class="field-error" data-field="consent"></span>
                 </div>
 
+                <!-- 2026-04-24: согласие на маркетинговую рассылку -->
+                <div class="form-checkbox-group form-checkbox-group--full">
+                    <label class="form-checkbox-label">
+                        <input type="checkbox" name="marketing" id="marketing" class="form-checkbox">
+                        <span class="form-checkbox-text">Согласен(на) получать информационные материалы и специальные предложения BLP Board</span>
+                    </label>
+                </div>
+
                 <!-- Submit -->
                 <div class="form-submit-wrapper">
                     <button type="submit" class="btn-primary" id="submitBtn">

@@ -149,6 +149,7 @@ function initContactForm() {
             email: form.querySelector('[name="email"]').value.trim(),
             message: form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value.trim() : '',
             consent: true,
+            marketing: form.querySelector('[name="marketing"]') ? form.querySelector('[name="marketing"]').checked : false,
             // 2026-04-22: добавлен csrf_token для защиты формы
             csrf_token: (document.querySelector('input[name="csrf_token"]') || {}).value || ''
         };

@@ -117,8 +117,49 @@ if (!empty($message)) {
 $headers = "From: noreply@building-port.ru\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
+// 2026-04-24: сохранить заявку в SQLite
+$dbFile = dirname(__DIR__) . '/database/leads.db';
+try {
+    $pdo = new PDO('sqlite:' . $dbFile, null, null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    $pdo->exec("CREATE TABLE IF NOT EXISTS leads (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        created_at TEXT NOT NULL,
+        name TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        email TEXT,
+        company TEXT,
+        message TEXT,
+        marketing INTEGER DEFAULT 0,
+        mail_sent INTEGER DEFAULT 0,
+        ip TEXT
+    )");
+    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, message, marketing, ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([
+        date('Y-m-d H:i:s'),
+        $name, $phone, $email, $company, $message,
+        isset($input['marketing']) && $input['marketing'] ? 1 : 0,
+        $_SERVER['REMOTE_ADDR'] ?? ''
+    ]);
+} catch (Exception $e) {
+    // лог не блокирует отправку
+    error_log('SQLite error: ' . $e->getMessage());
+}
+
 // Отправляем письмо
 $mailSent = @mail($to, $subject, $body, $headers);
+
+// 2026-04-24: отбивка пользователю — подтверждение получения заявки
+if ($mailSent && !empty($email)) {
+    $userSubject = 'Ваша заявка принята — BLP Board';
+    $userBody  = "Здравствуйте, " . $name . "!\n\n";
+    $userBody .= "Ваша заявка успешно принята. Наш менеджер свяжется с вами в течение рабочего дня.\n\n";
+    $userBody .= "Если вопрос срочный, позвоните нам:\n";
+    $userBody .= "+7 (495) 984-96-89\n\n";
+    $userBody .= "С уважением,\nBLP Board\nhttps://building-port.ru/blp/";
+    $userHeaders  = "From: noreply@building-port.ru\r\n";
+    $userHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    @mail($email, $userSubject, $userBody, $userHeaders);
+}
 
 // 2026-04-23: лог заявки в файл независимо от результата mail()
 $logDir = dirname(__DIR__) . '/logs';
@@ -134,6 +175,14 @@ $logLine = date('Y-m-d H:i:s')
     . ' | mail:' . ($mailSent ? 'ok' : 'FAIL')
     . "\n";
 @file_put_contents($logFile, $logLine, FILE_APPEND | LOCK_EX);
+
+// 2026-04-24: обновить mail_sent в SQLite
+if (isset($stmt)) {
+    try {
+        $lastId = $pdo->lastInsertId();
+        $pdo->prepare("UPDATE leads SET mail_sent = ? WHERE id = ?")->execute([$mailSent ? 1 : 0, $lastId]);
+    } catch (Exception $e) {}
+}
 
 // 2026-04-24: записать в rate limit + ротация CSRF
 $_rl_hits[] = $_rl_now;

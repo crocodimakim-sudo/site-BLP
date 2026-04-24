@@ -40,7 +40,7 @@
   "paymentAccepted": "Безналичный расчёт, счёт",
   "taxID": "7708427307",
   "sameAs": [
-    "https://blpboard.tilda.ws/"
+    "https://building-port.ru/blp/"
   ]
 }
 </script>
