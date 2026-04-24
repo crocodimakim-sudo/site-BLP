@@ -104,7 +104,7 @@
         .blp-product-block .blp-spec-plate { display: inline-block; padding: 6px 14px; border: 1px solid var(--color-border); background: var(--color-bg-soft); font-size: 14px; font-weight: 500; color: var(--color-text); border-radius: 6px; line-height: 1.2; cursor: default; user-select: text; transition: none; font-family: 'Montserrat', sans-serif; }
         .blp-product-block .blp-image-section { display: flex; flex-direction: column; background: var(--color-bg-soft); width: 600px; height: 600px; position: relative; }
         .blp-product-block #slider-container { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-        .blp-product-block .blp-main-image { position: relative; width: 100%; flex: 1; min-height: 0; overflow: hidden; margin: 0; padding: 0; background: var(--color-bg-soft); }
+        .blp-product-block .blp-main-image { position: relative; width: 100%; flex: 1; min-height: 0; overflow: hidden; margin: 0; padding: 0; background: var(--color-bg-soft); display: flex; flex-direction: column; aspect-ratio: auto; }
         .blp-product-block .blp-card { padding: 0; }
         .blp-product-block .blp-main-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.15s ease, transform 0.5s ease; }
         /* 2026-04-22: класс для плавного fade при смене слайда */
@@ -124,7 +124,8 @@
         .blp-product-block .blp-thumb.active { border-color: var(--color-brand); opacity: 1; }
         .blp-product-block .blp-thumb-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; font-family: 'Montserrat', sans-serif; }
         .blp-thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .blp-product-block .blp-dots { display: none; }
+        /* 2026-04-24: dots visible on desktop for autoplay indicator */
+        .blp-product-block .blp-dots { display: flex; justify-content: center; gap: 6px; padding: 8px 0; background: var(--color-surface); border-top: 1px solid var(--color-border); }
 
         @media (max-width: 1024px) { .blp-product-block .blp-card { grid-template-columns: 1fr 1fr; }
             .blp-product-block .blp-image-section { max-width: 100%; }
@@ -260,27 +261,28 @@
     aspect-ratio: 4 / 3;
     background: var(--color-bg-soft);
     overflow: hidden;
+}
+
+/* 2026-04-24: track для бесконечного слайдера (аналог partners-slider) */
+.blp-slide-track {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    will-change: transform;
 }
 
-#blpImg {
-    width: 600px;
-    height: 600px;
-    object-fit: cover;
-    display: block;
+.blp-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.blp-main-image img {
+.blp-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-}
-
-.blp-img-fade {
-    opacity: 0 !important;
 }
 
 .blp-arrow {

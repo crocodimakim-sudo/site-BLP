@@ -1,25 +1,27 @@
 /* ========================================
    Каталог - JS для слайдера WALYPAN
-   2026-04-22: рефакторинг — загрузка слайдов из /blp/api/slider, динамическая генерация HTML
+   2026-04-24: автоплей + бесконечный loop через CSS transform
    ======================================== */
 
 (function() {
-    console.log('[slider] init start');
     let images = [];
-    let currentIndex = 0;
+    let currentPosition = 0;
+    let origCount = 0;
+    let autoplayTimer = null;
 
-    // 2026-04-22: контейнер слайдера — точка монтирования динамического HTML
     const sliderRoot = document.getElementById('slider-container');
-    console.log('[slider] container found:', !!sliderRoot);
-    if (!sliderRoot) {
-        console.log('[slider] container not found, returning');
-        return;
-    }
+    if (!sliderRoot) return;
 
     function buildSliderHTML(slides) {
+        const slidesHTML = slides.map((img, i) => `
+            <div class="blp-slide">
+                <img src="${img.image}" alt="${img.title || 'Линеарные панели WALYPAN серия ' + (i + 1)}" loading="${i === 0 ? 'eager' : 'lazy'}">
+            </div>
+        `).join('');
+
         const thumbsHTML = slides.map((img, i) => `
             <div class="blp-thumb${i === 0 ? ' active' : ''}" data-index="${i}">
-                <img class="blp-thumb-img" src="${img.image || img.thumbnail}" alt="Слайд ${i + 1}" loading="lazy">
+                <img class="blp-thumb-img" src="${img.image}" alt="Слайд ${i + 1}" loading="lazy">
             </div>
         `).join('');
 
@@ -29,7 +31,7 @@
 
         return `
             <div id="blpMainImage" class="blp-main-image">
-                <img id="blpImg" src="${slides[0].image}" alt="${slides[0].title || 'Линеарные панели WALYPAN серия 1'}">
+                <div class="blp-slide-track" id="blpTrack">${slidesHTML}</div>
                 <button class="blp-arrow prev" id="blpPrev" aria-label="Назад">
                     <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
@@ -43,64 +45,109 @@
     }
 
     function initSlider() {
-        const mainImage = document.getElementById('blpImg');
-        const thumbsContainer = document.getElementById('blpThumbs');
+        const track = document.getElementById('blpTrack');
         const dotsContainer = document.getElementById('blpDots');
         const prevArrow = document.getElementById('blpPrev');
         const nextArrow = document.getElementById('blpNext');
-        const thumbs = thumbsContainer.querySelectorAll('.blp-thumb');
-        const dots = dotsContainer.querySelectorAll('.blp-dot');
+        const mainImageContainer = document.getElementById('blpMainImage');
 
-        function goToSlide(index) {
-            if (index < 0) index = images.length - 1;
-            if (index >= images.length) index = 0;
-            currentIndex = index;
+        origCount = images.length;
 
-            // 2026-04-22: логирование для отладки бесконечного слайдера
-            console.log('[slider] goToSlide:', { index, total: images.length, currentIndex });
+        // Клонируем 3x: [клоны-конца | оригиналы | клоны-начала]
+        const origSlides = Array.from(track.children);
+        origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+        origSlides.slice().reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
 
-            // 2026-04-22: убрана анимация fade — картинка показывается сразу без белого фона
-            // 2026-04-23: обновляем alt при смене слайда для доступности и SEO
-            mainImage.src = images[currentIndex].image;
-            mainImage.alt = images[currentIndex].title || ('Линеарные панели WALYPAN серия ' + (currentIndex + 1));
+        currentPosition = origCount;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${currentPosition * 100}%)`;
 
-            thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
-            dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+        const thumbsContainer = document.getElementById('blpThumbs');
+        const thumbs = thumbsContainer ? thumbsContainer.querySelectorAll('.blp-thumb') : [];
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.blp-dot') : [];
 
-            const activeThumb = thumbs[currentIndex];
-            if (activeThumb) {
-                const containerWidth = thumbsContainer.offsetWidth;
-                const thumbWidth = activeThumb.offsetWidth;
-                const scrollPos = activeThumb.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
+        function getRealIndex() {
+            return ((currentPosition - origCount) % origCount + origCount) % origCount;
+        }
+
+        function updateUI() {
+            const ri = getRealIndex();
+            dots.forEach((d, i) => d.classList.toggle('active', i === ri));
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === ri));
+            const activeThumb = thumbs[ri];
+            if (activeThumb && thumbsContainer) {
+                const scrollPos = activeThumb.offsetLeft - thumbsContainer.offsetWidth / 2 + activeThumb.offsetWidth / 2;
                 thumbsContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
             }
         }
 
-        thumbs.forEach(thumb => {
-            thumb.addEventListener('click', () => goToSlide(parseInt(thumb.dataset.index)));
+        function slide(newPos) {
+            currentPosition = newPos;
+            track.style.transition = 'transform 0.4s ease';
+            track.style.transform = `translateX(-${currentPosition * 100}%)`;
+            updateUI();
+        }
+
+        // Постоянный обработчик — нормализует позицию после анимации без визуального эффекта
+        track.addEventListener('transitionend', () => {
+            if (currentPosition >= origCount * 2) currentPosition -= origCount;
+            else if (currentPosition < origCount) currentPosition += origCount;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${currentPosition * 100}%)`;
         });
 
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => goToSlide(i));
-        });
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayTimer = setInterval(() => slide(currentPosition + 1), 3500);
+        }
+        function stopAutoplay() {
+            if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+        }
 
-        if (prevArrow) prevArrow.addEventListener('click', () => goToSlide(currentIndex - 1));
-        if (nextArrow) nextArrow.addEventListener('click', () => goToSlide(currentIndex + 1));
+        // Стрелки — ручное листание + сброс таймера
+        if (prevArrow) prevArrow.addEventListener('click', () => { stopAutoplay(); slide(currentPosition - 1); startAutoplay(); });
+        if (nextArrow) nextArrow.addEventListener('click', () => { stopAutoplay(); slide(currentPosition + 1); startAutoplay(); });
 
-        let touchStartX = 0;
-        const mainImageContainer = document.getElementById('blpMainImage');
+        // Пауза при наведении мышью
         if (mainImageContainer) {
-            mainImageContainer.addEventListener('touchstart', (e) => {
+            mainImageContainer.addEventListener('mouseenter', stopAutoplay);
+            mainImageContainer.addEventListener('mouseleave', startAutoplay);
+        }
+
+        // Свайп
+        let touchStartX = 0;
+        if (mainImageContainer) {
+            mainImageContainer.addEventListener('touchstart', e => {
                 touchStartX = e.changedTouches[0].screenX;
+                stopAutoplay();
             }, { passive: true });
-            mainImageContainer.addEventListener('touchend', (e) => {
+            mainImageContainer.addEventListener('touchend', e => {
                 const diff = touchStartX - e.changedTouches[0].screenX;
-                if (Math.abs(diff) > 50) goToSlide(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+                if (Math.abs(diff) > 50) slide(diff > 0 ? currentPosition + 1 : currentPosition - 1);
+                startAutoplay();
             }, { passive: true });
         }
+
+        // Клики по миниатюрам и точкам — прямой переход без анимации
+        function jumpTo(realIndex) {
+            stopAutoplay();
+            currentPosition = origCount + realIndex;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${currentPosition * 100}%)`;
+            updateUI();
+            startAutoplay();
+        }
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => jumpTo(parseInt(thumb.dataset.index)));
+        });
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => jumpTo(i));
+        });
+
+        startAutoplay();
     }
 
-    // 2026-04-22: загрузка слайдов из API
     fetch('/blp/api/slider')
         .then(res => {
             if (!res.ok) throw new Error('API error ' + res.status);
@@ -113,11 +160,9 @@
             initSlider();
         })
         .catch(() => {
-            // 2026-04-22: fallback — статические пути если API недоступен
             images = Array.from({ length: 16 }, (_, i) => ({
                 image: `/blp/images-convert/pages/catalog/slider/walypan_slide_${i + 1}.png`,
                 title: `Линеарные панели WALYPAN серия ${i + 1}`,
-                num: i + 1
             }));
             sliderRoot.innerHTML = buildSliderHTML(images);
             initSlider();
