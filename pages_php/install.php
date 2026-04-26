@@ -2,7 +2,7 @@
 // 2026-04-20: Stage 3 Group 3.B — Installation guide with HowTo schema
 $page_title    = 'Монтаж фиброцементных панелей BLP Board: пошаговое руководство';
 $page_canonical = 'https://building-port.ru/blp/install';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Пошаговое руководство по монтажу фиброцементных панелей BLP Board на навесной вентилируемый фасад (НВФ): инструменты, подготовка основания, крепление, типичные ошибки.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/install.css">';
 // 2026-04-20: breadcrumbs for schema

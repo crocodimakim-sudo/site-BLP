@@ -1,0 +1,86 @@
+/* 2026-04-24: стили для страниц ошибок HTTP */
+.error-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+.error-inner {
+    text-align: center;
+    max-width: 520px;
+}
+
+.error-code {
+    font-size: 120px;
+    font-weight: 800;
+    line-height: 1;
+    color: #00352F;
+    letter-spacing: -4px;
+    margin-bottom: 8px;
+}
+
+.error-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 16px;
+}
+
+.error-desc {
+    font-size: 16px;
+    color: #5a5a5a;
+    line-height: 1.65;
+    margin: 0 0 40px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-btn-primary {
+    background: #00352F;
+    color: #fff;
+    padding: 13px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.error-btn-primary:hover { background: #004d42; }
+
+.error-btn-secondary {
+    background: #f4f4f4;
+    color: #1a1a1a;
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid #e0e0e0;
+    transition: background 0.2s;
+}
+
+.error-btn-secondary:hover { background: #e8e8e8; }
+
+.error-divider {
+    width: 48px;
+    height: 3px;
+    background: #00352F;
+    margin: 24px auto;
+    border-radius: 2px;
+}
+
+@media (max-width: 480px) {
+    .error-code { font-size: 80px; }
+    .error-title { font-size: 22px; }
+    .error-actions { flex-direction: column; align-items: center; }
+    .error-btn-primary,
+    .error-btn-secondary { width: 100%; text-align: center; }
+}

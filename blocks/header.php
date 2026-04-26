@@ -1,7 +1,6 @@
     <header class="header">
         <div class="header-container">
             <a href="/blp/" class="logo" aria-label="Building Port - на главную">
-                <!-- 2026-04-20: migrated logo from tildacdn to local images -->
                 <img src="/blp/images/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">
             </a>
 

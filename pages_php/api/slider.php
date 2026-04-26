@@ -34,6 +34,7 @@ if (is_dir($sliderDir)) {
                 'id'        => $id++,
                 'title'     => $title,
                 'image'     => $image,
+                'webp'      => file_exists($webpFile) ? $webBase . $nameNoExt . '.webp' : null,
                 'thumbnail' => $thumbnail,
             ];
         }

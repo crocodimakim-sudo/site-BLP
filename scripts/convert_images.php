@@ -48,11 +48,16 @@ function convertImages(): void {
             echo "[DELETE] $relativePath\n";
         }
 
-        // 2026-04-22: Копировать оригиналы как есть (полный размер) + создать WebP (только для растров)
-        if (copy($srcPath, $dstPath)) {
-            echo "[OK] $relativePath\n";
+        // 2026-04-24: сжимать растры до 1920px вместо копирования оригинала
+        $ok = false;
+        if ($ext === 'svg') {
+            $ok = copy($srcPath, $dstPath);
+        } else {
+            $ok = createOptimized($srcPath, $dstPath, $ext);
+        }
 
-            // Создать WebP версию для браузера (только для jpg/png, не для svg)
+        if ($ok) {
+            echo "[OK] $relativePath\n";
             if ($ext !== 'svg' && function_exists('imagewebp')) {
                 createWebP($srcPath, preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $dstPath), $ext);
                 createThumbnail($srcPath, $ext);
@@ -179,30 +184,43 @@ function cleanOrphanedThumbnails(): void {
     }
 }
 
-// 2026-04-22: Create WebP version without resizing (for browser optimization only)
+// 2026-04-24: Create WebP version with resize to max 1920px (was: no resize)
 function createWebP(string $src, string $dst, string $ext): bool {
+    define('WEBP_MAX', 1920);
     try {
         $img = match ($ext) {
-            'png'           => imagecreatefrompng($src),
-            'jpg', 'jpeg'   => imagecreatefromjpeg($src),
-            default         => null,
+            'png'         => imagecreatefrompng($src),
+            'jpg', 'jpeg' => imagecreatefromjpeg($src),
+            default       => null,
         };
-
         if (!$img) return false;
 
-        // Check if image has alpha channel (PNG with transparency) or palette mode
-        // WebP doesn't support palette mode, so convert to truecolor if needed
-        if ($ext === 'png' && !imageistruecolor($img)) {
-            // Convert from palette/indexed to truecolor
-            $w = imagesx($img);
-            $h = imagesy($img);
+        $w = imagesx($img);
+        $h = imagesy($img);
+
+        // Resize proportionally to max 1920px
+        if ($w > WEBP_MAX || $h > WEBP_MAX) {
+            $ratio = min(WEBP_MAX / $w, WEBP_MAX / $h);
+            $newW  = (int)round($w * $ratio);
+            $newH  = (int)round($h * $ratio);
+            $resized = imagecreatetruecolor($newW, $newH);
+            if ($ext === 'png') {
+                imagealphablending($resized, false);
+                imagesavealpha($resized, true);
+                $t = imagecolorallocatealpha($resized, 0, 0, 0, 127);
+                imagefilledrectangle($resized, 0, 0, $newW, $newH, $t);
+            }
+            imagecopyresampled($resized, $img, 0, 0, 0, 0, $newW, $newH, $w, $h);
+            imagedestroy($img);
+            $img = $resized;
+        } elseif ($ext === 'png' && !imageistruecolor($img)) {
             $newImg = imagecreatetruecolor($w, $h);
             imagecopy($newImg, $img, 0, 0, 0, 0, $w, $h);
             imagedestroy($img);
             $img = $newImg;
         }
 
-        @imagewebp($img, $dst, 82);
+        @imagewebp($img, $dst, 75);
         imagedestroy($img);
         return true;
     } catch (Exception $e) {

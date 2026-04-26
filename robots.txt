@@ -7,6 +7,8 @@ Disallow: /blp/cookies
 Disallow: /blp/consent
 Disallow: /blp/blocks/
 Disallow: /blp/logs/
+Disallow: /blp/database/
+Disallow: /blp/scripts/
 
 # 2026-04-20: updated Sitemap URL and Allow directive for production domain
 # TODO: если домен изменится — обновить URL ниже

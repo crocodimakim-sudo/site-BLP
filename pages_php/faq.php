@@ -2,7 +2,7 @@
 // 2026-04-20: Stage 3 Group 3.B — FAQ page targeting long-tail question keywords
 $page_title    = 'Часто задаваемые вопросы о фиброцементных панелях — BLP Board';
 $page_canonical = 'https://building-port.ru/blp/faq';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Ответы на частые вопросы о фиброцементных панелях BLP Board: характеристики, монтаж, совместимость с подсистемами, гарантия, заказ образцов, цены и доставка.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/faq.css">';
 $extra_js  = '<script src="/blp/js/pages/faq.js" defer></script>';

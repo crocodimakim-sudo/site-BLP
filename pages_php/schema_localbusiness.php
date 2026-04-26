@@ -1,5 +1,7 @@
 <?php
 // 2026-04-20: LocalBusiness schema — inject on contacts.php page
+// 2026-04-24: address corrected to physical warehouse (Одинцово, Неделина 6А)
+//             sameAs corrected to external profiles; parentOrganization linked via @id
 ?>
 <script type="application/ld+json">
 {
@@ -16,7 +18,7 @@
   "image": "https://building-port.ru/blp/images-convert/shared/header/logo-3.svg",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "ул. Неделина, 6А",
+    "streetAddress": "ул. Неделина, д. 6А",
     "addressLocality": "Одинцово",
     "addressRegion": "Московская область",
     "postalCode": "143003",
@@ -38,9 +40,6 @@
   "priceRange": "$$",
   "currenciesAccepted": "RUB",
   "paymentAccepted": "Безналичный расчёт, счёт",
-  "taxID": "7708427307",
-  "sameAs": [
-    "https://building-port.ru/blp/"
-  ]
+  "taxID": "7708427307"
 }
 </script>

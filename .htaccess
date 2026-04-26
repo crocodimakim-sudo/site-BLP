@@ -14,6 +14,10 @@ RewriteBase /blp/
 # 2026-04-22: API endpoints
 RewriteRule ^api/slider$    pages_php/api/slider.php  [L]
 
+# 2026-04-24: блог — листинг и страница статьи
+RewriteRule ^blog$              pages_php/blog.php             [L,QSA]
+RewriteRule ^blog/([a-z0-9\-]+)$ pages_php/blog-post.php?slug=$1 [L,QSA]
+
 RewriteRule ^$              pages_php/index.php       [L]
 RewriteRule ^catalog$       pages_php/catalog.php     [L]
 RewriteRule ^architect$     pages_php/architect.php   [L]
@@ -60,8 +64,12 @@ RedirectMatch 404 /\.claude_work_log
 RedirectMatch 404 /blp/logs/
 
 # 2026-04-23: правильная 404-страница (возвращает HTTP 404, не 200)
+ErrorDocument 400 /blp/pages_php/400.php
+ErrorDocument 403 /blp/pages_php/403.php
 ErrorDocument 404 /blp/pages_php/404.php
-ErrorDocument 500 /blp/pages_php/index.php
+ErrorDocument 405 /blp/pages_php/405.php
+ErrorDocument 500 /blp/pages_php/500.php
+ErrorDocument 503 /blp/pages_php/503.php
 
 # 2026-04-22: Gzip compression — extended with AddEncoding + mod_filter wrapper
 <IfModule mod_deflate.c>

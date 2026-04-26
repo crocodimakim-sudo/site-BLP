@@ -184,6 +184,12 @@
   },
   "hotPaths": [
     {
+      "path": "pages_php\\catalog.php",
+      "accessCount": 57,
+      "lastAccessed": 1777221342797,
+      "type": "file"
+    },
+    {
       "path": "css\\pages\\index.css",
       "accessCount": 56,
       "lastAccessed": 1777009681689,
@@ -196,10 +202,10 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\catalog.php",
-      "accessCount": 54,
-      "lastAccessed": 1777010437174,
-      "type": "file"
+      "path": "",
+      "accessCount": 47,
+      "lastAccessed": 1777221249254,
+      "type": "directory"
     },
     {
       "path": "css\\pages\\dealer.css",
@@ -208,15 +214,15 @@
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 33,
-      "lastAccessed": 1777034796852,
-      "type": "directory"
-    },
-    {
       "path": "pages_php\\consent.php",
       "accessCount": 25,
       "lastAccessed": 1777026326703,
+      "type": "file"
+    },
+    {
+      "path": "js\\pages\\catalog.js",
+      "accessCount": 25,
+      "lastAccessed": 1777208962775,
       "type": "file"
     },
     {
@@ -226,27 +232,45 @@
       "type": "file"
     },
     {
-      "path": "js\\pages\\catalog.js",
-      "accessCount": 22,
-      "lastAccessed": 1777015473677,
+      "path": "scripts\\convert_images.php",
+      "accessCount": 23,
+      "lastAccessed": 1777035577275,
       "type": "file"
     },
     {
       "path": "CLAUDE.md",
-      "accessCount": 21,
-      "lastAccessed": 1777011245763,
+      "accessCount": 22,
+      "lastAccessed": 1777038776997,
       "type": "file"
     },
     {
-      "path": "scripts\\convert_images.php",
+      "path": "blocks\\template.php",
       "accessCount": 20,
-      "lastAccessed": 1777035078420,
+      "lastAccessed": 1777221307324,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\sertificate.php",
+      "accessCount": 20,
+      "lastAccessed": 1777221404285,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\dealer.php",
+      "accessCount": 20,
+      "lastAccessed": 1777221427782,
       "type": "file"
     },
     {
       "path": "pages_php\\policy.php",
       "accessCount": 19,
       "lastAccessed": 1777026174755,
+      "type": "file"
+    },
+    {
+      "path": "pages_php\\kreplenie.php",
+      "accessCount": 18,
+      "lastAccessed": 1777221383353,
       "type": "file"
     },
     {
@@ -262,9 +286,9 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\sertificate.php",
+      "path": ".htaccess",
       "accessCount": 16,
-      "lastAccessed": 1777006109358,
+      "lastAccessed": 1777039127754,
       "type": "file"
     },
     {
@@ -274,33 +298,15 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\dealer.php",
+      "path": "pages_php\\index.php",
       "accessCount": 14,
-      "lastAccessed": 1776884075611,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\template.php",
-      "accessCount": 14,
-      "lastAccessed": 1777030385106,
+      "lastAccessed": 1777221248997,
       "type": "file"
     },
     {
       "path": "css\\pages\\diler.css",
       "accessCount": 13,
       "lastAccessed": 1776883415995,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\kreplenie.php",
-      "accessCount": 13,
-      "lastAccessed": 1776978673022,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\index.php",
-      "accessCount": 12,
-      "lastAccessed": 1777015439036,
       "type": "file"
     },
     {
@@ -317,14 +323,8 @@
     },
     {
       "path": "pages_php\\architect.php",
-      "accessCount": 10,
-      "lastAccessed": 1776886073762,
-      "type": "file"
-    },
-    {
-      "path": ".htaccess",
-      "accessCount": 10,
-      "lastAccessed": 1777023468693,
+      "accessCount": 11,
+      "lastAccessed": 1777221230834,
       "type": "file"
     },
     {
@@ -340,21 +340,33 @@
       "type": "file"
     },
     {
+      "path": "pages_php",
+      "accessCount": 8,
+      "lastAccessed": 1777221224791,
+      "type": "directory"
+    },
+    {
+      "path": "pages_php\\projects.php",
+      "accessCount": 8,
+      "lastAccessed": 1777221362574,
+      "type": "file"
+    },
+    {
       "path": "blocks\\products-section.php",
       "accessCount": 7,
       "lastAccessed": 1777005777695,
       "type": "file"
     },
     {
-      "path": "pages_php",
-      "accessCount": 7,
-      "lastAccessed": 1777006863059,
-      "type": "directory"
-    },
-    {
       "path": "css\\footer.css",
       "accessCount": 7,
       "lastAccessed": 1777007684296,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\header.php",
+      "accessCount": 7,
+      "lastAccessed": 1777211357050,
       "type": "file"
     },
     {
@@ -370,12 +382,6 @@
       "type": "file"
     },
     {
-      "path": "blocks\\header.php",
-      "accessCount": 5,
-      "lastAccessed": 1777006103480,
-      "type": "file"
-    },
-    {
       "path": "GLOBAL_PLAN.md",
       "accessCount": 4,
       "lastAccessed": 1776662490673,
@@ -388,9 +394,9 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\projects.php",
+      "path": "pages_php\\template.php",
       "accessCount": 4,
-      "lastAccessed": 1776980410108,
+      "lastAccessed": 1777221242296,
       "type": "file"
     },
     {
@@ -418,9 +424,9 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\template.php",
+      "path": "pages_php\\schema_webpage.php",
       "accessCount": 2,
-      "lastAccessed": 1777015447387,
+      "lastAccessed": 1777221238282,
       "type": "file"
     },
     {
@@ -457,12 +463,6 @@
       "path": "scripts\\run_sync.bat",
       "accessCount": 1,
       "lastAccessed": 1776849021654,
-      "type": "file"
-    },
-    {
-      "path": "pages_php\\schema_webpage.php",
-      "accessCount": 1,
-      "lastAccessed": 1776851265847,
       "type": "file"
     },
     {

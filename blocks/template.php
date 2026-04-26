@@ -15,9 +15,11 @@ if (empty($_SESSION['csrf_token'])) {
 // 2026-04-20: GA4, OG/Twitter meta, canonical support added
 $page_title    = isset($page_title)    ? $page_title    : 'BLP Board';
 $page_desc     = isset($page_desc)     ? $page_desc     : '';
-$page_og_image = isset($page_og_image) ? $page_og_image : 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image = isset($page_og_image) ? $page_og_image : 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_og_type  = isset($page_og_type)  ? $page_og_type  : 'website';
 $page_canonical = isset($page_canonical) ? $page_canonical : '';
+// 2026-04-24: SEO — noindex support for error pages and non-indexed content
+$page_robots   = isset($page_robots)   ? $page_robots   : '';
 $site_name     = 'BLP Board';
 $site_url      = 'https://building-port.ru';
 // 2026-04-20: placeholder ID — заменить на реальный GA4 Measurement ID перед go-live
@@ -31,6 +33,9 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <title><?php echo htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8'); ?></title>
     <?php if ($page_desc): ?>
     <meta name="description" content="<?php echo htmlspecialchars($page_desc, ENT_QUOTES, 'UTF-8'); ?>">
+    <?php endif; ?>
+    <?php if ($page_robots): ?>
+    <meta name="robots" content="<?php echo htmlspecialchars($page_robots, ENT_QUOTES, 'UTF-8'); ?>">
     <?php endif; ?>
     <?php if ($page_canonical): ?>
     <link rel="canonical" href="<?php echo htmlspecialchars($page_canonical, ENT_QUOTES, 'UTF-8'); ?>">

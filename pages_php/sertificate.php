@@ -4,8 +4,8 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title = 'Сертификаты фиброцементных панелей — НГ, техническое свидетельство от ФАУ ФЦС';
 $page_desc = 'Полный комплект технической документации, соответствующий требованиям органов строительного надзора и подтверждающий пригодность для применения в строительстве на территории РФ.';
-// 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
-$page_canonical = 'https://building-port.ru/blp/sertificate/';
+// 2026-04-24: SEO — canonical trailing slash removed (consistent with breadcrumb)
+$page_canonical = 'https://building-port.ru/blp/sertificate';
 // 2026-04-20: og_image added (Stage 2 SEO)
 $page_og_image  = 'https://building-port.ru/blp/images-convert/pages/sertificate/cert_fire_safety.png';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/sertificate.css">';

@@ -1,5 +1,6 @@
 <?php
 // 2026-04-20: Organization + WebSite schema for global injection via template.php
+// 2026-04-24: address corrected — legal address (Краснопрудная) for Organization
 // Inject on every page — place in <head> via template.php
 ?>
 <script type="application/ld+json">
@@ -23,9 +24,9 @@
       "email": "info@building-port.ru",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "ул. Неделина, 6А",
-        "addressLocality": "Одинцово",
-        "addressRegion": "Московская область",
+        "streetAddress": "ул. Краснопрудная, д. 15, помещ. 3А/2",
+        "addressLocality": "Москва",
+        "postalCode": "107140",
         "addressCountry": "RU"
       },
       "contactPoint": {

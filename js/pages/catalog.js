@@ -15,13 +15,19 @@
     function buildSliderHTML(slides) {
         const slidesHTML = slides.map((img, i) => `
             <div class="blp-slide">
-                <img src="${img.image}" alt="${img.title || 'Линеарные панели WALYPAN серия ' + (i + 1)}" loading="${i === 0 ? 'eager' : 'lazy'}">
+                <picture>
+                    ${img.webp ? `<source srcset="${img.webp}" type="image/webp">` : ''}
+                    <img src="${img.image}" alt="${img.title || 'Линеарные панели WALYPAN серия ' + (i + 1)}" loading="${i === 0 ? 'eager' : 'lazy'}">
+                </picture>
             </div>
         `).join('');
 
         const thumbsHTML = slides.map((img, i) => `
             <div class="blp-thumb${i === 0 ? ' active' : ''}" data-index="${i}">
-                <img class="blp-thumb-img" src="${img.image}" alt="Слайд ${i + 1}" loading="lazy">
+                <picture>
+                    ${img.webp ? `<source srcset="${img.webp}" type="image/webp">` : ''}
+                    <img class="blp-thumb-img" src="${img.image}" alt="Слайд ${i + 1}" loading="lazy">
+                </picture>
             </div>
         `).join('');
 

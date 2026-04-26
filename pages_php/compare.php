@@ -2,7 +2,7 @@
 // 2026-04-20: Stage 3 Group 3.B — Product comparison page (NATURE vs POLISHED vs TEXTURE vs WALYPAN)
 $page_title    = 'Сравнение серий фиброцементных панелей BLP Board: NATURE, POLISHED, TEXTURE, WALYPAN';
 $page_canonical = 'https://building-port.ru/blp/compare';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Сравнение 4 серий фиброцементных панелей BLP Board: характеристики, фактуры, области применения, толщина, размеры. Выберите подходящую серию для вашего объекта.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/compare.css">';
 // 2026-04-20: breadcrumbs for schema

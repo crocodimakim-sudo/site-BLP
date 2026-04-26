@@ -295,7 +295,7 @@ ob_start();
                         <button class="blp-arrow next" id="blpNext" aria-label="Следующее">
                             <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                         </button>
-                        <img id="blpImg" src="" alt="Линеарные панели">
+                        <img id="blpImg" src="" alt="Линеарные фиброцементные панели WALYPAN — фасадный слайдер">
                     </div>
                     <div class="blp-dots" id="blpDots"></div>
                     <div class="blp-thumbnails" id="blpThumbs"></div>

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 // 2026-04-20: Stage 3 Group 3.B — Dealer/partner benefits page with LocalBusiness schema
 $page_title    = 'Дилерская программа BLP Board — фиброцементные панели для партнёров';
 $page_canonical = 'https://building-port.ru/blp/dealer';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Дилерская программа BLP Board: условия сотрудничества, ценовые уровни, маркетинговая поддержка, техническое сопровождение, обучение. Стать дилером фиброцементных панелей.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/dealer.css">';
 // 2026-04-20: breadcrumbs for schema
@@ -16,9 +16,6 @@ $breadcrumbs = [
 
 ob_start();
 ?>
-<!-- ============================================
-     DEALER HERO — matching Tilda reference
-     ============================================ -->
 <section class="blp-hero-section dealer-hero">
     <div class="blp-container">
         <div class="blp-grid-12">

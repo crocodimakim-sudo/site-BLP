@@ -57,6 +57,10 @@ echo   [OK] cookies.html
 curl -s -o html\consent.html     "%BASE%/consent"
 echo   [OK] consent.html
 
+REM 2026-04-24: блог (листинг, без отдельных статей — они динамические)
+curl -s -o html\blog.html        "%BASE%/blog"
+echo   [OK] blog.html
+
 echo.
 echo Фиксирую пути (localhost → сервер) для портабельности...
 powershell -NoProfile -Command "Get-ChildItem 'html\*.html' | ForEach-Object { (Get-Content $_.FullName -Encoding UTF8) -replace [regex]::Escape('/blp/'), 'http://204.168.247.38/blp/' | Set-Content $_.FullName -Encoding UTF8 }; Write-Host '  [OK] Пути исправлены'"

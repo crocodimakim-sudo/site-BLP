@@ -841,6 +841,14 @@
                     <span class="field-error" data-field="consent"></span>
                 </div>
 
+                <!-- 2026-04-24: согласие на маркетинговую рассылку -->
+                <div class="form-checkbox-group form-checkbox-group--full">
+                    <label class="form-checkbox-label">
+                        <input type="checkbox" name="marketing" id="marketing" class="form-checkbox">
+                        <span class="form-checkbox-text">Согласен(на) получать информационные материалы и специальные предложения BLP Board</span>
+                    </label>
+                </div>
+
                 <!-- Submit -->
                 <div class="form-submit-wrapper">
                     <button type="submit" class="btn-primary" id="submitBtn">
@@ -855,7 +863,7 @@
                 <div class="form-message error" id="errorMessage"></div>
 
                 <!-- 2026-04-22: CSRF token protection -->
-                <input type="hidden" name="csrf_token" value="7c985aa4c3734251e05985a4db3aceaf698bedd581e89c13dcd9a067224e4f80">
+                <input type="hidden" name="csrf_token" value="b7f669ead67a9ddad4d53aaba79fc7682c974257ab46cfb961d7c2b51898d45a">
             </div>
         </form>
     </div>

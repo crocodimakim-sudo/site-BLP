@@ -1,8 +1,10 @@
 <?php
-$page_title = 'Объекты - Проекты с фасадом из фиброцементных панелей BLPboard';
-$page_desc  = 'Портфолио реализованных объектов с фасадом из фиброцементных панелей BLPboard: поликлиники, школы, здания судов, международные проекты';
+// 2026-04-24: SEO — fixed branding typo (BLPboard→BLP Board), added og_image
+$page_title = 'Объекты с фасадом из фиброцементных панелей BLP Board — портфолио';
+$page_desc  = 'Портфолио реализованных объектов с фасадом из фиброцементных панелей BLP Board: поликлиники, школы, здания судов, международные проекты';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/index/index_hero.jpg';
 // 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
-$page_canonical = 'https://building-port.ru/blp/projects/';
+$page_canonical = 'https://building-port.ru/blp/projects';
 $extra_css  = '<link rel="stylesheet" href="/blp/css/pages/projects.css">';
 $extra_js   = '<script src="/blp/js/pages/projects.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
@@ -29,7 +31,7 @@ ob_start();
                 <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
         </button>
-        
+
         <div class="fullscreen-slider" id="modalSlider"></div>
 
         <button class="modal-nav prev" onclick="changeModalSlide(-1)">
@@ -75,4 +77,3 @@ include '../blocks/contact-form.php';
 <?php
 $page_content = ob_get_clean();
 include 'template.php';
-

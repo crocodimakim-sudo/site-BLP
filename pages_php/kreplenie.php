@@ -2,10 +2,11 @@
 // 2026-04-22: image-helper for WebP + lazy-loading support
 require_once __DIR__ . '/../blocks/image-helper.php';
 
-$page_title = "Способы крепления — BLP Board";
+// 2026-04-24: SEO — title keyword-first, canonical trailing slash removed (consistent with breadcrumb)
+$page_title = "Крепление фиброцементных панелей BLP Board — видимый и скрытый способы";
 $page_desc = "Варианты крепления фиброцементных панелей BLP Board к подсистеме: видимый и скрытый способы. Совместимость с алюминиевыми, оцинкованными и нержавеющими подсистемами.";
-// 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
-$page_canonical = 'https://building-port.ru/blp/kreplenie/';
+$page_canonical = 'https://building-port.ru/blp/kreplenie';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/kreplenie.css">';
 $extra_js = "";
 // 2026-04-20: breadcrumbs for schema
