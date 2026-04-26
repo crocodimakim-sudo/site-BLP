@@ -1,7 +1,7 @@
 {
-  "tool_name": "mcp__plugin_mempalace_mempalace__mempalace_diary_write",
-  "tool_input_preview": "{\"agent_name\":\"claude-sonnet\",\"entry\":\"SESSION:2026-04-26|site-kimi|SEO.audit.done|\\ntechnical:10files.fixed(noindex.errors+og_image.path+canonical.trailing.slash+title.keyword-first)|\\nschema:org.add...",
-  "error": "MCP error -32000: Internal tool error",
-  "timestamp": "2026-04-26T16:38:37.170Z",
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"php -l \\\"D:/Claude Code/site-blp/site-kimi/blocks/template.php\\\" 2>&1; php -l \\\"D:/Claude Code/site-blp/site-kimi/blocks/contact-form.php\\\" 2>&1; php -l \\\"D:/Claude Code/site-blp/site-kimi...",
+  "error": "Exit code 127\n/usr/bin/bash: line 1: php: command not found\n/usr/bin/bash: line 1: php: command not found\n/usr/bin/bash: line 1: php: command not found\n/usr/bin/bash: line 1: php: command not found\n/usr/bin/bash: line 1: php: command not found",
+  "timestamp": "2026-04-26T16:46:48.906Z",
   "retry_count": 1
 }

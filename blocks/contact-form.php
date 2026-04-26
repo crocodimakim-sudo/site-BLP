@@ -95,8 +95,8 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
             </label>
         </div>
 
-        <!-- 2026-04-24: honeypot — ботозащита, не трогать -->
-        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+        <!-- 2026-04-24: honeypot — ботозащита, не трогать. aria-hidden для accessibility (поле невидимо для AT) -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
 
         <!-- 2026-04-22: CSRF token -->
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">
@@ -118,5 +118,6 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/imask@7.2.0/index.min.js" defer></script>
+<!-- 2026-04-24: imask 7.2.0 → 7.6.1 (404 на CDN для 7.2.0) -->
+<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script>
 <script src="/blp/js/contact-form.js" defer></script>

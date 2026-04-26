@@ -10,6 +10,8 @@ $page_og_image  = 'https://building-port.ru/blp/images-convert/pages/index/index
 $extra_css  = '<link rel="stylesheet" href="/blp/css/pages/index.css">';
 $extra_js   = '<script src="/blp/js/pages/index.js" defer></script>';
 $lcp_image  = '/blp/images-convert/pages/index/index_hero.jpg';
+// 2026-04-24: preload LCP hero image (WebP) с fetchpriority=high
+$extra_preload = '<link rel="preload" as="image" href="/blp/images-convert/pages/index/index_hero.webp" type="image/webp" fetchpriority="high">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
     ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],

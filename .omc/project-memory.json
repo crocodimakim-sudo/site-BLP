@@ -203,8 +203,8 @@
     },
     {
       "path": "",
-      "accessCount": 47,
-      "lastAccessed": 1777221249254,
+      "accessCount": 49,
+      "lastAccessed": 1777221938761,
       "type": "directory"
     },
     {
@@ -214,15 +214,15 @@
       "type": "file"
     },
     {
-      "path": "pages_php\\consent.php",
-      "accessCount": 25,
-      "lastAccessed": 1777026326703,
+      "path": "js\\pages\\catalog.js",
+      "accessCount": 26,
+      "lastAccessed": 1777221884204,
       "type": "file"
     },
     {
-      "path": "js\\pages\\catalog.js",
+      "path": "pages_php\\consent.php",
       "accessCount": 25,
-      "lastAccessed": 1777208962775,
+      "lastAccessed": 1777026326703,
       "type": "file"
     },
     {
@@ -245,8 +245,8 @@
     },
     {
       "path": "blocks\\template.php",
-      "accessCount": 20,
-      "lastAccessed": 1777221307324,
+      "accessCount": 22,
+      "lastAccessed": 1777221957366,
       "type": "file"
     },
     {
@@ -259,6 +259,12 @@
       "path": "pages_php\\dealer.php",
       "accessCount": 20,
       "lastAccessed": 1777221427782,
+      "type": "file"
+    },
+    {
+      "path": "blocks\\contact-form.php",
+      "accessCount": 20,
+      "lastAccessed": 1777221969492,
       "type": "file"
     },
     {
@@ -280,27 +286,21 @@
       "type": "file"
     },
     {
-      "path": "blocks\\contact-form.php",
-      "accessCount": 17,
-      "lastAccessed": 1777034830071,
-      "type": "file"
-    },
-    {
       "path": ".htaccess",
       "accessCount": 16,
       "lastAccessed": 1777039127754,
       "type": "file"
     },
     {
-      "path": "pages_php\\cookies.php",
-      "accessCount": 15,
-      "lastAccessed": 1777024350431,
+      "path": "pages_php\\index.php",
+      "accessCount": 16,
+      "lastAccessed": 1777221963158,
       "type": "file"
     },
     {
-      "path": "pages_php\\index.php",
-      "accessCount": 14,
-      "lastAccessed": 1777221248997,
+      "path": "pages_php\\cookies.php",
+      "accessCount": 15,
+      "lastAccessed": 1777024350431,
       "type": "file"
     },
     {
@@ -340,6 +340,12 @@
       "type": "file"
     },
     {
+      "path": "blocks\\products-section.php",
+      "accessCount": 9,
+      "lastAccessed": 1777222003887,
+      "type": "file"
+    },
+    {
       "path": "pages_php",
       "accessCount": 8,
       "lastAccessed": 1777221224791,
@@ -349,12 +355,6 @@
       "path": "pages_php\\projects.php",
       "accessCount": 8,
       "lastAccessed": 1777221362574,
-      "type": "file"
-    },
-    {
-      "path": "blocks\\products-section.php",
-      "accessCount": 7,
-      "lastAccessed": 1777005777695,
       "type": "file"
     },
     {

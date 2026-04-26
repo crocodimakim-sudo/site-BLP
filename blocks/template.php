@@ -75,6 +75,9 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
       });
     </script>
 
+    <!-- 2026-04-24: LCP preload — должен быть ДО всех stylesheet, как можно раньше в head -->
+    <?php if (!empty($extra_preload)) echo $extra_preload; ?>
+
     <!-- 2026-04-20: Google Fonts optimized — removed weight 300 (unused), added font-display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
