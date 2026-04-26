@@ -16,7 +16,7 @@ if (!function_exists('render_image')) {
                     <?php echo render_image(
                         '/blp/images-convert/blocks/products/series-nature.png',
                         'Натуральные плиты серия NATURE',
-                        ['class' => 'product-image', 'lazy' => true]
+                        ['class' => 'product-image', 'lazy' => false]
                     ); ?>
                     <div class="product-content">
                         <div class="product-label text-label">Серия</div>
@@ -34,7 +34,7 @@ if (!function_exists('render_image')) {
                     <?php echo render_image(
                         '/blp/images-convert/blocks/products/series-polished.png',
                         'Полированные плиты серия POLISHED',
-                        ['class' => 'product-image', 'lazy' => true]
+                        ['class' => 'product-image', 'lazy' => false]
                     ); ?>
                     <div class="product-content">
                         <div class="product-label text-label">Серия</div>
@@ -52,7 +52,7 @@ if (!function_exists('render_image')) {
                     <?php echo render_image(
                         '/blp/images-convert/blocks/products/series-texture.png',
                         'Текстурированные плиты серия TEXTURE',
-                        ['class' => 'product-image', 'lazy' => true]
+                        ['class' => 'product-image', 'lazy' => false]
                     ); ?>
                     <div class="product-content">
                         <div class="product-label text-label">Серия</div>
@@ -70,7 +70,7 @@ if (!function_exists('render_image')) {
                     <?php echo render_image(
                         '/blp/images-convert/blocks/products/series-walypan.png',
                         'Линеарные плиты серия WALYPAN',
-                        ['class' => 'product-image', 'lazy' => true]
+                        ['class' => 'product-image', 'lazy' => false]
                     ); ?>
                     <div class="product-content">
                         <div class="product-label text-label">Серия</div>
