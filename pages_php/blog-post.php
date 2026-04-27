@@ -124,11 +124,6 @@ if (!empty($article['read_time'])) {
 ob_start();
 ?>
 <article class="blog-post">
-    <div class="blog-post-hero">
-        <img src="<?php echo htmlspecialchars($article['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
-             alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>"
-             onerror="this.style.background='#1a4d47';this.style.minHeight='320px';this.removeAttribute('src');">
-    </div>
     <div class="blog-post-container">
         <div class="blog-post-meta">
             <a href="/blp/blog?cat=<?php echo urlencode($article['category']); ?>" class="blog-tag">
