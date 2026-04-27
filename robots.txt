@@ -9,6 +9,8 @@ Disallow: /blp/blocks/
 Disallow: /blp/logs/
 Disallow: /blp/database/
 Disallow: /blp/scripts/
+# 2026-04-27: блог скрыт до доработки
+Disallow: /blp/blog
 
 # 2026-04-20: updated Sitemap URL and Allow directive for production domain
 # TODO: если домен изменится — обновить URL ниже

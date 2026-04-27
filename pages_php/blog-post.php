@@ -121,6 +121,9 @@ if (!empty($article['read_time'])) {
     $_blogposting_schema['timeRequired'] = 'PT' . (int)$article['read_time'] . 'M';
 }
 
+// 2026-04-27: блог скрыт до доработки — не индексировать
+$page_robots = 'noindex, nofollow';
+
 ob_start();
 ?>
 <article class="blog-post">
