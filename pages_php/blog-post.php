@@ -142,9 +142,18 @@ ob_start();
         <?php if (!empty($article['subtitle'])): ?>
         <p class="blog-post-subtitle"><?php echo htmlspecialchars($article['subtitle'], ENT_QUOTES, 'UTF-8'); ?></p>
         <?php endif; ?>
-        <div class="blog-post-content">
+        <div class="blog-post-content" id="blogPostContent">
             <?php echo $article['content']; // 2026-04-24: сырой HTML из БД — контент админом ?>
         </div>
+        <script>
+        // 2026-04-27: авто-обёртка таблиц для горизонтального скролла на мобиле
+        document.querySelectorAll('#blogPostContent table').forEach(function(t) {
+            var w = document.createElement('div');
+            w.className = 'blog-table-wrap';
+            t.parentNode.insertBefore(w, t);
+            w.appendChild(t);
+        });
+        </script>
         <div class="blog-post-tags">
             Теги:
             <a href="/blp/blog?cat=<?php echo urlencode($article['category']); ?>">

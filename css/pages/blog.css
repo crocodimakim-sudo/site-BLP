@@ -293,6 +293,69 @@
     color: #00352F;
     text-decoration: underline;
 }
+/* ============================================
+   TABLES
+   ============================================ */
+.blog-post-content .blog-table,
+.blog-post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 28px 0;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #d8e8e6;
+}
+.blog-post-content .blog-table thead tr,
+.blog-post-content table thead tr {
+    background: #00352F;
+    color: #ffffff;
+}
+.blog-post-content .blog-table th,
+.blog-post-content table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    border-right: 1px solid rgba(255,255,255,0.15);
+}
+.blog-post-content .blog-table th:last-child,
+.blog-post-content table th:last-child {
+    border-right: none;
+}
+.blog-post-content .blog-table td,
+.blog-post-content table td {
+    padding: 11px 16px;
+    border-top: 1px solid #e8eeee;
+    border-right: 1px solid #e8eeee;
+    color: #1a1a1a;
+    vertical-align: top;
+}
+.blog-post-content .blog-table td:last-child,
+.blog-post-content table td:last-child {
+    border-right: none;
+}
+.blog-post-content .blog-table tbody tr:nth-child(even),
+.blog-post-content table tbody tr:nth-child(even) {
+    background: #f5f9f8;
+}
+.blog-post-content .blog-table tbody tr:hover,
+.blog-post-content table tbody tr:hover {
+    background: #eaf2f1;
+}
+/* 2026-04-27: горизонтальный скролл таблиц на мобиле */
+.blog-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 28px 0;
+}
+.blog-table-wrap .blog-table,
+.blog-table-wrap table {
+    margin: 0;
+    min-width: 480px;
+}
+
 .blog-post-tags {
     margin-top: 48px;
     padding-top: 24px;
