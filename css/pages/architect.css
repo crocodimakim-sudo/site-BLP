@@ -163,9 +163,8 @@ h2.blp-support-title { color: #1a1a1a;
     margin: 0; }
 
 /* Mobile — переключение на вертикальный стек */
-@media (max-width: 900px) { .blp-audience-block { flex-direction: column;
-        gap: 8px;
-        align-items: stretch; }
+@media (max-width: 900px) { .blp-audience-block { grid-template-columns: 1fr;
+        gap: 8px; }
 
     .blp-cards-grid { gap: 16px; }
 

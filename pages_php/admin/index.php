@@ -567,6 +567,30 @@ if (($_POST['action'] ?? '') === 'save-project') {
     }
 }
 
+// 2026-04-28: POST upload-audience — загрузка фото блока аудитории
+if (($_GET['action'] ?? '') === 'upload-audience' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!check_csrf($_GET['csrf'] ?? '')) { http_response_code(400); die('CSRF token mismatch'); }
+    $slot = trim((string)($_GET['slot'] ?? ''));
+    if (!in_array($slot, ['architect', 'dealer', 'developer'], true)) {
+        header('Location: ?s=audience&aud_error=1'); exit;
+    }
+    $dir = __DIR__ . '/../../images-convert/pages/index/audience';
+    if (!is_dir($dir)) mkdir($dir, 0755, true);
+    $file = $_FILES['photo'] ?? null;
+    if ($file && ($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_OK && $file['size'] <= 10 * 1024 * 1024) {
+        $finfo = function_exists('finfo_open') ? finfo_open(FILEINFO_MIME_TYPE) : false;
+        $mime  = $finfo ? finfo_file($finfo, $file['tmp_name']) : ($file['type'] ?? '');
+        if ($finfo) finfo_close($finfo);
+        if (in_array($mime, ['image/jpeg', 'image/png', 'image/webp'], true)) {
+            $base = 'audience_' . $slot;
+            foreach (['png', 'jpg', 'webp'] as $ext) { $p = $dir . '/' . $base . '.' . $ext; if (file_exists($p)) unlink($p); }
+            $converted = convert_and_save_image($file['tmp_name'], $dir, $base);
+            if (!empty($converted)) { header('Location: ?s=audience&aud_uploaded=1'); exit; }
+        }
+    }
+    header('Location: ?s=audience&aud_error=1'); exit;
+}
+
 // 2026-04-27: POST upload-photo — загрузка фотографий в папку проекта
 if (($_GET['action'] ?? '') === 'upload-photo' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!check_csrf($_GET['csrf'] ?? '')) {
@@ -1131,7 +1155,7 @@ if ($action === 'toggle-certificate') {
 $section = $_GET['s'] ?? 'leads';
 $valid_sections = ['leads', 'blog', 'blog-edit', 'pages', 'projects', 'project-edit',
                    'settings', 'partners', 'partner-edit', 'certificates', 'certificate-edit',
-                   'catalog'];
+                   'catalog', 'audience'];
 if (!in_array($section, $valid_sections, true)) $section = 'leads';
 
 // Flash messages from query
@@ -1157,6 +1181,8 @@ if (isset($_GET['catalog_saved'])) $flash = 'Серия каталога сох�
 if (isset($_GET['catalog_image_uploaded'])) $flash = 'Изображение серии загружено';
 if (isset($_GET['walypan_uploaded'])) $flash = 'Загружено в слайдер: ' . (int)$_GET['walypan_uploaded'];
 if (isset($_GET['walypan_deleted'])) $flash = 'Слайд удалён';
+if (isset($_GET['aud_uploaded'])) $flash = 'Фото аудитории обновлено';
+if (isset($_GET['aud_error'])) $flash = 'Ошибка загрузки фото аудитории';
 
 // ===== Data load =====
 $leads = [];
@@ -1386,6 +1412,9 @@ $project_tags = ['Медицина', 'Образование', 'Государс
             </a>
             <a href="?s=catalog" class="admin-nav-link <?= $section === 'catalog' ? 'is-active' : '' ?>">
                 <span class="admin-nav-icon">[K]</span> Каталог
+            </a>
+            <a href="?s=audience" class="admin-nav-link <?= $section === 'audience' ? 'is-active' : '' ?>">
+                <span class="admin-nav-icon">[A]</span> Аудитория
             </a>
             <a href="?s=settings" class="admin-nav-link <?= $section === 'settings' ? 'is-active' : '' ?>">
                 <span class="admin-nav-icon">[S]</span> Настройки
@@ -2349,6 +2378,43 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                     </form>
                 </div>
             <?php endforeach; ?>
+
+        <?php elseif ($section === 'audience'): ?>
+            <header class="admin-header">
+                <h1 class="admin-h1">Аудитория — фото блока</h1>
+            </header>
+            <div class="admin-card" style="margin-bottom:16px;background:#f0f9ff;border-left:4px solid #3b82f6;padding:12px 16px;font-size:14px;">
+                <strong>Требования к фото:</strong> Пропорция <strong>10:7</strong> (горизонтальные).
+                Рекомендуемое разрешение: <strong>800×560 px</strong> или выше.
+                Форматы: JPG, PNG, WebP. Максимум 10 МБ. Конвертация в WebP происходит автоматически.
+            </div>
+            <?php
+            $aud_slots = ['architect' => 'Архитектор / проектировщик', 'dealer' => 'Дилер / монтажник', 'developer' => 'Девелопер / застройщик'];
+            $aud_dir = __DIR__ . '/../../images-convert/pages/index/audience';
+            foreach ($aud_slots as $slot => $label):
+                $img_url = '';
+                foreach (['webp', 'png', 'jpg'] as $e) {
+                    if (file_exists($aud_dir . '/audience_' . $slot . '.' . $e)) {
+                        $img_url = '/blp/images-convert/pages/index/audience/audience_' . $slot . '.' . $e . '?v=' . time();
+                        break;
+                    }
+                }
+            ?>
+            <div class="admin-card" style="margin-bottom:16px;">
+                <h3 style="margin:0 0 12px;"><?= h($label) ?></h3>
+                <?php if ($img_url): ?>
+                    <img src="<?= h($img_url) ?>" style="max-width:320px;height:auto;border-radius:6px;display:block;margin-bottom:12px;border:1px solid #eee;">
+                <?php else: ?>
+                    <p style="color:#999;margin-bottom:12px;">Фото не загружено</p>
+                <?php endif; ?>
+                <form method="post" action="?action=upload-audience&slot=<?= $slot ?>&csrf=<?= h($_SESSION['csrf_token'] ?? '') ?>" enctype="multipart/form-data">
+                    <label style="display:block;margin-bottom:6px;font-size:13px;color:#666;">Загрузить новое фото (10:7, ≥ 800×560 px):</label>
+                    <input type="file" name="photo" accept="image/*" style="display:block;margin-bottom:8px;">
+                    <button type="submit" class="btn-primary">Заменить фото</button>
+                </form>
+            </div>
+            <?php endforeach; ?>
+
         <?php endif; ?>
     </main>
 </div>
