@@ -1,0 +1,8 @@
+# 2026-04-27: блокировать прямой HTTP-доступ к PHP-файлам страниц
+# Исключение: admin/ (своя авторизация), internal Apache rewrites и error docs (REDIRECT_STATUS не пуст)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^admin/ - [L]
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^ - [F,L]
+</IfModule>

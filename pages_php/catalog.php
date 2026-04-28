@@ -41,7 +41,10 @@ if (is_dir($walypanDir)) {
 
 // 2026-04-22: image-helper for WebP + lazy-loading support
 require_once __DIR__ . '/../blocks/image-helper.php';
+// 2026-04-27: данные каталога из database/catalog.json (через admin)
+require_once __DIR__ . '/../blocks/catalog_config.php';
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 
@@ -74,10 +77,11 @@ ob_start();
                 
                 <div class="product-info">
                     <!-- 2026-04-20: H2 содержит «фиброцементные» + применение -->
-                    <h2 class="product-title">Фиброцементные панели серии NATURE</h2>
+                    <!-- 2026-04-27: тексты из database/catalog.json (admin) -->
+                    <h2 class="product-title"><?= htmlspecialchars(get_catalog_series('nature', 'title', 'Фиброцементные панели серии NATURE')) ?></h2>
 
                     <p class="product-description">
-                        Фактура «под бетон» — индустриальная эстетика в естественном проявлении. Неповторимый рисунок каждой панели создаёт целостный фасад. Применяется для жилых комплексов, бизнес-центров, общественных зданий. Крупный формат до&nbsp;3050&nbsp;мм сокращает количество швов.
+                        <?= htmlspecialchars(get_catalog_series('nature', 'description', 'Фактура «под бетон» — индустриальная эстетика в естественном проявлении. Неповторимый рисунок каждой панели создаёт целостный фасад. Применяется для жилых комплексов, бизнес-центров, общественных зданий. Крупный формат до 3050 мм сокращает количество швов.')) ?>
                     </p>
 
                     <div class="specs-section">
@@ -135,8 +139,9 @@ ob_start();
         <article class="product-card mirrored">
             <div class="product-info">
                 <!-- 2026-04-20: H2 содержит «фиброцементные» + применение -->
-                <h2 class="product-title">Фиброцементные панели серии POLISHED</h2>
-                <p class="product-description">Фиброцементные плиты в спокойных природных оттенках — сдержанная классика. Матовая поверхность усиливает декоративный эффект. Идеально для административных зданий, медицинских учреждений, школ.</p>
+                <!-- 2026-04-27: тексты из database/catalog.json (admin) -->
+                <h2 class="product-title"><?= htmlspecialchars(get_catalog_series('polished', 'title', 'Фиброцементные панели серии POLISHED')) ?></h2>
+                <p class="product-description"><?= htmlspecialchars(get_catalog_series('polished', 'description', 'Фиброцементные плиты в спокойных природных оттенках — сдержанная классика. Матовая поверхность усиливает декоративный эффект. Идеально для административных зданий, медицинских учреждений, школ.')) ?></p>
                 <div class="specs-section">
                     <div class="spec-row"><span class="spec-label">Толщина, мм:</span><div class="spec-static"><span class="spec-value-plate">8</span><span class="spec-value-plate">9</span><span class="spec-value-plate">10</span><span class="spec-value-plate">12</span><span class="spec-value-plate">15</span></div></div>
                     <div class="spec-row"><span class="spec-label">Длина, мм:</span><div class="spec-static"><span class="spec-value-plate">2440</span><span class="spec-value-plate">3050</span></div></div>
@@ -187,10 +192,11 @@ ob_start();
             
             <div class="product-info">
                 <!-- 2026-04-20: H2 содержит «фиброцементные» + применение -->
-                <h2 class="product-title">Фиброцементные панели серии TEXTURE</h2>
+                <!-- 2026-04-27: тексты из database/catalog.json (admin) -->
+                <h2 class="product-title"><?= htmlspecialchars(get_catalog_series('texture', 'title', 'Фиброцементные панели серии TEXTURE')) ?></h2>
 
                 <p class="product-description">
-                    Стиль и функциональность. Слегка шлифованная поверхность с естественной палитрой даёт фасаду статусный вид. Востребованы в проектах коммерческой и жилой недвижимости бизнес-класса.
+                    <?= htmlspecialchars(get_catalog_series('texture', 'description', 'Стиль и функциональность. Слегка шлифованная поверхность с естественной палитрой даёт фасаду статусный вид. Востребованы в проектах коммерческой и жилой недвижимости бизнес-класса.')) ?>
                 </p>
                 
                 <div class="specs-section">
@@ -246,15 +252,16 @@ ob_start();
         <article class="blp-card">
             <!-- Левая колонка: текст и характеристики -->
             <div class="blp-info">
-                <h2 class="blp-title">Линеарные панели<br>серия WALYPAN</h2>
+                <!-- 2026-04-27: title из database/catalog.json (admin) -->
+                <h2 class="blp-title"><?= htmlspecialchars(get_catalog_series('walypan', 'title', 'Линеарные панели серия WALYPAN')) ?></h2>
 
                 <div class="blp-description">
-                    <p>Линеарные панели позволяют реализовывать сложные фасадные решения:</p>
+                    <!-- 2026-04-27: description из database/catalog.json (admin) -->
+                    <p><?= htmlspecialchars(get_catalog_series('walypan', 'description', 'Линеарные панели позволяют реализовывать сложные фасадные решения: комбинация различных текстур, создание геометрических рисунков фасада. Рельеф поверхности формирует объёмный фасад и динамичную игру света и тени.')) ?></p>
                     <ul>
                         <li>комбинация различных текстур</li>
                         <li>создание геометрических рисунков фасада</li>
                     </ul>
-                    <p>Рельеф поверхности формирует объемный фасад&nbsp;и динамичную игру света&nbsp;и тени.</p>
                 </div>
 
                 <div class="blp-specs">
@@ -425,8 +432,6 @@ ob_start();
         });
 })();
 </script>
-
-</body>
 
 
 <?php include '../blocks/benefits-section.php'; ?>

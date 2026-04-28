@@ -17,6 +17,7 @@ $breadcrumbs = [
     ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
 ];
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 

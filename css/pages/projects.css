@@ -46,23 +46,22 @@
 
 .mini-slider { position: relative;
     width: 100%;
-    flex: 1;
-    min-height: 300px;
+    aspect-ratio: 4/3;
+    max-height: 500px;
     overflow: hidden;
     background: #f5f5f5; }
 
 .mini-slide { position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     opacity: 0;
     pointer-events: none; }
 
 .mini-slide.active { opacity: 1;
     pointer-events: auto; }
 
-.mini-slide img { width: 100%;
+.mini-slide img { position: absolute;
+    inset: 0;
+    width: 100%;
     height: 100%;
     object-fit: cover; }
 

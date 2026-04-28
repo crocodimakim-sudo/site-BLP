@@ -5,6 +5,8 @@ $page_canonical = 'https://building-port.ru/blp/compare';
 $page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Сравнение 4 серий фиброцементных панелей BLP Board: характеристики, фактуры, области применения, толщина, размеры. Выберите подходящую серию для вашего объекта.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/compare.css">';
+// 2026-04-27: страница скрыта — не нужна в текущем состоянии
+$page_robots = 'noindex, nofollow';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
     ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
@@ -12,6 +14,7 @@ $breadcrumbs = [
     ['name' => 'Сравнение серий', 'url' => 'https://building-port.ru/blp/compare'],
 ];
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 <!-- ============================================

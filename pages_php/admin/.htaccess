@@ -1,0 +1,2 @@
+# 2026-04-27: admin directory — override DirectoryIndex and restrict access
+DirectoryIndex index.php

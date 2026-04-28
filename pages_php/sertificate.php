@@ -15,6 +15,7 @@ $breadcrumbs = [
     ['name' => 'Главная',      'url' => 'https://building-port.ru/blp/'],
     ['name' => 'Сертификаты',  'url' => 'https://building-port.ru/blp/sertificate'],
 ];
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 

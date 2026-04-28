@@ -3,10 +3,8 @@
 $page_title    = 'Блог BLP Board — статьи о фиброцементе и вентилируемых фасадах';
 $page_desc     = 'Экспертные материалы о монтаже фиброцементных панелей, сравнении материалов, типовых ошибках вентилируемых фасадов и реализованных проектах BLP Board.';
 $page_canonical = 'https://building-port.ru/blp/blog';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $extra_css     = '<link rel="stylesheet" href="/blp/css/pages/blog.css">';
-// 2026-04-27: блог скрыт до доработки — не индексировать
-$page_robots   = 'noindex, nofollow';
 
 $breadcrumbs = [
     ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],

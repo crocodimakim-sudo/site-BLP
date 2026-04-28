@@ -80,6 +80,7 @@ $howto_schema = [
     ]
 ];
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 <!-- ============================================

@@ -186,8 +186,8 @@ p {
   .container,
   .blp-container,
   .section-container {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -413,14 +413,12 @@ p {
 
 /* Широкие мониторы (≥1440px) */
 @media (min-width: 1440px) {
-  .blp-container { max-width: 1320px; }
   h1 { font-size: 48px; }
   h2 { font-size: 38px; }
 }
 
 /* Очень широкие мониторы (≥1920px) */
 @media (min-width: 1920px) {
-  .blp-container { max-width: 1600px; }
   h1 { font-size: 54px; }
   h2 { font-size: 42px; }
 }
@@ -436,3 +434,41 @@ p {
 
 /* 2026-04-23: убрать padding-top у первого блока после хлебных крошек — все страницы */
 main > *:first-child { padding-top: 0 !important; margin-top: 0 !important; }
+
+/* 2026-04-27: blp-hero-check — глобальная иконка-галочка, перенесена из dealer.css */
+.blp-hero-check { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
+.blp-hero-check svg { width: 100%; height: 100%; stroke: var(--accent-green); stroke-width: 2.5; fill: none; }
+
+/* 2026-04-27: BLP Hero Component System — глобальные стили для всех страниц
+   Ранее только в dealer.css → все новые страницы получали сломанный хиро */
+.blp-hero-section { background: #fff; padding: 60px 0 80px; width: 100%; overflow: hidden; }
+.blp-hero-section .blp-grid-12,
+.blp-grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; align-items: stretch; }
+.blp-hero-content { grid-column: span 6; display: flex; flex-direction: column; }
+.blp-hero-image { grid-column: span 6; display: flex; justify-content: flex-end; align-items: stretch; }
+.blp-hero-title { color: #1a1a1a; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.02em; }
+.blp-hero-subtitle { font-size: 20px; font-weight: 600; color: var(--color-brand, #00352F); margin-bottom: 32px; line-height: 1.4; }
+.blp-hero-list { list-style: none; margin-bottom: 40px; flex-grow: 1; padding: 0; }
+.blp-hero-list-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; }
+.blp-hero-list-item:last-child { margin-bottom: 0; }
+.blp-hero-button { display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; background: #00352F; color: #fff !important; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px; border: none; cursor: pointer; transition: all 0.25s ease; align-self: flex-start; letter-spacing: 0.01em; }
+.blp-hero-button:hover { background: #002420; color: #fff !important; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,53,47,.3); }
+.blp-hero-img { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; }
+
+@media (max-width: 1024px) {
+  .blp-hero-section { padding: 48px 0 60px; }
+  .blp-hero-content { grid-column: span 12; order: 1; }
+  .blp-hero-image { grid-column: span 12; order: 0; justify-content: center; margin-bottom: 32px; margin-left: 0; }
+  .blp-hero-subtitle { font-size: 18px; }
+  .blp-hero-img { max-width: 100%; height: auto; min-height: 320px; max-height: 400px; }
+}
+@media (max-width: 640px) {
+  .blp-hero-section { padding: 32px 0 48px; }
+  .blp-grid-12 { gap: 16px; }
+  .blp-hero-title { margin-bottom: 12px; }
+  .blp-hero-subtitle { font-size: 16px; margin-bottom: 24px; }
+  .blp-hero-list { margin-bottom: 32px; }
+  .blp-hero-list-item { font-size: 14px; margin-bottom: 12px; }
+  .blp-hero-button { width: 100%; padding: 14px 24px; margin-top: 30px; }
+  .blp-hero-img { min-height: 240px; max-height: 300px; }
+}

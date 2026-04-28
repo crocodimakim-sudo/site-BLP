@@ -15,6 +15,7 @@ $breadcrumbs = [
     ['name' => 'Способы крепления', 'url' => 'https://building-port.ru/blp/kreplenie'],
 ];
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 

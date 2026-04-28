@@ -1,0 +1,494 @@
+/* 2026-04-27: Сравнение BLP Board с конкурентами — NOINDEX до утверждения */
+
+/* ===== SELECTOR BAR ===== */
+.cmp-selector-bar {
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 12px 0;
+}
+.cmp-selector-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.cmp-selector-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-muted, #5a5a5a);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+.cmp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.cmp-pill {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border, #e5e7eb);
+    background: #fff;
+    color: var(--color-text, #1a1a1a);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+    font-family: 'Montserrat', sans-serif;
+}
+.cmp-pill:hover {
+    border-color: var(--color-brand-light, #00695c);
+    color: var(--color-brand, #00352F);
+}
+.cmp-pill.active {
+    background: var(--color-brand, #00352F);
+    color: #fff;
+    border-color: var(--color-brand, #00352F);
+}
+.cmp-select-mobile {
+    display: none;
+    width: 100%;
+    padding: 9px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border, #e5e7eb);
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-text, #1a1a1a);
+    background: #fff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a5a5a' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+/* ===== WIN COUNTER ===== */
+.cmp-counter-section { padding: 20px 0 0; }
+.cmp-counter-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+    background: var(--color-bg-soft, #f8f9fa);
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid var(--color-border, #e5e7eb);
+}
+.cmp-counter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-text-muted, #5a5a5a);
+}
+.cmp-counter-num {
+    font-size: 1.4rem;
+    font-weight: 700;
+    min-width: 2rem;
+    text-align: center;
+}
+.cmp-counter-item.blp .cmp-counter-num  { color: var(--color-success, #4CAF50); }
+.cmp-counter-item.equal .cmp-counter-num { color: #9e9e9e; }
+.cmp-counter-item.comp .cmp-counter-num  { color: #FF9800; }
+
+/* Кликабельные фильтры */
+.cmp-counter-item[data-filter] {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 4px 10px;
+    transition: background 0.15s;
+}
+.cmp-counter-item[data-filter]:hover { background: rgba(0,0,0,0.05); }
+.cmp-counter-item[data-filter].filter-active { background: rgba(0,0,0,0.08); outline: 2px solid currentColor; outline-offset: -2px; }
+.cmp-counter-item.blp.filter-active  { outline-color: #4CAF50; }
+.cmp-counter-item.equal.filter-active { outline-color: #9e9e9e; }
+.cmp-counter-item.comp.filter-active  { outline-color: #FF9800; }
+
+/* Кнопка сброса */
+.cmp-counter-item.reset {
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #5a5a5a;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    transition: background 0.15s;
+}
+.cmp-counter-item.reset:hover { background: #f5f5f5; }
+
+/* ===== TABLE SECTION ===== */
+.cmp-table-section { padding: 24px 0 40px; }
+.cmp-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
+}
+.cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    font-size: 0.88rem;
+}
+
+/* Table header */
+.cmp-table thead tr th {
+    padding: 14px 16px;
+    font-weight: 700;
+    text-align: left;
+    vertical-align: middle;
+}
+.cmp-th-param {
+    width: 35%;
+    background: #f5faf8;
+    color: #1a2a28;
+    border-right: 1px solid #e5e7eb;
+}
+.cmp-th-blp {
+    width: 32.5%;
+    background: #00352F;
+    color: #fff;
+}
+.cmp-th-comp {
+    width: 32.5%;
+    background: #4a5568;
+    color: #fff;
+    transition: background 0.25s;
+}
+
+/* Category row */
+.cmp-row-cat td {
+    background: #e8ede9;
+    font-weight: 700;
+    color: #00352F;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-top: 2px solid #c8d8cc;
+}
+
+/* Data rows */
+.cmp-table tbody tr:not(.cmp-row-cat) td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+    color: var(--color-text, #1a1a1a);
+}
+.cmp-table tbody tr:not(.cmp-row-cat):nth-child(even):not(.cmp-row-cat) td {
+    background: #fafafa;
+}
+.cmp-table tbody tr:not(.cmp-row-cat):nth-child(odd):not(.cmp-row-cat) td {
+    background: #fff;
+}
+/* Override for category-adjacent rows */
+.cmp-row-cat + tr td { background: #fff; }
+
+.cmp-td-param {
+    font-weight: 600;
+    color: #1a2a28;
+    background: #fafafa !important;
+    border-right: 1px solid #e5e7eb;
+}
+
+/* Win/loss states */
+.cell-win-blp {
+    background: #e8f5e9 !important;
+    border-left: 3px solid #4CAF50;
+}
+.cell-win-comp {
+    background: #fff8e1 !important;
+    border-left: 3px solid #FF9800;
+}
+.cell-win-blp .cmp-cell-icon  { color: #4CAF50; font-size: 0.8rem; margin-left: 4px; }
+.cell-win-comp .cmp-cell-icon { color: #FF9800; font-size: 0.8rem; margin-left: 4px; }
+
+/* ===== LEGEND ===== */
+.cmp-legend {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: var(--radius-md, 12px);
+    font-size: 0.82rem;
+    color: var(--color-text-muted, #5a5a5a);
+}
+.cmp-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.cmp-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+.cmp-legend-dot.blp   { background: #4CAF50; }
+.cmp-legend-dot.equal { background: #9e9e9e; }
+.cmp-legend-dot.comp  { background: #FF9800; }
+
+/* ===== PAGE HEADER — 2026-04-27: редизайн, split-layout с диагональным разделителем ===== */
+
+/* Внешняя обёртка — тёмный фон на всю ширину */
+.cmp-page-header {
+    background: #00352F;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Внутренняя сетка: левая тёмная панель + правая светлая */
+.cmp-header-grid {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    min-height: 280px;
+    position: relative;
+}
+
+/* ---- Левая панель: текст ---- */
+.cmp-header-left {
+    position: relative;
+    z-index: 2;
+    padding: 52px 48px 52px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.cmp-page-header-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #27AE60;
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Маленькая горизонтальная линия перед eyebrow */
+.cmp-page-header-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: #27AE60;
+    flex-shrink: 0;
+}
+
+.cmp-page-header-title {
+    font-size: clamp(1.5rem, 2.4vw, 2.4rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 18px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+/* «vs» — выделен зелёным с боксовым акцентом */
+.cmp-vs {
+    display: inline-block;
+    font-size: 0.7em;
+    font-weight: 900;
+    color: #00352F;
+    background: #27AE60;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+    vertical-align: middle;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+}
+
+.cmp-page-header-sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 420px;
+    margin: 0;
+    line-height: 1.65;
+}
+
+/* ---- Правая панель: цифры + фоновые ghost-числа ---- */
+.cmp-header-right {
+    position: relative;
+    z-index: 2;
+    /* Светлый фон с диагональным обрезом слева */
+    background: #f0f4f2;
+    clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 52px 40px 52px 64px;
+    overflow: hidden;
+}
+
+/* Три огромные «призрачные» цифры как декор-текстура */
+.cmp-header-right::before {
+    content: '9 22 6';
+    position: absolute;
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(0,53,47,0.06);
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Сетка трёх карточек-статистик */
+.cmp-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Одна карточка */
+.cmp-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 12px 16px;
+    border: 1px solid rgba(0,53,47,0.1);
+    box-shadow: 0 2px 8px rgba(0,53,47,0.06);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Зелёная черта сверху карточки */
+.cmp-stat::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #27AE60;
+}
+
+.cmp-stat-num {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #00352F;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.cmp-stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #5a6968;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+    line-height: 1.3;
+}
+
+/* Разделитель — не нужен (убран, карточки заменяют его) */
+.cmp-stat-divider { display: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .cmp-header-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .cmp-header-left {
+        padding: 40px 20px 36px;
+    }
+
+    .cmp-header-left::before { display: none; }
+
+    .cmp-header-right {
+        clip-path: none;
+        padding: 28px 20px 36px;
+        background: rgba(255,255,255,0.05);
+    }
+
+    .cmp-header-right::before { display: none; }
+
+    .cmp-stat {
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: none;
+    }
+
+    .cmp-stat::after { background: #27AE60; }
+
+    .cmp-stat-num { color: #fff; }
+
+    .cmp-stat-label { color: rgba(255,255,255,0.55); }
+
+    .cmp-page-header-sub { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+    .cmp-header-left { padding: 32px 16px 28px; }
+
+    .cmp-page-header-title { font-size: 1.75rem; white-space: normal; }
+
+    .cmp-stats-row { gap: 8px; }
+
+    .cmp-stat { padding: 16px 8px 12px; }
+
+    .cmp-stat-num { font-size: 1.8rem; }
+
+    .cmp-header-right { padding: 20px 16px 32px; }
+}
+
+/* ===== MAX WIDTH OVERRIDE — 1200px на всех экранах ===== */
+@media (min-width: 1440px) {
+    .blp-container { max-width: 1200px; }
+}
+@media (min-width: 1920px) {
+    .blp-container { max-width: 1200px; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .cmp-pills        { display: none; }
+    .cmp-select-mobile { display: block; }
+    .cmp-selector-inner { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+
+    .cmp-counter-row  { gap: 1rem; padding: 12px 14px; }
+    .cmp-counter-num  { font-size: 1.2rem; }
+
+    .cmp-page-header { padding: 36px 0 28px; }
+    .cmp-page-header-title { font-size: 2rem; }
+    .cmp-stats-row { width: 100%; border-radius: 10px; }
+    .cmp-stat { padding: 12px 20px; }
+    .cmp-stat-num { font-size: 1.6rem; }
+
+    .cmp-legend { gap: 0.9rem; }
+}
+@media (max-width: 480px) {
+    .cmp-counter-row { flex-direction: column; gap: 0.5rem; }
+    .cmp-selector-bar { top: 60px; }
+}

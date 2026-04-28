@@ -18,6 +18,7 @@ $breadcrumbs = [
     ['name' => 'Архитекторам и проектировщикам', 'url' => 'https://building-port.ru/blp/architect'],
 ];
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 

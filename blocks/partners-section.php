@@ -1,3 +1,15 @@
+<?php
+// 2026-04-27: данные партнёров берутся из database/partners.json вместо хардкода
+$partners_data = [];
+$partners_json = __DIR__ . '/../database/partners.json';
+if (file_exists($partners_json)) {
+    $raw = @json_decode(file_get_contents($partners_json), true);
+    if (!empty($raw['partners'])) {
+        $partners_data = array_filter($raw['partners'], fn($p) => !empty($p['is_active']));
+        usort($partners_data, fn($a, $b) => ($a['order'] ?? 999) - ($b['order'] ?? 999));
+    }
+}
+?>
 <div class="partners-section section-card">
     <h2 class="partners-title">Партнеры</h2>
 
@@ -6,24 +18,17 @@
 
         <div class="partners-slider-container">
             <div class="partners-slider-track" id="partnersTrack">
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/kaft.svg" alt="KAFT System"></div></div>
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/alt-msk.svg" alt="ALT MSK"></div></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/nordfox.png" alt="NordFox"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/ronson.svg" alt="Ronson"></div>
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/tehnopress.png" alt="Технопресс"></div></div>
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/smartfasad.svg" alt="SmartFassad"></div></div>
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/enwall.png" alt="Enwall"></div></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/sirius.png" alt="Сириус"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/utech.svg" alt="UTech"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/favorit.svg" alt="Фаворит Фасад"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/vektorfasad.jpg" alt="VectorFassad"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/aventa.jpg" alt="Авента-Pro"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/ukon.png" alt="Ukon"></div>
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/simplex.svg" alt="Simplex"></div></div>
-                <div class="partner-slide"><div class="partner-bg"><img src="/blp/images-convert/blocks/partners/alfanvf.png" alt="Альфа-Проф"></div></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/zias.png" alt="Zias"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/kts.jpg" alt="KTS"></div>
-                <div class="partner-slide"><img src="/blp/images-convert/blocks/partners/silma.jpg" alt="Силма"></div>
+                <?php foreach ($partners_data as $p):
+                    $logo = htmlspecialchars($p['logo'] ?? '', ENT_QUOTES);
+                    $name = htmlspecialchars($p['name'] ?? '', ENT_QUOTES);
+                    $dark = !empty($p['dark_bg']);
+                ?>
+                <div class="partner-slide">
+                    <?php if ($dark): ?><div class="partner-bg"><?php endif; ?>
+                    <img src="<?= $logo ?>" alt="<?= $name ?>">
+                    <?php if ($dark): ?></div><?php endif; ?>
+                </div>
+                <?php endforeach; ?>
             </div>
         </div>
 

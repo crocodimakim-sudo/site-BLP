@@ -1,6 +1,14 @@
 /* 2026-04-20: Stage 3 Group 3.B — Installation guide page styles */
 
 /* ===== HERO ===== */
+/* 2026-04-27: тёмно-зелёный фон — badge-круг создан для тёмного фона */
+.install-hero { background: #00352F; }
+.install-hero .blp-hero-title    { color: #fff; }
+.install-hero .blp-hero-subtitle { color: rgba(255,255,255,.85); }
+.install-hero .blp-hero-list-item { color: rgba(255,255,255,.9); }
+.install-hero .blp-hero-check svg { stroke: rgba(255,255,255,.75); }
+.install-hero .blp-hero-button   { background: #fff; color: #00352F !important; }
+.install-hero .blp-hero-button:hover { background: #f0f9f5; color: #00352F !important; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
 .install-hero .blp-hero-content { grid-column: 1 / 8; }
 .install-hero-steps { grid-column: 8 / 13; display: flex; align-items: center; justify-content: center; }
 

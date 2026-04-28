@@ -1,7 +1,7 @@
     <header class="header">
         <div class="header-container">
             <a href="/blp/" class="logo" aria-label="Building Port - на главную">
-                <img src="/blp/images/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">
+                <img src="/blp/images-convert/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">
             </a>
 
             <nav class="nav" aria-label="Главная навигация">

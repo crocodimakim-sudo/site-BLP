@@ -34,7 +34,8 @@ RewriteRule ^consent$       pages_php/consent.php     [L]
 RewriteRule ^dealer$        pages_php/dealer.php      [L]
 RewriteRule ^diler$         /blp/dealer               [R=301,L]
 RewriteRule ^faq$           pages_php/faq.php         [L]
-RewriteRule ^compare$       pages_php/compare.php     [L]
+RewriteRule ^compare$           pages_php/compare.php          [L]
+RewriteRule ^compare-materials$ pages_php/compare-materials.php [L,QSA]
 RewriteRule ^install$       pages_php/install.php     [L]
 
 # 2026-04-20: HSTS — enforce HTTPS for 1 year

@@ -20,6 +20,26 @@ $page_og_type  = isset($page_og_type)  ? $page_og_type  : 'website';
 $page_canonical = isset($page_canonical) ? $page_canonical : '';
 // 2026-04-24: SEO — noindex support for error pages and non-indexed content
 $page_robots   = isset($page_robots)   ? $page_robots   : '';
+
+// 2026-04-27: читаем pages.json для управления видимостью страниц через админ-панель
+$_pages_config_file = __DIR__ . '/../database/pages.json';
+if (file_exists($_pages_config_file)) {
+    $_pages_data = json_decode(file_get_contents($_pages_config_file), true);
+    if (!empty($_pages_data['pages'])) {
+        $_current_slug = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+        $_current_slug = str_replace('blp/', '', $_current_slug);
+        $_current_slug = explode('/', $_current_slug)[0] ?: 'index';
+        foreach ($_pages_data['pages'] as $_pg) {
+            if (($_pg['slug'] ?? '') === $_current_slug) {
+                if (empty($_pg['is_live']) && $page_robots === '') {
+                    $page_robots = 'noindex, nofollow';
+                }
+                break;
+            }
+        }
+    }
+}
+
 $site_name     = 'BLP Board';
 $site_url      = 'https://building-port.ru';
 // 2026-04-20: placeholder ID — заменить на реальный GA4 Measurement ID перед go-live
@@ -85,9 +105,11 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"></noscript>
 
     <!-- 2026-04-20: Critical CSS — sync (above-fold) -->
-    <link rel="stylesheet" href="/blp/css/main.css">
-    <link rel="stylesheet" href="/blp/css/header.css">
-    <link rel="stylesheet" href="/blp/css/hero-section.css">
+    <!-- 2026-04-27: ?v= версионирование — сбрасывает кэш браузера при обновлении CSS -->
+    <?php $cv = '20260427b'; ?>
+    <link rel="stylesheet" href="/blp/css/main.css?v=<?php echo $cv; ?>">
+    <link rel="stylesheet" href="/blp/css/header.css?v=<?php echo $cv; ?>">
+    <link rel="stylesheet" href="/blp/css/hero-section.css?v=<?php echo $cv; ?>">
 
     <!-- 2026-04-20: Non-critical CSS — deferred (below-fold) -->
     <link rel="preload" as="style" href="/blp/css/animations.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -145,7 +167,6 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <?php include 'footer.php'; ?>
     <script src="/blp/js/header.js" defer></script>
     <script src="/blp/js/analytics.js" defer></script>
-    <script src="/blp/js/contact-form.js" defer></script>
     <?php if (isset($extra_js)) echo $extra_js; ?>
 </body>
 </html>

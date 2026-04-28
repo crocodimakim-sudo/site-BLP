@@ -14,6 +14,7 @@ $breadcrumbs = [
     ['name' => 'Дилерская программа', 'url' => 'https://building-port.ru/blp/dealer'],
 ];
 
+require_once __DIR__ . '/../blocks/session_init.php';
 ob_start();
 ?>
 <section class="blp-hero-section dealer-hero">

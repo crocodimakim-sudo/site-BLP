@@ -1,6 +1,14 @@
 /* 2026-04-20: Stage 3 Group 3.B — FAQ page styles */
 
 /* ===== HERO ===== */
+/* 2026-04-27: тёмно-зелёный фон — badge-круг создан для тёмного фона */
+.faq-hero { background: #00352F; }
+.faq-hero .blp-hero-title    { color: #fff; }
+.faq-hero .blp-hero-subtitle { color: rgba(255,255,255,.85); }
+.faq-hero .blp-hero-list-item { color: rgba(255,255,255,.9); }
+.faq-hero .blp-hero-check svg { stroke: rgba(255,255,255,.75); }
+.faq-hero .blp-hero-button   { background: #fff; color: #00352F !important; }
+.faq-hero .blp-hero-button:hover { background: #f0f9f5; color: #00352F !important; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
 .faq-hero-content { grid-column: 1 / 8; }
 .faq-hero-image   { grid-column: 8 / 13; display: flex; align-items: center; justify-content: center; }
 

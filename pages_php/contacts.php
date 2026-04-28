@@ -3,18 +3,13 @@
 // 2026-04-20: SEO — title geo-enriched, meta desc 155-160 chars
 $page_title    = 'Контакты BLP Board — Одинцово, Московская область';
 $page_canonical = 'https://building-port.ru/blp/contacts';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Контакты BLP Board: +7 (495) 984-96-89, Одинцово, ул. Неделина 6А. Работаем с архитекторами, застройщиками и дилерами. Заявка онлайн — ответим в течение рабочего дня.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/contacts.css">';
 $extra_js = '<script src="/blp/js/pages/contacts.js" defer></script>';
 
-// 2026-04-23: session_start() до ob_start() — иначе CSRF-токен в форме будет пустым
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
+// 2026-04-27: унифицировано с session_init.php (httponly, samesite, strict_mode, regenerate_id)
+require_once __DIR__ . '/../blocks/session_init.php';
 
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
