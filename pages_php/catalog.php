@@ -6,7 +6,7 @@ $page_desc     = 'Каталог фиброцементных панелей BLP
 $page_canonical = 'https://building-port.ru/blp/catalog';
 // 2026-04-20: og_image → real hero instead of missing og-default
 $page_og_image  = 'https://building-port.ru/blp/images-convert/pages/catalog/catalog_nature_render.jpg';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/catalog.css">';
+$extra_css = '<link rel="stylesheet" href="/blp/css/pages/catalog.css?v=20260428">';
 $extra_js = '<script src="/blp/js/pages/catalog.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
