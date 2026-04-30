@@ -403,6 +403,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_GET['action'] ?? '') === 'batch-
     $pages_dirty = false; $pages_cfg = null;
     $partners_dirty = false; $partners_arr = null;
     $certs_dirty = false; $certs_arr = null;
+    $site_cfg_dirty = false; $site_cfg_arr = null;
 
     foreach ($changes as $ch) {
         $section_ch = (string)($ch['section'] ?? '');
@@ -438,6 +439,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_GET['action'] ?? '') === 'batch-
                     if ((int)($cc['id'] ?? 0) === (int)$id_ch) { $cc['is_active'] = $newValue; $certs_dirty = true; break; }
                 }
                 unset($cc);
+            } elseif ($section_ch === 'site_config' && $field_ch === 'show_partners_slider') {
+                if ($site_cfg_arr === null) $site_cfg_arr = load_site_config();
+                $site_cfg_arr['show_partners_slider'] = $newValue;
+                $site_cfg_dirty = true;
             } else {
                 $errors[] = 'Неизвестный раздел: ' . $section_ch . '/' . $field_ch;
                 continue;
@@ -456,9 +461,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_GET['action'] ?? '') === 'batch-
                 $st->execute([$row[1], $row[0]]);
             }
         }
-        if ($pages_dirty)    save_pages_config($pages_cfg);
-        if ($partners_dirty) save_partners($partners_arr);
-        if ($certs_dirty)    save_certificates($certs_arr);
+        if ($pages_dirty)     save_pages_config($pages_cfg);
+        if ($partners_dirty)  save_partners($partners_arr);
+        if ($certs_dirty)     save_certificates($certs_arr);
+        if ($site_cfg_dirty)  save_site_config($site_cfg_arr);
     } catch (Exception $e) {
         echo json_encode(['ok' => false, 'error' => $e->getMessage()]);
         exit;
@@ -1322,6 +1328,7 @@ if ($section === 'leads') {
 if ($section === 'settings') {
     $site_config = load_site_config();
 } elseif ($section === 'partners') {
+    $site_config = load_site_config();
     $partners_list = load_partners();
     usort($partners_list, function($a, $b) {
         $oa = (int)($a['order'] ?? 999); $ob = (int)($b['order'] ?? 999);
@@ -1986,12 +1993,28 @@ $project_tags = ['Медицина', 'Образование', 'Государс
             </form>
 
         <?php elseif ($section === 'partners'): ?>
+            <?php $show_partners_global = !empty($site_config['show_partners_slider']); ?>
             <header class="admin-header">
                 <h1 class="admin-h1">Партнёры <span class="admin-counter">(<?= count($partners_list) ?>)</span></h1>
                 <div class="admin-header-actions">
                     <a href="?s=partner-edit" class="btn-primary">+ Добавить партнёра</a>
                 </div>
             </header>
+
+            <div style="margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; gap: 1rem;">
+                <span style="font-weight: 600;">Блок партнёров на сайте:</span>
+                <button type="button"
+                        class="admin-toggle <?= $show_partners_global ? 'is-on' : 'is-off' ?>"
+                        data-section="site_config"
+                        data-id="global"
+                        data-field="show_partners_slider"
+                        data-value="<?= $show_partners_global ? '1' : '0' ?>"
+                        title="Показывать / скрыть блок партнёров"
+                        onclick="adminToggle(this)">
+                    <?= $show_partners_global ? 'ON' : 'OFF' ?>
+                </button>
+                <span style="color: #666; font-size: 0.85rem;">Выключает весь слайдер на всех страницах</span>
+            </div>
 
             <?php if (empty($partners_list)): ?>
                 <div class="admin-empty">Партнёров пока нет. <a href="?s=partner-edit">Добавить первого</a>.</div>

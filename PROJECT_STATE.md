@@ -12,9 +12,9 @@
 | **Проект** | Сайт компании BLP Board (фиброцементные панели для вентилируемых фасадов) |
 | **Локальный путь** | `D:\Claude Code\01-site-blp\site-kimi` |
 | **Репозиторий** | `https://github.com/crocodimakim-sudo/site-BLP` (приватный) |
-| **Текущий сервер** | `204.168.247.38` (старый, deploy настроен на него) |
-| **Путь на сервере** | `/var/www/html/blp` |
-| **Базовый URL** | `https://building-port.ru/` |
+| **Текущий сервер** | `204.168.247.38` (старый VPS, деплой отключён) |
+| **Новый сервер** | Shared хостинг (путь: `/var/www/u2678850/data/www/building-port.ru/`) |
+| **Базовый URL** | `https://building-port.ru/` (без `/blp/`) |
 
 ---
 
@@ -41,8 +41,8 @@ site-kimi/
 ├── .gitignore                   # Исключения из Git
 ├── robots.txt                   # Настройки для поисковых роботов
 ├── sitemap.xml                  # XML-карта сайта
-├── deploy.bat                   # Деплой: git push + ssh git pull
-├── rollback.bat                 # Откат последнего коммита на сервере
+├── deploy.bat                   # Деплой: git push (SSH-часть отключена до получения нового сервера)
+├── rollback.bat                 # Откат последнего коммита
 │
 ├── blocks/                      # PHP-блоки (компоненты)
 │   ├── header.php               # Шапка сайта
@@ -149,61 +149,43 @@ site-kimi/
 
 ---
 
-## 4. Состояние Git
+## 4. История изменений (Git)
 
 ### Последние коммиты
 ```
+b36c5f3  2026-04-30: hosting: removed /blp/ prefix for shared hosting deployment
+ea94443  2026-04-30: backup: current state before hosting migration
 b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid, admin audience section
 626b122  2026-04-28: убраны .omc/, CLAUDE.md, локальные скрипты из git
 9a1b7e8  2026-04-28: обновлены фото аудитории (architect, dealer, developer)
-3e5787e  2026-04-28: catalog product-card max-height 600px, WALYPAN slider images fill container
-08627d2  2026-04-28: product-card max-height 600px
 ```
 
-### Незакоммиченные изменения (modified)
-| Файл | Статус | Примечание |
-|------|--------|------------|
-| `.htaccess` | Modified | Вероятно, изменения в rewrite или заголовках |
-| `blocks/get_projects.php` | Modified | Изменения в логике получения проектов |
-| `js/pages/projects.js` | Modified | Изменения в JS проектов |
-| `pages_php/admin/index.php` | Modified | Изменения в админ-панели |
-| `pages_php/contacts.php` | Modified | Изменения в странице контактов |
-| `scripts/convert_images.php` | Modified | Изменения в конвертации изображений |
-| `images/og-default.jpg` | Deleted | Удалено старое OG-изображение |
-| `images/shared/favicon.svg` | Deleted | Удалён старый фавикон |
-
-### Untracked файлы (новые, не в Git)
-- **Много `*-sm.webp`** в `images-convert/` — это миниатюры (thumbnails), сгенерированные скриптом `convert_images.php`
-- OG-изображения в WebP-формате
-
-### Что НЕ должно попадать в Git
-Согласно `.gitignore` и логике проекта:
-- `images/` — исходные изображения (тяжёлые)
-- `images-convert/` — сконвертированные WebP (генерируются на сервере)
-- `database/*.db` — SQLite-базы (данные)
-- `logs/` — логи заявок
-- `.omc/`, `.gstack/`, `.claude_work_log` — служебные папки агентов
-- `*.log`, `*.bat`, `*.sh` — локальные скрипты (частично)
+### Коммит `b36c5f3` — переход на shared хостинг
+В этом коммите убран префикс `/blp/` из всех путей:
+- `.htaccess`: `RewriteBase /blp/` → `RewriteBase /`
+- Все реврайты: `/blp/pages_php/...` → `/pages_php/...`
+- `ErrorDocument`: `/blp/pages_php/404.php` → `/pages_php/404.php`
+- Все PHP-страницы: canonical, OG-image, CSS, JS — без `/blp/`
+- `deploy.bat` / `rollback.bat`: SSH-деплой отключён (старый VPS), добавлены TODO
 
 ---
 
-## 5. Конфигурация Apache (текущая локальная)
+## 5. Конфигурация Apache (.htaccess)
 
-### Корневой .htaccess
-- **RewriteBase:** `/`
+### Корневой .htaccess (адаптирован под shared хостинг)
+- **RewriteBase:** `/` (было `/blp/`)
 - **DirectoryIndex:** `pages_php/index.php`
-- **Чистые URL:** `/blog`, `/catalog`, `/dealer`, `/faq`, `/admin` и др.
-- **Редиректы:** `diler` → `dealer` (301)
+- **Чистые URL:** `/blog`, `/catalog`, `/dealer`, `/admin` и др.
+- **Редиректы:** `diler` → `/dealer` (301)
 - **HTTPS:** редирект закомментирован (ждёт SSL)
 - **Security headers:** HSTS, X-Frame-Options, CSP Report-Only
 - **Gzip:** `mod_deflate` для текстовых типов
 - **Кэширование:** 1 год для статики, 1 час для HTML
-- **Защита:** закрыт доступ к `.md`, `.py`, `.bat`, `.sql`, `.env`, `.json`, `.lock`, `.git`, `scripts/`, `html/`, `.omc/`, `logs/`
+- **Защита:** закрыт доступ к служебным файлам и папкам
 
 ### pages_php/.htaccess
 - Блокирует прямой HTTP-доступ ко всем PHP-файлам страниц
 - Исключение: `admin/` (своя авторизация)
-- Пропускает внутренние реврайты Apache (`REDIRECT_STATUS`)
 
 ---
 
@@ -238,26 +220,22 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
 
 ---
 
-## 7. Процесс деплоя (текущий)
+## 7. Процесс деплоя
 
-### deploy.bat
+### deploy.bat (текущее состояние)
 1. Конвертация изображений (`scripts/convert_images.php`)
 2. `git add -A`
 3. `git commit -m "сообщение"`
 4. `git push`
-5. `ssh root@204.168.247.38 "cd /var/www/html/blp && git pull"`
+5. ~~SSH git pull на сервер~~ — **ОТКЛЮЧЕНО**, ждём новый сервер
 6. Генерация HTML-превью (`scripts/generate_html.bat`)
-7. Открытие сайта в Chrome
+7. Открытие сайта в Chrome (`https://building-port.ru/`)
 
-### rollback.bat
-1. `git revert HEAD --no-edit`
-2. `git push`
-3. `ssh root@204.168.247.38 "cd /var/www/html/blp && git pull"`
-
-### Важно
-- Тяжёлые папки (`images-convert/`, `database/`) **не передаются через Git**
-- На сервере они должны быть развёрнуты отдельно (копирование или генерация)
-- Текущий сервер `204.168.247.38` — старый, требуется новый
+### Архив для подрядчика
+- **Файл:** `D:\Claude Code\01-site-blp\site-kimi-hosting.zip`
+- **Размер:** ~188 MB
+- **Содержит:** весь сайт без `.git`, `.omc`, `.gstack`, `logs`, `html`
+- **Пути адаптированы:** без `/blp/`, корневые URL
 
 ---
 
@@ -267,27 +245,19 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
 
 1. [ ] **Установить Apache + PHP 8.x + расширение GD**
 2. [ ] **Включить mod_rewrite**
-3. [ ] **Склонировать репозиторий:**
-   ```bash
-   git clone https://github.com/crocodimakim-sudo/site-BLP /var/www/html/blp
-   ```
-4. [ ] **Распаковать архив и положить папки:**
-   - `images-convert/` → `/var/www/html/images-convert/`
-   - `database/` → `/var/www/html/database/`
-5. [ ] **В конфиге Apache (vhost) добавить:**
-   ```apache
-   <Directory /var/www/html/pages_php>
-       AllowOverride All
-   </Directory>
-   ```
-6. [ ] **Настроить SSL через Let's Encrypt / Certbot**
-7. [ ] **Дать SSH-доступ (логин + IP нового сервера)**
+3. [ ] **Склонировать репозиторий или распаковать архив** в `/var/www/u2678850/data/www/building-port.ru/`
+4. [ ] **Положить папки:**
+   - `images-convert/` → `/var/www/u2678850/data/www/building-port.ru/images-convert/`
+   - `database/` → `/var/www/u2678850/data/www/building-port.ru/database/`
+5. [ ] **Проверить что .htaccess работает** (AllowOverride обычно уже включён на shared)
+6. [ ] **Настроить SSL** через панель управления хостингом (бесплатный, продление каждые 3 мес.)
+7. [ ] **Дать SSH-доступ** (логин + IP нового сервера) — для обновления деплоя
 
 ### Что нужно учесть
-- Перед деплоем на новый сервер нужно закоммитить или отменить текущие незакоммиченные изменения
-- `images-convert/` и `database/` нужно будет либо скопировать напрямую, либо перегенерировать на сервере
+- Проект адаптирован под корень домена (без `/blp/`)
+- `images-convert/` и `database/` нужно разворачивать отдельно или копировать напрямую
 - После установки SSL нужно раскомментировать HTTPS-редирект в `.htaccess`
-- `deploy.bat` и `rollback.bat` нужно будет обновить с новым IP сервера
+- `deploy.bat` нужно будет обновить с новым IP сервера
 
 ---
 
@@ -303,7 +273,7 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
 | `database/site_config.json` | Контакты, реквизиты, ID счётчиков аналитики |
 | `database/blog.db` | SQLite: статьи блога |
 | `database/leads.db` | SQLite: заявки |
-| `deploy.bat` | Деплой на сервер |
+| `deploy.bat` | Деплой (git push, SSH отключён до переезда) |
 | `rollback.bat` | Откат последнего коммита |
 
 ---
@@ -316,6 +286,7 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
 - Аналитика: заглушка для GA4 (`G-PLACEHOLDER20260420`), Яндекс.Метрика не настроена
 - Cookie-консент и политики (cookies, consent, privacy) — реализованы
 - Блог работает на SQLite с ЧПУ (`/blog/nazvanie-stati`)
+- **Старый VPS (204.168.247.38) больше не используется**, код адаптирован под новый shared хостинг
 
 ---
 

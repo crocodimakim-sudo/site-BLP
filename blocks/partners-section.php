@@ -1,4 +1,12 @@
 <?php
+// 2026-04-30: глобальный флаг show_partners_slider из site_config.json
+$site_cfg = [];
+$site_cfg_file = __DIR__ . '/../database/site_config.json';
+if (file_exists($site_cfg_file)) {
+    $site_cfg = json_decode(file_get_contents($site_cfg_file), true) ?? [];
+}
+$show_partners_slider = !empty($site_cfg['show_partners_slider']);
+
 // 2026-04-27: данные партнёров берутся из database/partners.json вместо хардкода
 $partners_data = [];
 $partners_json = __DIR__ . '/../database/partners.json';
@@ -10,6 +18,7 @@ if (file_exists($partners_json)) {
     }
 }
 ?>
+<?php if ($show_partners_slider): ?>
 <div class="partners-section section-card">
     <h2 class="partners-title">Партнеры</h2>
 
@@ -87,3 +96,4 @@ if (track) {
     });
 }
 </script>
+<?php endif; ?>
