@@ -40,6 +40,14 @@ function convertImages(): void {
 
         // Если источник новее конвертации — пересоздать
         if (file_exists($dstPath) && filemtime($srcPath) <= filemtime($dstPath)) {
+            // 2026-04-28: даже если основной файл актуален — проверить наличие -sm.webp
+            if ($ext !== 'svg' && function_exists('imagewebp')) {
+                $smDst = preg_replace('/\.(jpg|jpeg|png)$/i', '-sm.webp', $dstPath);
+                if (!file_exists($smDst)) {
+                    createSmallWebP($srcPath, $smDst, $ext);
+                    echo "[SM] $relativePath\n";
+                }
+            }
             continue;
         }
 
@@ -60,6 +68,8 @@ function convertImages(): void {
             echo "[OK] $relativePath\n";
             if ($ext !== 'svg' && function_exists('imagewebp')) {
                 createWebP($srcPath, preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $dstPath), $ext);
+                // 2026-04-28: -sm.webp (max 800px) для responsive srcset в мини-слайдере
+                createSmallWebP($srcPath, preg_replace('/\.(jpg|jpeg|png)$/i', '-sm.webp', $dstPath), $ext);
                 createThumbnail($srcPath, $ext);
             }
         } else {
@@ -100,7 +110,8 @@ function convertImages(): void {
         // Для .webp проверяем оригинал с расширением .jpg/.jpeg/.png
         $ext = strtolower($file->getExtension());
         if ($ext === 'webp') {
-            $base = preg_replace('/\.webp$/i', '', $relativePath);
+            // 2026-04-28: strip -sm suffix чтобы не удалять sm-варианты как orphaned
+            $base = preg_replace('/(-sm)?\.webp$/i', '', $relativePath);
             $srcPath = SRC_DIR . '/' . $base . '.jpg';
             if (!file_exists($srcPath)) {
                 $srcPath = SRC_DIR . '/' . $base . '.jpeg';
@@ -221,6 +232,50 @@ function createWebP(string $src, string $dst, string $ext): bool {
         }
 
         @imagewebp($img, $dst, 75);
+        imagedestroy($img);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+// 2026-04-28: Create small WebP (max 800px) for responsive srcset in mini-slider
+function createSmallWebP(string $src, string $dst, string $ext): bool {
+    $smMax = 800;
+    try {
+        $img = match ($ext) {
+            'png'         => imagecreatefrompng($src),
+            'jpg', 'jpeg' => imagecreatefromjpeg($src),
+            default       => null,
+        };
+        if (!$img) return false;
+
+        $w = imagesx($img);
+        $h = imagesy($img);
+
+        if ($w > $smMax || $h > $smMax) {
+            $ratio   = min($smMax / $w, $smMax / $h);
+            $newW    = (int)round($w * $ratio);
+            $newH    = (int)round($h * $ratio);
+            $resized = imagecreatetruecolor($newW, $newH);
+            if ($ext === 'png') {
+                imagealphablending($resized, false);
+                imagesavealpha($resized, true);
+            }
+            imagecopyresampled($resized, $img, 0, 0, 0, 0, $newW, $newH, $w, $h);
+            imagedestroy($img);
+            $img = $resized;
+        } elseif ($ext === 'png' && !imageistruecolor($img)) {
+            // palette PNG → truecolor (WebP не поддерживает palette)
+            $newImg = imagecreatetruecolor($w, $h);
+            imagealphablending($newImg, false);
+            imagesavealpha($newImg, true);
+            imagecopy($newImg, $img, 0, 0, 0, 0, $w, $h);
+            imagedestroy($img);
+            $img = $newImg;
+        }
+
+        @imagewebp($img, $dst, 80);
         imagedestroy($img);
         return true;
     } catch (Exception $e) {

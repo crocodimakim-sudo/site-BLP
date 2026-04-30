@@ -273,6 +273,22 @@ function convert_and_save_image(string $tmp_path, string $dest_dir, string $base
         $created[] = $basename . '.jpg';
     if (function_exists('imagewebp') && imagewebp($flat, $dest_dir . '/' . $basename . '.webp', 82))
         $created[] = $basename . '.webp';
+    // 2026-04-28: create -sm.webp (max 800px) for responsive srcset in mini-slider
+    if (function_exists('imagewebp')) {
+        $smMax = 800;
+        if ($w > $smMax || $h > $smMax) {
+            $ratio = min($smMax / $w, $smMax / $h);
+            $smW   = (int)round($w * $ratio);
+            $smH   = (int)round($h * $ratio);
+            $sm    = imagecreatetruecolor($smW, $smH);
+            imagecopyresampled($sm, $flat, 0, 0, 0, 0, $smW, $smH, $w, $h);
+            @imagewebp($sm, $dest_dir . '/' . $basename . '-sm.webp', 80);
+            imagedestroy($sm);
+        } else {
+            @imagewebp($flat, $dest_dir . '/' . $basename . '-sm.webp', 80);
+        }
+        $created[] = $basename . '-sm.webp';
+    }
     imagedestroy($flat);
     return $created;
 }
@@ -287,6 +303,7 @@ function list_project_photos(string $folder): array {
     foreach ($exts as $ext) {
         foreach (glob($dir . '/*.{' . $ext . ',' . strtoupper($ext) . '}', GLOB_BRACE) ?: [] as $f) {
             $name   = pathinfo($f, PATHINFO_FILENAME);
+            if (str_ends_with($name, '-sm')) continue; // 2026-04-28: skip sm variants
             $curExt = strtolower(pathinfo($f, PATHINFO_EXTENSION));
             if (!isset($byName[$name]) || $curExt === 'webp') {
                 $byName[$name] = basename($f);

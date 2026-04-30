@@ -14,6 +14,9 @@ RewriteBase /blp/
 # 2026-04-22: API endpoints
 RewriteRule ^api/slider$    pages_php/api/slider.php  [L]
 
+# 2026-04-28: чистый URL для admin-панели
+RewriteRule ^admin/?$       pages_php/admin/index.php [L]
+
 # 2026-04-24: блог — листинг и страница статьи
 RewriteRule ^blog$              pages_php/blog.php             [L,QSA]
 RewriteRule ^blog/([a-z0-9\-]+)$ pages_php/blog-post.php?slug=$1 [L,QSA]

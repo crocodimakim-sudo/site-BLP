@@ -6,7 +6,7 @@ $page_canonical = 'https://building-port.ru/blp/contacts';
 $page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
 $page_desc = 'Контакты BLP Board: +7 (495) 984-96-89, Одинцово, ул. Неделина 6А. Работаем с архитекторами, застройщиками и дилерами. Заявка онлайн — ответим в течение рабочего дня.';
 $extra_css = '<link rel="stylesheet" href="/blp/css/pages/contacts.css">';
-$extra_js = '<script src="/blp/js/pages/contacts.js" defer></script>';
+$extra_js = '<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script><script src="/blp/js/pages/contacts.js" defer></script>';
 
 // 2026-04-27: унифицировано с session_init.php (httponly, samesite, strict_mode, regenerate_id)
 require_once __DIR__ . '/../blocks/session_init.php';

@@ -3,11 +3,21 @@ let projects = [];
 let currentProject = null;
 let currentSlideIndex = 0;
 
-// 2026-04-22: Helper to generate picture element with WebP support
+// 2026-04-22: Helper to generate picture element with WebP support (modal main slides — full res)
 function createPictureHtml(imagePath, alt) {
     const webpPath = imagePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
     return `<picture>
-        <source type="image/webp" srcset="${webpPath}" sizes="(max-width: 768px) 100vw, 600px">
+        <source type="image/webp" srcset="${webpPath}" sizes="100vw">
+        <img src="${imagePath}" alt="${alt}" loading="lazy">
+    </picture>`;
+}
+
+// 2026-04-28: mini-slider cards and modal thumbs — uses -sm.webp (max 800px) for faster loading
+function createMiniPictureHtml(imagePath, alt) {
+    const smPath = imagePath.replace(/\.webp$/i, '-sm.webp')
+                            .replace(/\.(jpg|jpeg|png)$/i, '-sm.webp');
+    return `<picture>
+        <source type="image/webp" srcset="${smPath}" sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 900px) calc(50vw - 24px), 380px">
         <img src="${imagePath}" alt="${alt}" loading="lazy">
     </picture>`;
 }
@@ -40,7 +50,7 @@ function renderProjects() {
 
         const slidesHtml = project.images.map((img, i) => {
             const activeClass = i === 0 ? "active" : "";
-            const pictureHtml = createPictureHtml(img, project.name + ' - фото ' + (i+1));
+            const pictureHtml = createMiniPictureHtml(img, project.name + ' - фото ' + (i+1));
             return '<div class="mini-slide ' + activeClass + '" data-index="' + i + '">' + pictureHtml + '</div>';
         }).join("");
 
@@ -99,7 +109,7 @@ function openModal(projectIndex) {
     slider.innerHTML = slidesHtml;
 
     const thumbsHtml = currentProject.images.map((img, i) => {
-        const pictureHtml = createPictureHtml(img, 'thumbnail ' + (i+1));
+        const pictureHtml = createMiniPictureHtml(img, 'thumbnail ' + (i+1));
         return `
         <div class="modal-thumb ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})">
             ${pictureHtml}

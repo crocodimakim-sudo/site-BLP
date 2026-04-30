@@ -95,6 +95,7 @@ function scanProjectFolders() {
         $unique = [];
         foreach ($imageFiles as $file) {
             $base = pathinfo($file, PATHINFO_FILENAME);
+            if (str_ends_with($base, '-sm')) continue; // 2026-04-28: skip sm variants
             $ext  = strtolower(pathinfo($file, PATHINFO_EXTENSION));
             if (!isset($unique[$base])) {
                 $unique[$base] = $file;
