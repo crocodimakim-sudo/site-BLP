@@ -23,21 +23,30 @@ $page_robots   = isset($page_robots)   ? $page_robots   : '';
 
 // 2026-04-27: читаем pages.json для управления видимостью страниц через админ-панель
 $_pages_config_file = __DIR__ . '/../database/pages.json';
+$_pg = null;
 if (file_exists($_pages_config_file)) {
     $_pages_data = json_decode(file_get_contents($_pages_config_file), true);
     if (!empty($_pages_data['pages'])) {
         $_current_slug = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
         $_current_slug = str_replace('blp/', '', $_current_slug);
         $_current_slug = explode('/', $_current_slug)[0] ?: 'index';
-        foreach ($_pages_data['pages'] as $_pg) {
-            if (($_pg['slug'] ?? '') === $_current_slug) {
-                if (empty($_pg['is_live']) && $page_robots === '') {
+        foreach ($_pages_data['pages'] as $_p) {
+            if (($_p['slug'] ?? '') === $_current_slug) {
+                $_pg = $_p;
+                if (empty($_p['is_live']) && $page_robots === '') {
                     $page_robots = 'noindex, nofollow';
                 }
                 break;
             }
         }
     }
+}
+
+// 2026-04-30: если страница скрыта (is_live=false) и это не страница ошибки — показать 404
+if ($_pg && empty($_pg['is_live']) && !isset($error_code)) {
+    http_response_code(404);
+    require __DIR__ . '/../pages_php/404.php';
+    exit;
 }
 
 $site_name     = 'BLP Board';
