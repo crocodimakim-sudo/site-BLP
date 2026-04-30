@@ -154,7 +154,7 @@
         startAutoplay();
     }
 
-    fetch('/blp/api/slider')
+    fetch('/api/slider')
         .then(res => {
             if (!res.ok) throw new Error('API error ' + res.status);
             return res.json();
@@ -167,7 +167,7 @@
         })
         .catch(() => {
             images = Array.from({ length: 16 }, (_, i) => ({
-                image: `/blp/images-convert/pages/catalog/slider/walypan_slide_${i + 1}.png`,
+                image: `/images-convert/pages/catalog/slider/walypan_slide_${i + 1}.png`,
                 title: `Линеарные панели WALYPAN серия ${i + 1}`,
             }));
             sliderRoot.innerHTML = buildSliderHTML(images);

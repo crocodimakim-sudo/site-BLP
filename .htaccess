@@ -9,7 +9,7 @@ RewriteEngine On
 # RewriteCond %{HTTP_HOST} !^127\.0\.0\.1$ [NC]
 # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-RewriteBase /blp/
+RewriteBase /
 
 # 2026-04-22: API endpoints
 RewriteRule ^api/slider$    pages_php/api/slider.php  [L]
@@ -35,7 +35,7 @@ RewriteRule ^cookies$       pages_php/cookies.php     [L]
 RewriteRule ^consent$       pages_php/consent.php     [L]
 # 2026-04-20: Stage 3 — 5 new pages + diler→dealer migration (301)
 RewriteRule ^dealer$        pages_php/dealer.php      [L]
-RewriteRule ^diler$         /blp/dealer               [R=301,L]
+RewriteRule ^diler$         /dealer               [R=301,L]
 RewriteRule ^faq$           pages_php/faq.php         [L]
 RewriteRule ^compare$           pages_php/compare.php          [L]
 RewriteRule ^compare-materials$ pages_php/compare-materials.php [L,QSA]
@@ -65,15 +65,15 @@ RedirectMatch 404 /\.omc
 RedirectMatch 404 /\.gstack
 RedirectMatch 404 /\.claude_work_log
 # 2026-04-23: лог-файлы заявок — только сервер
-RedirectMatch 404 /blp/logs/
+RedirectMatch 404 /logs/
 
 # 2026-04-23: правильная 404-страница (возвращает HTTP 404, не 200)
-ErrorDocument 400 /blp/pages_php/400.php
-ErrorDocument 403 /blp/pages_php/403.php
-ErrorDocument 404 /blp/pages_php/404.php
-ErrorDocument 405 /blp/pages_php/405.php
-ErrorDocument 500 /blp/pages_php/500.php
-ErrorDocument 503 /blp/pages_php/503.php
+ErrorDocument 400 /pages_php/400.php
+ErrorDocument 403 /pages_php/403.php
+ErrorDocument 404 /pages_php/404.php
+ErrorDocument 405 /pages_php/405.php
+ErrorDocument 500 /pages_php/500.php
+ErrorDocument 503 /pages_php/503.php
 
 # 2026-04-22: Gzip compression — extended with AddEncoding + mod_filter wrapper
 <IfModule mod_deflate.c>

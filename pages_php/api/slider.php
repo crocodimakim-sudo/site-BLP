@@ -4,7 +4,7 @@ header('Content-Type: application/json; charset=utf-8');
 // 2026-04-23: убран wildcard CORS — API используется только этим же сайтом
 
 $sliderDir = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'images-convert' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'slider' . DIRECTORY_SEPARATOR;
-$webBase = '/blp/images-convert/pages/catalog/slider/';
+$webBase = '/images-convert/pages/catalog/slider/';
 
 $slides = [];
 

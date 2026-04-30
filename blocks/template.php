@@ -15,7 +15,7 @@ if (empty($_SESSION['csrf_token'])) {
 // 2026-04-20: GA4, OG/Twitter meta, canonical support added
 $page_title    = isset($page_title)    ? $page_title    : 'BLP Board';
 $page_desc     = isset($page_desc)     ? $page_desc     : '';
-$page_og_image = isset($page_og_image) ? $page_og_image : 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_og_image = isset($page_og_image) ? $page_og_image : 'https://building-port.ru/images-convert/og-default.jpg';
 $page_og_type  = isset($page_og_type)  ? $page_og_type  : 'website';
 $page_canonical = isset($page_canonical) ? $page_canonical : '';
 // 2026-04-24: SEO — noindex support for error pages and non-indexed content
@@ -107,30 +107,30 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <!-- 2026-04-20: Critical CSS — sync (above-fold) -->
     <!-- 2026-04-27: ?v= версионирование — сбрасывает кэш браузера при обновлении CSS -->
     <?php $cv = '20260427b'; ?>
-    <link rel="stylesheet" href="/blp/css/main.css?v=<?php echo $cv; ?>">
-    <link rel="stylesheet" href="/blp/css/header.css?v=<?php echo $cv; ?>">
-    <link rel="stylesheet" href="/blp/css/hero-section.css?v=<?php echo $cv; ?>">
+    <link rel="stylesheet" href="/css/main.css?v=<?php echo $cv; ?>">
+    <link rel="stylesheet" href="/css/header.css?v=<?php echo $cv; ?>">
+    <link rel="stylesheet" href="/css/hero-section.css?v=<?php echo $cv; ?>">
 
     <!-- 2026-04-20: Non-critical CSS — deferred (below-fold) -->
-    <link rel="preload" as="style" href="/blp/css/animations.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/footer.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/products-section.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/audience-section.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/benefits.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/partners-section.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/objects-section.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/contact-form.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="/blp/css/specs-section.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/animations.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/footer.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/products-section.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/audience-section.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/benefits.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/partners-section.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/objects-section.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/contact-form.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/css/specs-section.css" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="/blp/css/animations.css">
-        <link rel="stylesheet" href="/blp/css/footer.css">
-        <link rel="stylesheet" href="/blp/css/products-section.css">
-        <link rel="stylesheet" href="/blp/css/audience-section.css">
-        <link rel="stylesheet" href="/blp/css/benefits.css">
-        <link rel="stylesheet" href="/blp/css/partners-section.css">
-        <link rel="stylesheet" href="/blp/css/objects-section.css">
-        <link rel="stylesheet" href="/blp/css/contact-form.css">
-        <link rel="stylesheet" href="/blp/css/specs-section.css">
+        <link rel="stylesheet" href="/css/animations.css">
+        <link rel="stylesheet" href="/css/footer.css">
+        <link rel="stylesheet" href="/css/products-section.css">
+        <link rel="stylesheet" href="/css/audience-section.css">
+        <link rel="stylesheet" href="/css/benefits.css">
+        <link rel="stylesheet" href="/css/partners-section.css">
+        <link rel="stylesheet" href="/css/objects-section.css">
+        <link rel="stylesheet" href="/css/contact-form.css">
+        <link rel="stylesheet" href="/css/specs-section.css">
     </noscript>
 
     <!-- Page-specific -->
@@ -165,8 +165,8 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     </main>
 
     <?php include 'footer.php'; ?>
-    <script src="/blp/js/header.js" defer></script>
-    <script src="/blp/js/analytics.js" defer></script>
+    <script src="/js/header.js" defer></script>
+    <script src="/js/analytics.js" defer></script>
     <?php if (isset($extra_js)) echo $extra_js; ?>
 </body>
 </html>

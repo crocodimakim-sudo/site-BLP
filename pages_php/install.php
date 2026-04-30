@@ -1,14 +1,14 @@
 <?php
 // 2026-04-20: Stage 3 Group 3.B — Installation guide with HowTo schema
 $page_title    = 'Монтаж фиброцементных панелей BLP Board: пошаговое руководство';
-$page_canonical = 'https://building-port.ru/blp/install';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_canonical = 'https://building-port.ru/install';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Пошаговое руководство по монтажу фиброцементных панелей BLP Board на навесной вентилируемый фасад (НВФ): инструменты, подготовка основания, крепление, типичные ошибки.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/install.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/install.css">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',          'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Руководство по монтажу', 'url' => 'https://building-port.ru/blp/install'],
+    ['name' => 'Главная',          'url' => 'https://building-port.ru/'],
+    ['name' => 'Руководство по монтажу', 'url' => 'https://building-port.ru/install'],
 ];
 
 // 2026-04-20: HowTo schema.org markup
@@ -106,7 +106,7 @@ ob_start();
                         <span>Типичные ошибки и как их избежать</span>
                     </li>
                 </ul>
-                <a href="/blp/contacts" class="blp-hero-button">Получить техническую документацию</a>
+                <a href="/contacts" class="blp-hero-button">Получить техническую документацию</a>
             </div>
             <div class="blp-hero-image install-hero-steps">
                 <div class="install-steps-counter">
@@ -283,7 +283,7 @@ ob_start();
 
         <div class="install-doc-cta">
             <p>Нужна техническая документация по монтажу? Предоставим спецификации и таблицу совместимости с подсистемами — бесплатно.</p>
-            <a href="/blp/contacts" class="blp-hero-button">Получить документацию</a>
+            <a href="/contacts" class="blp-hero-button">Получить документацию</a>
         </div>
     </div>
 </section>

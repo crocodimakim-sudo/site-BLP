@@ -4,14 +4,14 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 
 // 2026-04-20: Stage 3 Group 3.B — Dealer/partner benefits page with LocalBusiness schema
 $page_title    = 'Дилерская программа BLP Board — фиброцементные панели для партнёров';
-$page_canonical = 'https://building-port.ru/blp/dealer';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_canonical = 'https://building-port.ru/dealer';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Дилерская программа BLP Board: условия сотрудничества, ценовые уровни, маркетинговая поддержка, техническое сопровождение, обучение. Стать дилером фиброцементных панелей.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/dealer.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/dealer.css">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',             'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Дилерская программа', 'url' => 'https://building-port.ru/blp/dealer'],
+    ['name' => 'Главная',             'url' => 'https://building-port.ru/'],
+    ['name' => 'Дилерская программа', 'url' => 'https://building-port.ru/dealer'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';
@@ -33,10 +33,10 @@ ob_start();
                         <span>сопровождение сделки до&nbsp;реализации</span>
                     </li>
                 </ul>
-                <a href="/blp/contacts#form" class="blp-hero-button">Обсудить сотрудничество</a>
+                <a href="/contacts#form" class="blp-hero-button">Обсудить сотрудничество</a>
             </div>
             <div class="blp-hero-image dealer-hero-visual">
-                <?php echo render_image('/blp/images-convert/pages/diler/diler_hero.jpg', 'Объект с фиброцементными панелями BLP Board', ['fetchpriority' => 'high']); ?>
+                <?php echo render_image('/images-convert/pages/diler/diler_hero.jpg', 'Объект с фиброцементными панелями BLP Board', ['fetchpriority' => 'high']); ?>
             </div>
         </div>
     </div>
@@ -157,7 +157,7 @@ ob_start();
   "@type": "LocalBusiness",
   "name": "BLP Board — дилерская программа",
   "description": "Дилерская программа по фиброцементным панелям BLP Board. Серии NATURE, POLISHED, TEXTURE, WALYPAN. Класс НГ (К0), без асбеста, ГОСТ 8747-88.",
-  "url": "https://building-port.ru/blp/dealer",
+  "url": "https://building-port.ru/dealer",
   "telephone": "+74959849689",
   "email": "info@building-port.ru",
   "address": {

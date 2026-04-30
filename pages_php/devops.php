@@ -2,15 +2,15 @@
 // 2026-04-20: added canonical, OG image
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = 'Фиброцементные фасадные панели для застройщиков — BLP Board';
-$page_canonical = 'https://building-port.ru/blp/devops';
+$page_canonical = 'https://building-port.ru/devops';
 // 2026-04-20: og_image → real hero instead of missing og-default
-$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/devops/devops_hero.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/pages/devops/devops_hero.jpg';
 $page_desc  = 'Фиброцементные фасадные панели для застройщиков. ГОСТ, НГ (К0), поставки в срок по договору. BLP Board — от подбора до монтажа. Документы для госэкспертизы включены.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/devops.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/devops.css">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',      'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Застройщикам', 'url' => 'https://building-port.ru/blp/devops'],
+    ['name' => 'Главная',      'url' => 'https://building-port.ru/'],
+    ['name' => 'Застройщикам', 'url' => 'https://building-port.ru/devops'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';
@@ -44,12 +44,12 @@ ob_start();
 
             <div class="hero-label">BLP Board</div>
 
-            <!-- 2026-04-20: H1 расширен, CTA конкретизирован, href исправлен (/contacts → /blp/contacts) -->
+            <!-- 2026-04-20: H1 расширен, CTA конкретизирован, href исправлен (/contacts → /contacts) -->
             <h1 class="hero-title">Фиброцементные панели BLP&nbsp;Board<br>для застройщиков и подрядчиков</h1>
 
             <p class="hero-subtitle">Берём фасадное решение&nbsp;на себя: от подбора&nbsp;до поставки — чтобы вы уложились&nbsp;в бюджет&nbsp;и сроки проекта</p>
 
-            <a href="/blp/contacts#form" class="hero-cta">Запросить расчёт поставки</a>
+            <a href="/contacts#form" class="hero-cta">Запросить расчёт поставки</a>
 
         </div>
 

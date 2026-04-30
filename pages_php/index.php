@@ -5,16 +5,16 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = 'Фиброцементные панели для вентилируемых фасадов — BLP Board';
 $page_desc     = 'Фиброцементные плиты НГ для вентфасадов: серии NATURE, POLISHED, TEXTURE, WALYPAN. Без асбеста. Крупный формат до 3050 мм. Соответствие ГОСТ. Производитель BLP Board.';
-$page_canonical = 'https://building-port.ru/blp/';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/index/index_hero.jpg';
-$extra_css  = '<link rel="stylesheet" href="/blp/css/pages/index.css">';
-$extra_js   = '<script src="/blp/js/pages/index.js" defer></script>';
-$lcp_image  = '/blp/images-convert/pages/index/index_hero.jpg';
+$page_canonical = 'https://building-port.ru/';
+$page_og_image  = 'https://building-port.ru/images-convert/pages/index/index_hero.jpg';
+$extra_css  = '<link rel="stylesheet" href="/css/pages/index.css">';
+$extra_js   = '<script src="/js/pages/index.js" defer></script>';
+$lcp_image  = '/images-convert/pages/index/index_hero.jpg';
 // 2026-04-24: preload LCP hero image (WebP) с fetchpriority=high
-$extra_preload = '<link rel="preload" as="image" href="/blp/images-convert/pages/index/index_hero.webp" type="image/webp" fetchpriority="high">';
+$extra_preload = '<link rel="preload" as="image" href="/images-convert/pages/index/index_hero.webp" type="image/webp" fetchpriority="high">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';
@@ -37,12 +37,12 @@ ob_start();
                 </div>
 
 
-                <a href="/blp/contacts#form" class="btn btn-primary">Получить техническое предложение</a>
+                <a href="/contacts#form" class="btn btn-primary">Получить техническое предложение</a>
             </div>
 
             <div class="hero-image-wrapper">
                 <?php echo render_image(
-                    '/blp/images-convert/pages/index/index_hero.jpg',
+                    '/images-convert/pages/index/index_hero.jpg',
                     'Фиброцементные плиты BLP Board',
                     [
                         'class'         => 'hero-image',

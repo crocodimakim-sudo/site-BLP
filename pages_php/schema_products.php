@@ -6,31 +6,31 @@
 {
   "@context": "https://schema.org",
   "@type": "ProductGroup",
-  "@id": "https://building-port.ru/blp/catalog#productgroup",
+  "@id": "https://building-port.ru/catalog#productgroup",
   "name": "Фиброцементные панели BLP Board",
   "description": "Архитектурные фиброцементные панели для вентилируемых фасадов, окрашенные в массе. Четыре серии: NATURE, POLISHED, TEXTURE, WALYPAN.",
-  "url": "https://building-port.ru/blp/catalog",
+  "url": "https://building-port.ru/catalog",
   "brand": {
     "@type": "Brand",
     "name": "BLP Board"
   },
   "manufacturer": {
-    "@id": "https://building-port.ru/blp/#organization"
+    "@id": "https://building-port.ru/#organization"
   },
   "hasVariant": [
     {
       "@type": "Product",
-      "@id": "https://building-port.ru/blp/catalog#nature",
+      "@id": "https://building-port.ru/catalog#nature",
       "name": "Фиброцементные панели BLP Board — серия NATURE",
       "description": "Натуральные фиброцементные панели с фактурой под бетон. Индустриальная эстетика, неповторимый рисунок каждой панели.",
-      "image": "https://building-port.ru/blp/images-convert/pages/catalog/1.jpg",
-      "url": "https://building-port.ru/blp/catalog#nature",
+      "image": "https://building-port.ru/images-convert/pages/catalog/1.jpg",
+      "url": "https://building-port.ru/catalog#nature",
       "brand": {
         "@type": "Brand",
         "name": "BLP Board"
       },
       "manufacturer": {
-        "@id": "https://building-port.ru/blp/#organization"
+        "@id": "https://building-port.ru/#organization"
       },
       "material": "Фиброцемент",
       "color": "Белый, Бежевый, Серый, Графит, Терракота, Коричневый",
@@ -66,24 +66,24 @@
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
         "seller": {
-          "@id": "https://building-port.ru/blp/#organization"
+          "@id": "https://building-port.ru/#organization"
         },
-        "url": "https://building-port.ru/blp/contacts"
+        "url": "https://building-port.ru/contacts"
       }
     },
     {
       "@type": "Product",
-      "@id": "https://building-port.ru/blp/catalog#polished",
+      "@id": "https://building-port.ru/catalog#polished",
       "name": "Фиброцементные панели BLP Board — серия POLISHED",
       "description": "Полированные фиброцементные плиты в спокойных природных оттенках. Матовая поверхность, сдержанная классика.",
-      "image": "https://building-port.ru/blp/images-convert/pages/catalog/2.png",
-      "url": "https://building-port.ru/blp/catalog#polished",
+      "image": "https://building-port.ru/images-convert/pages/catalog/2.png",
+      "url": "https://building-port.ru/catalog#polished",
       "brand": {
         "@type": "Brand",
         "name": "BLP Board"
       },
       "manufacturer": {
-        "@id": "https://building-port.ru/blp/#organization"
+        "@id": "https://building-port.ru/#organization"
       },
       "material": "Фиброцемент",
       "color": "Белый, Бежевый, Серый, Графит, Терракота, Коричневый",
@@ -114,24 +114,24 @@
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
         "seller": {
-          "@id": "https://building-port.ru/blp/#organization"
+          "@id": "https://building-port.ru/#organization"
         },
-        "url": "https://building-port.ru/blp/contacts"
+        "url": "https://building-port.ru/contacts"
       }
     },
     {
       "@type": "Product",
-      "@id": "https://building-port.ru/blp/catalog#texture",
+      "@id": "https://building-port.ru/catalog#texture",
       "name": "Фиброцементные панели BLP Board — серия TEXTURE",
       "description": "Текстурированные фиброцементные плиты. Естественная палитра и слегка шлифованная поверхность для статусного фасада.",
-      "image": "https://building-port.ru/blp/images-convert/pages/catalog/3.png",
-      "url": "https://building-port.ru/blp/catalog#texture",
+      "image": "https://building-port.ru/images-convert/pages/catalog/3.png",
+      "url": "https://building-port.ru/catalog#texture",
       "brand": {
         "@type": "Brand",
         "name": "BLP Board"
       },
       "manufacturer": {
-        "@id": "https://building-port.ru/blp/#organization"
+        "@id": "https://building-port.ru/#organization"
       },
       "material": "Фиброцемент",
       "color": "Белый, Бежевый, Серый, Графит, Терракота, Коричневый",
@@ -162,23 +162,23 @@
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
         "seller": {
-          "@id": "https://building-port.ru/blp/#organization"
+          "@id": "https://building-port.ru/#organization"
         },
-        "url": "https://building-port.ru/blp/contacts"
+        "url": "https://building-port.ru/contacts"
       }
     },
     {
       "@type": "Product",
-      "@id": "https://building-port.ru/blp/catalog#walypan",
+      "@id": "https://building-port.ru/catalog#walypan",
       "name": "Линеарные фиброцементные панели BLP Board — серия WALYPAN",
       "description": "Линеарные фиброцементные панели для сложных фасадных решений. Рельефная поверхность, геометрические рисунки, объёмный фасад.",
-      "url": "https://building-port.ru/blp/catalog#walypan",
+      "url": "https://building-port.ru/catalog#walypan",
       "brand": {
         "@type": "Brand",
         "name": "BLP Board"
       },
       "manufacturer": {
-        "@id": "https://building-port.ru/blp/#organization"
+        "@id": "https://building-port.ru/#organization"
       },
       "material": "Фиброцемент",
       "additionalProperty": [
@@ -208,9 +208,9 @@
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
         "seller": {
-          "@id": "https://building-port.ru/blp/#organization"
+          "@id": "https://building-port.ru/#organization"
         },
-        "url": "https://building-port.ru/blp/contacts"
+        "url": "https://building-port.ru/contacts"
       }
     }
   ]

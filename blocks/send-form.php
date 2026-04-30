@@ -155,7 +155,7 @@ if ($mailSent && !empty($email)) {
     $userBody .= "Ваша заявка успешно принята. Наш менеджер свяжется с вами в течение рабочего дня.\n\n";
     $userBody .= "Если вопрос срочный, позвоните нам:\n";
     $userBody .= "+7 (495) 984-96-89\n\n";
-    $userBody .= "С уважением,\nBLP Board\nhttps://building-port.ru/blp/";
+    $userBody .= "С уважением,\nBLP Board\nhttps://building-port.ru/";
     $userHeaders  = "From: noreply@building-port.ru\r\n";
     $userHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
     @mail($email, $userSubject, $userBody, $userHeaders);

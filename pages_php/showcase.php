@@ -1,14 +1,14 @@
 <?php
 // 2026-04-20: Stage 3 Group 3.B — Project showcase / case studies page
 $page_title    = 'Реализованные проекты с фиброцементными панелями BLP Board';
-$page_canonical = 'https://building-port.ru/blp/showcase';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_canonical = 'https://building-port.ru/showcase';
+$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
 $page_desc = 'Кейсы применения фиброцементных панелей BLP Board: жилые комплексы, школы, административные здания, частные дома. Серия, объём, регион, результат.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/showcase.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/showcase.css">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',          'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Наши проекты',     'url' => 'https://building-port.ru/blp/showcase'],
+    ['name' => 'Главная',          'url' => 'https://building-port.ru/'],
+    ['name' => 'Наши проекты',     'url' => 'https://building-port.ru/showcase'],
 ];
 
 // 2026-04-20: проекты — данные для schema и рендера
@@ -89,7 +89,7 @@ ob_start();
                         <span>От 920 до 4 400 м² — опыт разного масштаба</span>
                     </li>
                 </ul>
-                <a href="/blp/contacts" class="blp-hero-button">Обсудить ваш объект</a>
+                <a href="/contacts" class="blp-hero-button">Обсудить ваш объект</a>
             </div>
             <div class="blp-hero-image showcase-hero-stats">
                 <div class="showcase-stats-grid">
@@ -126,7 +126,7 @@ ob_start();
                 <div class="showcase-project-images">
                     <?php
                     $img_dir = "D:/Claude Code/site-blp/site-kimi/images-convert/pages/projects/" . $project['image_dir'] . "/";
-                    $web_dir = "/blp/images-convert/pages/projects/" . $project['image_dir'] . "/";
+                    $web_dir = "/images-convert/pages/projects/" . $project['image_dir'] . "/";
                     $images = glob($img_dir . "*.{jpg,jpeg,png,webp}", GLOB_BRACE);
                     if ($images && count($images) > 0):
                         $main_img = basename($images[0]);

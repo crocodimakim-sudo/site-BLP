@@ -3,14 +3,14 @@
 require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title    = 'Согласие на обработку персональных данных — BLP Board';
-$page_canonical = 'https://building-port.ru/blp/consent';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_canonical = 'https://building-port.ru/consent';
+$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
 $page_desc = 'Форма согласия на обработку персональных данных. Подтвердите согласие на обработку ваших персональных данных в соответствии с Федеральным законом № 152-ФЗ.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/policy.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/policy.css">';
 
 $breadcrumbs = [
-    ['name' => 'Главная',                           'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Согласие на обработку персональных данных', 'url' => 'https://building-port.ru/blp/consent'],
+    ['name' => 'Главная',                           'url' => 'https://building-port.ru/'],
+    ['name' => 'Согласие на обработку персональных данных', 'url' => 'https://building-port.ru/consent'],
 ];
 
 ob_start();
@@ -138,7 +138,7 @@ ob_start();
             <li><strong>Фактический адрес:</strong> Московская область, г. Одинцово, ул. Неделина, 6А, 143003</li>
             <li><strong>Телефон:</strong> <a href="tel:+74959849689">+7 (495) 984-96-89</a></li>
             <li><strong>Email:</strong> <a href="mailto:info@building-port.ru">info@building-port.ru</a></li>
-            <li><strong>Веб-сайт:</strong> <a href="https://building-port.ru/blp/">https://building-port.ru/blp/</a></li>
+            <li><strong>Веб-сайт:</strong> <a href="https://building-port.ru/">https://building-port.ru/</a></li>
         </ul>
 
         <h2>СОГЛАСИЕ (онлайн-форма)</h2>
@@ -148,8 +148,8 @@ ob_start();
         <h2>Связанные документы</h2>
         <p>Ознакомьтесь также с нашими политиками:</p>
         <ul>
-            <li><a href="/blp/policy"><strong>Политика конфиденциальности и обработки персональных данных</strong></a> — Как мы обрабатываем ваши данные</li>
-            <li><a href="/blp/cookies"><strong>Политика в отношении файлов cookies</strong></a> — Управление cookies на сайте</li>
+            <li><a href="/policy"><strong>Политика конфиденциальности и обработки персональных данных</strong></a> — Как мы обрабатываем ваши данные</li>
+            <li><a href="/cookies"><strong>Политика в отношении файлов cookies</strong></a> — Управление cookies на сайте</li>
         </ul>
 
         <hr>

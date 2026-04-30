@@ -2,15 +2,15 @@
 // 2026-04-24: SEO — fixed branding typo (BLPboard→BLP Board), added og_image
 $page_title = 'Объекты с фасадом из фиброцементных панелей BLP Board — портфолио';
 $page_desc  = 'Портфолио реализованных объектов с фасадом из фиброцементных панелей BLP Board: поликлиники, школы, здания судов, международные проекты';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/index/index_hero.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/pages/index/index_hero.jpg';
 // 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
-$page_canonical = 'https://building-port.ru/blp/projects';
-$extra_css  = '<link rel="stylesheet" href="/blp/css/pages/projects.css">';
-$extra_js   = '<script src="/blp/js/pages/projects.js" defer></script>';
+$page_canonical = 'https://building-port.ru/projects';
+$extra_css  = '<link rel="stylesheet" href="/css/pages/projects.css">';
+$extra_js   = '<script src="/js/pages/projects.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Объекты', 'url' => 'https://building-port.ru/blp/projects'],
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/'],
+    ['name' => 'Объекты', 'url' => 'https://building-port.ru/projects'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';

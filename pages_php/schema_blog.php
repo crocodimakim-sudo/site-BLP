@@ -22,10 +22,10 @@ $all_posts = array_slice($all_posts, 0, 10);
 
 $blog_posts = [];
 foreach ($all_posts as $a) {
-    $post_url = 'https://building-port.ru/blp/blog/' . ($a['slug'] ?? '');
+    $post_url = 'https://building-port.ru/blog/' . ($a['slug'] ?? '');
     $image_url = !empty($a['image'])
         ? (strpos($a['image'], 'http') === 0 ? $a['image'] : 'https://building-port.ru' . $a['image'])
-        : 'https://building-port.ru/blp/images/og-default.jpg';
+        : 'https://building-port.ru/images/og-default.jpg';
 
     $entry = [
         '@type'         => 'BlogPosting',
@@ -34,10 +34,10 @@ foreach ($all_posts as $a) {
         'url'           => $post_url,
         'image'         => $image_url,
         'datePublished' => isset($a['published_at']) ? date('c', strtotime($a['published_at'])) : '',
-        'author'        => ['@id' => 'https://building-port.ru/blp/#organization'],
-        'publisher'     => ['@id' => 'https://building-port.ru/blp/#organization'],
+        'author'        => ['@id' => 'https://building-port.ru/#organization'],
+        'publisher'     => ['@id' => 'https://building-port.ru/#organization'],
         'inLanguage'    => 'ru-RU',
-        'isPartOf'      => ['@id' => 'https://building-port.ru/blp/blog#blog'],
+        'isPartOf'      => ['@id' => 'https://building-port.ru/blog#blog'],
     ];
 
     if (!empty($a['subtitle'])) {
@@ -52,13 +52,13 @@ $schema = [
     '@graph'   => [
         [
             '@type'           => 'Blog',
-            '@id'             => 'https://building-port.ru/blp/blog#blog',
-            'url'             => 'https://building-port.ru/blp/blog',
+            '@id'             => 'https://building-port.ru/blog#blog',
+            'url'             => 'https://building-port.ru/blog',
             'name'            => 'Блог BLP Board — статьи о фиброцементе и вентилируемых фасадах',
             'description'     => 'Экспертные материалы о монтаже фиброцементных панелей, сравнении материалов, типовых ошибках вентилируемых фасадов и реализованных проектах BLP Board.',
             'inLanguage'      => 'ru-RU',
-            'publisher'       => ['@id' => 'https://building-port.ru/blp/#organization'],
-            'isPartOf'        => ['@id' => 'https://building-port.ru/blp/#website'],
+            'publisher'       => ['@id' => 'https://building-port.ru/#organization'],
+            'isPartOf'        => ['@id' => 'https://building-port.ru/#website'],
             'blogPost'        => $blog_posts,
         ],
     ],

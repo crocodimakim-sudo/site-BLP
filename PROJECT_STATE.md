@@ -14,7 +14,7 @@
 | **Репозиторий** | `https://github.com/crocodimakim-sudo/site-BLP` (приватный) |
 | **Текущий сервер** | `204.168.247.38` (старый, deploy настроен на него) |
 | **Путь на сервере** | `/var/www/html/blp` |
-| **Базовый URL** | `https://building-port.ru/blp/` |
+| **Базовый URL** | `https://building-port.ru/` |
 
 ---
 
@@ -190,7 +190,7 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
 ## 5. Конфигурация Apache (текущая локальная)
 
 ### Корневой .htaccess
-- **RewriteBase:** `/blp/`
+- **RewriteBase:** `/`
 - **DirectoryIndex:** `pages_php/index.php`
 - **Чистые URL:** `/blog`, `/catalog`, `/dealer`, `/faq`, `/admin` и др.
 - **Редиректы:** `diler` → `dealer` (301)
@@ -272,11 +272,11 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
    git clone https://github.com/crocodimakim-sudo/site-BLP /var/www/html/blp
    ```
 4. [ ] **Распаковать архив и положить папки:**
-   - `images-convert/` → `/var/www/html/blp/images-convert/`
-   - `database/` → `/var/www/html/blp/database/`
+   - `images-convert/` → `/var/www/html/images-convert/`
+   - `database/` → `/var/www/html/database/`
 5. [ ] **В конфиге Apache (vhost) добавить:**
    ```apache
-   <Directory /var/www/html/blp/pages_php>
+   <Directory /var/www/html/pages_php>
        AllowOverride All
    </Directory>
    ```

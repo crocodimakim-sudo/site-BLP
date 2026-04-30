@@ -11,10 +11,10 @@ if (!function_exists('render_image')) {
 
     <div class="products-grid">
         <div class="product-col">
-            <a href="/blp/catalog#nature" class="product-card-link">
+            <a href="/catalog#nature" class="product-card-link">
                 <article class="product-card">
                     <?php echo render_image(
-                        '/blp/images-convert/blocks/products/series-nature.png',
+                        '/images-convert/blocks/products/series-nature.png',
                         'Натуральные плиты серия NATURE',
                         ['class' => 'product-image', 'lazy' => false]
                     ); ?>
@@ -29,10 +29,10 @@ if (!function_exists('render_image')) {
         </div>
 
         <div class="product-col">
-            <a href="/blp/catalog#polished" class="product-card-link">
+            <a href="/catalog#polished" class="product-card-link">
                 <article class="product-card">
                     <?php echo render_image(
-                        '/blp/images-convert/blocks/products/series-polished.png',
+                        '/images-convert/blocks/products/series-polished.png',
                         'Полированные плиты серия POLISHED',
                         ['class' => 'product-image', 'lazy' => false]
                     ); ?>
@@ -47,10 +47,10 @@ if (!function_exists('render_image')) {
         </div>
 
         <div class="product-col">
-            <a href="/blp/catalog#texture" class="product-card-link">
+            <a href="/catalog#texture" class="product-card-link">
                 <article class="product-card">
                     <?php echo render_image(
-                        '/blp/images-convert/blocks/products/series-texture.png',
+                        '/images-convert/blocks/products/series-texture.png',
                         'Текстурированные плиты серия TEXTURE',
                         ['class' => 'product-image', 'lazy' => false]
                     ); ?>
@@ -65,10 +65,10 @@ if (!function_exists('render_image')) {
         </div>
 
         <div class="product-col">
-            <a href="/blp/catalog#walypan" class="product-card-link">
+            <a href="/catalog#walypan" class="product-card-link">
                 <article class="product-card">
                     <?php echo render_image(
-                        '/blp/images-convert/blocks/products/series-walypan.png',
+                        '/images-convert/blocks/products/series-walypan.png',
                         'Линеарные плиты серия WALYPAN',
                         ['class' => 'product-image', 'lazy' => false]
                     ); ?>

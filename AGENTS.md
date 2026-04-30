@@ -1,6 +1,6 @@
 # Site-Kimi — BLP Board (XAMPP локально)
 
-**Язык:** Русский | **XAMPP:** `http://localhost/blp/`  
+**Язык:** Русский | **XAMPP:** `http://localhost/`  
 **Бэкап:** `D:/Codex/01-site-blp/site-kimi-backup/`
 
 ---
@@ -8,7 +8,7 @@
 ## 🔴 ПРАВИЛО №1 — SYNC ПОСЛЕ КАЖДОГО ИЗМЕНЕНИЯ
 
 ```bash
-cp -f "D:/Codex/01-site-blp/site-kimi/[файл]" "C:/xampp/htdocs/blp/[файл]"
+cp -f "D:/Codex/01-site-blp/site-kimi/[файл]" "C:/xampp/htdocs/[файл]"
 ```
 Никогда не говорить "проверяй" без синхронизации.
 
@@ -18,9 +18,9 @@ cp -f "D:/Codex/01-site-blp/site-kimi/[файл]" "C:/xampp/htdocs/blp/[файл
 
 - Оригиналы: `images/` (только загрузка, не трогать скриптами)
 - Оптимизированные: `images-convert/` (всегда использовать в PHP)
-- Пути в PHP → всегда `/blp/images-convert/...`
+- Пути в PHP → всегда `/images-convert/...`
 
-Обновление: `php scripts/convert_images.php` + `robocopy images-convert C:/xampp/htdocs/blp/images-convert /E /PURGE`
+Обновление: `php scripts/convert_images.php` + `robocopy images-convert C:/xampp/htdocs/images-convert /E /PURGE`
 
 ---
 

@@ -48,7 +48,7 @@ $page_desc     = $desc;
 $page_canonical = '';
 // 2026-04-24: SEO — noindex on all error pages to prevent indexation of error states
 $page_robots   = 'noindex, nofollow';
-$extra_css     = '<link rel="stylesheet" href="/blp/css/pages/error.css">';
+$extra_css     = '<link rel="stylesheet" href="/css/pages/error.css">';
 
 ob_start();
 ?>
@@ -59,9 +59,9 @@ ob_start();
         <h1 class="error-title"><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?></h1>
         <p class="error-desc"><?= htmlspecialchars($desc, ENT_QUOTES, 'UTF-8') ?></p>
         <div class="error-actions">
-            <a href="/blp/" class="error-btn-primary">На главную</a>
-            <a href="/blp/catalog" class="error-btn-secondary">Каталог</a>
-            <a href="/blp/contacts" class="error-btn-secondary">Написать нам</a>
+            <a href="/" class="error-btn-primary">На главную</a>
+            <a href="/catalog" class="error-btn-secondary">Каталог</a>
+            <a href="/contacts" class="error-btn-secondary">Написать нам</a>
         </div>
     </div>
 </section>

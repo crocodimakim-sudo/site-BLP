@@ -1,13 +1,13 @@
 <?php
 // 2026-04-27: Сравнение BLP Board с конкурентами
 $page_title     = 'BLP Board vs конкуренты: сравнение фасадных материалов';
-$page_canonical = 'https://building-port.ru/blp/compare-materials';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_canonical = 'https://building-port.ru/compare-materials';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc      = 'Сравнение BLP Board с HPL-панелями, керамогранитом, АКП, металлокассетами, клинкером, хризотилцементом, СФБ, терракотой и натуральным камнем по 22 параметрам.';
-$extra_css      = '<link rel="stylesheet" href="/blp/css/pages/compare-materials.css">';
+$extra_css      = '<link rel="stylesheet" href="/css/pages/compare-materials.css">';
 $breadcrumbs    = [
-    ['name' => 'Главная',              'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Сравнение материалов', 'url' => 'https://building-port.ru/blp/compare-materials'],
+    ['name' => 'Главная',              'url' => 'https://building-port.ru/'],
+    ['name' => 'Сравнение материалов', 'url' => 'https://building-port.ru/compare-materials'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';

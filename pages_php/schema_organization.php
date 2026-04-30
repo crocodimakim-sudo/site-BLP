@@ -9,13 +9,13 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://building-port.ru/blp/#organization",
+      "@id": "https://building-port.ru/#organization",
       "name": "BLP Board",
       "legalName": "ООО «БИЛДИНГПОРТ»",
-      "url": "https://building-port.ru/blp/",
+      "url": "https://building-port.ru/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://building-port.ru/blp/images-convert/shared/header/logo-3.svg",
+        "url": "https://building-port.ru/images-convert/shared/header/logo-3.svg",
         "width": 200,
         "height": 60
       },
@@ -53,19 +53,19 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://building-port.ru/blp/#website",
-      "url": "https://building-port.ru/blp/",
+      "@id": "https://building-port.ru/#website",
+      "url": "https://building-port.ru/",
       "name": "BLP Board — Фиброцементные панели",
       "description": "Фиброцементные плиты для вентилируемых фасадов",
       "publisher": {
-        "@id": "https://building-port.ru/blp/#organization"
+        "@id": "https://building-port.ru/#organization"
       },
       "inLanguage": "ru-RU",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://building-port.ru/blp/catalog?q={search_term_string}"
+          "urlTemplate": "https://building-port.ru/catalog?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }

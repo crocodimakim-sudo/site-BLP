@@ -3,14 +3,14 @@
 require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title    = 'Политика в отношении файлов cookies — BLP Board';
-$page_canonical = 'https://building-port.ru/blp/cookies';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_canonical = 'https://building-port.ru/cookies';
+$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
 $page_desc = 'Политика BLP Board по использованию файлов cookies. Как мы используем cookies, как вы можете управлять ими, и как отключить ненужные файлы.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/policy.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/policy.css">';
 
 $breadcrumbs = [
-    ['name' => 'Главная',         'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Политика cookies', 'url' => 'https://building-port.ru/blp/cookies'],
+    ['name' => 'Главная',         'url' => 'https://building-port.ru/'],
+    ['name' => 'Политика cookies', 'url' => 'https://building-port.ru/cookies'],
 ];
 
 ob_start();
@@ -24,7 +24,7 @@ ob_start();
 
     <div class="policy-content">
         <h2>1. Общие положения</h2>
-        <p>Веб-сайт «building-port.ru/blp» (далее — «<strong>Сайт</strong>») использует технологию файлов cookies и аналогичные механизмы отслеживания для улучшения опыта пользователя и сбора статистической информации.</p>
+        <p>Веб-сайт «building-port.ru» (далее — «<strong>Сайт</strong>») использует технологию файлов cookies и аналогичные механизмы отслеживания для улучшения опыта пользователя и сбора статистической информации.</p>
         <p>Настоящая Политика в отношении файлов cookies (далее — «<strong>Политика cookies</strong>») описывает, какие файлы cookies мы используем, для каких целей, и как Вы можете их контролировать.</p>
 
         <h2>2. Что такое файлы cookies?</h2>
@@ -205,15 +205,15 @@ ob_start();
             <li><strong>Email:</strong> <a href="mailto:info@building-port.ru">info@building-port.ru</a></li>
             <li><strong>Телефон:</strong> <a href="tel:+74959849689">+7 (495) 984-96-89</a></li>
             <li><strong>Адрес:</strong> Одинцово, ул. Неделина, 6А, Московская область 143003</li>
-            <li><strong>Форма обратной связи:</strong> <a href="/blp/contacts">https://building-port.ru/blp/contacts</a></li>
+            <li><strong>Форма обратной связи:</strong> <a href="/contacts">https://building-port.ru/contacts</a></li>
         </ul>
         <p>Мы рассмотрим Ваш вопрос в течение 3 рабочих дней.</p>
 
         <h2>10. Связанные документы</h2>
         <p>Ознакомьтесь также с нашими политиками:</p>
         <ul>
-            <li><a href="/blp/policy"><strong>Политика конфиденциальности и обработки персональных данных</strong></a> — Как мы обрабатываем ваши данные</li>
-            <li><a href="/blp/consent"><strong>Согласие на обработку персональных данных</strong></a> — Форма согласия</li>
+            <li><a href="/policy"><strong>Политика конфиденциальности и обработки персональных данных</strong></a> — Как мы обрабатываем ваши данные</li>
+            <li><a href="/consent"><strong>Согласие на обработку персональных данных</strong></a> — Форма согласия</li>
         </ul>
 
         <hr>

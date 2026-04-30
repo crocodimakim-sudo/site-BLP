@@ -41,7 +41,7 @@ function projects_root_path(): string {
     static $path = null;
     if ($path !== null) return $path;
     $candidates = [
-        'C:/xampp/htdocs/blp/images-convert/pages/projects',
+        'C:/xampp/htdocs/images-convert/pages/projects',
         __DIR__ . '/../../images-convert/pages/projects',
     ];
     foreach ($candidates as $c) {
@@ -360,7 +360,7 @@ if (!$is_authed) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Админ-панель — Вход — BLP Board</title>
-<link rel="stylesheet" href="/blp/css/pages/admin.css">
+<link rel="stylesheet" href="/css/pages/admin.css">
 </head>
 <body class="admin-login-body">
 <div class="admin-login-card">
@@ -866,7 +866,7 @@ if (($_POST['action'] ?? '') === 'upload-catalog-image') {
         } else {
             // Целевая папка: пробуем XAMPP, затем D:
             $candidates = [
-                'C:/xampp/htdocs/blp/images-convert/pages/catalog',
+                'C:/xampp/htdocs/images-convert/pages/catalog',
                 __DIR__ . '/../../images-convert/pages/catalog',
             ];
             $target_dir = null;
@@ -891,7 +891,7 @@ if (($_POST['action'] ?? '') === 'upload-catalog-image') {
                 $cfg = load_catalog();
                 if (!isset($cfg['series']) || !is_array($cfg['series'])) $cfg['series'] = [];
                 if (!isset($cfg['series'][$series]) || !is_array($cfg['series'][$series])) $cfg['series'][$series] = [];
-                $cfg['series'][$series]['image'] = '/blp/images-convert/pages/catalog/' . $final_name;
+                $cfg['series'][$series]['image'] = '/images-convert/pages/catalog/' . $final_name;
                 save_catalog($cfg);
                 header('Location: ?s=catalog&catalog_image_uploaded=1');
                 exit;
@@ -905,7 +905,7 @@ if (($_POST['action'] ?? '') === 'upload-catalog-image') {
 if (($_GET['action'] ?? '') === 'upload-walypan-slide' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!check_csrf($_GET['csrf'] ?? '')) { http_response_code(400); die('CSRF'); }
     $candidates = [
-        'C:/xampp/htdocs/blp/images-convert/pages/catalog/slider',
+        'C:/xampp/htdocs/images-convert/pages/catalog/slider',
         __DIR__ . '/../../images-convert/pages/catalog/slider',
     ];
     $slider_dir = null;
@@ -960,7 +960,7 @@ if (($_GET['action'] ?? '') === 'del-walypan-slide') {
     $file = basename(trim((string)($_GET['file'] ?? '')));
     if ($file !== '' && strpos($file, '..') === false) {
         $candidates = [
-            'C:/xampp/htdocs/blp/images-convert/pages/catalog/slider',
+            'C:/xampp/htdocs/images-convert/pages/catalog/slider',
             __DIR__ . '/../../images-convert/pages/catalog/slider',
         ];
         $slider_dir = null;
@@ -1400,7 +1400,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Админ-панель — BLP Board</title>
-<link rel="stylesheet" href="/blp/css/pages/admin.css">
+<link rel="stylesheet" href="/css/pages/admin.css">
 </head>
 <body class="admin-body">
 <div class="admin-layout">
@@ -1439,7 +1439,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
         </nav>
         <div class="admin-sidebar-footer">
             <a href="?action=logout" class="admin-logout">Выйти</a>
-            <a href="/blp/" class="admin-link-back" target="_blank">К сайту &rarr;</a>
+            <a href="/" class="admin-link-back" target="_blank">К сайту &rarr;</a>
         </div>
     </aside>
 
@@ -1614,7 +1614,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                 <div class="admin-form-row admin-form-row-3col">
                     <div class="admin-form-field">
                         <label class="admin-label" for="f-image">Изображение (путь)</label>
-                        <input type="text" id="f-image" name="image" class="admin-input" value="<?= h($edit_article['image']) ?>" placeholder="/blp/images-convert/blog/...">
+                        <input type="text" id="f-image" name="image" class="admin-input" value="<?= h($edit_article['image']) ?>" placeholder="/images-convert/blog/...">
                     </div>
                     <div class="admin-form-field">
                         <label class="admin-label" for="f-rt">Время чтения (мин)</label>
@@ -1676,7 +1676,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                                 <td><strong><?= h($name) ?></strong><div class="admin-muted"><?= h($slug) ?></div></td>
                                 <td>
                                     <?php if ($url !== ''): ?>
-                                        <a href="/blp<?= h($url === '/' ? '/' : $url) ?>" target="_blank"><?= h($url) ?></a>
+                                        <a href="<?= h($url === '/' ? '/' : $url) ?>" target="_blank"><?= h($url) ?></a>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -1832,7 +1832,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
 
             <?php if (!$edit_project_is_new && !empty($edit_project['folder'])):
                 $photos = list_project_photos($edit_project['folder']);
-                $folder_url_path = '/blp/images-convert/pages/projects/' . rawurlencode($edit_project['folder']);
+                $folder_url_path = '/images-convert/pages/projects/' . rawurlencode($edit_project['folder']);
             ?>
                 <div class="admin-form" style="margin-top:1.5rem;">
                     <h2 class="admin-h2" style="margin-top:0;">Фотографии объекта <span class="admin-counter">(<?= count($photos) ?>)</span></h2>
@@ -1975,8 +1975,8 @@ $project_tags = ['Медицина', 'Образование', 'Государс
 
                 <div class="admin-notice warning">
                     После добавления новых систем аналитики необходимо обновить
-                    <a href="/blp/policy" target="_blank">Политику конфиденциальности</a> и
-                    <a href="/blp/consent" target="_blank">Согласие на обработку данных</a> —
+                    <a href="/policy" target="_blank">Политику конфиденциальности</a> и
+                    <a href="/consent" target="_blank">Согласие на обработку данных</a> —
                     Яндекс является отдельным оператором данных (трансграничная передача).
                 </div>
 
@@ -2099,7 +2099,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                     <label class="admin-label" for="f-plogo">Логотип (путь) <span class="admin-req">*</span></label>
                     <input type="text" id="f-plogo" name="logo" class="admin-input" required
                            value="<?= h($edit_partner['logo']) ?>"
-                           placeholder="/blp/images-convert/blocks/partners/...">
+                           placeholder="/images-convert/blocks/partners/...">
                     <?php if (!empty($edit_partner['logo'])): ?>
                         <div style="margin-top:0.5rem;"><img src="<?= h($edit_partner['logo']) ?>" alt="превью" style="height:60px;width:auto;max-width:200px;object-fit:contain;border:1px solid #eee;padding:4px;background:<?= !empty($edit_partner['dark_bg']) ? '#222' : '#fafafa' ?>;"></div>
                     <?php endif; ?>
@@ -2233,7 +2233,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                     <label class="admin-label" for="f-cfile">Файл (путь) <span class="admin-req">*</span></label>
                     <input type="text" id="f-cfile" name="file" class="admin-input" required
                            value="<?= h($edit_certificate['file']) ?>"
-                           placeholder="/blp/images-convert/pages/sertificate/...">
+                           placeholder="/images-convert/pages/sertificate/...">
                     <?php if (!empty($edit_certificate['file'])): ?>
                         <div style="margin-top:0.5rem;"><img src="<?= h($edit_certificate['file']) ?>" alt="превью" style="height:120px;width:auto;max-width:200px;object-fit:contain;border:1px solid #eee;padding:4px;background:#fafafa;"></div>
                     <?php endif; ?>
@@ -2298,7 +2298,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                         <?php
                         // Слайдер WALYPAN: читаем папку slider/, показываем webp-версии
                         $slider_candidates = [
-                            'C:/xampp/htdocs/blp/images-convert/pages/catalog/slider',
+                            'C:/xampp/htdocs/images-convert/pages/catalog/slider',
                             __DIR__ . '/../../images-convert/pages/catalog/slider',
                         ];
                         $slider_dir_ui = null;
@@ -2324,7 +2324,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1rem;">
                             <?php foreach ($slide_files as $sfname): ?>
                             <div style="position:relative;display:inline-block;">
-                                <img src="/blp/images-convert/pages/catalog/slider/<?= h(rawurlencode($sfname)) ?>"
+                                <img src="/images-convert/pages/catalog/slider/<?= h(rawurlencode($sfname)) ?>"
                                      alt="<?= h($sfname) ?>"
                                      style="height:70px;width:auto;max-width:110px;object-fit:cover;border:1px solid #ddd;border-radius:4px;background:#fff;">
                                 <a href="?action=del-walypan-slide&file=<?= h(urlencode($sfname)) ?>&csrf=<?= h($csrf) ?>"
@@ -2346,7 +2346,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                         </form>
                     <?php else: ?>
                         <?php
-                        $img_is_local = ($simg !== '' && strpos($simg, '/blp/images-convert/') === 0);
+                        $img_is_local = ($simg !== '' && strpos($simg, '/images-convert/') === 0);
                         ?>
                         <div style="margin-bottom:0.75rem;">
                             <?php if ($img_is_local): ?>
@@ -2386,7 +2386,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                             <label class="admin-label" for="f-cat-img-<?= h($skey) ?>">Путь к изображению</label>
                             <input type="text" id="f-cat-img-<?= h($skey) ?>" name="image" class="admin-input"
                                    value="<?= h($simg) ?>"
-                                   placeholder="/blp/images-convert/pages/catalog/series-<?= h($skey) ?>.png">
+                                   placeholder="/images-convert/pages/catalog/series-<?= h($skey) ?>.png">
                         </div>
 
                         <div class="admin-form-actions">
@@ -2412,7 +2412,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                 $img_url = '';
                 foreach (['webp', 'png', 'jpg'] as $e) {
                     if (file_exists($aud_dir . '/audience_' . $slot . '.' . $e)) {
-                        $img_url = '/blp/images-convert/pages/index/audience/audience_' . $slot . '.' . $e . '?v=' . time();
+                        $img_url = '/images-convert/pages/index/audience/audience_' . $slot . '.' . $e . '?v=' . time();
                         break;
                     }
                 }

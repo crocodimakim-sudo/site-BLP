@@ -54,14 +54,14 @@ if (count($related) < 3) {
 
 $page_title    = $article['title'] . ' — Блог BLP Board';
 $page_desc     = $article['subtitle'] ?? '';
-$page_canonical = 'https://building-port.ru/blp/blog/' . $article['slug'];
-$page_og_image  = 'https://building-port.ru' . ($article['image'] ?? '/blp/images/og-default.jpg');
+$page_canonical = 'https://building-port.ru/blog/' . $article['slug'];
+$page_og_image  = 'https://building-port.ru' . ($article['image'] ?? '/images/og-default.jpg');
 $page_og_type   = 'article';
-$extra_css     = '<link rel="stylesheet" href="/blp/css/pages/blog.css">';
+$extra_css     = '<link rel="stylesheet" href="/css/pages/blog.css">';
 
 $breadcrumbs = [
-    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Блог',    'url' => 'https://building-port.ru/blp/blog'],
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/'],
+    ['name' => 'Блог',    'url' => 'https://building-port.ru/blog'],
     ['name' => $article['title'], 'url' => $page_canonical],
 ];
 
@@ -82,7 +82,7 @@ if (!function_exists('blog_format_date')) {
 // 2026-04-24: BlogPosting schema — построить до ob_start()
 $_image_url = !empty($article['image'])
     ? (strpos($article['image'], 'http') === 0 ? $article['image'] : 'https://building-port.ru' . $article['image'])
-    : 'https://building-port.ru/blp/images/og-default.jpg';
+    : 'https://building-port.ru/images/og-default.jpg';
 
 $_datePublished = !empty($article['published_at']) ? date('c', strtotime($article['published_at'])) : '';
 $_dateModified  = !empty($article['updated_at'])   ? date('c', strtotime($article['updated_at']))   : $_datePublished;
@@ -104,12 +104,12 @@ $_blogposting_schema = [
     'dateModified'   => $_dateModified,
     'author'         => [
         '@type' => 'Organization',
-        '@id'   => 'https://building-port.ru/blp/#organization',
+        '@id'   => 'https://building-port.ru/#organization',
         'name'  => 'BLP Board',
     ],
-    'publisher'      => ['@id' => 'https://building-port.ru/blp/#organization'],
+    'publisher'      => ['@id' => 'https://building-port.ru/#organization'],
     'inLanguage'     => 'ru-RU',
-    'isPartOf'       => ['@id' => 'https://building-port.ru/blp/blog#blog'],
+    'isPartOf'       => ['@id' => 'https://building-port.ru/blog#blog'],
     'mainEntityOfPage' => [
         '@type' => 'WebPage',
         '@id'   => $page_canonical . '#webpage',
@@ -129,7 +129,7 @@ ob_start();
 <article class="blog-post">
     <div class="blog-post-container">
         <div class="blog-post-meta">
-            <a href="/blp/blog?cat=<?php echo urlencode($article['category']); ?>" class="blog-tag">
+            <a href="/blog?cat=<?php echo urlencode($article['category']); ?>" class="blog-tag">
                 <?php echo htmlspecialchars($article['category'], ENT_QUOTES, 'UTF-8'); ?>
             </a>
             <span><?php echo htmlspecialchars(blog_format_date($article['published_at']), ENT_QUOTES, 'UTF-8'); ?></span>
@@ -154,7 +154,7 @@ ob_start();
         </script>
         <div class="blog-post-tags">
             Теги:
-            <a href="/blp/blog?cat=<?php echo urlencode($article['category']); ?>">
+            <a href="/blog?cat=<?php echo urlencode($article['category']); ?>">
                 <?php echo htmlspecialchars($article['category'], ENT_QUOTES, 'UTF-8'); ?>
             </a>
         </div>
@@ -168,7 +168,7 @@ ob_start();
         <div class="blog-related-grid">
             <?php foreach ($related as $a): ?>
             <article class="blog-card">
-                <a href="/blp/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="blog-card-img-wrap">
+                <a href="/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="blog-card-img-wrap">
                     <img src="<?php echo htmlspecialchars($a['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
                          alt="<?php echo htmlspecialchars($a['title'], ENT_QUOTES, 'UTF-8'); ?>"
                          loading="lazy"
@@ -177,7 +177,7 @@ ob_start();
                 </a>
                 <div class="blog-card-body">
                     <h2 class="blog-card-title">
-                        <a href="/blp/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <a href="/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>">
                             <?php echo htmlspecialchars($a['title'], ENT_QUOTES, 'UTF-8'); ?>
                         </a>
                     </h2>

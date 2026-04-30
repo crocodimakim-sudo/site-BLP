@@ -9,7 +9,7 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
 
 <section class="contact-form-section">
   <div class="contact-form-wrapper">
-    <form class="contact-form" id="contactForm" action="/blp/blocks/send-form.php" method="POST" novalidate>
+    <form class="contact-form" id="contactForm" action="/blocks/send-form.php" method="POST" novalidate>
       <h2 class="contact-form-title"><?php echo htmlspecialchars($form_title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></h2>
       <p class="contact-form-desc"><?php echo htmlspecialchars($form_desc, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></p>
       <div class="contact-form-grid">
@@ -82,7 +82,7 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
             required
           />
           <label for="consent" class="form-checkbox-label">
-            Я даю согласие&nbsp;на <a href="/blp/consent" target="_blank" rel="noopener noreferrer">обработку персональных данных</a>&nbsp;и принимаю условия <a href="/blp/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a>
+            Я даю согласие&nbsp;на <a href="/consent" target="_blank" rel="noopener noreferrer">обработку персональных данных</a>&nbsp;и принимаю условия <a href="/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a>
           </label>
           <span class="field-error" data-field="consent"></span>
         </div>
@@ -120,4 +120,4 @@ $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты наш�
 
 <!-- 2026-04-24: imask 7.2.0 → 7.6.1 (404 на CDN для 7.2.0) -->
 <script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script>
-<script src="/blp/js/contact-form.js" defer></script>
+<script src="/js/contact-form.js" defer></script>

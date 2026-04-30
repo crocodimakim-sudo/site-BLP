@@ -1,17 +1,17 @@
 <?php
 // 2026-04-20: Stage 3 Group 3.B — Product comparison page (NATURE vs POLISHED vs TEXTURE vs WALYPAN)
 $page_title    = 'Сравнение серий фиброцементных панелей BLP Board: NATURE, POLISHED, TEXTURE, WALYPAN';
-$page_canonical = 'https://building-port.ru/blp/compare';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_canonical = 'https://building-port.ru/compare';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Сравнение 4 серий фиброцементных панелей BLP Board: характеристики, фактуры, области применения, толщина, размеры. Выберите подходящую серию для вашего объекта.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/compare.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/compare.css">';
 // 2026-04-27: страница скрыта — не нужна в текущем состоянии
 $page_robots = 'noindex, nofollow';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Каталог',  'url' => 'https://building-port.ru/blp/catalog'],
-    ['name' => 'Сравнение серий', 'url' => 'https://building-port.ru/blp/compare'],
+    ['name' => 'Главная',  'url' => 'https://building-port.ru/'],
+    ['name' => 'Каталог',  'url' => 'https://building-port.ru/catalog'],
+    ['name' => 'Сравнение серий', 'url' => 'https://building-port.ru/compare'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';
@@ -40,7 +40,7 @@ ob_start();
                         <span>Крупный формат до 3050 мм — меньше стыков на фасаде</span>
                     </li>
                 </ul>
-                <a href="/blp/contacts" class="blp-hero-button">Запросить образцы серий</a>
+                <a href="/contacts" class="blp-hero-button">Запросить образцы серий</a>
             </div>
             <div class="blp-hero-image">
                 <div class="compare-hero-series">
@@ -80,7 +80,7 @@ ob_start();
                     <div class="compare-card-badge">Популярная серия</div>
                 </div>
                 <div class="compare-card-footer">
-                    <a href="/blp/catalog#nature" class="compare-card-link">Подробнее о NATURE →</a>
+                    <a href="/catalog#nature" class="compare-card-link">Подробнее о NATURE →</a>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@ ob_start();
                     <div class="compare-card-badge compare-card-badge-alt">Для соцобъектов</div>
                 </div>
                 <div class="compare-card-footer">
-                    <a href="/blp/catalog#polished" class="compare-card-link">Подробнее о POLISHED →</a>
+                    <a href="/catalog#polished" class="compare-card-link">Подробнее о POLISHED →</a>
                 </div>
             </div>
 
@@ -120,7 +120,7 @@ ob_start();
                     <div class="compare-card-badge compare-card-badge-alt2">Выразительный фасад</div>
                 </div>
                 <div class="compare-card-footer">
-                    <a href="/blp/catalog#texture" class="compare-card-link">Подробнее о TEXTURE →</a>
+                    <a href="/catalog#texture" class="compare-card-link">Подробнее о TEXTURE →</a>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@ ob_start();
                     <div class="compare-card-badge compare-card-badge-premium">Архитектурный акцент</div>
                 </div>
                 <div class="compare-card-footer">
-                    <a href="/blp/catalog#walypan" class="compare-card-link">Подробнее о WALYPAN →</a>
+                    <a href="/catalog#walypan" class="compare-card-link">Подробнее о WALYPAN →</a>
                 </div>
             </div>
 
@@ -276,22 +276,22 @@ ob_start();
             <div class="compare-usecase-card">
                 <h3 class="compare-usecase-title">Жилой комплекс бизнес-класса</h3>
                 <p>Выберите <strong>NATURE</strong> — рельефная поверхность под бетон подчёркивает архитектурный замысел. Крупный формат 3050 мм создаёт монолитный вид фасада с минимальным количеством швов.</p>
-                <a href="/blp/catalog#nature" class="compare-usecase-link">Смотреть NATURE →</a>
+                <a href="/catalog#nature" class="compare-usecase-link">Смотреть NATURE →</a>
             </div>
             <div class="compare-usecase-card">
                 <h3 class="compare-usecase-title">Школа, больница, поликлиника</h3>
                 <p>Выберите <strong>POLISHED</strong> — гладкая поверхность легко моется, нейтральные тона вписываются в требования госзаказа. Толщина 12–15 мм обеспечивает требуемую несущую способность для социальных объектов.</p>
-                <a href="/blp/catalog#polished" class="compare-usecase-link">Смотреть POLISHED →</a>
+                <a href="/catalog#polished" class="compare-usecase-link">Смотреть POLISHED →</a>
             </div>
             <div class="compare-usecase-card">
                 <h3 class="compare-usecase-title">Торговый центр, гостиница</h3>
                 <p>Выберите <strong>TEXTURE</strong> — выразительная фактура под природный камень создаёт эффектный фасад. Серия хорошо работает на больших плоскостях и акцентных входных группах.</p>
-                <a href="/blp/catalog#texture" class="compare-usecase-link">Смотреть TEXTURE →</a>
+                <a href="/catalog#texture" class="compare-usecase-link">Смотреть TEXTURE →</a>
             </div>
             <div class="compare-usecase-card">
                 <h3 class="compare-usecase-title">Частный дом, акцентная зона</h3>
                 <p>Выберите <strong>WALYPAN</strong> — линеарные ламели создают ритмичный рисунок горизонтальных или вертикальных линий. Идеальный выбор для архитектурных акцентов на фасаде или облицовки интерьерных поверхностей.</p>
-                <a href="/blp/catalog#walypan" class="compare-usecase-link">Смотреть WALYPAN →</a>
+                <a href="/catalog#walypan" class="compare-usecase-link">Смотреть WALYPAN →</a>
             </div>
         </div>
     </div>
@@ -311,28 +311,28 @@ ob_start();
       "position": 1,
       "name": "BLP Board NATURE",
       "description": "Фиброцементные панели с рельефной поверхностью под архитектурный бетон. Толщина 8–12 мм, формат до 3050×1220 мм, класс НГ (К0).",
-      "url": "https://building-port.ru/blp/catalog#nature"
+      "url": "https://building-port.ru/catalog#nature"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "BLP Board POLISHED",
       "description": "Фиброцементные панели с гладкой матовой поверхностью. Толщина 8–15 мм, формат до 3050×1220 мм, класс НГ (К0).",
-      "url": "https://building-port.ru/blp/catalog#polished"
+      "url": "https://building-port.ru/catalog#polished"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "BLP Board TEXTURE",
       "description": "Фиброцементные панели с тиснёной поверхностью под натуральный камень. Толщина 10–12 мм, формат до 2440×1220 мм, класс НГ (К0).",
-      "url": "https://building-port.ru/blp/catalog#texture"
+      "url": "https://building-port.ru/catalog#texture"
     },
     {
       "@type": "ListItem",
       "position": 4,
       "name": "BLP Board WALYPAN",
       "description": "Линеарные фиброцементные ламели для горизонтального и вертикального монтажа. Толщина 18 мм, длина до 3600 мм, класс НГ (К0).",
-      "url": "https://building-port.ru/blp/catalog#walypan"
+      "url": "https://building-port.ru/catalog#walypan"
     }
   ]
 }

@@ -170,7 +170,7 @@ document.getElementById("projectModal").addEventListener("click", function(e) {
     if (e.target === this) closeModal();
 });
 
-fetch('/blp/blocks/get_projects.php')
+fetch('/blocks/get_projects.php')
     .then(r => r.json())
     .then(data => {
         projects = data;

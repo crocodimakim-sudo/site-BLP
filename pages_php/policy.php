@@ -3,14 +3,14 @@
 require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title    = 'Политика конфиденциальности — BLP Board';
-$page_canonical = 'https://building-port.ru/blp/policy/';
-$page_og_image  = 'https://building-port.ru/blp/images/og-default.jpg';
+$page_canonical = 'https://building-port.ru/policy/';
+$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
 $page_desc = 'Политика конфиденциальности BLP Board. Как мы обрабатываем ваши персональные данные, какие права вы имеете, и как связаться с нами.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/policy.css">';
+$extra_css = '<link rel="stylesheet" href="/css/pages/policy.css">';
 
 $breadcrumbs = [
-    ['name' => 'Главная',              'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Политика конфиденциальности', 'url' => 'https://building-port.ru/blp/policy/'],
+    ['name' => 'Главная',              'url' => 'https://building-port.ru/'],
+    ['name' => 'Политика конфиденциальности', 'url' => 'https://building-port.ru/policy/'],
 ];
 
 ob_start();
@@ -25,7 +25,7 @@ ob_start();
     <div class="policy-content">
         <h2>1. Общие положения</h2>
         <p>Общество с ограниченной ответственностью «<strong>Билдингпорт</strong>» (ИНН&nbsp;7708427307, ОГРН&nbsp;1237700843390, юридический адрес: 107140, г.&nbsp;Москва, ул.&nbsp;Краснопрудная, д.&nbsp;15, помещ.&nbsp;3А/2; далее — «<strong>Компания</strong>», «<strong>Оператор</strong>») соблюдает требования Федерального закона от 27 июля 2006 г. № 152-ФЗ «О персональных данных» (далее — «<strong>Закон</strong>») при обработке персональных данных.</p>
-        <p>Настоящая Политика конфиденциальности определяет порядок сбора, хранения, использования и защиты персональных данных пользователей веб-сайта <a href="https://building-port.ru/blp/">https://building-port.ru/blp/</a> (далее — «<strong>Сайт</strong>») и/или пользователей услуг Компании.</p>
+        <p>Настоящая Политика конфиденциальности определяет порядок сбора, хранения, использования и защиты персональных данных пользователей веб-сайта <a href="https://building-port.ru/">https://building-port.ru/</a> (далее — «<strong>Сайт</strong>») и/или пользователей услуг Компании.</p>
         <p>Используя Сайт, оставляя контактные данные или согласие, Вы подтверждаете, что ознакомились с настоящей Политикой и согласны с ней.</p>
 
         <h2>2. Определения</h2>
@@ -173,7 +173,7 @@ ob_start();
             <li>Блокировать установку новых cookies</li>
             <li>Получать уведомления перед установкой cookies</li>
         </ul>
-        <p>Подробную информацию см. в разделе <strong><a href="/blp/cookies">Политика в отношении файлов cookies</a></strong>.</p>
+        <p>Подробную информацию см. в разделе <strong><a href="/cookies">Политика в отношении файлов cookies</a></strong>.</p>
 
         <h2>11. Обработка данных детей</h2>
         <p>Если Вам менее 18 лет, для предоставления персональных данных требуется согласие родителя (опекуна).</p>
@@ -206,7 +206,7 @@ ob_start();
             <li><strong>Фактический адрес:</strong> Московская область, г. Одинцово, ул. Неделина, 6А, 143003</li>
             <li><strong>Телефон:</strong> <a href="tel:+74959849689">+7 (495) 984-96-89</a></li>
             <li><strong>Email:</strong> <a href="mailto:info@building-port.ru">info@building-port.ru</a></li>
-            <li><strong>Веб-сайт:</strong> <a href="https://building-port.ru/blp/">https://building-port.ru/blp/</a></li>
+            <li><strong>Веб-сайт:</strong> <a href="https://building-port.ru/">https://building-port.ru/</a></li>
         </ul>
 
         <h2>14. Изменения в Политике конфиденциальности</h2>
@@ -216,8 +216,8 @@ ob_start();
         <h2>15. Связанные документы</h2>
         <p>Ознакомьтесь также с нашими политиками:</p>
         <ul>
-            <li><a href="/blp/cookies"><strong>Политика в отношении файлов cookies</strong></a> — Управление cookies на Сайте</li>
-            <li><a href="/blp/consent"><strong>Согласие на обработку персональных данных</strong></a> — Форма согласия на обработку данных</li>
+            <li><a href="/cookies"><strong>Политика в отношении файлов cookies</strong></a> — Управление cookies на Сайте</li>
+            <li><a href="/consent"><strong>Согласие на обработку персональных данных</strong></a> — Форма согласия на обработку данных</li>
         </ul>
 
         <hr>

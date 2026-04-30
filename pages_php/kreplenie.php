@@ -5,14 +5,14 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 // 2026-04-24: SEO — title keyword-first, canonical trailing slash removed (consistent with breadcrumb)
 $page_title = "Крепление фиброцементных панелей BLP Board — видимый и скрытый способы";
 $page_desc = "Варианты крепления фиброцементных панелей BLP Board к подсистеме: видимый и скрытый способы. Совместимость с алюминиевыми, оцинкованными и нержавеющими подсистемами.";
-$page_canonical = 'https://building-port.ru/blp/kreplenie';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/kreplenie.css">';
+$page_canonical = 'https://building-port.ru/kreplenie';
+$page_og_image  = 'https://building-port.ru/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png';
+$extra_css = '<link rel="stylesheet" href="/css/pages/kreplenie.css">';
 $extra_js = "";
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',           'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Способы крепления', 'url' => 'https://building-port.ru/blp/kreplenie'],
+    ['name' => 'Главная',           'url' => 'https://building-port.ru/'],
+    ['name' => 'Способы крепления', 'url' => 'https://building-port.ru/kreplenie'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';
@@ -30,10 +30,10 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <?php echo render_image('/blp/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png', 'Фасад с видимыми заклёпками'); ?>
+                    <?php echo render_image('/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png', 'Фасад с видимыми заклёпками'); ?>
                 </div>
                 <div class="blp-img-small">
-                    <?php echo render_image('/blp/images-convert/pages/kreplenie/vidimoe/mount_visible_rivets.png', 'Заклёпки'); ?>
+                    <?php echo render_image('/images-convert/pages/kreplenie/vidimoe/mount_visible_rivets.png', 'Заклёпки'); ?>
                 </div>
             </div>
             <div class="blp-method-info">
@@ -48,7 +48,7 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_hidden_scheme.png', 'Скрытый способ крепления'); ?>
+                    <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_hidden_scheme.png', 'Скрытый способ крепления'); ?>
                 </div>
             </div>
             <div class="blp-method-info">
@@ -58,10 +58,10 @@ ob_start();
                         <p class="blp-hardware-title">Кляммер «КРАБ»</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_krab_1.png', 'Кляммер КРАБ'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_krab_1.png', 'Кляммер КРАБ'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_krab_2.png', 'Кляммер КРАБ вид 2'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_krab_2.png', 'Кляммер КРАБ вид 2'); ?>
                             </div>
                         </div>
                     </div>
@@ -69,10 +69,10 @@ ob_start();
                         <p class="blp-hardware-title">KEIL</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_keil_1.png', 'KEIL крепёж'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_keil_1.png', 'KEIL крепёж'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_keil_2.png', 'KEIL крепёж вид 2'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_keil_2.png', 'KEIL крепёж вид 2'); ?>
                             </div>
                         </div>
                     </div>
@@ -80,10 +80,10 @@ ob_start();
                         <p class="blp-hardware-title">Аграфы NORDFox</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_nordfox_1.png', 'Аграфы NORDFox схема'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_nordfox_1.png', 'Аграфы NORDFox схема'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/blp/images-convert/pages/kreplenie/skritoe/mount_nordfox_2.png', 'Аграфы NORDFox'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_nordfox_2.png', 'Аграфы NORDFox'); ?>
                             </div>
                         </div>
                     </div>

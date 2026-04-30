@@ -116,8 +116,8 @@
         width: 100%;
         height: 100%;
         background-color: #00352F;
-        mask-image: url('/blp/images/shared/header/logo-3.svg');
-        -webkit-mask-image: url('/blp/images/shared/header/logo-3.svg');
+        mask-image: url('/images/shared/header/logo-3.svg');
+        -webkit-mask-image: url('/images/shared/header/logo-3.svg');
         mask-repeat: repeat;
         -webkit-mask-repeat: repeat;
         mask-size: 60px auto;

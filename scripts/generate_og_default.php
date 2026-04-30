@@ -54,7 +54,7 @@ if ($ttf && function_exists('imagettftext')) {
 
     // Tagline at bottom
     imagettftext($img, 18, 0, 90, $H - 80, $light, $ttf, 'НГ • 0% асбеста • ГОСТ • Крупный формат');
-    imagettftext($img, 14, 0, 90, $H - 45, $gray,  $ttf, 'building-port.ru/blp');
+    imagettftext($img, 14, 0, 90, $H - 45, $gray,  $ttf, 'building-port.ru');
 }
 
 $out = __DIR__ . '/../images/og-default.jpg';

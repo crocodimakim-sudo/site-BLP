@@ -14,7 +14,7 @@
             <div class="blp-specs-row"><div class="blp-specs-label">Групп горючести</div><div class="blp-specs-value">НГ (Негорючий)</div></div>
         </div>
         <div class="blp-cert-btn-wrapper">
-            <a href="/blp/sertificate" class="blp-cert-btn" rel="noopener noreferrer">
+            <a href="/sertificate" class="blp-cert-btn" rel="noopener noreferrer">
                 <svg class="blp-cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>

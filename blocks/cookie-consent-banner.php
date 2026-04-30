@@ -13,8 +13,8 @@
                     На нашем сайте используются файлы cookies для улучшения вашего опыта, анализа трафика и персонализации контента. Продолжив использование сайта, вы соглашаетесь с использованием cookies.
                 </p>
                 <div class="cookie-consent-links">
-                    <a href="/blp/cookies" target="_blank" rel="noopener noreferrer" class="cookie-link">Политика cookies</a>
-                    <a href="/blp/policy" target="_blank" rel="noopener noreferrer" class="cookie-link">Политика конфиденциальности</a>
+                    <a href="/cookies" target="_blank" rel="noopener noreferrer" class="cookie-link">Политика cookies</a>
+                    <a href="/policy" target="_blank" rel="noopener noreferrer" class="cookie-link">Политика конфиденциальности</a>
                 </div>
             </div>
 

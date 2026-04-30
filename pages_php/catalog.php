@@ -3,15 +3,15 @@
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = 'Каталог фиброцементных панелей BLP Board: NATURE, POLISHED, TEXTURE, WALYPAN';
 $page_desc     = 'Каталог фиброцементных панелей BLP Board. 4 серии, 10 цветов, толщина 8–15 мм, размеры до 3050 мм. Характеристики, палитра и сертификаты на каждую серию.';
-$page_canonical = 'https://building-port.ru/blp/catalog';
+$page_canonical = 'https://building-port.ru/catalog';
 // 2026-04-20: og_image → real hero instead of missing og-default
-$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/catalog/catalog_nature_render.jpg';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/catalog.css?v=20260428">';
-$extra_js = '<script src="/blp/js/pages/catalog.js" defer></script>';
+$page_og_image  = 'https://building-port.ru/images-convert/pages/catalog/catalog_nature_render.jpg';
+$extra_css = '<link rel="stylesheet" href="/css/pages/catalog.css?v=20260428">';
+$extra_js = '<script src="/js/pages/catalog.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Каталог',  'url' => 'https://building-port.ru/blp/catalog'],
+    ['name' => 'Главная',  'url' => 'https://building-port.ru/'],
+    ['name' => 'Каталог',  'url' => 'https://building-port.ru/catalog'],
 ];
 
 // 2026-04-22: Сканируем папку Walypan слайдера — поддерживаем ВСЕ имена файлов
@@ -33,7 +33,7 @@ if (is_dir($walypanDir)) {
             // Натуральная сортировка по имени файла
             natsort($basenames);
             foreach ($basenames as $basename) {
-                $walypanImages[] = '/blp/images-convert/pages/catalog/slider/' . $basename;
+                $walypanImages[] = '/images-convert/pages/catalog/slider/' . $basename;
             }
         }
     }
@@ -69,7 +69,7 @@ ob_start();
                 <div class="product-image">
                     <!-- 2026-04-22: WebP + lazy via render_image() -->
                     <?php echo render_image(
-                        '/blp/images-convert/pages/catalog/series-nature.png',
+                        '/images-convert/pages/catalog/series-nature.png',
                         'Натуральные фиброцементные панели серия NATURE — фактура под бетон',
                         ['sizes' => '(max-width: 768px) 100vw, 600px']
                     ); ?>
@@ -167,7 +167,7 @@ ob_start();
             <div class="product-image">
                 <!-- 2026-04-22: WebP + lazy via render_image() -->
                 <?php echo render_image(
-                    '/blp/images-convert/pages/catalog/series-polished.png',
+                    '/images-convert/pages/catalog/series-polished.png',
                     'Полированные панели серия BLP-POLISHED',
                     ['sizes' => '(max-width: 768px) 100vw, 600px']
                 ); ?>
@@ -184,7 +184,7 @@ ob_start();
             <div class="product-image">
                 <!-- 2026-04-22: WebP + lazy via render_image() -->
                 <?php echo render_image(
-                    '/blp/images-convert/pages/catalog/series-texture.png',
+                    '/images-convert/pages/catalog/series-texture.png',
                     'Текстурированные панели серия BLP-TEXTURE',
                     ['sizes' => '(max-width: 768px) 100vw, 600px']
                 ); ?>
@@ -291,7 +291,7 @@ ob_start();
                 </div>
             </div>
 
-            <!-- Правая колонка: слайдер с миниатюрами — 2026-04-22: динамически из /blp/api/slider -->
+            <!-- Правая колонка: слайдер с миниатюрами — 2026-04-22: динамически из /api/slider -->
             <div class="blp-image-section">
                 <div id="slider-container">
                     <div class="blp-main-image" id="blpMainImage">
@@ -316,7 +316,7 @@ ob_start();
       <div class="palette-wrapper">
         <h2 class="palette-title">Палитра цветов</h2>
         <?php echo render_image(
-          '/blp/images-convert/pages/catalog/color_palette.png',
+          '/images-convert/pages/catalog/color_palette.png',
           'Палитра цветов фиброцементных панелей',
           ['class' => 'palette-image', 'sizes' => '(max-width: 768px) 100vw, 900px']
         ); ?>
@@ -342,7 +342,7 @@ ob_start();
 
 
 <script>
-// 2026-04-22: слайдер загружается динамически из /blp/api/slider
+// 2026-04-22: слайдер загружается динамически из /api/slider
 (function() {
     let slides = [];
     let currentIndex = 0;
@@ -424,7 +424,7 @@ ob_start();
         }, { passive: true });
     }
 
-    fetch('/blp/api/slider')
+    fetch('/api/slider')
         .then(r => r.json())
         .then(buildSlider)
         .catch(() => {

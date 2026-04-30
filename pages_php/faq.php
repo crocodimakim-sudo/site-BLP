@@ -1,15 +1,15 @@
 <?php
 // 2026-04-20: Stage 3 Group 3.B — FAQ page targeting long-tail question keywords
 $page_title    = 'Часто задаваемые вопросы о фиброцементных панелях — BLP Board';
-$page_canonical = 'https://building-port.ru/blp/faq';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_canonical = 'https://building-port.ru/faq';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Ответы на частые вопросы о фиброцементных панелях BLP Board: характеристики, монтаж, совместимость с подсистемами, гарантия, заказ образцов, цены и доставка.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/faq.css">';
-$extra_js  = '<script src="/blp/js/pages/faq.js" defer></script>';
+$extra_css = '<link rel="stylesheet" href="/css/pages/faq.css">';
+$extra_js  = '<script src="/js/pages/faq.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'FAQ', 'url' => 'https://building-port.ru/blp/faq'],
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/'],
+    ['name' => 'FAQ', 'url' => 'https://building-port.ru/faq'],
 ];
 
 // 2026-04-20: FAQPage schema.org markup
@@ -133,7 +133,7 @@ ob_start();
                         <span>Образцы панелей — доставим за 3–5 дней</span>
                     </li>
                 </ul>
-                <a href="/blp/contacts" class="blp-hero-button">Задать вопрос менеджеру</a>
+                <a href="/contacts" class="blp-hero-button">Задать вопрос менеджеру</a>
             </div>
             <div class="blp-hero-image faq-hero-image">
                 <div class="faq-hero-badge">
@@ -334,7 +334,7 @@ ob_start();
                     <div itemprop="text">
                         <p>Цена зависит от <strong>серии, толщины и объёма</strong> заказа. Ценообразование прозрачное: базовая ставка за м² + логистика. Оптовые условия доступны от 200 м².</p>
                         <p>Для получения точного расчёта заполните форму с указанием серии, толщины, объёма (м²) и региона доставки — ответим в течение рабочего дня. Для дилеров — отдельные условия.</p>
-                        <a href="/blp/contacts" class="faq-cta-btn">Запросить расчёт стоимости</a>
+                        <a href="/contacts" class="faq-cta-btn">Запросить расчёт стоимости</a>
                     </div>
                 </div>
             </div>

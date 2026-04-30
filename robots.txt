@@ -1,15 +1,15 @@
 User-agent: *
-Allow: /blp/
+Allow: /
 
 # 2026-04-23: служебные страницы — не индексировать (тонкий контент)
-Disallow: /blp/policy
-Disallow: /blp/cookies
-Disallow: /blp/consent
-Disallow: /blp/blocks/
-Disallow: /blp/logs/
-Disallow: /blp/database/
-Disallow: /blp/scripts/
+Disallow: /policy
+Disallow: /cookies
+Disallow: /consent
+Disallow: /blocks/
+Disallow: /logs/
+Disallow: /database/
+Disallow: /scripts/
 
 # 2026-04-20: updated Sitemap URL and Allow directive for production domain
 # TODO: если домен изменится — обновить URL ниже
-Sitemap: https://building-port.ru/blp/sitemap.xml
+Sitemap: https://building-port.ru/sitemap.xml

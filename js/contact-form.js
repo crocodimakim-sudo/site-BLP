@@ -149,7 +149,7 @@
     };
 
     try {
-      const response = await fetch('/blp/blocks/send-form.php', {
+      const response = await fetch('/blocks/send-form.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

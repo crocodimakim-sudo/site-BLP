@@ -2,13 +2,13 @@
 // 2026-04-24: страница листинга блога — hero + фильтры + сетка карточек
 $page_title    = 'Блог BLP Board — статьи о фиброцементе и вентилируемых фасадах';
 $page_desc     = 'Экспертные материалы о монтаже фиброцементных панелей, сравнении материалов, типовых ошибках вентилируемых фасадов и реализованных проектах BLP Board.';
-$page_canonical = 'https://building-port.ru/blp/blog';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
-$extra_css     = '<link rel="stylesheet" href="/blp/css/pages/blog.css">';
+$page_canonical = 'https://building-port.ru/blog';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
+$extra_css     = '<link rel="stylesheet" href="/css/pages/blog.css">';
 
 $breadcrumbs = [
-    ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Блог',    'url' => 'https://building-port.ru/blp/blog'],
+    ['name' => 'Главная', 'url' => 'https://building-port.ru/'],
+    ['name' => 'Блог',    'url' => 'https://building-port.ru/blog'],
 ];
 
 // 2026-04-24: подключаем БД блога
@@ -86,7 +86,7 @@ ob_start();
                 <span>&bull;</span>
                 <span><?php echo (int)$hero['views']; ?> просмотров</span>
             </div>
-            <a href="/blp/blog/<?php echo htmlspecialchars($hero['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="blog-hero-btn">Читать статью &rarr;</a>
+            <a href="/blog/<?php echo htmlspecialchars($hero['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="blog-hero-btn">Читать статью &rarr;</a>
         </div>
         <div class="blog-hero-image">
             <img src="<?php echo htmlspecialchars($hero['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
@@ -99,9 +99,9 @@ ob_start();
 
 <section class="blog-main">
     <div class="blog-filters">
-        <a href="/blp/blog" class="blog-filter-btn<?php echo $currentCat === '' ? ' active' : ''; ?>">Все</a>
+        <a href="/blog" class="blog-filter-btn<?php echo $currentCat === '' ? ' active' : ''; ?>">Все</a>
         <?php foreach ($categories as $cat): ?>
-            <a href="/blp/blog?cat=<?php echo urlencode($cat); ?>"
+            <a href="/blog?cat=<?php echo urlencode($cat); ?>"
                class="blog-filter-btn<?php echo $currentCat === $cat ? ' active' : ''; ?>">
                 <?php echo htmlspecialchars($cat, ENT_QUOTES, 'UTF-8'); ?>
             </a>
@@ -116,7 +116,7 @@ ob_start();
     <div class="blog-grid">
         <?php foreach ($articles as $a): ?>
         <article class="blog-card">
-            <a href="/blp/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="blog-card-img-wrap">
+            <a href="/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="blog-card-img-wrap">
                 <img src="<?php echo htmlspecialchars($a['image'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
                      alt="<?php echo htmlspecialchars($a['title'], ENT_QUOTES, 'UTF-8'); ?>"
                      loading="lazy"
@@ -125,7 +125,7 @@ ob_start();
             </a>
             <div class="blog-card-body">
                 <h2 class="blog-card-title">
-                    <a href="/blp/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <a href="/blog/<?php echo htmlspecialchars($a['slug'], ENT_QUOTES, 'UTF-8'); ?>">
                         <?php echo htmlspecialchars($a['title'], ENT_QUOTES, 'UTF-8'); ?>
                     </a>
                 </h2>

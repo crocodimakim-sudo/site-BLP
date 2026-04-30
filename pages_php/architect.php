@@ -5,17 +5,17 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 // 2026-04-20: added canonical, OG image
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = "Фиброцементные панели для архитекторов и проектировщиков — BLP Board";
-$page_canonical = 'https://building-port.ru/blp/architect';
+$page_canonical = 'https://building-port.ru/architect';
 // 2026-04-20: og_image → real hero instead of missing og-default
-$page_og_image  = 'https://building-port.ru/blp/images-convert/pages/architect/architect_hero.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/pages/architect/architect_hero.jpg';
 $page_desc  = "Техническая поддержка архитекторов: документация, образцы, консультации по фиброцементным фасадным панелям BLP Board.";
-$extra_css  = '<link rel="stylesheet" href="/blp/css/pages/architect.css">';
+$extra_css  = '<link rel="stylesheet" href="/css/pages/architect.css">';
 // 2026-04-20: fix — подключаем корректный JS страницы architect (был index.js)
-$extra_js   = '<script src="/blp/js/pages/architect.js" defer></script>';
+$extra_js   = '<script src="/js/pages/architect.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',                      'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Архитекторам и проектировщикам', 'url' => 'https://building-port.ru/blp/architect'],
+    ['name' => 'Главная',                      'url' => 'https://building-port.ru/'],
+    ['name' => 'Архитекторам и проектировщикам', 'url' => 'https://building-port.ru/architect'],
 ];
 
 require_once __DIR__ . '/../blocks/session_init.php';
@@ -76,10 +76,10 @@ ob_start();
             <p class="blp-partner-card__text">Мы выстраиваем долгосрочное сотрудничество&nbsp;с авторскими коллективами. Фиксация условий&nbsp;на этапе согласования.</p>
             <p class="blp-partner-card__note"><strong>Важно:</strong> Сотрудничество&nbsp;не влияет&nbsp;на архитектурные решения&nbsp;и не ограничивает ваш выбор — мы подключаемся&nbsp;как технический партнер.</p>
             <!-- 2026-04-20: CTA конкретизирован для аудитории архитекторов -->
-            <a class="blp-partner-card__btn" href="/blp/contacts#form">Запросить техническую документацию</a>
+            <a class="blp-partner-card__btn" href="/contacts#form">Запросить техническую документацию</a>
         </div>
         <div class="blp-partner-card__image">
-            <?php echo render_image('/blp/images-convert/pages/architect/architect_hero.jpg', 'Партнерская модель взаимодействия', ['fetchpriority' => 'high']); ?>
+            <?php echo render_image('/images-convert/pages/architect/architect_hero.jpg', 'Партнерская модель взаимодействия', ['fetchpriority' => 'high']); ?>
         </div>
     </div>
 </div>

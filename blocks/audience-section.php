@@ -11,11 +11,11 @@ if (!function_exists('render_image')) {
 
     <div class="audience-grid">
         <div class="audience-col">
-            <a href="/blp/architect" class="audience-card-link">
+            <a href="/architect" class="audience-card-link">
                 <article class="audience-card">
                     <div class="audience-image-wrapper">
                         <?php echo render_image(
-                            '/blp/images-convert/pages/index/audience/audience_architect.png',
+                            '/images-convert/pages/index/audience/audience_architect.png',
                             'Архитекторы работают над проектом',
                             ['class' => 'audience-image', 'sizes' => '(max-width: 768px) 100vw, 400px']
                         ); ?>
@@ -30,11 +30,11 @@ if (!function_exists('render_image')) {
         </div>
 
         <div class="audience-col">
-            <a href="/blp/devops" class="audience-card-link">
+            <a href="/devops" class="audience-card-link">
                 <article class="audience-card">
                     <div class="audience-image-wrapper">
                         <?php echo render_image(
-                            '/blp/images-convert/pages/index/audience/audience_developer.png',
+                            '/images-convert/pages/index/audience/audience_developer.png',
                             'Застройщики обсуждают проект',
                             ['class' => 'audience-image', 'sizes' => '(max-width: 768px) 100vw, 400px']
                         ); ?>
@@ -49,11 +49,11 @@ if (!function_exists('render_image')) {
         </div>
 
         <div class="audience-col">
-            <a href="/blp/dealer" class="audience-card-link">
+            <a href="/dealer" class="audience-card-link">
                 <article class="audience-card">
                     <div class="audience-image-wrapper">
                         <?php echo render_image(
-                            '/blp/images-convert/pages/index/audience/audience_dealer.png',
+                            '/images-convert/pages/index/audience/audience_dealer.png',
                             'Дилеры на встрече',
                             ['class' => 'audience-image', 'sizes' => '(max-width: 768px) 100vw, 400px']
                         ); ?>

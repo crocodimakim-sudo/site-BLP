@@ -155,7 +155,7 @@ function initContactForm() {
         };
 
         // Отправка на сервер
-        fetch('/blp/blocks/send-form.php', {
+        fetch('/blocks/send-form.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

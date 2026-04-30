@@ -3,8 +3,8 @@
 // Usage: set $breadcrumbs array before including this file
 // Example in catalog.php:
 //   $breadcrumbs = [
-//     ['name' => 'Главная', 'url' => 'https://building-port.ru/blp/'],
-//     ['name' => 'Каталог', 'url' => 'https://building-port.ru/blp/catalog'],
+//     ['name' => 'Главная', 'url' => 'https://building-port.ru/'],
+//     ['name' => 'Каталог', 'url' => 'https://building-port.ru/catalog'],
 //   ];
 
 if (!isset($breadcrumbs) || empty($breadcrumbs)) {

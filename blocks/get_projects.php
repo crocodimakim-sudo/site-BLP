@@ -110,12 +110,12 @@ function scanProjectFolders() {
         $images = array_map(function($file) use ($useConvert) {
             $rel    = str_replace('\\', '/', $file);
             $needle = $useConvert ? '/images-convert/pages/projects/' : '/images/pages/projects/';
-            $webBase = $useConvert ? '/blp/images-convert/pages/projects/' : '/blp/images/pages/projects/';
+            $webBase = $useConvert ? '/images-convert/pages/projects/' : '/images/pages/projects/';
             $pos    = strpos($rel, $needle);
             if ($pos !== false) {
                 return $webBase . substr($rel, $pos + strlen($needle));
             }
-            return '/blp/' . basename($file);
+            return '/' . basename($file);
         }, $imageFiles);
 
         // O1: Пустые папки включаются (images: [])

@@ -16,7 +16,7 @@ if (php_sapi_name() !== 'cli') { http_response_code(403); exit('CLI only'); }
 define('BASE_DIR', __DIR__ . '/..');
 define('SRC_DIR', BASE_DIR . '/images');
 define('DST_DIR', BASE_DIR . '/images-convert');
-define('XAMPP_DIR', 'C:/xampp/htdocs/blp/images-convert');
+define('XAMPP_DIR', 'C:/xampp/htdocs/images-convert');
 define('LOG_FILE', BASE_DIR . '/scripts/sync.log');
 
 $startTime = microtime(true);

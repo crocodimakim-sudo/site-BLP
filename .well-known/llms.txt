@@ -11,7 +11,7 @@
 - Name: BLP Board
 - Legal entity: ООО «БИЛДИНГПОРТ» (ИНН 7708427307, ОГРН 1237700843390)
 - Primary domain: https://blpboard.ru/
-- Production deployment: https://building-port.ru/blp/
+- Production deployment: https://building-port.ru/
 - Sitemap: https://blpboard.ru/sitemap.xml
 - Robots: https://blpboard.ru/robots.txt
 - Languages: ru-RU

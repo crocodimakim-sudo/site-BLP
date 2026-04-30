@@ -2,19 +2,19 @@
 // 2026-04-20: added canonical, OG image
 // 2026-04-20: SEO — title geo-enriched, meta desc 155-160 chars
 $page_title    = 'Контакты BLP Board — Одинцово, Московская область';
-$page_canonical = 'https://building-port.ru/blp/contacts';
-$page_og_image  = 'https://building-port.ru/blp/images-convert/og-default.jpg';
+$page_canonical = 'https://building-port.ru/contacts';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Контакты BLP Board: +7 (495) 984-96-89, Одинцово, ул. Неделина 6А. Работаем с архитекторами, застройщиками и дилерами. Заявка онлайн — ответим в течение рабочего дня.';
-$extra_css = '<link rel="stylesheet" href="/blp/css/pages/contacts.css">';
-$extra_js = '<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script><script src="/blp/js/pages/contacts.js" defer></script>';
+$extra_css = '<link rel="stylesheet" href="/css/pages/contacts.css">';
+$extra_js = '<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script><script src="/js/pages/contacts.js" defer></script>';
 
 // 2026-04-27: унифицировано с session_init.php (httponly, samesite, strict_mode, regenerate_id)
 require_once __DIR__ . '/../blocks/session_init.php';
 
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
-    ['name' => 'Главная',  'url' => 'https://building-port.ru/blp/'],
-    ['name' => 'Контакты', 'url' => 'https://building-port.ru/blp/contacts'],
+    ['name' => 'Главная',  'url' => 'https://building-port.ru/'],
+    ['name' => 'Контакты', 'url' => 'https://building-port.ru/contacts'],
 ];
 
 ob_start();
@@ -77,7 +77,7 @@ ob_start();
 <section class="contacts-form-section" id="form">
     <div class="contacts-form-wrapper">
         <!-- 2026-04-23: добавлены action/method для fallback без JS -->
-        <form class="contact-form" id="contactsPageForm" action="/blp/blocks/send-form.php" method="POST" novalidate>
+        <form class="contact-form" id="contactsPageForm" action="/blocks/send-form.php" method="POST" novalidate>
             <h2 class="contact-form-title">Написать нам</h2>
             <p class="contact-form-desc">Заполните форму — мы ответим&nbsp;в течение рабочего дня</p>
             <div class="contact-form-grid contact-form-grid--3col">
@@ -155,7 +155,7 @@ ob_start();
                         class="form-checkbox"
                         required
                     />
-                    <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на <a href="/blp/consent" target="_blank" rel="noopener noreferrer">обработку персональных данных</a>&nbsp;и принимаю условия <a href="/blp/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a></label>
+                    <label for="consent" class="form-checkbox-label">Я даю согласие&nbsp;на <a href="/consent" target="_blank" rel="noopener noreferrer">обработку персональных данных</a>&nbsp;и принимаю условия <a href="/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a></label>
                     <span class="field-error" data-field="consent"></span>
                 </div>
 
