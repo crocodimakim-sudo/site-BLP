@@ -176,6 +176,17 @@ function next_certificate_id(array $certs): int {
     return $max + 1;
 }
 
+// 2026-05-01: проверка, что счётчики реально встроены в HTML сайта
+function check_analytics_status(): array {
+    $status = ['ga4' => false, 'ym' => false, 'vk' => false];
+    $html = @file_get_contents('https://building-port.ru/');
+    if ($html === false) return $status;
+    $status['ga4'] = (bool)preg_match('/gtag\([\'"]config[\'"]\s*,\s*[\'"]G-[A-Za-z0-9]+[\'"]/', $html);
+    $status['ym']  = (bool)preg_match('/ym\(\d+\s*,\s*[\'"]init[\'"]/', $html);
+    $status['vk']  = (bool)preg_match('/VK\.Retargeting\.Init/', $html);
+    return $status;
+}
+
 // 2026-05-01: projects.json helpers (метаданные проектов в database/)
 function load_projects(): array {
     $path = __DIR__ . '/../../database/projects.json';
@@ -1227,6 +1238,7 @@ if ($section === 'leads') {
 
 if ($section === 'settings') {
     $site_config = load_site_config();
+    $analytics_status = check_analytics_status();
 } elseif ($section === 'partners') {
     $site_config = load_site_config();
     $partners_list = load_partners();
@@ -1847,7 +1859,16 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                 <h2 class="admin-h2">Аналитика</h2>
 
                 <div class="admin-form-field">
-                    <label class="admin-label" for="f-ga4">GA4 ID</label>
+                    <label class="admin-label" for="f-ga4">
+                        GA4 ID
+                        <?php if (!empty($analytics_status['ga4'])): ?>
+                            <span style="color:#28a745;font-size:14px;">✓ Подключен</span>
+                        <?php elseif (!empty($site_config['ga4_id'])): ?>
+                            <span style="color:#dc3545;font-size:14px;">✗ Заглушка или не деплоен</span>
+                        <?php else: ?>
+                            <span style="color:#888;font-size:14px;">— Не настроен</span>
+                        <?php endif; ?>
+                    </label>
                     <input type="text" id="f-ga4" name="ga4_id" class="admin-input"
                            value="<?= h((string)($site_config['ga4_id'] ?? '')) ?>"
                            placeholder="G-XXXXXXXXXX">
@@ -1855,7 +1876,16 @@ $project_tags = ['Медицина', 'Образование', 'Государс
 
                 <div class="admin-form-row admin-form-row-3col">
                     <div class="admin-form-field">
-                        <label class="admin-label" for="f-ym">Яндекс.Метрика ID</label>
+                        <label class="admin-label" for="f-ym">
+                            Яндекс.Метрика ID
+                            <?php if (!empty($analytics_status['ym'])): ?>
+                                <span style="color:#28a745;font-size:14px;">✓ Подключен</span>
+                            <?php elseif (!empty($site_config['yandex_metrika_id'])): ?>
+                                <span style="color:#dc3545;font-size:14px;">✗ Введён, но не на сайте</span>
+                            <?php else: ?>
+                                <span style="color:#888;font-size:14px;">— Не настроен</span>
+                            <?php endif; ?>
+                        </label>
                         <input type="text" id="f-ym" name="yandex_metrika_id" class="admin-input"
                                value="<?= h((string)($site_config['yandex_metrika_id'] ?? '')) ?>"
                                placeholder="98765432">
@@ -1867,7 +1897,16 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                                placeholder="для ретаргетинга">
                     </div>
                     <div class="admin-form-field">
-                        <label class="admin-label" for="f-vk">VK Pixel ID</label>
+                        <label class="admin-label" for="f-vk">
+                            VK Pixel ID
+                            <?php if (!empty($analytics_status['vk'])): ?>
+                                <span style="color:#28a745;font-size:14px;">✓ Подключен</span>
+                            <?php elseif (!empty($site_config['vk_pixel_id'])): ?>
+                                <span style="color:#dc3545;font-size:14px;">✗ Введён, но не на сайте</span>
+                            <?php else: ?>
+                                <span style="color:#888;font-size:14px;">— Не настроен</span>
+                            <?php endif; ?>
+                        </label>
                         <input type="text" id="f-vk" name="vk_pixel_id" class="admin-input"
                                value="<?= h((string)($site_config['vk_pixel_id'] ?? '')) ?>"
                                placeholder="необязательно">
