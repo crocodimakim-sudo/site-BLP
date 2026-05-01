@@ -51,8 +51,16 @@ if ($_pg && empty($_pg['is_live']) && !isset($error_code)) {
 
 $site_name     = 'BLP Board';
 $site_url      = 'https://building-port.ru';
-// 2026-04-20: placeholder ID — заменить на реальный GA4 Measurement ID перед go-live
-$ga4_id        = 'G-PLACEHOLDER20260420';
+
+// 2026-05-01: счётчики загружаются из админки (database/site_config.json)
+$_site_cfg = [];
+$_site_cfg_file = __DIR__ . '/../database/site_config.json';
+if (file_exists($_site_cfg_file)) {
+    $_site_cfg = json_decode(file_get_contents($_site_cfg_file), true) ?: [];
+}
+$ga4_id           = !empty($_site_cfg['ga4_id'])           ? $_site_cfg['ga4_id']           : '';
+$yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yandex_metrika_id'] : '';
+$vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixel_id']      : '';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -93,6 +101,7 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
     <?php endif; ?>
     <meta name="twitter:image" content="<?php echo htmlspecialchars($page_og_image, ENT_QUOTES, 'UTF-8'); ?>">
 
+    <?php if ($ga4_id): ?>
     <!-- GA4: Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo htmlspecialchars($ga4_id, ENT_QUOTES, 'UTF-8'); ?>"></script>
     <script>
@@ -104,6 +113,30 @@ $ga4_id        = 'G-PLACEHOLDER20260420';
         page_location: window.location.href
       });
     </script>
+    <?php endif; ?>
+
+    <?php if ($yandex_metrika_id): ?>
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       ym(<?php echo json_encode($yandex_metrika_id); ?>, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/<?php echo htmlspecialchars($yandex_metrika_id, ENT_QUOTES, 'UTF-8'); ?>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <?php endif; ?>
+
+    <?php if ($vk_pixel_id): ?>
+    <!-- VK Pixel -->
+    <script>!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("<?php echo htmlspecialchars($vk_pixel_id, ENT_QUOTES, 'UTF-8'); ?>"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=<?php echo htmlspecialchars($vk_pixel_id, ENT_QUOTES, 'UTF-8'); ?>" style="position:fixed;left:-9999px;" alt=""/></noscript>
+    <?php endif; ?>
 
     <!-- 2026-04-24: LCP preload — должен быть ДО всех stylesheet, как можно раньше в head -->
     <?php if (!empty($extra_preload)) echo $extra_preload; ?>
