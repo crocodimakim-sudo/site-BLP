@@ -26,7 +26,7 @@ function convertImages(): void {
 
         $ext = strtolower($file->getExtension());
         /* 2026-04-22: добавлен webp в список разрешенных расширений */
-        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'svg', 'webp'])) continue;
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'svg', 'webp', 'ico'])) continue;
         $count++;
 
         $srcPath = $file->getPathname();
@@ -58,7 +58,7 @@ function convertImages(): void {
 
         // 2026-04-24: сжимать растры до 1920px вместо копирования оригинала
         $ok = false;
-        if ($ext === 'svg') {
+        if ($ext === 'svg' || $ext === 'ico') {
             $ok = copy($srcPath, $dstPath);
         } else {
             $ok = createOptimized($srcPath, $dstPath, $ext);
