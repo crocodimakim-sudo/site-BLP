@@ -69,7 +69,7 @@ $vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixe
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <script>(function(){function s(){document.documentElement.style.setProperty('--vh',window.innerHeight*.01+'px');}window.addEventListener('resize',s);s();})();</script>
+    <script>(function(){function s(){var h=window.visualViewport?window.visualViewport.height:window.innerHeight;document.documentElement.style.setProperty('--vh',h*.01+'px');}window.addEventListener('resize',s);if(window.visualViewport)window.visualViewport.addEventListener('resize',s);s();})();</script>
     <link rel="icon" type="image/svg+xml" href="/images-convert/favicon.svg">
     <meta name="yandex-verification" content="5c0035a8d8486cab" />
     <title><?php echo htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8'); ?></title>
