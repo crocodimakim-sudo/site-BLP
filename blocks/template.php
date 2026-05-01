@@ -67,7 +67,7 @@ $vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixe
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/images-convert/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/images-convert/favicon.svg">
     <title><?php echo htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8'); ?></title>
     <?php if ($page_desc): ?>
     <meta name="description" content="<?php echo htmlspecialchars($page_desc, ENT_QUOTES, 'UTF-8'); ?>">
