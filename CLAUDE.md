@@ -232,6 +232,7 @@ database/                  — НЕ в git, живёт на сервере
 - ✅ **projects meta в database/** — `database/projects.json`, editable в админке, не перетирается деплоем
 - ✅ **Админка без загрузки фото** — проекты, каталог, слайдер, аудитория: только через deploy.bat
 - ✅ **Аналитика из админки** — GA4, Яндекс.Метрика, VK Pixel читаются из `site_config.json`, статус-индикаторы в админке
+- ✅ **GA4 без вечного спиннера** — `template.php` загружает GA4 динамически через `fetch`+`AbortController` (2.5с таймаут). Прямой `<script async src="gtag/js">` вызывал вечный спиннер из-за блокировки `googletagmanager.com` в РФ.
 - ✅ **deploy.php защита** — пропускает database/, images/, deploy.php, .git/
 - ✅ **FTP доступ** — настроен для one-off загрузок (порт 21)
 
