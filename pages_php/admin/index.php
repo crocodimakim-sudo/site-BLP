@@ -176,6 +176,21 @@ function next_certificate_id(array $certs): int {
     return $max + 1;
 }
 
+// 2026-05-01: projects.json helpers (метаданные проектов в database/)
+function load_projects(): array {
+    $path = __DIR__ . '/../../database/projects.json';
+    if (!file_exists($path)) return ['projects' => []];
+    $data = json_decode((string)file_get_contents($path), true);
+    if (!is_array($data) || empty($data['projects']) || !is_array($data['projects'])) return ['projects' => []];
+    return $data;
+}
+function save_projects(array $data): bool {
+    $path = __DIR__ . '/../../database/projects.json';
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if ($json === false) return false;
+    return file_put_contents($path, $json) !== false;
+}
+
 // 2026-04-27: catalog.json helpers (тексты серий каталога)
 function load_catalog(): array {
     if (!file_exists(CATALOG_JSON_PATH)) return ['series' => []];
@@ -209,19 +224,16 @@ function read_project_meta(string $folder): array {
 }
 
 function write_project_meta(string $folder, array $meta): bool {
-    $base = projects_root_path();
-    $dir = $base . '/' . $folder;
-    if (!is_dir($dir)) return false;
-    $payload = [
+    // 2026-05-01: метаданные проектов теперь в database/projects.json
+    $data = load_projects();
+    $data['projects'][$folder] = [
         'name'     => (string)($meta['name']     ?? ''),
         'location' => (string)($meta['location'] ?? ''),
         'tag'      => (string)($meta['tag']      ?? ''),
         'category' => (string)($meta['category'] ?? ''),
         'order'    => (int)($meta['order']       ?? 999),
     ];
-    $json = json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    if ($json === false) return false;
-    return file_put_contents($dir . '/meta.json', $json) !== false;
+    return save_projects($data);
 }
 
 function list_project_folders(): array {
@@ -540,82 +552,49 @@ if (($_POST['action'] ?? '') === 'save-page-note') {
     $flash = 'Не удалось сохранить примечание';
 }
 
-// 2026-04-27: POST save-project — сохранение/создание проекта
+// 2026-05-01: POST save-project — редактирование meta проекта (database/projects.json)
+// Создание новых проектов только через деплой: положить в images/pages/projects/ и запустить deploy.bat
 if (($_POST['action'] ?? '') === 'save-project') {
     if (!check_csrf($_POST['csrf'] ?? '')) {
         http_response_code(400);
         die('CSRF token mismatch');
     }
     $folder_in = trim((string)($_POST['folder'] ?? ''));
-    $is_new = (($_POST['is_new'] ?? '0') === '1');
     $name = trim((string)($_POST['name'] ?? ''));
     $location = trim((string)($_POST['location'] ?? ''));
     $tag = trim((string)($_POST['tag'] ?? ''));
     $category = trim((string)($_POST['category'] ?? ''));
     $order = (int)($_POST['order'] ?? 999);
 
-    if ($is_new) {
-        if (!valid_folder_slug($folder_in)) {
-            $flash = 'Имя папки: только латиница, цифры и дефис';
-        } else {
-            $base = projects_root_path();
-            $dir = $base . '/' . $folder_in;
-            if (is_dir($dir)) {
-                $flash = 'Папка с таким именем уже существует';
-            } else {
-                if (!@mkdir($dir, 0775, true)) {
-                    $flash = 'Не удалось создать папку: ' . h($dir);
-                } else {
-                    write_project_meta($folder_in, compact('name', 'location', 'tag', 'category', 'order'));
-                    header('Location: ?s=projects&proj_saved=1');
-                    exit;
-                }
-            }
-        }
+    if (!valid_folder_slug($folder_in)) {
+        $flash = 'Некорректное имя папки';
     } else {
-        if (!valid_folder_slug($folder_in)) {
-            $flash = 'Некорректное имя папки';
+        $base = projects_root_path();
+        if (!is_dir($base . '/' . $folder_in)) {
+            $flash = 'Папка проекта не найдена. Новые проекты добавляйте через deploy: положите фото в images/pages/projects/название/ и запустите deploy.bat';
         } else {
-            $base = projects_root_path();
-            if (!is_dir($base . '/' . $folder_in)) {
-                $flash = 'Папка не найдена';
-            } else {
-                if (write_project_meta($folder_in, compact('name', 'location', 'tag', 'category', 'order'))) {
-                    header('Location: ?s=projects&proj_saved=1');
-                    exit;
-                }
-                $flash = 'Не удалось записать meta.json';
+            if (write_project_meta($folder_in, compact('name', 'location', 'tag', 'category', 'order'))) {
+                header('Location: ?s=projects&proj_saved=1');
+                exit;
             }
+            $flash = 'Не удалось сохранить проект';
         }
     }
 }
 
-// 2026-04-28: POST upload-audience — загрузка фото блока аудитории
-if (($_GET['action'] ?? '') === 'upload-audience' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!check_csrf($_GET['csrf'] ?? '')) { http_response_code(400); die('CSRF token mismatch'); }
-    $slot = trim((string)($_GET['slot'] ?? ''));
-    if (!in_array($slot, ['architect', 'dealer', 'developer'], true)) {
-        header('Location: ?s=audience&aud_error=1'); exit;
-    }
-    $dir = __DIR__ . '/../../images-convert/pages/index/audience';
-    if (!is_dir($dir)) mkdir($dir, 0755, true);
-    $file = $_FILES['photo'] ?? null;
-    if ($file && ($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_OK && $file['size'] <= 10 * 1024 * 1024) {
-        $finfo = function_exists('finfo_open') ? finfo_open(FILEINFO_MIME_TYPE) : false;
-        $mime  = $finfo ? finfo_file($finfo, $file['tmp_name']) : ($file['type'] ?? '');
-        if ($finfo) finfo_close($finfo);
-        if (in_array($mime, ['image/jpeg', 'image/png', 'image/webp'], true)) {
-            $base = 'audience_' . $slot;
-            foreach (['png', 'jpg', 'webp'] as $ext) { $p = $dir . '/' . $base . '.' . $ext; if (file_exists($p)) unlink($p); }
-            $converted = convert_and_save_image($file['tmp_name'], $dir, $base);
-            if (!empty($converted)) { header('Location: ?s=audience&aud_uploaded=1'); exit; }
-        }
-    }
-    header('Location: ?s=audience&aud_error=1'); exit;
+// 2026-05-01: ЗАГРУЗКА ФОТО ОТКЛЮЧЕНА — используйте deploy.bat
+// Фото аудитории добавляйте в images/pages/index/audience/ и запускайте deploy.bat
+/*
+// 2026-05-01: ЗАГРУЗКА ФОТО ОТКЛЮЧЕНА — используйте deploy.bat
+// Фото аудитории добавляйте в images/pages/index/audience/ и запускайте deploy.bat
+if (false && ($_GET['action'] ?? '') === 'upload-audience' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    ...
 }
+*/
 
-// 2026-04-27: POST upload-photo — загрузка фотографий в папку проекта
-if (($_GET['action'] ?? '') === 'upload-photo' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+// 2026-05-01: ЗАГРУЗКА ФОТО ОТКЛЮЧЕНА — используйте deploy.bat
+// Фото проектов добавляйте в images/pages/projects/название/ и запускайте deploy.bat
+if (false && ($_GET['action'] ?? '') === 'upload-photo' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!check_csrf($_GET['csrf'] ?? '')) {
         http_response_code(400);
         die('CSRF token mismatch');
@@ -681,39 +660,15 @@ if (($_GET['action'] ?? '') === 'upload-photo' && $_SERVER['REQUEST_METHOD'] ===
     }
 }
 
-// 2026-04-27: GET del-photo — удаление фотографии из папки проекта
-if (($_GET['action'] ?? '') === 'del-photo') {
-    if (!check_csrf($_GET['csrf'] ?? '')) {
-        http_response_code(400);
-        die('CSRF token mismatch');
-    }
-    $folder = trim((string)($_GET['folder'] ?? ''));
-    $file   = trim((string)($_GET['file'] ?? ''));
-    if (!valid_folder_slug($folder)) {
-        $flash = 'Некорректное имя папки';
-    } elseif ($file === '' || basename($file) !== $file || strpos($file, '..') !== false) {
-        $flash = 'Некорректное имя файла';
-    } else {
-        $base = projects_root_path();
-        $target = $base . '/' . $folder . '/' . $file;
-        if (file_exists($target) && is_file($target)) {
-            $allowed_ext = ['jpg', 'jpeg', 'png', 'webp'];
-            $ext = strtolower(pathinfo($target, PATHINFO_EXTENSION));
-            if (in_array($ext, $allowed_ext, true)) {
-                $stem = pathinfo($target, PATHINFO_FILENAME);
-                @unlink($target);
-                // Удалить все форматы того же базового имени
-                foreach ($allowed_ext as $ex) {
-                    $sibling = $base . '/' . $folder . '/' . $stem . '.' . $ex;
-                    if ($sibling !== $target && file_exists($sibling)) @unlink($sibling);
-                }
-                header('Location: ?s=project-edit&folder=' . urlencode($folder) . '&photo_deleted=1');
-                exit;
-            }
-        }
-        $flash = 'Файл не найден';
-    }
+// 2026-05-01: УДАЛЕНИЕ ФОТО ОТКЛЮЧЕНО — используйте deploy.bat
+// Удаляйте файлы локально в images/pages/projects/название/ и запускайте deploy.bat
+/*
+// 2026-05-01: УДАЛЕНИЕ ФОТО ОТКЛЮЧЕНО — используйте deploy.bat
+// Удаляйте файлы локально в images/pages/projects/название/ и запускайте deploy.bat
+if (false && ($_GET['action'] ?? '') === 'del-photo') {
+    ...
 }
+*/
 
 // 2026-04-27: POST save-settings — обновление site_config.json
 if (($_POST['action'] ?? '') === 'save-settings') {
@@ -841,74 +796,19 @@ if (($_POST['action'] ?? '') === 'save-certificate') {
     }
 }
 
-// 2026-04-27: POST upload-catalog-image — загрузка изображения серии каталога
-if (($_POST['action'] ?? '') === 'upload-catalog-image') {
-    if (!check_csrf($_POST['csrf'] ?? '')) {
-        http_response_code(400);
-        die('CSRF token mismatch');
-    }
-    $series = trim((string)($_POST['series'] ?? ''));
-    $allowed_series = ['nature', 'polished', 'texture', 'walypan'];
-    if (!in_array($series, $allowed_series, true)) {
-        $flash = 'Неизвестная серия каталога';
-    } elseif (empty($_FILES['image_file']['name']) || ($_FILES['image_file']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
-        $flash = 'Файл не загружен';
-    } else {
-        $allowed_mime = ['image/jpeg', 'image/png', 'image/webp'];
-        $allowed_ext  = ['jpg', 'jpeg', 'png', 'webp'];
-        $tmp  = $_FILES['image_file']['tmp_name'];
-        $orig = (string)$_FILES['image_file']['name'];
-        $size = (int)$_FILES['image_file']['size'];
-        $max_size = 10 * 1024 * 1024;
-        $ext = strtolower(pathinfo($orig, PATHINFO_EXTENSION));
-        $finfo = function_exists('finfo_open') ? finfo_open(FILEINFO_MIME_TYPE) : false;
-        $mime = $finfo ? finfo_file($finfo, $tmp) : ($_FILES['image_file']['type'] ?? '');
-        if ($finfo) finfo_close($finfo);
-
-        if ($size > $max_size) {
-            $flash = 'Файл больше 10 МБ';
-        } elseif (!in_array($ext, $allowed_ext, true) || !in_array($mime, $allowed_mime, true)) {
-            $flash = 'Неподдерживаемый формат (нужен JPG, PNG или WEBP)';
-        } else {
-            // Целевая папка: пробуем XAMPP, затем D:
-            $candidates = [
-                'C:/xampp/htdocs/images-convert/pages/catalog',
-                __DIR__ . '/../../images-convert/pages/catalog',
-            ];
-            $target_dir = null;
-            foreach ($candidates as $c) {
-                if (is_dir($c)) { $target_dir = rtrim(str_replace('\\', '/', realpath($c)), '/'); break; }
-            }
-            if ($target_dir === null) {
-                $target_dir = rtrim(str_replace('\\', '/', __DIR__ . '/../../images-convert/pages/catalog'), '/');
-                @mkdir($target_dir, 0775, true);
-            }
-
-            // Удалить все предыдущие версии series-{name}.*
-            foreach ($allowed_ext as $ex) {
-                $old = $target_dir . '/series-' . $series . '.' . $ex;
-                if (file_exists($old)) @unlink($old);
-            }
-            $catalog_basename = 'series-' . $series;
-            $converted = convert_and_save_image($tmp, $target_dir, $catalog_basename);
-            if (!empty($converted)) {
-                $has_webp = in_array($catalog_basename . '.webp', $converted);
-                $final_name = $catalog_basename . ($has_webp ? '.webp' : '.jpg');
-                $cfg = load_catalog();
-                if (!isset($cfg['series']) || !is_array($cfg['series'])) $cfg['series'] = [];
-                if (!isset($cfg['series'][$series]) || !is_array($cfg['series'][$series])) $cfg['series'][$series] = [];
-                $cfg['series'][$series]['image'] = '/images-convert/pages/catalog/' . $final_name;
-                save_catalog($cfg);
-                header('Location: ?s=catalog&catalog_image_uploaded=1');
-                exit;
-            }
-            $flash = 'Не удалось конвертировать файл';
-        }
-    }
+// 2026-05-01: ЗАГРУЗКА ФОТО ОТКЛЮЧЕНА — используйте deploy.bat
+// Картинки каталога добавляйте в images/pages/catalog/ и запускайте deploy.bat
+/*
+// 2026-05-01: ЗАГРУЗКА ФОТО ОТКЛЮЧЕНА — используйте deploy.bat
+// Картинки каталога добавляйте в images/pages/catalog/ и запускайте deploy.bat
+if (false && ($_POST['action'] ?? '') === 'upload-catalog-image') {
+    ...
 }
+*/
 
-// 2026-04-27: POST upload-walypan-slide — добавление фото в слайдер WALYPAN
-if (($_GET['action'] ?? '') === 'upload-walypan-slide' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+// 2026-05-01: ЗАГРУЗКА ФОТО ОТКЛЮЧЕНА — используйте deploy.bat
+// Слайды каталога добавляйте в images/pages/catalog/slider/ и запускайте deploy.bat
+if (false && ($_GET['action'] ?? '') === 'upload-walypan-slide' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!check_csrf($_GET['csrf'] ?? '')) { http_response_code(400); die('CSRF'); }
     $candidates = [
         'C:/xampp/htdocs/images-convert/pages/catalog/slider',
@@ -1724,12 +1624,12 @@ $project_tags = ['Медицина', 'Образование', 'Государс
             <header class="admin-header">
                 <h1 class="admin-h1">Проекты <span class="admin-counter">(<?= count($projects_list) ?>)</span></h1>
                 <div class="admin-header-actions">
-                    <a href="?s=project-edit&folder=new" class="btn-primary">+ Добавить проект</a>
+                    <span class="admin-muted" style="font-size:13px;">Новые проекты — через deploy.bat</span>
                 </div>
             </header>
 
             <?php if (empty($projects_list)): ?>
-                <div class="admin-empty">Проектов пока нет. <a href="?s=project-edit&folder=new">Добавить первый</a>.</div>
+                <div class="admin-empty">Проектов пока нет.<br><small class="admin-muted">Добавьте проект в images/pages/projects/ и запустите deploy.bat</small></div>
             <?php else: ?>
                 <div class="admin-table-wrap">
                 <table class="admin-table">
@@ -1852,9 +1752,6 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                                          alt="<?= h($fname) ?>"
                                          style="height:60px;width:auto;max-width:100px;object-fit:contain;border:1px solid #ddd;background:#fff;">
                                     <code style="flex:1;font-size:12px;word-break:break-all;"><?= h($fname) ?></code>
-                                    <a href="?action=del-photo&folder=<?= h(urlencode($edit_project['folder'])) ?>&file=<?= h(urlencode($fname)) ?>&csrf=<?= h($csrf) ?>"
-                                       class="btn-danger btn-sm"
-                                       onclick="return confirm('Удалить файл «<?= h(addslashes($fname)) ?>»?');">Удалить</a>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -1862,13 +1759,10 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                         <div class="admin-empty" style="padding:20px;">Фотографий пока нет.</div>
                     <?php endif; ?>
 
-                    <form method="post" enctype="multipart/form-data"
-                          action="?s=project-edit&folder=<?= h(urlencode($edit_project['folder'])) ?>&action=upload-photo&csrf=<?= h($csrf) ?>"
-                          style="margin-top:1rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-                        <input type="file" name="photos[]" multiple accept="image/jpeg,image/png,image/webp" required>
-                        <button type="submit" class="btn-primary">Загрузить фото</button>
-                        <small class="admin-muted">JPG, PNG, WEBP. Макс. 10 МБ на файл.</small>
-                    </form>
+                    <div class="admin-info" style="margin-top:1rem;padding:12px;background:#e6f4ea;border-radius:5px;color:#1e7e34;">
+                        <strong>Загрузка фото отключена.</strong><br>
+                        Добавляйте фото в папку <code>images/pages/projects/<?= h($edit_project['folder']) ?>/</code> и запускайте <code>deploy.bat</code>.
+                    </div>
                 </div>
             <?php endif; ?>
 
@@ -2360,13 +2254,9 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                                 <div class="admin-muted">Нет фото в слайдере</div>
                             <?php endif; ?>
                         </div>
-                        <form method="post" action="?action=upload-walypan-slide&csrf=<?= h($csrf) ?>"
-                              enctype="multipart/form-data"
-                              style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px;border:1px dashed #d4d4d4;border-radius:5px;background:#fff;margin-bottom:1rem;">
-                            <input type="file" name="slides[]" multiple accept="image/jpeg,image/png,image/webp" required>
-                            <button type="submit" class="btn-secondary btn-sm">Добавить слайды</button>
-                            <small class="admin-muted">Авто-нумерация walypan_slide_N. Конвертируется в JPEG + WebP.</small>
-                        </form>
+                        <div class="admin-info" style="padding:10px;background:#e6f4ea;border-radius:5px;color:#1e7e34;margin-bottom:1rem;">
+                            <strong>Загрузка слайдов отключена.</strong> Добавляйте фото в <code>images/pages/catalog/slider/</code> и запускайте <code>deploy.bat</code>.
+                        </div>
                     <?php else: ?>
                         <?php
                         $img_is_local = ($simg !== '' && strpos($simg, '/images-convert/') === 0);
@@ -2379,14 +2269,9 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                             <?php endif; ?>
                         </div>
 
-                        <form method="post" action="" enctype="multipart/form-data" style="margin-bottom:1rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px;border:1px dashed #d4d4d4;border-radius:5px;background:#fff;">
-                            <input type="hidden" name="action" value="upload-catalog-image">
-                            <input type="hidden" name="csrf" value="<?= h($csrf) ?>">
-                            <input type="hidden" name="series" value="<?= h($skey) ?>">
-                            <input type="file" name="image_file" accept="image/jpeg,image/png,image/webp" required>
-                            <button type="submit" class="btn-secondary btn-sm">Загрузить новое изображение</button>
-                            <small class="admin-muted">JPG, PNG, WEBP. Сохраняется как series-<?= h($skey) ?>.{ext}</small>
-                        </form>
+                        <div class="admin-info" style="padding:10px;background:#e6f4ea;border-radius:5px;color:#1e7e34;margin-bottom:1rem;">
+                            <strong>Загрузка изображений отключена.</strong> Добавляйте картинку в <code>images/pages/catalog/</code> как <code>series-<?= h($skey) ?>.jpg</code> и запускайте <code>deploy.bat</code>.
+                        </div>
                     <?php endif; ?>
 
                     <form method="post" action="" class="admin-form" style="padding:0;border:none;background:transparent;">
@@ -2447,11 +2332,9 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                 <?php else: ?>
                     <p style="color:#999;margin-bottom:12px;">Фото не загружено</p>
                 <?php endif; ?>
-                <form method="post" action="?action=upload-audience&slot=<?= $slot ?>&csrf=<?= h($_SESSION['csrf_token'] ?? '') ?>" enctype="multipart/form-data">
-                    <label style="display:block;margin-bottom:6px;font-size:13px;color:#666;">Загрузить новое фото (10:7, ≥ 800×560 px):</label>
-                    <input type="file" name="photo" accept="image/*" style="display:block;margin-bottom:8px;">
-                    <button type="submit" class="btn-primary">Заменить фото</button>
-                </form>
+                <div class="admin-info" style="padding:10px;background:#e6f4ea;border-radius:5px;color:#1e7e34;">
+                    <strong>Загрузка фото отключена.</strong> Добавляйте <code>audience_<?= h($slot) ?>.jpg</code> в <code>images/pages/index/audience/</code> и запускайте <code>deploy.bat</code>.
+                </div>
             </div>
             <?php endforeach; ?>
 

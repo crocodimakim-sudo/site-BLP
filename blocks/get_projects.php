@@ -1,11 +1,21 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+function loadProjectsMeta(): array {
+    $path = __DIR__ . '/../database/projects.json';
+    if (file_exists($path)) {
+        $data = json_decode(file_get_contents($path), true);
+        return $data['projects'] ?? [];
+    }
+    return [];
+}
+
 function scanProjectFolders() {
     $convertBase = __DIR__ . '/../images-convert/pages/projects/';
     $base = is_dir($convertBase) ? $convertBase : __DIR__ . '/../images/pages/projects/';
     $useConvert = is_dir($convertBase);
     $projects = [];
+    $dbMeta = loadProjectsMeta();
 
     $folders = array_filter(glob($base . '*'), 'is_dir');
     sort($folders);
@@ -48,11 +58,17 @@ function scanProjectFolders() {
     foreach ($folders as $idx => $folderPath) {
         $folderName = basename($folderPath);
 
-        // O2: Читаем метаданные из meta.json (приоритет), затем description.txt, затем fallback
+        // O2: Читаем метаданные: database/projects.json (приоритет), затем meta.json, затем description.txt, затем fallback
         $metaFile = $folderPath . '/meta.json';
         $descFile  = $folderPath . '/description.txt';
 
-        if (file_exists($metaFile)) {
+        if (isset($dbMeta[$folderName])) {
+            $meta     = $dbMeta[$folderName];
+            $name     = $meta['name']     ?? $folderName;
+            $location = $meta['location'] ?? '';
+            $tag      = $meta['tag']      ?? '';
+            $category = $meta['category'] ?? '';
+        } elseif (file_exists($metaFile)) {
             $meta     = json_decode(file_get_contents($metaFile), true) ?? [];
             $name     = $meta['name']     ?? $folderName;
             $location = $meta['location'] ?? '';
