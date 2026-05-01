@@ -122,7 +122,6 @@ svg {
    3. БАЗОВЫЕ СТИЛИ ДОКУМЕНТА
    ============================================================ */
 html {
-  height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
@@ -137,9 +136,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh; /* fallback */
+  min-height: calc(var(--vh, 1vh) * 100); /* 2026-05-01: iOS Safari dynamic viewport height fix */
 }
 
 /* ============================================================
@@ -437,8 +435,6 @@ p {
 .blp-breadcrumbs__sep { color: #9ca3af; }
 
 /* 2026-04-23: убрать padding-top у первого блока после хлебных крошек — все страницы */
-main { flex: 1 0 auto; }
-
 main > *:first-child { padding-top: 0 !important; margin-top: 0 !important; }
 
 /* 2026-04-27: blp-hero-check — глобальная иконка-галочка, перенесена из dealer.css */
