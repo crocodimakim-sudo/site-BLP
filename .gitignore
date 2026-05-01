@@ -18,5 +18,4 @@ database/*.json
 # 2026-04-28: локальные скрипты и служебные файлы
 scripts/generate_html.bat
 scripts/run_sync.bat
-CLAUDE.md
 BLPBOARD_REHABILITATION_FINAL_SUMMARY.md
