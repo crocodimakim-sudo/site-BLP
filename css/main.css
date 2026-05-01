@@ -125,7 +125,6 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
-  background: #00352F; /* 2026-05-01: iOS Safari bounce fix — same color as header */
 }
 
 body {
