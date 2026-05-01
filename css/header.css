@@ -9,9 +9,7 @@
     background: #00352F;
     z-index: 99999;
     box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-    font-family: var(--font-family);
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0); }
+    font-family: var(--font-family); }
 
 /* 2026-04-20: увеличена высота хедера до 80px, logo 36px → 48px */
 .header-container { max-width: 1200px;
