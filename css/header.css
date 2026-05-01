@@ -221,7 +221,7 @@
 .header .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* 2026-04-20: mobile-nav top синхронизирован с высотой хедера 80px */
-.header .mobile-nav { display: none;
+.mobile-nav { display: none;
     position: fixed;
     top: 80px;
     left: 0;
@@ -231,14 +231,15 @@
     padding: 24px;
     overflow-y: auto;
     transform: translateX(-100%);
-    transition: transform 0.3s ease; }
+    transition: transform 0.3s ease;
+    z-index: 99998; }
 
-.header .mobile-nav.active { transform: translateX(0); }
+.mobile-nav.active { transform: translateX(0); }
 
-.header .mobile-nav-item { border-bottom: 1px solid rgba(255,255,255,0.2); }
+.mobile-nav-item { border-bottom: 1px solid rgba(255,255,255,0.2); }
 
 /* 2026-04-22: added border: none to remove button default border */
-.header .mobile-nav-link { display: flex;
+.mobile-nav-link { display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 0;
@@ -250,15 +251,15 @@
     border: none;
     font-family: var(--font-family); }
 
-.header .mobile-dropdown { max-height: 0;
+.mobile-dropdown { max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease; }
 
-.header .mobile-dropdown.active { max-height: 500px; }
+.mobile-dropdown.active { max-height: 500px; }
 
 /* 2026-04-22: removed border-left from mobile dropdown items */
-.header .mobile-dropdown-item,
-.header .mobile-dropdown-item:visited { display: block;
+.mobile-dropdown-item,
+.mobile-dropdown-item:visited { display: block;
     padding: 14px 0 14px 20px;
     color: white;
     text-decoration: none;
@@ -269,16 +270,16 @@
     background: transparent;
     font-family: var(--font-family); }
 
-.header .mobile-dropdown-item:hover { color: white;
+.mobile-dropdown-item:hover { color: white;
     border-left-color: white;
     padding-left: 24px; }
 
-.header .mobile-contacts { margin-top: 32px;
+.mobile-contacts { margin-top: 32px;
     padding-top: 24px;
     border-top: 1px solid rgba(255,255,255,0.3); }
 
-.header .mobile-phone,
-.header .mobile-phone:visited { display: block;
+.mobile-phone,
+.mobile-phone:visited { display: block;
     color: white;
     text-decoration: none;
     font-size: 20px;
@@ -286,8 +287,8 @@
     margin-bottom: 8px;
     font-family: var(--font-family); }
 
-.header .mobile-email,
-.header .mobile-email:visited { display: block;
+.mobile-email,
+.mobile-email:visited { display: block;
     color: white;
     text-decoration: none;
     font-size: 14px;
@@ -296,7 +297,7 @@
     opacity: 0.9;
     font-family: var(--font-family); }
 
-.header .mobile-cta { display: inline-block;
+.mobile-cta { display: inline-block;
     width: 100%;
     background: white;
     color: var(--color-brand);
@@ -319,13 +320,13 @@
     
     .header .mobile-toggle { display: flex; }
     
-    .header .mobile-nav { display: block; }
+    .mobile-nav { display: block; }
     
     /* 2026-04-20: мобильный хедер уменьшен до 56px */
     .header-container { height: 56px; }
 
-    .header .mobile-nav { top: 56px; } }
+    .mobile-nav { top: 56px; } }
 
 @media (max-width: 480px) { .header-container { padding: 0 16px; }
     
-    .header .logo img { height: 40px; } }
+    .header .logo img { height: 40px; }
