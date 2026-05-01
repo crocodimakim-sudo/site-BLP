@@ -57,6 +57,45 @@ if (count($_rl_hits) >= 5) {
     exit;
 }
 
+// 2026-05-01: Referer — принимаем заявки только со страниц сайта
+$referer = $_SERVER['HTTP_REFERER'] ?? '';
+if (empty($referer) || strpos($referer, 'building-port.ru') === false) {
+    http_response_code(403);
+    echo json_encode(['ok' => false, 'error' => 'Неверный источник запроса']);
+    exit;
+}
+
+// 2026-05-01: CAPTCHA — проверка математической задачи
+$captcha_input = isset($input['captcha']) ? (int)$input['captcha'] : 0;
+$captcha_expected = $_SESSION['captcha_answer'] ?? null;
+unset($_SESSION['captcha_answer']);
+if ($captcha_expected === null || $captcha_input !== $captcha_expected) {
+    http_response_code(403);
+    echo json_encode(['ok' => false, 'error' => 'Неверный ответ на проверочный вопрос']);
+    exit;
+}
+
+// 2026-05-01: скорость заполнения — боты заполняют мгновенно
+$form_time = $_SESSION['form_time'] ?? 0;
+if ($_rl_now - $form_time < 3) {
+    http_response_code(429);
+    echo json_encode(['ok' => false, 'error' => 'Слишком быстро. Пожалуйста, заполните форму внимательно.']);
+    exit;
+}
+
+// 2026-05-01: rate limit по email — не более 1 заявки в сутки с одного email
+$email_raw = isset($input['email']) ? strtolower(trim((string)$input['email'])) : '';
+if ($email_raw) {
+    $_rl_email_file = $_rl_dir . '/rl_email_' . md5($email_raw) . '.json';
+    $_rl_email_hits = is_file($_rl_email_file) ? (json_decode(file_get_contents($_rl_email_file), true) ?: []) : [];
+    $_rl_email_hits = array_values(array_filter($_rl_email_hits, fn($t) => $_rl_now - $t < 86400));
+    if (count($_rl_email_hits) >= 1) {
+        http_response_code(429);
+        echo json_encode(['ok' => false, 'error' => 'С этого email уже отправлена заявка. Попробуйте завтра.']);
+        exit;
+    }
+}
+
 // 2026-04-24: защита от SMTP header injection (CRLF)
 function sanitize_header_field(string $v): string {
     $v = trim((string)$v);
@@ -69,7 +108,6 @@ $name    = sanitize_header_field($input['name']    ?? '');
 $phone   = sanitize_header_field($input['phone']   ?? '');
 $email   = sanitize_header_field($input['email']   ?? '');
 $company = sanitize_header_field($input['company'] ?? '');
-$message = isset($input['message']) ? trim(strip_tags($input['message'])) : '';
 $consent = isset($input['consent']) ? $input['consent'] : false;
 
 // Валидация
@@ -110,10 +148,6 @@ if (!empty($email)) {
 if (!empty($company)) {
     $body .= "Компания: " . $company . "\n";
 }
-if (!empty($message)) {
-    $body .= "Сообщение:\n" . $message . "\n";
-}
-
 $headers = "From: noreply@building-port.ru\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
@@ -128,15 +162,14 @@ try {
         phone TEXT NOT NULL,
         email TEXT,
         company TEXT,
-        message TEXT,
         marketing INTEGER DEFAULT 0,
         mail_sent INTEGER DEFAULT 0,
         ip TEXT
     )");
-    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, message, marketing, ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, marketing, ip) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
         date('Y-m-d H:i:s'),
-        $name, $phone, $email, $company, $message,
+        $name, $phone, $email, $company,
         isset($input['marketing']) && $input['marketing'] ? 1 : 0,
         $_SERVER['REMOTE_ADDR'] ?? ''
     ]);
@@ -188,6 +221,13 @@ if (isset($stmt)) {
 $_rl_hits[] = $_rl_now;
 @file_put_contents($_rl_file, json_encode($_rl_hits), LOCK_EX);
 unset($_SESSION['csrf_token']);
+unset($_SESSION['form_time']);
+
+// 2026-05-01: записать rate limit по email
+if (!empty($email_raw)) {
+    $_rl_email_hits[] = $_rl_now;
+    @file_put_contents($_rl_email_file, json_encode($_rl_email_hits), LOCK_EX);
+}
 
 if ($mailSent) {
     echo json_encode(['ok' => true, 'message' => 'Заявка успешно отправлена']);
