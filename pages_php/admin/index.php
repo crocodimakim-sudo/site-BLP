@@ -182,7 +182,7 @@ function check_analytics_status(): array {
     $html = @file_get_contents('https://building-port.ru/');
     if ($html === false) return $status;
     $status['ga4'] = (bool)preg_match('/gtag\([\'"]config[\'"]\s*,\s*[\'"]G-[A-Za-z0-9]+[\'"]/', $html);
-    $status['ym']  = (bool)preg_match('/ym\(\d+\s*,\s*[\'"]init[\'"]/', $html);
+    $status['ym']  = (bool)preg_match('/ym\([\'"]?\d+[\'"]?\s*,\s*[\'"]init[\'"]/', $html);
     $status['vk']  = (bool)preg_match('/VK\.Retargeting\.Init/', $html);
     return $status;
 }
