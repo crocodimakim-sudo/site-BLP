@@ -85,14 +85,6 @@ ob_start();
 
         <h4>Используемые сервисы:</h4>
 
-        <h5>Google Analytics 4 (GA4)</h5>
-        <ul>
-            <li><strong>Оператор:</strong> Google LLC (США)</li>
-            <li><strong>Политика:</strong> <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></li>
-            <li><strong>Cookies:</strong> _ga, _gat, _gid и др.</li>
-            <li><strong>Данные:</strong> Анонимные статистические данные</li>
-        </ul>
-
         <h5>Яндекс.Метрика</h5>
         <ul>
             <li><strong>Оператор:</strong> ООО «Яндекс» (Россия)</li>
@@ -132,7 +124,6 @@ ob_start();
         <ul>
             <li><strong>Принять всё</strong> — согласие на все типы cookies</li>
             <li><strong>Отклонить</strong> — отказ от необязательных cookies</li>
-            <li><strong>Управление настройками</strong> — выбор конкретных типов cookies</li>
         </ul>
 
         <h3>5.3. Сохранение выбора</h3>
@@ -176,8 +167,8 @@ ob_start();
 
         <h3>7.1. Защита от атак</h3>
         <ul>
-            <li>Все технические cookies используют флаги <strong>HttpOnly</strong> и <strong>Secure</strong></li>
-            <li>Это предотвращает доступ к ним через JavaScript и передачу по незащищённым каналам</li>
+            <li>Технические cookies используют флаги <strong>HttpOnly</strong>, <strong>Secure</strong> и <strong>SameSite=Strict</strong></li>
+            <li>Это предотвращает доступ к ним через JavaScript, передачу по незащищённым каналам и защищает от CSRF</li>
             <li>Мы используем шифрование SSL/TLS для защиты передачи данных</li>
         </ul>
 

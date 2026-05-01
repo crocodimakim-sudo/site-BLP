@@ -1,7 +1,8 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    // 2026-04-24: cookie security — httponly, samesite strict, strict mode
+    // 2026-04-24: cookie security — httponly, secure, samesite strict, strict mode
     ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_samesite', 'Strict');
     ini_set('session.use_strict_mode', 1);
     session_start();
@@ -101,47 +102,6 @@ $vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixe
     <meta name="twitter:description" content="<?php echo htmlspecialchars($page_desc, ENT_QUOTES, 'UTF-8'); ?>">
     <?php endif; ?>
     <meta name="twitter:image" content="<?php echo htmlspecialchars($page_og_image, ENT_QUOTES, 'UTF-8'); ?>">
-
-    <?php if ($ga4_id && !str_starts_with($ga4_id, 'G-PLACEHOLDER')): ?>
-    <!-- GA4: Google Analytics — 2026-04-30: динамическая загрузка с проверкой доступности (фикс вечного спиннера из-за блокировки googletagmanager.com в РФ) -->
-    <script>
-    (function() {
-      var GA4_ID = <?php echo json_encode($ga4_id); ?>;
-      var PAGE_TITLE = <?php echo json_encode($page_title); ?>;
-      function loadGA4() {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', GA4_ID, {
-          page_title: PAGE_TITLE,
-          page_location: window.location.href
-        });
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_ID);
-        document.head.appendChild(s);
-      }
-      // Проверяем доступность GTM с таймаутом 2.5с — fetch не вызывает спиннер вкладки
-      if (typeof fetch === 'function' && typeof AbortController === 'function') {
-        var ctrl = new AbortController();
-        var t = setTimeout(function() { ctrl.abort(); }, 2500);
-        fetch('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_ID) + '&_=' + Date.now(), {
-          method: 'HEAD',
-          mode: 'no-cors',
-          signal: ctrl.signal
-        }).then(function() {
-          clearTimeout(t);
-          loadGA4();
-        }).catch(function() {
-          clearTimeout(t);
-          // GTM недоступен — пропускаем GA4, спиннер не зависает
-        });
-      } else {
-        loadGA4();
-      }
-    })();
-    </script>
-    <?php endif; ?>
 
     <?php if ($yandex_metrika_id): ?>
     <!-- Yandex.Metrika -->
