@@ -65,9 +65,8 @@
                 </button>
             </div>
         </div>
-    </header>
 
-    <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
+        <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
             <div class="mobile-nav-item">
                 <button class="mobile-nav-link" aria-haspopup="true" aria-expanded="false">
                     Каталог
@@ -126,3 +125,4 @@
                 <a href="/contacts#form" class="mobile-cta" rel="noopener noreferrer">Обратный звонок</a>
             </div>
         </nav>
+    </header>

@@ -6,9 +6,9 @@
 (function() {
     'use strict';
 
-    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mobileToggle = document.querySelector('.header .mobile-toggle');
     const mobileNav = document.getElementById('mobileNav');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileNavLinks = document.querySelectorAll('.header .mobile-nav-link');
 
     /**
      * Toggle mobile menu visibility
@@ -37,10 +37,10 @@
         const isActive = dropdown.classList.contains('active');
 
         // Close all dropdowns
-        document.querySelectorAll('.mobile-dropdown').forEach(d => {
+        document.querySelectorAll('.header .mobile-dropdown').forEach(d => {
             d.classList.remove('active');
         });
-        document.querySelectorAll('.mobile-nav-link svg').forEach(s => {
+        document.querySelectorAll('.header .mobile-nav-link svg').forEach(s => {
             s.style.transform = 'rotate(0deg)';
         });
 
@@ -58,7 +58,7 @@
      * Close mobile menu when link is clicked
      */
     function closeMobileMenuOnLinkClick() {
-        const links = document.querySelectorAll('.mobile-dropdown-item, .mobile-nav-item > a');
+        const links = document.querySelectorAll('.header .mobile-dropdown-item, .header .mobile-nav-item > a');
         links.forEach(link => {
             link.addEventListener('click', toggleMobileMenu);
         });
