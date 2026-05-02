@@ -221,10 +221,14 @@
 .header .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* 2026-04-20: mobile-nav top синхронизирован с высотой хедера 80px */
-/* 2026-05-02: используется inset вместо left/right/width для надёжности в Safari/Яндекс */
+/* 2026-05-02: width: 100vw для мобилок Safari/Яндекс (100% может быть узким) */
 .header .mobile-nav { display: none;
     position: fixed;
-    inset: 80px 0 0 0;
+    top: 80px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 80px);
     background: #00352F;
     padding: 24px;
     overflow-y: auto;
@@ -319,7 +323,8 @@
     .header .mobile-toggle { display: flex; }
     
     .header .mobile-nav { display: block;
-        inset: 56px 0 0 0; }
+        top: 56px;
+        height: calc(100vh - 56px); }
 
     /* 2026-04-20: мобильный хедер уменьшен до 56px */
     .header-container { height: 56px; } }
