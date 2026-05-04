@@ -10,6 +10,34 @@ Disallow: /logs/
 Disallow: /database/
 Disallow: /scripts/
 
+# 2026-05-04: административная панель — закрыть от индексации
+Disallow: /admin/
+
+# 2026-05-04: API-эндпоинты — не для индексации, только для внутреннего использования
+Disallow: /api/
+
+# 2026-05-04: страницы ошибок — дублирующий тонкий контент
+Disallow: /400
+Disallow: /403
+Disallow: /404
+Disallow: /405
+Disallow: /500
+Disallow: /503
+Disallow: /error
+
+# 2026-05-04: служебные/девопс страницы — не для публичной индексации
+Disallow: /devops
+Disallow: /install
+Disallow: /template
+
+# 2026-05-04: schema-файлы отдают JSON-LD, не страницы — индексация бессмысленна
+Disallow: /schema_blog
+Disallow: /schema_breadcrumbs
+Disallow: /schema_localbusiness
+Disallow: /schema_organization
+Disallow: /schema_products
+Disallow: /schema_webpage
+
 # 2026-04-20: updated Sitemap URL and Allow directive for production domain
 # TODO: если домен изменится — обновить URL ниже
 Sitemap: https://building-port.ru/sitemap.xml

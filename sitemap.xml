@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 2026-04-23: lastmod убран (был одинаковый для всех — поисковики игнорируют) -->
-<!-- TODO: если домен изменится — заменить building-port.ru/blp во всех loc -->
+<!-- 2026-05-04: удалены 404-страницы (faq, install), служебная devops; добавлена compare-materials (200 OK) -->
+<!-- TODO: если домен изменится — заменить building-port.ru во всех loc -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://building-port.ru/</loc>
@@ -19,11 +20,6 @@
     </url>
     <url>
         <loc>https://building-port.ru/architect</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://building-port.ru/devops</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -48,19 +44,15 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://building-port.ru/faq</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
         <loc>https://building-port.ru/compare</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://building-port.ru/install</loc>
+        <loc>https://building-port.ru/compare-materials</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <!-- 2026-04-27: блог скрыт до доработки, URL временно исключены из sitemap -->
+    <!-- 2026-05-04: showcase — 404, не добавлена; faq/install — 404, удалены; devops — служебная, удалена -->
 </urlset>
