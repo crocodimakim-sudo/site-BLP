@@ -171,7 +171,7 @@ ob_start();
   "areaServed": {
     "@type": "Country",
     "name": "Russia"
-  },
+  }
 }
 </script>
 

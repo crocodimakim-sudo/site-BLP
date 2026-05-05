@@ -1,5 +1,7 @@
 <?php
 // 2026-04-20: ProductGroup + 4 Product schemas for catalog.php
+// 2026-05-04: add image to WALYPAN Product schema (Phase 2)
+// 2026-05-04: add price to Offer (Phase 2) — no public prices in catalog.json (B2B), using AggregateOffer without price
 // Inject inside catalog.php before </body>
 ?>
 <script type="application/ld+json">
@@ -62,9 +64,10 @@
         }
       ],
       "offers": {
-        "@type": "Offer",
+        "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
+        "offerCount": "1",
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
@@ -110,9 +113,10 @@
         }
       ],
       "offers": {
-        "@type": "Offer",
+        "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
+        "offerCount": "1",
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
@@ -158,9 +162,10 @@
         }
       ],
       "offers": {
-        "@type": "Offer",
+        "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
+        "offerCount": "1",
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
@@ -172,6 +177,7 @@
       "@id": "https://building-port.ru/catalog#walypan",
       "name": "Линеарные фиброцементные панели BLP Board — серия WALYPAN",
       "description": "Линеарные фиброцементные панели для сложных фасадных решений. Рельефная поверхность, геометрические рисунки, объёмный фасад.",
+      "image": "https://building-port.ru/images-convert/blocks/products/series-walypan.webp",
       "url": "https://building-port.ru/catalog#walypan",
       "brand": {
         "@type": "Brand",
@@ -204,9 +210,10 @@
         }
       ],
       "offers": {
-        "@type": "Offer",
+        "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
+        "offerCount": "1",
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
