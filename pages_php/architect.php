@@ -8,7 +8,8 @@ $page_title    = "Фиброцементные панели для архите�
 $page_canonical = 'https://building-port.ru/architect';
 // 2026-04-20: og_image → real hero instead of missing og-default
 $page_og_image  = 'https://building-port.ru/images-convert/pages/architect/architect_hero.jpg';
-$page_desc  = "Техническая поддержка архитекторов: документация, образцы, консультации по фиброцементным фасадным панелям BLP Board.";
+// 2026-05-04: description расширен с 117 до 150 симв., добавлены «проектировщики», BIM, CTA (Phase 3)
+$page_desc  = "Техническая поддержка архитекторов и проектировщиков: документация BIM, образцы, консультации по фиброцементным фасадным панелям BLP Board. Заявка онлайн.";
 $extra_css  = '<link rel="stylesheet" href="/css/pages/architect.css">';
 // 2026-04-20: fix — подключаем корректный JS страницы architect (был index.js)
 $extra_js   = '<script src="/js/pages/architect.js" defer></script>';

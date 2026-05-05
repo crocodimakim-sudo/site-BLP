@@ -1,7 +1,8 @@
 <?php
 // 2026-04-20: added meta description, canonical, OG image
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
-$page_title    = 'Каталог фиброцементных панелей BLP Board: NATURE, POLISHED, TEXTURE, WALYPAN';
+// 2026-05-04: title сокращён с 76 до 51 симв., серии перечислены в description (Phase 3)
+$page_title    = 'Каталог фиброцементных панелей BLP Board — 4 серии';
 $page_desc     = 'Каталог фиброцементных панелей BLP Board. 4 серии, 10 цветов, толщина 8–15 мм, размеры до 3050 мм. Характеристики, палитра и сертификаты на каждую серию.';
 $page_canonical = 'https://building-port.ru/catalog';
 // 2026-04-20: og_image → real hero instead of missing og-default

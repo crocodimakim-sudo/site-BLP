@@ -6,7 +6,8 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 $page_title    = 'Дилерская программа BLP Board — фиброцементные панели для партнёров';
 $page_canonical = 'https://building-port.ru/dealer';
 $page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
-$page_desc = 'Дилерская программа BLP Board: условия сотрудничества, ценовые уровни, маркетинговая поддержка, техническое сопровождение, обучение. Стать дилером фиброцементных панелей.';
+// 2026-05-04: description сокращён с 170 до 163 симв., убрано «обучение», CTA «Станьте» (Phase 3)
+$page_desc = 'Дилерская программа BLP Board: условия сотрудничества, ценовые уровни, маркетинговая поддержка и техническое сопровождение. Станьте дилером фиброцементных панелей.';
 $extra_css = '<link rel="stylesheet" href="/css/pages/dealer.css">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [

@@ -3,7 +3,8 @@
 require_once __DIR__ . '/../blocks/image-helper.php';
 
 // 2026-04-24: SEO — title keyword-first, canonical trailing slash removed (consistent with breadcrumb)
-$page_title = "Крепление фиброцементных панелей BLP Board — видимый и скрытый способы";
+// 2026-05-04: title сокращён с 68 до 52 симв., детали в description (Phase 3)
+$page_title = "Крепление фиброцементных панелей BLP Board: 2 способа";
 $page_desc = "Варианты крепления фиброцементных панелей BLP Board к подсистеме: видимый и скрытый способы. Совместимость с алюминиевыми, оцинкованными и нержавеющими подсистемами.";
 $page_canonical = 'https://building-port.ru/kreplenie';
 $page_og_image  = 'https://building-port.ru/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png';
