@@ -86,20 +86,27 @@
 
 /* Checkbox group */
 .form-checkbox-group { display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px; }
 
 .form-checkbox { width: 18px;
   height: 18px;
   min-width: 18px;
-  margin-top: 0;
+  margin-top: 2px;
   cursor: pointer;
   accent-color: var(--color-brand); }
 
-.form-checkbox-label { font-size: 13px;
+.form-checkbox-label { font-size: 12px;
   color: var(--color-text-muted);
   line-height: 1.4;
   cursor: pointer; }
+
+/* marketing-чекбокс: label оборачивает input+span — нужна flex-раскладка внутри */
+.form-checkbox-group--full .form-checkbox-label { display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1; }
+.form-checkbox-group--full .form-checkbox-label .form-checkbox { margin-top: 0; }
 
 .form-checkbox-label a { color: var(--color-brand);
   text-decoration: none;
