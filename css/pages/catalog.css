@@ -144,9 +144,9 @@
         @media (max-width: 768px) { .blp-product-block { margin-left: 16px; margin-right: 16px; margin-top: 15px; width: calc(100% - 32px); }
             .blp-product-block .blp-container { padding: 0; width: 100%; }
             .blp-product-block .blp-card { display: flex; flex-direction: column; border-radius: 0 0 12px 12px; box-shadow: none; width: 100%; }
-            .blp-product-block .blp-image-section { order: -1; width: 100%; max-width: 100%; }
+            .blp-product-block .blp-image-section { order: -1; width: 100%; max-width: 100%; height: 398px; }
             .blp-product-block .blp-info { order: 1; padding: 20px 16px; width: 100%; }
-            .blp-product-block .blp-main-image { width: 100%; aspect-ratio: 4/3; min-height: 0; }
+            .blp-product-block .blp-main-image { width: 100%; height: 100%; min-height: 0; }
             .blp-product-block .blp-main-image img { width: 100%; height: 100%; object-fit: cover; }
             .blp-product-block .blp-image-number { width: 36px; height: 36px; font-size: 14px; top: 12px; right: 12px; }
             .blp-product-block .blp-arrow { width: 36px; height: 36px; }
