@@ -1,7 +1,8 @@
 <?php
 // 2026-04-24: SEO — fixed branding typo (BLPboard→BLP Board), added og_image
 $page_title = 'Объекты с фасадом из фиброцементных панелей BLP Board — портфолио';
-$page_desc  = 'Портфолио реализованных объектов с фасадом из фиброцементных панелей BLP Board: поликлиники, школы, здания судов, международные проекты';
+// 2026-05-04: description расширен с 133 до 160 симв., добавлен E-E-A-T сигнал и точка (Phase 3)
+$page_desc  = 'Портфолио реализованных объектов BLP Board: поликлиники, школы, здания судов, международные проекты. Фиброцементные фасадные панели в реальных условиях эксплуатации.';
 $page_og_image  = 'https://building-port.ru/images-convert/pages/index/index_hero.jpg';
 // 2026-04-20: canonical URL added (Task #14 — critical SEO fix)
 $page_canonical = 'https://building-port.ru/projects';

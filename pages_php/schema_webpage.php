@@ -4,7 +4,12 @@
 
 $wp_title     = isset($page_title)     ? $page_title     : 'BLP Board';
 $wp_desc      = isset($page_desc)      ? $page_desc      : '';
-$wp_canonical = isset($page_canonical) ? $page_canonical : 'https://building-port.ru/';
+// 2026-05-04: fix empty WebPage.@id/url (Phase 2) — isset() returns true for '' set in template.php; use !empty() + server fallback
+$_scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$_host   = $_SERVER['HTTP_HOST'] ?? 'building-port.ru';
+$_uri    = $_SERVER['REQUEST_URI'] ?? '/';
+$_server_url = $_scheme . '://' . $_host . strtok($_uri, '?');
+$wp_canonical = !empty($page_canonical) ? $page_canonical : $_server_url;
 $wp_image     = isset($page_og_image)  ? $page_og_image  : 'https://building-port.ru/images-convert/shared/header/logo-3.svg';
 
 $schema = [

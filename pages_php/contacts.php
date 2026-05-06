@@ -1,7 +1,8 @@
 <?php
 // 2026-04-20: added canonical, OG image
 // 2026-04-20: SEO — title geo-enriched, meta desc 155-160 chars
-$page_title    = 'Контакты BLP Board — Одинцово, Московская область';
+// 2026-05-04: title расширен с 49 до 53 симв., добавлен ключ «фиброцементные панели» (Phase 3)
+$page_title    = 'Контакты BLP Board — фиброцементные панели, Одинцово';
 $page_canonical = 'https://building-port.ru/contacts';
 $page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Контакты BLP Board: +7 (495) 984-96-89, Одинцово, ул. Неделина 6А. Работаем с архитекторами, застройщиками и дилерами. Заявка онлайн — ответим в течение рабочего дня.';
