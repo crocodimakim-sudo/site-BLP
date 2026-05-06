@@ -3,7 +3,8 @@
         <div class="footer-top">
             <div class="footer-logo-section">
                 <a href="/" class="footer-logo">
-                    <img src="/images-convert/shared/header/logo-3.svg" alt="Building Port">
+                    <!-- 2026-05-04: добавлены width/height для CLS (Phase 5) — синхронно с header logo -->
+                    <img src="/images-convert/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">
                 </a>
                 <p class="footer-tagline">Архитектурные панели фиброцементные, окрашенные&nbsp;в массе&nbsp;и крупным форматом</p>
             </div>
