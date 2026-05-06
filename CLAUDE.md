@@ -209,18 +209,35 @@ database/                  — НЕ в git, живёт на сервере
 ## 📋 БЭКЛОГ — АКТУАЛЬНЫЙ ПЛАН
 
 ### 🔴 P0 — Критично
-- [ ] **Google Search Console** — верификация домена (DNS TXT или HTML-метатег)
+- [ ] **Чекпоинт через 2 недели (~2026-05-20)** — проверить GSC/Яндекс: индексация, impressions, ошибки. План: `../05-SEO-И-ОНЛАЙН/PHASE-7-CONTENT-PLAN.md`
+- [ ] **Submit sitemap** — в GSC и Яндекс.Вебмастер (если ещё не сделано)
 
 ### 🟡 P1 — Важно
+- [ ] **Phase 7: Content** — блог-статьи (20-50), страницы по городам, калькулятор. Подробно: `../05-SEO-И-ОНЛАЙН/PHASE-7-CONTENT-PLAN.md`
 - [ ] **GA Consent Mode v2** — после подтверждения GSC
 - [ ] **Загрузить больше объектов** — проекты через `images/pages/projects/` + deploy.bat
 
 ### 🟢 P2 — Улучшения
+- [ ] **H1 на /kreplenie** — отсутствует, добавить осмысленный
+- [ ] **H1 на /architect** — сейчас «Кому можем помочь», слабый для SEO
+- [ ] **Дальнейший LCP-фикс** — defer non-critical CSS, форсированный reflow в JS (риск визуала, отдельная итерация)
 - [ ] **MySQL миграция** — если SQLite недостаточно для нагрузки
 - [ ] **CSP enforce mode** — после аудита всех inline-скриптов
-- [ ] **Больше статей в блог** — сейчас 19 статей
 
 ---
+
+## ✅ ВЫПОЛНЕНО (2026-05-06) — SEO Фазы 1-5
+
+5 коммитов, ветка merged в main, задеплоено. История: `git log` или `../05-SEO-И-ОНЛАЙН/PLAN-IMPLEMENTATION.md`.
+
+- ✅ **Фаза 1** — robots.txt (+14 Disallow: admin, api, error-pages, schema-эндпоинты), sitemap.xml (-3 × 404, +1)
+- ✅ **Фаза 2** — schema.org: dealer.php trailing comma (JSON-LD теперь валиден), schema_webpage.php @id/url fallback на $_SERVER, AggregateOffer для 4 продуктов, WALYPAN.image
+- ✅ **Фаза 3** — Title/Meta на 8 страницах: /catalog 76→51, /compare 84→51, /sertificate 77→56, /architect desc 117→150, и др. Все в лимитах Google.
+- ✅ **Фаза 4** — alt-теги: проверено, всё уже корректно (предыдущая работа)
+- ✅ **Фаза 5** — производительность: objects-section.php → render_image() даёт **-1.6 МБ** на главной, footer logo width/height (CLS=0), preconnect к Yandex.Metrika и flaticon CDN
+- ✅ **Замеры live (2026-05-06):** размер главной 2862 KB → **655 KB (-77%)**, LCP 6.7s → 4.5s (-32%), CLS 0.02 → 0
+- ✅ **GSC + Яндекс.Вебмастер** — оба домен подтверждён
+- ✅ **Drift baseline зафиксирован** — `../05-SEO-И-ОНЛАЙН/audit/seo-drift-baseline.json` для детекции будущих регрессий
 
 ## ✅ ВЫПОЛНЕНО (2026-05-01)
 
@@ -242,4 +259,4 @@ database/                  — НЕ в git, живёт на сервере
 
 ---
 
-**Last updated:** 2026-05-01
+**Last updated:** 2026-05-06 (SEO фазы 1-5 деплой, GSC+Яндекс настроены)

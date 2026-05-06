@@ -8,3 +8,14 @@ function get_catalog_series(string $key, string $field, string $default = ''): s
     }
     return (string)($data['series'][$key][$field] ?? $default);
 }
+
+// 2026-05-06: возвращает массив цен по толщинам: ['8' => '1 200 руб/м²', ...]
+function get_catalog_prices(string $key): array {
+    static $data = null;
+    if ($data === null) {
+        $file = __DIR__ . '/../database/catalog.json';
+        $data = file_exists($file) ? (json_decode(file_get_contents($file), true) ?? []) : [];
+    }
+    $prices = $data['series'][$key]['prices'] ?? [];
+    return is_array($prices) ? $prices : [];
+}

@@ -908,6 +908,14 @@ if (($_POST['action'] ?? '') === 'save-catalog-series') {
     $title = trim((string)($_POST['title'] ?? ''));
     $description = trim((string)($_POST['description'] ?? ''));
     $image = trim((string)($_POST['image'] ?? ''));
+    $prices_raw = $_POST['prices'] ?? [];
+    $prices_clean = [];
+    if (is_array($prices_raw)) {
+        foreach ($prices_raw as $mm => $val) {
+            $val = trim((string)$val);
+            if ($val !== '') $prices_clean[(string)(int)$mm] = $val;
+        }
+    }
 
     if (!in_array($series_key, $allowed_series, true)) {
         $flash = 'Неизвестная серия каталога';
@@ -920,6 +928,7 @@ if (($_POST['action'] ?? '') === 'save-catalog-series') {
             'title'       => $title,
             'description' => $description,
             'image'       => $image,
+            'prices'      => $prices_clean,
         ];
         if (save_catalog($cfg)) {
             header('Location: ?s=catalog&catalog_saved=1');
@@ -2241,11 +2250,19 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                 'texture'  => 'TEXTURE',
                 'walypan'  => 'WALYPAN',
             ];
+            // 2026-05-06: толщины по сериям для формы цен
+            $catalog_series_thicknesses = [
+                'nature'   => [8, 9, 10, 12, 15],
+                'polished' => [8, 9, 10, 12, 15],
+                'texture'  => [8, 9, 10, 12, 15],
+                'walypan'  => [10, 12, 15],
+            ];
             foreach ($catalog_series_meta as $skey => $slabel):
                 $sdata = $catalog_data['series'][$skey] ?? [];
-                $stitle = (string)($sdata['title'] ?? '');
-                $sdesc  = (string)($sdata['description'] ?? '');
-                $simg   = (string)($sdata['image'] ?? '');
+                $stitle  = (string)($sdata['title'] ?? '');
+                $sdesc   = (string)($sdata['description'] ?? '');
+                $simg    = (string)($sdata['image'] ?? '');
+                $sprices = is_array($sdata['prices'] ?? null) ? $sdata['prices'] : [];
             ?>
                 <div class="admin-form" style="margin-bottom:1.5rem; padding:1.25rem; background:#fafafa; border:1px solid #eee; border-radius:8px;">
                     <h2 class="admin-h2" style="margin-top:0;">Серия <?= h($slabel) ?></h2>
@@ -2327,6 +2344,20 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                         <div class="admin-form-field">
                             <label class="admin-label" for="f-cat-desc-<?= h($skey) ?>">Описание (P)</label>
                             <textarea id="f-cat-desc-<?= h($skey) ?>" name="description" class="admin-input admin-textarea" rows="3"><?= h($sdesc) ?></textarea>
+                        </div>
+
+                        <div class="admin-form-field">
+                            <label class="admin-label">Цены по толщинам (пустое поле — не показывать)</label>
+                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;">
+                            <?php foreach ($catalog_series_thicknesses[$skey] as $mm): ?>
+                                <div>
+                                    <label style="font-size:12px;color:#888;display:block;margin-bottom:3px;"><?= h((string)$mm) ?> мм</label>
+                                    <input type="text" name="prices[<?= h((string)$mm) ?>]" class="admin-input" style="padding:6px 10px;"
+                                           value="<?= h((string)($sprices[(string)$mm] ?? '')) ?>"
+                                           placeholder="напр. 1 200 руб/м²">
+                                </div>
+                            <?php endforeach; ?>
+                            </div>
                         </div>
 
                         <div class="admin-form-field">
