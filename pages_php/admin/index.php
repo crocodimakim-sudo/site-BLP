@@ -2354,7 +2354,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                                     <label style="font-size:12px;color:#888;display:block;margin-bottom:3px;"><?= h((string)$mm) ?> мм</label>
                                     <input type="text" name="prices[<?= h((string)$mm) ?>]" class="admin-input" style="padding:6px 10px;"
                                            value="<?= h((string)($sprices[(string)$mm] ?? '')) ?>"
-                                           placeholder="напр. 1 200 руб/м²">
+                                           placeholder="напр. 1 200">
                                 </div>
                             <?php endforeach; ?>
                             </div>

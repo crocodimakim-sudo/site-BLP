@@ -57,11 +57,8 @@
         .spec-value-plate { border-color: var(--color-border); color: var(--color-text); border-radius: 6px; line-height: 1.2; cursor: default; user-select: text; transition: none; }
         .colors-section { margin-top: 0; padding-top: 0; }
 
-        /* 2026-05-06: блок цены на карточках каталога */
-        .product-price { margin-top: 16px; }
-        .product-price::before { content: 'Стоимость:\00a0'; font-size: 14px; font-weight: 500; color: var(--color-text-muted); }
-        .product-price__value { font-size: 20px; font-weight: 700; color: var(--color-brand); letter-spacing: -0.01em; }
-        .product-price--walypan { margin-top: 20px; }
+        /* 2026-05-06: строка цены внутри specs-section */
+        .product-price__value { font-weight: 700; color: var(--color-brand); font-size: 14px; }
 
         /* 2026-05-06: кликабельные толщины — выбор цены */
         .catalog-thickness { cursor: pointer !important; pointer-events: auto !important; user-select: none !important; transition: background 0.15s, color 0.15s, border-color 0.15s; }

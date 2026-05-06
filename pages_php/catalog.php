@@ -111,6 +111,12 @@ ob_start();
                                 <span class="spec-value">1220</span>
                             </div>
                         </div>
+                        <?php $prices_nature = get_catalog_prices('nature'); if (!empty($prices_nature)): ?>
+                        <div class="spec-row product-price" data-series="nature" data-prices='<?= htmlspecialchars(json_encode($prices_nature, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
+                            <span class="spec-label">Стоимость:</span>
+                            <div class="spec-values"><span class="product-price__value"><?= htmlspecialchars(reset($prices_nature)) ?></span>&nbsp;руб./м²</div>
+                        </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- 2026-04-20: палитра цветов возвращена на карточку -->
@@ -129,12 +135,6 @@ ob_start();
                             <div class="color-swatch color-10" title="Шоколад"></div>
                         </div>
                     </div>
-                    <?php $prices_nature = get_catalog_prices('nature'); if (!empty($prices_nature)): ?>
-                    <!-- 2026-05-06: цена по толщине из catalog.json -->
-                    <div class="product-price" data-series="nature" data-prices='<?= htmlspecialchars(json_encode($prices_nature, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
-                        <span class="product-price__value"><?= htmlspecialchars(reset($prices_nature)) ?></span>
-                    </div>
-                    <?php endif; ?>
                 </div>
             </article>
         </div>
@@ -153,6 +153,9 @@ ob_start();
                     <div class="spec-row"><span class="spec-label">Толщина, мм:</span><div class="spec-static"><span class="spec-value-plate catalog-thickness" data-series="polished" data-thickness="8">8</span><span class="spec-value-plate catalog-thickness" data-series="polished" data-thickness="9">9</span><span class="spec-value-plate catalog-thickness" data-series="polished" data-thickness="10">10</span><span class="spec-value-plate catalog-thickness" data-series="polished" data-thickness="12">12</span><span class="spec-value-plate catalog-thickness" data-series="polished" data-thickness="15">15</span></div></div>
                     <div class="spec-row"><span class="spec-label">Длина, мм:</span><div class="spec-static"><span class="spec-value-plate">2440</span><span class="spec-value-plate">3050</span></div></div>
                     <div class="spec-row"><span class="spec-label">Ширина, мм:</span><div class="spec-static"><span class="spec-value-plate">1220</span></div></div>
+                    <?php $prices_polished = get_catalog_prices('polished'); if (!empty($prices_polished)): ?>
+                    <div class="spec-row product-price" data-series="polished" data-prices='<?= htmlspecialchars(json_encode($prices_polished, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'><span class="spec-label">Стоимость:</span><div class="spec-static"><span class="product-price__value"><?= htmlspecialchars(reset($prices_polished)) ?></span>&nbsp;руб./м²</div></div>
+                    <?php endif; ?>
                 </div>
                 <!-- 2026-04-20: палитра цветов возвращена на карточку -->
                 <div class="colors-section">
@@ -170,12 +173,6 @@ ob_start();
                         <div class="color-swatch color-10" title="Шоколад"></div>
                     </div>
                 </div>
-                <?php $prices_polished = get_catalog_prices('polished'); if (!empty($prices_polished)): ?>
-                <!-- 2026-05-06: цена по толщине из catalog.json -->
-                <div class="product-price" data-series="polished" data-prices='<?= htmlspecialchars(json_encode($prices_polished, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
-                    <span class="product-price__value"><?= htmlspecialchars(reset($prices_polished)) ?></span>
-                </div>
-                <?php endif; ?>
             </div>
             <div class="product-image">
                 <!-- 2026-04-22: WebP + lazy via render_image() -->
@@ -236,6 +233,12 @@ ob_start();
                             <span class="spec-value-plate">1220</span>
                         </div>
                     </div>
+                    <?php $prices_texture = get_catalog_prices('texture'); if (!empty($prices_texture)): ?>
+                    <div class="spec-row product-price" data-series="texture" data-prices='<?= htmlspecialchars(json_encode($prices_texture, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
+                        <span class="spec-label">Стоимость:</span>
+                        <div class="spec-static"><span class="product-price__value"><?= htmlspecialchars(reset($prices_texture)) ?></span>&nbsp;руб./м²</div>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <!-- 2026-04-20: палитра цветов возвращена на карточку -->
                 <div class="colors-section">
@@ -253,12 +256,6 @@ ob_start();
                         <div class="color-swatch color-10" title="Шоколад"></div>
                     </div>
                 </div>
-                <?php $prices_texture = get_catalog_prices('texture'); if (!empty($prices_texture)): ?>
-                <!-- 2026-05-06: цена по толщине из catalog.json -->
-                <div class="product-price" data-series="texture" data-prices='<?= htmlspecialchars(json_encode($prices_texture, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
-                    <span class="product-price__value"><?= htmlspecialchars(reset($prices_texture)) ?></span>
-                </div>
-                <?php endif; ?>
             </div>
         </article>
     </div>
@@ -307,13 +304,13 @@ ob_start();
                             <span class="blp-spec-plate">1220</span>
                         </div>
                     </div>
+                    <?php $prices_walypan = get_catalog_prices('walypan'); if (!empty($prices_walypan)): ?>
+                    <div class="blp-spec-row product-price" data-series="walypan" data-prices='<?= htmlspecialchars(json_encode($prices_walypan, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
+                        <span class="blp-spec-label">Стоимость:</span>
+                        <div class="blp-spec-options"><span class="product-price__value"><?= htmlspecialchars(reset($prices_walypan)) ?></span>&nbsp;руб./м²</div>
+                    </div>
+                    <?php endif; ?>
                 </div>
-                <?php $prices_walypan = get_catalog_prices('walypan'); if (!empty($prices_walypan)): ?>
-                <!-- 2026-05-06: цена по толщине из catalog.json -->
-                <div class="product-price product-price--walypan" data-series="walypan" data-prices='<?= htmlspecialchars(json_encode($prices_walypan, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>'>
-                    <span class="product-price__value"><?= htmlspecialchars(reset($prices_walypan)) ?></span>
-                </div>
-                <?php endif; ?>
             </div>
 
             <!-- Правая колонка: слайдер с миниатюрами — 2026-04-22: динамически из /api/slider -->
