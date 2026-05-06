@@ -1,5 +1,21 @@
 /* catalog.css - специфичные стили для страницы catalog */
 
+/* 2026-05-06: дисклеймер — цены не являются публичной офертой */
+.price-disclaimer { background: var(--color-bg-soft);
+    border-top: 1px solid var(--color-border);
+    padding: 14px 0; }
+
+.price-disclaimer__inner { max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px; }
+
+.price-disclaimer__inner p { font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0; }
+
+@media (max-width: 768px) { .price-disclaimer__inner { padding: 0 16px; } }
+
 /* 2026-04-20: H1 intro-header ограничен шириной 1200px с отступом 32px как у остальных блоков */
 /* 2026-04-22: добавлен padding-top: 10px */
 .catalog-intro-header { max-width: 1200px; margin: 0 auto; padding: 0 32px 0; }

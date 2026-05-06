@@ -98,11 +98,12 @@ git archive --format=zip → deploy.php (curl POST)  # ZIP-деплой на sha
 **Решение:** только CSS `scroll-margin-top`.
 
 ### WALYPAN слайдер — цепочка flex
-`.blp-image-section { height: 600px; display: flex; flex-direction: column }`  
+`.blp-image-section { height: 700px; display: flex; flex-direction: column }` (мобайл: `height: 398px` в `@media (max-width: 768px)`)  
 → `#slider-container { flex: 1; min-height: 0; display: flex; flex-direction: column }`  
 → `.blp-main-image { flex: 1; min-height: 0 }`  
 → `.blp-slide-track { height: 100%; flex: 1 }`  
-→ `.blp-slide { position: relative }` + `img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover }`
+→ `.blp-slide { position: relative }` + `img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover }`  
+Дубликат точек навигации скрыт: `.blp-product-block .blp-dots { display: none }`
 
 ### Аудитория (audience-section)
 - Высота фото: `height: 300px` на `.audience-image-wrapper`
@@ -111,8 +112,20 @@ git archive --format=zip → deploy.php (curl POST)  # ZIP-деплой на sha
 - **Загрузка только через деплой** (`images/pages/index/audience/`)
 
 ### Каталог
-- `.product-card { max-height: 600px }` — 3 карточки (NATURE/POLISHED/TEXTURE)
+- `.product-card { max-height: 700px }` — 3 карточки (NATURE/POLISHED/TEXTURE)
 - `.blp-product-block .blp-card` + `.blp-image-section` = WALYPAN, отдельная структура
+- **Цены:** хранятся в `database/catalog.json` → `series.{key}.prices` как объект `{"8":"1200","10":"1400",...}`
+- `catalog_config.php` → `get_catalog_prices(string $key): array` — читает prices из catalog.json
+- В шаблоне `catalog.php` — спан `.product-price__value` внутри `.blp-specs` (под строкой «Ширина, мм»), атрибут `data-prices` содержит JSON с ценами по толщинам
+- JS `selectThickness()` — при клике по `.catalog-thickness` обновляет текст `.product-price__value` до `"{цена} руб./м²"`
+- `.catalog-thickness.is-active { background: var(--color-brand) }` — активная толщина подсвечивается зелёным (цвет бренда)
+- Редактирование цен: `/admin` → Каталог → поля «Цена для толщины X мм»
+
+### Форма контактов — чекбоксы
+- `.form-checkbox-group { grid-column: 1 / -1 }` — оба чекбокса растягиваются на все 4 колонки грида
+- `.form-checkbox { margin-top: 2px }` — вертикальное выравнивание с текстом
+- `.form-checkbox-label { font-size: 13px }` — не менять на 12px
+- Marketing-чекбокс: `display: flex; align-items: center; gap: 8px; flex: 1` (label оборачивает input+span)
 
 ### Architect мобайл
 - `.blp-audience-block` — `display: grid; grid-template-columns: 1fr 1fr`
@@ -145,7 +158,7 @@ blocks/
   cookie-consent-banner.php, get_projects.php, image-helper.php
   session_init.php        — CSRF инит (session_start + token)
   site_config.php         — читает database/site_config.json
-catalog_config.php         — читает database/catalog.json
+catalog_config.php         — читает database/catalog.json; get_catalog_series(), get_catalog_prices(key)
 
 css/
   main.css                — reset, типографика, глобальные правила, .btn, .btn-secondary
@@ -226,6 +239,19 @@ database/                  — НЕ в git, живёт на сервере
 
 ---
 
+## ✅ ВЫПОЛНЕНО (2026-05-06) — Каталог: цены + UI
+
+- ✅ **Цены в каталоге** — 4 серии (NATURE/POLISHED/TEXTURE/WALYPAN), цены зависят от толщины, кликабельный выбор
+- ✅ **JS selectThickness()** — автовыбор первой толщины при загрузке, обновление цены по клику через `data-prices` JSON
+- ✅ **Активная толщина** — зелёная подсветка `var(--color-brand)` вместо оранжевой
+- ✅ **Блоки каталога +100px** — `.product-card` и `.blp-image-section` высота 700px (было 600px)
+- ✅ **WALYPAN мобайл** — `height: 398px` в `@media (max-width: 768px)`
+- ✅ **Цена как pill** — `.product-price__value` с фоном и рамкой, унифицирован текст «{цена} руб./м²» в одну строку
+- ✅ **Дубль навигации удалён** — `.blp-product-block .blp-dots { display: none }`
+- ✅ **Форма: чекбоксы** — `grid-column: 1/-1` (4 колонки), `align-items: flex-start`, шрифт 13px
+- ✅ **Цены в админке** — `/admin` → Каталог: поля для каждой толщины каждой серии
+- ✅ **deploy.bat** — `chcp 65001`, убраны Кириллица и `msg *` (работает из PowerShell/CMD без ошибок)
+
 ## ✅ ВЫПОЛНЕНО (2026-05-06) — SEO Фазы 1-5
 
 5 коммитов, ветка merged в main, задеплоено. История: `git log` или `../05-SEO-И-ОНЛАЙН/PLAN-IMPLEMENTATION.md`.
@@ -259,4 +285,4 @@ database/                  — НЕ в git, живёт на сервере
 
 ---
 
-**Last updated:** 2026-05-06 (SEO фазы 1-5 деплой, GSC+Яндекс настроены)
+**Last updated:** 2026-05-06 (SEO фазы 1-5 + каталог цены + UI фиксы)

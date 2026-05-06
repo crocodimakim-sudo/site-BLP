@@ -43,6 +43,11 @@
 
         <div class="footer-divider"></div>
 
+        <!-- 2026-05-06: дисклеймер цен — не является публичной офертой -->
+        <div class="footer-price-disclaimer">
+            Цены на сайте носят информационный характер и не являются публичной офертой (ст.&nbsp;437 ГК&nbsp;РФ). Актуальная стоимость подтверждается в счёте на оплату.
+        </div>
+
         <div class="footer-bottom">
             <div class="footer-copyright">
                 <span>© 2026 ООО «БИЛДИНГПОРТ»</span>
