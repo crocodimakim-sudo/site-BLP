@@ -65,17 +65,7 @@ if (empty($referer) || strpos($referer, 'building-port.ru') === false) {
     exit;
 }
 
-// 2026-05-01: CAPTCHA — проверка математической задачи
-$captcha_input = isset($input['captcha']) ? (int)$input['captcha'] : 0;
-$captcha_expected = $_SESSION['captcha_answer'] ?? null;
-unset($_SESSION['captcha_answer']);
-if ($captcha_expected === null || $captcha_input !== $captcha_expected) {
-    http_response_code(403);
-    echo json_encode(['ok' => false, 'error' => 'Неверный ответ на проверочный вопрос']);
-    exit;
-}
-
-// 2026-05-01: скорость заполнения — боты заполняют мгновенно
+// 2026-05-06: скорость заполнения — боты заполняют мгновенно (капча заменена на honeypot)
 $form_time = $_SESSION['form_time'] ?? 0;
 if ($_rl_now - $form_time < 3) {
     http_response_code(429);

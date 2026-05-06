@@ -37,11 +37,6 @@
       return null;
     },
     company: () => null,
-    captcha: (val) => {
-      if (!val || val.trim() === '') return 'Введите ответ на проверочный вопрос';
-      if (!/^\d+$/.test(val.trim())) return 'Ответ должен быть числом';
-      return null;
-    },
     consent: (val) => {
       return !val ? 'Примите условия обработки данных' : null;
     }
@@ -106,7 +101,7 @@
   }
 
   // Real-time validation
-  ['email', 'name', 'phone', 'company', 'captcha', 'consent'].forEach(fieldName => {
+  ['email', 'name', 'phone', 'company', 'consent'].forEach(fieldName => {
     const field = form.elements[fieldName];
     if (!field) return;
 
@@ -150,9 +145,7 @@
       consent: form.consent.checked,
       marketing: form.marketing ? form.marketing.checked : false,
       // 2026-04-22: добавлен csrf_token для защиты формы
-      csrf_token: (document.querySelector('input[name="csrf_token"]') || {}).value || '',
-      // 2026-05-01: CAPTCHA ответ
-      captcha: form.captcha ? form.captcha.value.trim() : ''
+      csrf_token: (document.querySelector('input[name="csrf_token"]') || {}).value || ''
     };
 
     try {

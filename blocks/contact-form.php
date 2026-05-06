@@ -6,10 +6,7 @@
 $form_title = isset($form_title) ? $form_title : 'Получить предложение';
 $form_desc  = isset($form_desc)  ? $form_desc  : 'Специалисты нашей компании всегда на связи, готовы оперативно и подробно ответить на все ваши вопросы.';
 
-// 2026-05-01: серверная CAPTCHA — защита от спам-ботов
-$captcha_a = rand(1, 10);
-$captcha_b = rand(1, 10);
-$_SESSION['captcha_answer'] = $captcha_a + $captcha_b;
+// 2026-05-06: timing check — фиксируем время показа формы
 $_SESSION['form_time'] = time();
 ?>
 
@@ -106,23 +103,6 @@ $_SESSION['form_time'] = time();
 
         <!-- 2026-04-22: CSRF token -->
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">
-
-        <!-- 2026-05-01: CAPTCHA — серверная математическая задача -->
-        <div class="form-group form-group--full">
-          <label for="captcha" class="form-label">
-            Проверка: сколько будет <?php echo $captcha_a; ?> + <?php echo $captcha_b; ?>?
-            <span class="required">*</span>
-          </label>
-          <input
-            type="number"
-            id="captcha"
-            name="captcha"
-            class="form-input"
-            placeholder="Введите ответ"
-            required
-          />
-          <span class="field-error" data-field="captcha"></span>
-        </div>
 
         <!-- Submit Button -->
         <div class="form-submit-wrapper">
