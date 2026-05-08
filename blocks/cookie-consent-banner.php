@@ -358,7 +358,12 @@
     var acceptBtn = document.getElementById('cookie-consent-accept-all');
     var rejectBtn = document.getElementById('cookie-consent-reject');
 
-    if (acceptBtn) acceptBtn.addEventListener('click', function() { saveConsent(true); hideBanner(); });
+    if (acceptBtn) acceptBtn.addEventListener('click', function() {
+        saveConsent(true);
+        hideBanner();
+        // 2026-05-07: триггер для consent-gated скриптов (Яндекс.Метрика и т.п.)
+        try { window.dispatchEvent(new Event('blp:cookie-consent-accepted')); } catch(e) {}
+    });
     if (rejectBtn) rejectBtn.addEventListener('click', function() { saveConsent(false); hideBanner(); });
 
     if (document.readyState === 'loading') {

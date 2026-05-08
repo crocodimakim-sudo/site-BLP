@@ -5,7 +5,13 @@
         <div class="benefit-col">
             <article class="benefit-card">
                 <div class="benefit-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3429/3429851.png" alt="Краска">
+                    <!-- 2026-05-07: заменена картинка с flaticon (R-015) на собственный SVG — без проблем лицензии -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M14 2v6h6"/>
+                        <path d="M9 13l2 2 4-4"/>
+                        <circle cx="12" cy="17.5" r="1"/>
+                    </svg>
                 </div>
                 <h3 class="benefit-title">Окрашенные&nbsp;в массе</h3>
                 <h4 class="benefit-text">Не требует подкрашивания после резки</h4>

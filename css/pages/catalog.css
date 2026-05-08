@@ -78,7 +78,22 @@
         /* выравнивание "руб./м²" по вертикали с ценой */
         .product-price .spec-values,
         .product-price .spec-static,
-        .product-price .blp-spec-options { align-items: center; }
+        .product-price .blp-spec-options { align-items: center; flex-wrap: wrap; gap: 6px; }
+
+        /* 2026-05-07: микро-дисклеймер ст. 437 ГК РФ возле каждой цены (R-010) */
+        .product-price .spec-values::after,
+        .product-price .spec-static::after,
+        .product-price .blp-spec-options::after {
+            content: 'Не оферта · ст. 437 ГК РФ';
+            display: block;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--color-text-muted, #888);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
 
         /* 2026-05-06: кликабельные толщины — выбор цены */
         .catalog-thickness { cursor: pointer !important; pointer-events: auto !important; user-select: none !important; transition: background 0.15s, color 0.15s, border-color 0.15s; }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 2026-05-07: собственный favicon BLP Board (R-014) — заменён логотип BLITE -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#00352F"/>
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+        font-family="'Montserrat', -apple-system, sans-serif"
+        font-size="22" font-weight="700"
+        fill="#ffffff" letter-spacing="-0.5">BLP</text>
+</svg>

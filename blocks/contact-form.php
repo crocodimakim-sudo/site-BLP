@@ -85,16 +85,18 @@ $_SESSION['form_time'] = time();
             required
           />
           <label for="consent" class="form-checkbox-label">
-            Я даю согласие&nbsp;на <a href="/consent" target="_blank" rel="noopener noreferrer">обработку персональных данных</a>&nbsp;и принимаю условия <a href="/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a>
+            <!-- 2026-05-07: расширенное согласие — ст. 9 ч. 4 152-ФЗ (оператор, ИНН, перечень ПД, цели) -->
+            Я даю согласие ООО «Билдингпорт» (ИНН&nbsp;7708427307, ОГРН&nbsp;1237700843390, г.&nbsp;Москва, ул.&nbsp;Краснопрудная, д.&nbsp;15, помещ.&nbsp;3А/2) на обработку моих персональных данных (имя, телефон, email, наименование компании и ИНН) с целью обработки заявки, связи со мной и направления коммерческого предложения, на условиях <a href="/consent" target="_blank" rel="noopener noreferrer">Согласия на обработку персональных данных</a> и <a href="/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a>
           </label>
           <span class="field-error" data-field="consent"></span>
         </div>
 
         <!-- 2026-04-24: согласие на маркетинговую рассылку -->
+        <!-- 2026-05-07: расширено по приказу РКН №178 и ст.18 38-ФЗ — перечень материалов, канал, срок, способ отзыва -->
         <div class="form-checkbox-group form-checkbox-group--full">
             <label class="form-checkbox-label">
                 <input type="checkbox" name="marketing" id="marketing" class="form-checkbox">
-                <span class="form-checkbox-text">Согласен(на) получать информационные материалы и специальные предложения BLP Board</span>
+                <span class="form-checkbox-text">Согласен(на) получать от ООО «Билдингпорт» (ИНН&nbsp;7708427307) на указанный email информационные и рекламные материалы о продукции BLP Board: новинки каталога, технические бюллетени, специальные предложения и приглашения на отраслевые мероприятия. Не чаще 2 раз в месяц. Согласие действительно 3 года и может быть отозвано в любой момент через ссылку «отписаться» в письме или по адресу <a href="mailto:info@building-port.ru">info@building-port.ru</a></span>
             </label>
         </div>
 

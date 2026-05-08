@@ -61,7 +61,8 @@ if (file_exists($_site_cfg_file)) {
 }
 $ga4_id           = !empty($_site_cfg['ga4_id'])           ? $_site_cfg['ga4_id']           : '';
 $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yandex_metrika_id'] : '';
-$vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixel_id']      : '';
+// 2026-05-07: VK Pixel удалён (R-001/R-013). Если понадобится — раскомментировать эту строку и добавить блок с consent gate.
+// $vk_pixel_id = !empty($_site_cfg['vk_pixel_id']) ? $_site_cfg['vk_pixel_id'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -72,6 +73,8 @@ $vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixe
     <script>(function(){function s(){document.documentElement.style.setProperty('--vh',window.innerHeight*.01+'px');}window.addEventListener('resize',s);s();})();</script>
     <link rel="icon" type="image/svg+xml" href="/images-convert/favicon.svg">
     <meta name="yandex-verification" content="5c0035a8d8486cab" />
+    <!-- 2026-05-07: возрастная маркировка по 436-ФЗ (R-012) — контент общего назначения, без ограничений -->
+    <meta name="rating" content="general">
     <title><?php echo htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8'); ?></title>
     <?php if ($page_desc): ?>
     <meta name="description" content="<?php echo htmlspecialchars($page_desc, ENT_QUOTES, 'UTF-8'); ?>">
@@ -106,34 +109,36 @@ $vk_pixel_id      = !empty($_site_cfg['vk_pixel_id'])      ? $_site_cfg['vk_pixe
     <meta name="twitter:image" content="<?php echo htmlspecialchars($page_og_image, ENT_QUOTES, 'UTF-8'); ?>">
 
     <?php if ($yandex_metrika_id): ?>
-    <!-- Yandex.Metrika -->
-    <script type="text/javascript" >
-       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-       m[i].l=1*new Date();
-       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-       ym(<?php echo json_encode($yandex_metrika_id); ?>, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-       });
+    <!-- 2026-05-07: Yandex.Metrika с consent gate — грузится ТОЛЬКО после accept в cookie-баннере -->
+    <script type="text/javascript">
+       (function(){
+         function getConsent(){try{return JSON.parse(localStorage.getItem('blp_cookie_consent'));}catch(e){return null;}}
+         function loadMetrika(){
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ym(<?php echo json_encode($yandex_metrika_id); ?>, "init", {
+                 clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true
+            });
+         }
+         var c = getConsent();
+         if (c && c.accepted === true) { loadMetrika(); }
+         else { window.addEventListener('blp:cookie-consent-accepted', loadMetrika, {once:true}); }
+       })();
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/<?php echo htmlspecialchars($yandex_metrika_id, ENT_QUOTES, 'UTF-8'); ?>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <?php endif; ?>
 
-    <?php if ($vk_pixel_id): ?>
-    <!-- VK Pixel -->
-    <script>!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("<?php echo htmlspecialchars($vk_pixel_id, ENT_QUOTES, 'UTF-8'); ?>"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=<?php echo htmlspecialchars($vk_pixel_id, ENT_QUOTES, 'UTF-8'); ?>" style="position:fixed;left:-9999px;" alt=""/></noscript>
-    <?php endif; ?>
+    <?php /* 2026-05-07: VK Pixel удалён — не используется. Если понадобится — добавить с consent gate как у Метрики выше. */ ?>
 
     <!-- 2026-04-24: LCP preload — должен быть ДО всех stylesheet, как можно раньше в head -->
     <?php if (!empty($extra_preload)) echo $extra_preload; ?>
 
-    <!-- 2026-05-04: preconnect к аналитике и CDN иконок — экономит DNS+TLS handshake (Phase 5) -->
+    <!-- 2026-05-04: preconnect к аналитике — экономит DNS+TLS handshake -->
+    <!-- 2026-05-07: убран preconnect к flaticon (R-015) — иконки больше не используются -->
     <link rel="preconnect" href="https://mc.yandex.ru" crossorigin>
-    <link rel="preconnect" href="https://cdn-icons-png.flaticon.com" crossorigin>
 
     <!-- 2026-04-20: Google Fonts optimized — removed weight 300 (unused), added font-display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

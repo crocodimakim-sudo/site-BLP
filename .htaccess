@@ -11,6 +11,27 @@ RewriteEngine On
 
 RewriteBase /
 
+# 2026-05-08: 301 со старых /blp/* URL после переезда с VPS на shared hosting
+# Яндекс ходит по историческим ссылкам и получает 404 — этот блок страхует.
+RewriteRule ^blp/?$         /                         [R=301,L]
+RewriteRule ^blp/(.*)$      /$1                       [R=301,L]
+
+# 2026-05-08: 301 со старых WordPress-URL (карточки товаров) → /catalog
+# Источник: Яндекс.Вебмастер «Статистика обхода» 4xx за 2026-05-01..05.
+RewriteRule ^fibroczementnaya-panel-blp-polished-shokoladnyj/?$  /catalog       [R=301,L]
+RewriteRule ^fakturnye-paneli-serii-blp-texture/?$               /catalog       [R=301,L]
+RewriteRule ^polirovannye-paneli-serii-blp-polished/?$           /catalog       [R=301,L]
+RewriteRule ^linearnye-paneli-serii-blp-walypan/?$               /catalog       [R=301,L]
+
+# 2026-05-08: WordPress uploads (PDF-сертификаты со старого сайта) → /sertificate
+RewriteRule ^wp-content/uploads/.*\.pdf$                         /sertificate   [R=301,L]
+RewriteRule ^wp-content/                                         /              [R=301,L]
+RewriteRule ^wp-includes/                                        /              [R=301,L]
+RewriteRule ^wp-admin/                                           /              [R=301,L]
+
+# 2026-05-08: /shop/* (WooCommerce RSS, листинги) — окончательно удалены, 410 Gone
+RewriteRule ^shop(/|$)                                           -              [G,L]
+
 # 2026-04-22: API endpoints
 RewriteRule ^api/slider$    pages_php/api/slider.php  [L]
 
@@ -50,7 +71,8 @@ RewriteRule ^install$       pages_php/install.php     [L]
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
     # 2026-04-23: CSP Report-Only — собирать нарушения 2 недели, затем перевести в enforce
-    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://api-maps.yandex.ru https://yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.yandex.net https://*.googleapis.com; connect-src 'self' https://www.google-analytics.com; frame-src https://yandex.ru"
+    # 2026-05-07: убраны googletagmanager.com и google-analytics.com (R-016) — GA отключён, не нужны
+    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://api-maps.yandex.ru https://yandex.ru https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.yandex.net https://*.yandex.ru https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru; frame-src https://yandex.ru"
 </IfModule>
 
 # 2026-04-20: block access to service files (docs, scripts, backups, git)

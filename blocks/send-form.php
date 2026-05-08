@@ -142,6 +142,9 @@ $headers = "From: noreply@building-port.ru\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 // 2026-04-24: сохранить заявку в SQLite
+// 2026-05-07: фиксируем версию текста согласия и время — доказательство ст. 9 152-ФЗ
+define('BLP_CONSENT_VERSION', '2026-05-07-v2'); // меняется при изменении текста чекбокса
+$consentAt = date('c'); // ISO 8601 с таймзоной
 $dbFile = dirname(__DIR__) . '/database/leads.db';
 try {
     $pdo = new PDO('sqlite:' . $dbFile, null, null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -154,14 +157,27 @@ try {
         company TEXT,
         marketing INTEGER DEFAULT 0,
         mail_sent INTEGER DEFAULT 0,
-        ip TEXT
+        ip TEXT,
+        consent_text_version TEXT,
+        consent_at TEXT,
+        user_agent TEXT
     )");
-    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, marketing, ip) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    // 2026-05-07: миграция для существующих БД — добавляем колонки если их нет
+    $cols = $pdo->query("PRAGMA table_info(leads)")->fetchAll(PDO::FETCH_COLUMN, 1);
+    if (!in_array('consent_text_version', $cols, true)) $pdo->exec("ALTER TABLE leads ADD COLUMN consent_text_version TEXT");
+    if (!in_array('consent_at', $cols, true))           $pdo->exec("ALTER TABLE leads ADD COLUMN consent_at TEXT");
+    if (!in_array('user_agent', $cols, true))           $pdo->exec("ALTER TABLE leads ADD COLUMN user_agent TEXT");
+
+    $userAgent = substr($_SERVER['HTTP_USER_AGENT'] ?? '', 0, 500);
+    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, marketing, ip, consent_text_version, consent_at, user_agent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
         date('Y-m-d H:i:s'),
         $name, $phone, $email, $company,
         isset($input['marketing']) && $input['marketing'] ? 1 : 0,
-        $_SERVER['REMOTE_ADDR'] ?? ''
+        $_SERVER['REMOTE_ADDR'] ?? '',
+        BLP_CONSENT_VERSION,
+        $consentAt,
+        $userAgent
     ]);
 } catch (Exception $e) {
     // лог не блокирует отправку
@@ -185,19 +201,35 @@ if ($mailSent && !empty($email)) {
 }
 
 // 2026-04-23: лог заявки в файл независимо от результата mail()
+// 2026-05-07: ПД маскируются (R-008) — лог только для отладки SMTP, не для хранения ПД (для этого SQLite)
 $logDir = dirname(__DIR__) . '/logs';
 if (!is_dir($logDir)) {
     @mkdir($logDir, 0755, true);
 }
 $logFile = $logDir . '/leads_' . date('Y-m') . '.log';
+// маскирование: телефон → последние 4 цифры; email → первый символ + домен; имя → первая буква
+$maskPhone = $phone ? '***' . substr(preg_replace('/\D/', '', $phone), -4) : '-';
+$maskEmail = $email ? (substr($email, 0, 1) . '***@' . (strpos($email, '@') !== false ? substr($email, strpos($email, '@') + 1) : '?')) : '-';
+$maskName  = $name  ? (mb_substr($name, 0, 1) . '***') : '-';
 $logLine = date('Y-m-d H:i:s')
-    . ' | ' . $name
-    . ' | ' . $phone
-    . ' | ' . $email
-    . ' | ' . ($company ?: '-')
+    . ' | ' . $maskName
+    . ' | ' . $maskPhone
+    . ' | ' . $maskEmail
+    . ' | ' . ($company ? '[set]' : '-')
     . ' | mail:' . ($mailSent ? 'ok' : 'FAIL')
     . "\n";
 @file_put_contents($logFile, $logLine, FILE_APPEND | LOCK_EX);
+
+// 2026-05-07: автоматическая ротация — удаляем логи старше 30 дней (R-008)
+$logCleanupMarker = $logDir . '/.last_cleanup';
+$lastCleanup = is_file($logCleanupMarker) ? (int)@file_get_contents($logCleanupMarker) : 0;
+if ($_rl_now - $lastCleanup > 86400) { // не чаще раза в сутки
+    @file_put_contents($logCleanupMarker, $_rl_now);
+    $cutoff = $_rl_now - 30 * 86400;
+    foreach (glob($logDir . '/leads_*.log') ?: [] as $oldLog) {
+        if (filemtime($oldLog) < $cutoff) @unlink($oldLog);
+    }
+}
 
 // 2026-04-24: обновить mail_sent в SQLite
 if (isset($stmt)) {
