@@ -1,5 +1,34 @@
 # Changelog — BLP Board
 
+## 2026-05-08 — SEO: 301/410 редиректы для устранения 4xx в Яндекс.Вебмастере
+
+**Причина:** Уведомление Вебмастера «страницы начали отвечать 4xx». Робот ходит по легаси WordPress-URL (старая версия сайта на WP) и URL с префиксом `/blp/` (с VPS-времён). Получает 404 → угроза выпадения из индекса.
+
+**Реализовано в `.htaccess`:**
+- **301 `/blp/*` → `/*`** — страховка с VPS-эпохи (карты-сайт Яндекса помнит старые ссылки)
+- **301 старых WP-карточек товаров → `/catalog`:**
+  - `/fibroczementnaya-panel-blp-polished-shokoladnyj/`
+  - `/fakturnye-paneli-serii-blp-texture/`
+  - `/polirovannye-paneli-serii-blp-polished/`
+  - `/linearnye-paneli-serii-blp-walypan/`
+- **301 `/wp-content/uploads/*.pdf` → `/sertificate`** — старые PDF-сертификаты с WP
+- **301 `/wp-content/*`, `/wp-includes/*`, `/wp-admin/*` → `/`** — общая страховка для WP-наследия
+- **410 Gone для `/shop/*`** — WooCommerce-листинги и RSS, окончательно удалены (быстрее уйдёт из индекса, чем 404)
+
+**Проверка прода (curl):**
+- `/blp/catalog` → 301 → `/catalog` ✅
+- `/shop/feed/` → 410 ✅
+- `/wp-content/uploads/test.pdf` → 301 → `/sertificate` ✅
+- `/fakturnye-paneli-serii-blp-texture/` → 301 → `/catalog` ✅
+
+**Изменённые файлы:** `.htaccess` (правила добавлены до блока блога/основных rewrite, чтобы не конфликтовать с slug блог-постов).
+
+**Дальнейшие шаги:**
+- Через 7-14 дней повторно проверить «Статистика обхода» в Вебмастере
+- Для страниц с пометкой «URL неизвестен роботу, 200 OK» (`/kreplenie`, `/projects`, `/sertificate`, `/compare-materials`) — отправить в Вебмастер → Переобход страниц вручную
+
+---
+
 ## 2026-05-01 — Защита от спама + отключение GA4 + обновление политик
 
 ### 🔒 Защита формы обратной связи от спама

@@ -207,6 +207,8 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
     </main>
 
     <?php include 'footer.php'; ?>
+    <?php /* 2026-05-08: welcome popup — один раз для новых пользователей (BLITE + FCB 6мм) */ ?>
+    <?php include 'welcome-popup.php'; ?>
     <script src="/js/header.js" defer></script>
     <script src="/js/analytics.js" defer></script>
     <?php if (isset($extra_js)) echo $extra_js; ?>
