@@ -32,6 +32,19 @@ RewriteRule ^wp-admin/                                           /              
 # 2026-05-08: /shop/* (WooCommerce RSS, листинги) — окончательно удалены, 410 Gone
 RewriteRule ^shop(/|$)                                           -              [G,L]
 
+# 2026-05-11: WordPress-наследие от старого сайта светильников (BLP светильники → blite-light.ru)
+# Яндекс.Вебмастер 4xx за 2026-05-09: /product/*, /product-tag/*, /author/*, категории освещения.
+# Карточки светильников НЕ редиректим на /catalog (это панели), отдаём 410 Gone — обход прекратится.
+RewriteRule ^product/                                            -              [G,L]
+RewriteRule ^product-tag/                                        -              [G,L]
+RewriteRule ^product-category/                                   -              [G,L]
+RewriteRule ^author/                                             -              [G,L]
+RewriteRule ^ulichnoe-osveshhenie(/|$)                           -              [G,L]
+RewriteRule ^administrativno-ofisnoe-osveshhenie(/|$)            -              [G,L]
+RewriteRule ^promyshlennoe-osveshhenie(/|$)                      -              [G,L]
+RewriteRule ^arhitekturnoe-osveshhenie(/|$)                      -              [G,L]
+RewriteRule ^osveshhenie(/|$)                                    -              [G,L]
+
 # 2026-04-22: API endpoints
 RewriteRule ^api/slider$    pages_php/api/slider.php  [L]
 
