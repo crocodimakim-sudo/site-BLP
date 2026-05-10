@@ -155,7 +155,7 @@ blocks/
   benefits.php, benefits-section.php, specs-section.php
   objects-section.php, partners-section.php, partners-slider.php
   products-section.php, audience-section.php
-  cookie-consent-banner.php, get_projects.php, image-helper.php
+  cookie-consent-banner.php, welcome-popup.php, get_projects.php, image-helper.php
   session_init.php        — CSRF инит (session_start + token)
   site_config.php         — читает database/site_config.json
 catalog_config.php         — читает database/catalog.json; get_catalog_series(), get_catalog_prices(key)
@@ -236,6 +236,30 @@ database/                  — НЕ в git, живёт на сервере
 - [ ] **Дальнейший LCP-фикс** — defer non-critical CSS, форсированный reflow в JS (риск визуала, отдельная итерация)
 - [ ] **MySQL миграция** — если SQLite недостаточно для нагрузки
 - [ ] **CSP enforce mode** — после аудита всех inline-скриптов
+
+---
+
+## ✅ ВЫПОЛНЕНО (2026-05-10) — Welcome popup: кросс-промо BLP + MDBoard / FCB Decor
+
+Уведомление новых пользователей о двух смежных проектах:
+- **Светильники BLP** → `https://blite-light.ru/`
+- **Фиброцементные панели для внутренней отделки 6 мм** (MDBoard и BLP FCB Decor) → `https://blp.building-port.ru/`
+
+**Реализация:**
+- ✅ Новый блок `blocks/welcome-popup.php` — модальное окно с overlay, две CTA-кнопки, дизайн в стиле сайта (брендовый зелёный, Montserrat, плавная анимация)
+- ✅ Подключён в `blocks/template.php` после `footer.php` → автоматически на всех страницах, но JS показывает **только на главной** (`/` или `/index.php`)
+- ✅ **Логика:** 1 раз в **2 часа** на браузер (`localStorage['blp_welcome_popup_last_shown']` = timestamp). Вышел и вернулся через 2+ часа → попап снова
+- ✅ Закрытие: ✕, Esc, клик на overlay
+- ✅ Параметр `?welcome=1` для принудительного превью (отладка)
+
+**Сопутствующий фикс — `router.php`:**
+- ✅ Добавлен `chdir(dirname($script))` перед `require` — чтобы относительные `include '../blocks/X.php'` из `pages_php/index.php` работали под PHP built-in сервером (Apache mod_php делает это автоматически, dev-роутер до этого — нет). Без фикса главная локально показывалась без секций objects/partners/contact-form.
+
+**Параметры в одном месте** (правка → файл `blocks/welcome-popup.php`, верх `<script>`):
+```js
+var COOLDOWN_MS = 2 * 60 * 60 * 1000;  // изменить интервал между показами
+var DELAY_MS = 1500;                    // изменить задержку появления
+```
 
 ---
 

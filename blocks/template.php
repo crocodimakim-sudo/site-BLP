@@ -73,6 +73,8 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
     <script>(function(){function s(){document.documentElement.style.setProperty('--vh',window.innerHeight*.01+'px');}window.addEventListener('resize',s);s();})();</script>
     <link rel="icon" type="image/svg+xml" href="/images-convert/favicon.svg">
     <meta name="yandex-verification" content="5c0035a8d8486cab" />
+    <!-- 2026-05-11: подтверждение прав в Google Search Console -->
+    <meta name="google-site-verification" content="nQm9U0qSWFfdUmxFEHx2CWwYyhyK68tGSjv_JhZx2rc" />
     <!-- 2026-05-07: возрастная маркировка по 436-ФЗ (R-012) — контент общего назначения, без ограничений -->
     <meta name="rating" content="general">
     <title><?php echo htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8'); ?></title>
