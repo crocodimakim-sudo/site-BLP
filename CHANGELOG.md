@@ -1,5 +1,29 @@
 # Changelog — BLP Board
 
+## 2026-05-08 — Welcome popup: кросс-промо BLP светильники + MDBoard / BLP FCB Decor
+
+**Цель:** Уведомить новых пользователей основного сайта о двух смежных проектах: переехавших светильниках BLP (`blite-light.ru`) и новом продукте — фиброцементных панелях для внутренней отделки 6 мм (`blp.building-port.ru`).
+
+**Реализация:**
+- Новый блок `blocks/welcome-popup.php` — модальное окно с overlay по центру экрана, две CTA-кнопки
+- Подключён в `blocks/template.php` (после `footer.php`) → автоматически на всех страницах
+- Показывается **один раз** на пользователя: `localStorage['blp_welcome_popup_shown_v2'] = '1'` после dismiss/click
+- Задержка появления: 1.5 сек после загрузки страницы
+- Закрытие: крестик ✕, клик на overlay, Esc
+- Параметр `?welcome=1` для принудительного показа (отладка/превью)
+- Дизайн в стиле сайта: `--color-brand`, Montserrat, `--radius-lg`, плавная анимация slideUp+fade
+
+**Кнопки:**
+- Outlined: **Светильники BLP** → `https://blite-light.ru/`
+- Filled: **MDBoard и BLP FCB Decor** → `https://blp.building-port.ru/`
+
+**Сопутствующий фикс — `router.php`:**
+- Добавлен `chdir(dirname($script))` перед `require` — чтобы относительные `include '../blocks/X.php'` из `pages_php/index.php` работали под PHP built-in сервером (Apache mod_php делает это автоматически, dev-роутер до этого — нет). Без фикса главная локально показывалась без секций objects/partners/contact-form.
+
+**Изменённые файлы:** `blocks/welcome-popup.php` (новый), `blocks/template.php`, `router.php`.
+
+---
+
 ## 2026-05-08 — SEO: 301/410 редиректы для устранения 4xx в Яндекс.Вебмастере
 
 **Причина:** Уведомление Вебмастера «страницы начали отвечать 4xx». Робот ходит по легаси WordPress-URL (старая версия сайта на WP) и URL с префиксом `/blp/` (с VPS-времён). Получает 404 → угроза выпадения из индекса.

@@ -20,11 +20,11 @@
         </p>
 
         <div class="welcome-popup__actions">
-            <a href="https://blite-light.ru/" target="_blank" rel="noopener noreferrer" class="welcome-popup__btn welcome-popup__btn--secondary" data-wpop-click="blite">
+            <a href="https://blite-light.ru/" target="_blank" rel="noopener noreferrer" class="welcome-popup__btn welcome-popup__btn--secondary" data-wpop-cta="blite">
                 Светильники BLP
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
             </a>
-            <a href="https://blp.building-port.ru/" target="_blank" rel="noopener noreferrer" class="welcome-popup__btn welcome-popup__btn--primary" data-wpop-click="fcb">
+            <a href="https://blp.building-port.ru/" target="_blank" rel="noopener noreferrer" class="welcome-popup__btn welcome-popup__btn--primary" data-wpop-cta="fcb">
                 MDBoard и BLP FCB Decor
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
             </a>
@@ -170,19 +170,32 @@
 
 <script>
 (function(){
-    var KEY = 'blp_welcome_popup_shown_v2';
+    // 2026-05-10: умная логика повторов — клик по CTA = миссия выполнена,
+    // dismiss = повторить через COOLDOWN, максимум MAX_DISMISS показов.
+    var KEY = 'blp_welcome_popup_state_v3';
     var DELAY_MS = 1500;
-    // Принудительный показ через ?welcome=1 — для отладки/превью
+    var COOLDOWN_MS = 48 * 60 * 60 * 1000;  // 48 часов между повторами после dismiss
+    var MAX_DISMISS = 3;                     // не более 3 dismiss всего
     var force = /[?&]welcome=1\b/.test(location.search);
     var popup = document.getElementById('welcome-popup');
     if (!popup) return;
 
-    function shown(){
-        try { return localStorage.getItem(KEY) === '1'; } catch(e) { return false; }
+    function getState(){
+        try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { return {}; }
     }
-    function markShown(){
-        try { localStorage.setItem(KEY, '1'); } catch(e) {}
+    function setState(s){
+        try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e) {}
     }
+
+    function shouldShow(){
+        if (force) return true;
+        var s = getState();
+        if (s.clicked) return false;                          // юзер ушёл по CTA
+        if ((s.dismissCount || 0) >= MAX_DISMISS) return false;
+        if (s.lastDismissAt && (Date.now() - s.lastDismissAt) < COOLDOWN_MS) return false;
+        return true;
+    }
+
     function open(){
         popup.hidden = false;
         popup.setAttribute('aria-hidden', 'false');
@@ -192,23 +205,31 @@
         popup.hidden = true;
         popup.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        markShown();
+        var s = getState();
+        s.dismissCount = (s.dismissCount || 0) + 1;
+        s.lastDismissAt = Date.now();
+        setState(s);
+    }
+    function ctaClick(e){
+        var which = e.currentTarget && e.currentTarget.getAttribute('data-wpop-cta');
+        var s = getState();
+        s.clicked = which || true;
+        s.clickedAt = Date.now();
+        setState(s);
+        // не предотвращаем переход — ссылка откроется в новой вкладке
     }
 
     function init(){
-        if (force) { open(); return; }
-        if (shown()) return;
-        setTimeout(open, DELAY_MS);
+        if (!shouldShow()) return;
+        setTimeout(open, force ? 0 : DELAY_MS);
     }
 
     popup.querySelectorAll('[data-wpop-close]').forEach(function(el){
         el.addEventListener('click', close);
     });
-    // Клик на CTA = тоже считаем что попап показан, не зацикливаем.
-    popup.querySelectorAll('[data-wpop-click]').forEach(function(el){
-        el.addEventListener('click', markShown);
+    popup.querySelectorAll('[data-wpop-cta]').forEach(function(el){
+        el.addEventListener('click', ctaClick);
     });
-    // Esc — закрыть
     document.addEventListener('keydown', function(e){
         if (e.key === 'Escape' && !popup.hidden) close();
     });
