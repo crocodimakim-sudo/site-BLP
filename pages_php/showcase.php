@@ -125,7 +125,7 @@ ob_start();
                 <!-- Image gallery -->
                 <div class="showcase-project-images">
                     <?php
-                    $img_dir = "D:/Claude Code/site-blp/site-kimi/images-convert/pages/projects/" . $project['image_dir'] . "/";
+                    $img_dir = "D:/Claude Code/site-blp/01-site-blpboard/images-convert/pages/projects/" . $project['image_dir'] . "/";
                     $web_dir = "/images-convert/pages/projects/" . $project['image_dir'] . "/";
                     $images = glob($img_dir . "*.{jpg,jpeg,png,webp}", GLOB_BRACE);
                     if ($images && count($images) > 0):

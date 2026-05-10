@@ -67,7 +67,7 @@ ob_start();
     <div style="max-width:720px;margin:80px auto;padding:32px;border:1px solid #e8e8e8;border-radius:12px;background:#fff8f0;">
         <h1 style="font-size:24px;margin:0 0 16px;color:#1a1a1a;">База блога не инициализирована</h1>
         <p style="color:#5a5a5a;line-height:1.6;margin:0 0 12px;">Запустите CLI-команду для создания <code>database/blog.db</code>:</p>
-        <pre style="background:#1a1a1a;color:#f4f4f4;padding:16px;border-radius:8px;overflow:auto;">php "D:\Claude Code\site-blp\site-kimi\database\init_blog.php"</pre>
+        <pre style="background:#1a1a1a;color:#f4f4f4;padding:16px;border-radius:8px;overflow:auto;">php "D:\Claude Code\site-blp\01-site-blpboard\database\init_blog.php"</pre>
     </div>
 </section>
 <?php else: ?>

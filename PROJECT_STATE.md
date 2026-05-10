@@ -1,4 +1,4 @@
-# Состояние проекта site-kimi (BLP Board)
+# Состояние проекта 01-site-blpboard (BLP Board)
 
 > **Дата фиксации:** 2026-04-30
 > **Цель документа:** Зафиксировать текущее состояние проекта, технический стек, незакоммиченные изменения и точку отсчёта для дальнейших работ.
@@ -10,7 +10,7 @@
 | Параметр | Значение |
 |----------|----------|
 | **Проект** | Сайт компании BLP Board (фиброцементные панели для вентилируемых фасадов) |
-| **Локальный путь** | `D:\Claude Code\01-site-blp\site-kimi` |
+| **Локальный путь** | `D:\Claude Code\01-sites-buildingport\01-site-blpboard` |
 | **Репозиторий** | `https://github.com/crocodimakim-sudo/site-BLP` (приватный) |
 | **Текущий сервер** | `204.168.247.38` (старый VPS, деплой отключён) |
 | **Новый сервер** | Shared хостинг (путь: `/var/www/u2678850/data/www/building-port.ru/`) |
@@ -36,7 +36,7 @@
 ## 3. Структура проекта
 
 ```
-site-kimi/
+01-site-blpboard/
 ├── .htaccess                    # Главный конфиг Apache (mod_rewrite, заголовки, кэш)
 ├── .gitignore                   # Исключения из Git
 ├── robots.txt                   # Настройки для поисковых роботов
@@ -232,7 +232,7 @@ b9596cb  2026-04-28: audience 300px/green btn/picture fix, architect mobile grid
 7. Открытие сайта в Chrome (`https://building-port.ru/`)
 
 ### Архив для подрядчика
-- **Файл:** `D:\Claude Code\01-site-blp\site-kimi-hosting.zip`
+- **Файл:** `D:\Claude Code\01-sites-buildingport\01-site-blpboard-hosting.zip`
 - **Размер:** ~188 MB
 - **Содержит:** весь сайт без `.git`, `.omc`, `.gstack`, `logs`, `html`
 - **Пути адаптированы:** без `/blp/`, корневые URL

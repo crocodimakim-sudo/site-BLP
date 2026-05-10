@@ -1,14 +1,14 @@
 # Site-Kimi — BLP Board (XAMPP локально)
 
 **Язык:** Русский | **XAMPP:** `http://localhost/`  
-**Бэкап:** `D:/Codex/01-site-blp/site-kimi-backup/`
+**Бэкап:** `D:/Codex/01-sites-buildingport/01-site-blpboard-backup/`
 
 ---
 
 ## 🔴 ПРАВИЛО №1 — SYNC ПОСЛЕ КАЖДОГО ИЗМЕНЕНИЯ
 
 ```bash
-cp -f "D:/Codex/01-site-blp/site-kimi/[файл]" "C:/xampp/htdocs/[файл]"
+cp -f "D:/Codex/01-sites-buildingport/01-site-blpboard/[файл]" "C:/xampp/htdocs/[файл]"
 ```
 Никогда не говорить "проверяй" без синхронизации.
 

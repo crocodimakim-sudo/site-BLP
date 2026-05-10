@@ -2,7 +2,7 @@
 
 **Язык:** Русский | **Прод:** `https://building-port.ru/`  
 **Git:** `github.com/crocodimakim-sudo/site-BLP` (main)  
-**Архив для подрядчика:** `D:/Claude Code/01-site-blp/site-kimi-hosting.zip`
+**Архив для подрядчика:** `D:/Claude Code/01-sites-buildingport/01-site-blpboard-hosting.zip`
 
 ---
 
@@ -63,7 +63,7 @@
 
 ### deploy.bat (автоматический)
 ```bash
-cd "/d/Claude Code/01-site-blp/site-kimi"
+cd "/d/Claude Code/01-sites-buildingport/01-site-blpboard"
 C:/xampp/php/php.exe scripts/convert_images.php   # конвертация images/ → images-convert/
 git add -A
 git commit -m "описание"

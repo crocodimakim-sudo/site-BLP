@@ -5,7 +5,7 @@ chcp 65001 >nul
 
 setlocal
 
-cd /d "D:\Claude Code\01-site-blp\site-kimi"
+cd /d "D:\Claude Code\01-sites-buildingport\01-site-blpboard"
 
 REM Commit message
 if "%~1"=="" (
@@ -43,7 +43,7 @@ if errorlevel 1 (
 )
 
 echo [4/5] Creating ZIP from git...
-set ZIPFILE=%TEMP%\site-kimi-deploy.zip
+set ZIPFILE=%TEMP%\01-site-blpboard-deploy.zip
 git archive --format=zip -o "%ZIPFILE%" HEAD
 if errorlevel 1 (
     echo ERROR: failed to create ZIP
