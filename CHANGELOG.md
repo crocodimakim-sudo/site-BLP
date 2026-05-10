@@ -7,8 +7,12 @@
 **Реализация:**
 - Новый блок `blocks/welcome-popup.php` — модальное окно с overlay по центру экрана, две CTA-кнопки
 - Подключён в `blocks/template.php` (после `footer.php`) → автоматически на всех страницах
-- Показывается **один раз** на пользователя: `localStorage['blp_welcome_popup_shown_v2'] = '1'` после dismiss/click
 - Задержка появления: 1.5 сек после загрузки страницы
+- **Умная логика повторов** (обновлено 2026-05-10):
+  - Кликнул на любую CTA → миссия выполнена, больше не показываем (`clicked: 'blite' | 'fcb'`)
+  - Закрыл крестиком/Esc/overlay → повтор через **48 часов** (`COOLDOWN_MS`)
+  - Максимум **3 dismiss** на пользователя (`MAX_DISMISS`) — после третьего отказа больше не дёргаем
+  - Состояние в `localStorage['blp_welcome_popup_state_v3']` как JSON: `{ clicked, clickedAt, dismissCount, lastDismissAt }`
 - Закрытие: крестик ✕, клик на overlay, Esc
 - Параметр `?welcome=1` для принудительного показа (отладка/превью)
 - Дизайн в стиле сайта: `--color-brand`, Montserrat, `--radius-lg`, плавная анимация slideUp+fade

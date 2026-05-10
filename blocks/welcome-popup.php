@@ -170,53 +170,40 @@
 
 <script>
 (function(){
-    // 2026-05-10: умная логика повторов — клик по CTA = миссия выполнена,
-    // dismiss = повторить через COOLDOWN, максимум MAX_DISMISS показов.
-    var KEY = 'blp_welcome_popup_state_v3';
+    // 2026-05-10: только главная, 1 раз в 2 часа, без различия dismiss/click.
+    var KEY = 'blp_welcome_popup_last_shown';
     var DELAY_MS = 1500;
-    var COOLDOWN_MS = 48 * 60 * 60 * 1000;  // 48 часов между повторами после dismiss
-    var MAX_DISMISS = 3;                     // не более 3 dismiss всего
+    var COOLDOWN_MS = 2 * 60 * 60 * 1000;  // 2 часа
     var force = /[?&]welcome=1\b/.test(location.search);
     var popup = document.getElementById('welcome-popup');
     if (!popup) return;
 
-    function getState(){
-        try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { return {}; }
+    // Показываем только на главной — pathname === '/' (или пусто, или index.php).
+    var isHome = location.pathname === '/' || location.pathname === '' || /\/index\.php$/i.test(location.pathname);
+    if (!isHome && !force) return;
+
+    function getLast(){
+        try { return parseInt(localStorage.getItem(KEY), 10) || 0; } catch(e) { return 0; }
     }
-    function setState(s){
-        try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e) {}
+    function markShown(){
+        try { localStorage.setItem(KEY, String(Date.now())); } catch(e) {}
     }
 
     function shouldShow(){
         if (force) return true;
-        var s = getState();
-        if (s.clicked) return false;                          // юзер ушёл по CTA
-        if ((s.dismissCount || 0) >= MAX_DISMISS) return false;
-        if (s.lastDismissAt && (Date.now() - s.lastDismissAt) < COOLDOWN_MS) return false;
-        return true;
+        return (Date.now() - getLast()) >= COOLDOWN_MS;
     }
 
     function open(){
         popup.hidden = false;
         popup.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        markShown();
     }
     function close(){
         popup.hidden = true;
         popup.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        var s = getState();
-        s.dismissCount = (s.dismissCount || 0) + 1;
-        s.lastDismissAt = Date.now();
-        setState(s);
-    }
-    function ctaClick(e){
-        var which = e.currentTarget && e.currentTarget.getAttribute('data-wpop-cta');
-        var s = getState();
-        s.clicked = which || true;
-        s.clickedAt = Date.now();
-        setState(s);
-        // не предотвращаем переход — ссылка откроется в новой вкладке
     }
 
     function init(){
@@ -226,9 +213,6 @@
 
     popup.querySelectorAll('[data-wpop-close]').forEach(function(el){
         el.addEventListener('click', close);
-    });
-    popup.querySelectorAll('[data-wpop-cta]').forEach(function(el){
-        el.addEventListener('click', ctaClick);
     });
     document.addEventListener('keydown', function(e){
         if (e.key === 'Escape' && !popup.hidden) close();
