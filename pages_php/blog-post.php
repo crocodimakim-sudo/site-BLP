@@ -79,47 +79,9 @@ if (!function_exists('blog_format_date')) {
     }
 }
 
-// 2026-04-24: BlogPosting schema — построить до ob_start()
-$_image_url = !empty($article['image'])
-    ? (strpos($article['image'], 'http') === 0 ? $article['image'] : 'https://building-port.ru' . $article['image'])
-    : 'https://building-port.ru/images/og-default.jpg';
-
-$_datePublished = !empty($article['published_at']) ? date('c', strtotime($article['published_at'])) : '';
-$_dateModified  = !empty($article['updated_at'])   ? date('c', strtotime($article['updated_at']))   : $_datePublished;
-
-$_blogposting_schema = [
-    '@context'       => 'https://schema.org',
-    '@type'          => 'BlogPosting',
-    '@id'            => $page_canonical . '#blogposting',
-    'headline'       => $article['title'],
-    'url'            => $page_canonical,
-    'description'    => $article['subtitle'] ?? '',
-    'image'          => [
-        '@type'  => 'ImageObject',
-        'url'    => $_image_url,
-        'width'  => 1200,
-        'height' => 630,
-    ],
-    'datePublished'  => $_datePublished,
-    'dateModified'   => $_dateModified,
-    'author'         => [
-        '@type' => 'Organization',
-        '@id'   => 'https://building-port.ru/#organization',
-        'name'  => 'BLP Board',
-    ],
-    'publisher'      => ['@id' => 'https://building-port.ru/#organization'],
-    'inLanguage'     => 'ru-RU',
-    'isPartOf'       => ['@id' => 'https://building-port.ru/blog#blog'],
-    'mainEntityOfPage' => [
-        '@type' => 'WebPage',
-        '@id'   => $page_canonical . '#webpage',
-    ],
-];
-
-if (!empty($article['read_time'])) {
-    // ISO 8601 duration: PTxM
-    $_blogposting_schema['timeRequired'] = 'PT' . (int)$article['read_time'] . 'M';
-}
+// 2026-05-11: BlogPosting schema — вынесена в schema_article.php
+$_canonical_for_schema = $page_canonical;
+include __DIR__ . '/schema_article.php';
 
 // 2026-04-27: блог скрыт до доработки — не индексировать
 $page_robots = 'noindex, nofollow';
@@ -194,11 +156,6 @@ ob_start();
     </div>
 </section>
 <?php endif; ?>
-
-<?php // 2026-04-24: BlogPosting JSON-LD schema ?>
-<script type="application/ld+json">
-<?php echo json_encode($_blogposting_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
-</script>
 
 <?php
 $page_content = ob_get_clean();

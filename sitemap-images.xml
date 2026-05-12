@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 2026-05-11: Image sitemap для BLP Board — увеличивает охват в Google Images.
+     Включены семантически значимые изображения: hero, продуктовые серии, сертификаты, объекты. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- Главная -->
+    <url>
+        <loc>https://building-port.ru/</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/index/index_hero.webp</image:loc>
+            <image:title>Фиброцементные плиты BLP Board для навесных вентилируемых фасадов</image:title>
+            <image:caption>Реализованный объект с фиброцементным фасадом BLP Board — 4 серии: NATURE, POLISHED, TEXTURE, WALYPAN</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/og-default.jpg</image:loc>
+            <image:title>BLP Board — фиброцементные фасадные панели</image:title>
+        </image:image>
+    </url>
+
+    <!-- Каталог: 4 серии -->
+    <url>
+        <loc>https://building-port.ru/catalog</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/catalog/catalog_nature_render.jpg</image:loc>
+            <image:title>BLP NATURE — фиброцементные панели с натуральной фактурой</image:title>
+            <image:caption>Серия NATURE: фиброцемент с естественной текстурой, 7 200 ₽/м², толщины 8–15 мм</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/catalog/1.jpg</image:loc>
+            <image:title>Натуральные фиброцементные панели серия NATURE</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/catalog/2.png</image:loc>
+            <image:title>Полированные фиброцементные плиты серия BLP POLISHED</image:title>
+            <image:caption>BLP POLISHED — гладкие фиброцементные плиты, 7 950 ₽/м²</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/catalog/3.png</image:loc>
+            <image:title>Текстурированные фиброцементные плиты серия BLP TEXTURE</image:title>
+            <image:caption>BLP TEXTURE — фактурные фиброцементные панели под бетон/штукатурку, 7 200 ₽/м²</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/blocks/products/series-walypan.webp</image:loc>
+            <image:title>Линеарные фиброцементные плиты серия BLP WALYPAN</image:title>
+            <image:caption>BLP WALYPAN — крупноформатные плиты для сложных фасадных решений, 12 200 ₽/м²</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Архитекторам -->
+    <url>
+        <loc>https://building-port.ru/architect</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/architect/architect_hero.jpg</image:loc>
+            <image:title>Фиброцементные панели для архитекторов и проектировщиков</image:title>
+            <image:caption>Документация, ТС ФАУ ФЦС № 7292-25, образцы, узлы НВФ</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Дилерам -->
+    <url>
+        <loc>https://building-port.ru/dealer</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/diler/diler_hero.jpg</image:loc>
+            <image:title>Дилерская программа BLP Board — фиброцементные панели</image:title>
+            <image:caption>Объект с фиброцементными панелями BLP Board, дилерская сеть по РФ</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Крепление -->
+    <url>
+        <loc>https://building-port.ru/kreplenie</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png</image:loc>
+            <image:title>Видимое крепление фиброцементных панелей BLP Board</image:title>
+            <image:caption>Способы крепления фиброцементных панелей к подсистеме НВФ — видимое и скрытое</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Сертификаты -->
+    <url>
+        <loc>https://building-port.ru/sertificate</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/sertificate/cert_fire_safety.png</image:loc>
+            <image:title>Сертификат пожарной безопасности фиброцементных панелей BLP Board (НГ, ГОСТ 30244-94)</image:title>
+            <image:caption>Класс пожарной опасности НГ (К0), Техническое свидетельство ФАУ ФЦС № 7292-25</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Проекты / объекты -->
+    <url>
+        <loc>https://building-port.ru/projects</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/pages/index/index_hero.jpg</image:loc>
+            <image:title>Реализованные объекты с фасадом BLP Board — ЖК, школы, БЦ</image:title>
+            <image:caption>Портфолио объектов: фиброцементные фасадные панели в реальных условиях эксплуатации</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Бренд / лого -->
+    <url>
+        <loc>https://building-port.ru/</loc>
+        <image:image>
+            <image:loc>https://building-port.ru/images-convert/shared/header/logo-3.svg</image:loc>
+            <image:title>Логотип BLP Board — фиброцементные фасадные панели</image:title>
+        </image:image>
+    </url>
+
+</urlset>

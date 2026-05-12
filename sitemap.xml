@@ -53,6 +53,68 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-    <!-- 2026-04-27: блог скрыт до доработки, URL временно исключены из sitemap -->
-    <!-- 2026-05-04: showcase — 404, не добавлена; faq/install — 404, удалены; devops — служебная, удалена -->
+    <!-- 2026-05-11: открыты ранее скрытые страницы — faq, install, blog -->
+    <url>
+        <loc>https://building-port.ru/faq</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/install</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 2026-05-11: 9 опубликованных статей блога из database/blog.db -->
+    <url>
+        <loc>https://building-port.ru/blog/montazhnye-sistemy-fibrocementa-analiz</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/poshagovyj-montazh-fibrocementa</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/shpargalka-montazhnika-blp</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/krepezh-guide</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/montazh-zima</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/oshibki-fasada</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/fibrociment-vs-kirpich</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/proekt-zhk-parkovy</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://building-port.ru/blog/blp-2026</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <!-- 2026-05-11: /logistika и /showcase не добавлены — is_live=false / 404 -->
+    <!-- 2026-05-04: devops — служебная, не индексируется -->
 </urlset>

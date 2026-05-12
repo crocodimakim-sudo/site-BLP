@@ -7,6 +7,8 @@ $page_title    = 'Политика в отношении файлов cookies �
 $page_canonical = 'https://building-port.ru/cookies';
 $page_og_image  = 'https://building-port.ru/images/og-default.jpg';
 $page_desc = 'Политика BLP Board по использованию файлов cookies. Как мы используем cookies, как вы можете управлять ими, и как отключить ненужные файлы.';
+// 2026-05-11: noindex для юридических страниц (тонкий контент)
+$page_robots = 'noindex, follow';
 $extra_css = '<link rel="stylesheet" href="/css/pages/legal.css?v=20260507">';
 $extra_js  = '<script src="/js/legal-toc.js?v=20260507" defer></script>';
 

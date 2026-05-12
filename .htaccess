@@ -74,6 +74,8 @@ RewriteRule ^faq$           pages_php/faq.php         [L]
 RewriteRule ^compare$           pages_php/compare.php          [L]
 RewriteRule ^compare-materials$ pages_php/compare-materials.php [L,QSA]
 RewriteRule ^install$       pages_php/install.php     [L]
+# 2026-05-11: страница логистики (G.3)
+RewriteRule ^logistika$     pages_php/logistika.php   [L]
 
 # 2026-04-20: HSTS — enforce HTTPS for 1 year
 <IfModule mod_headers.c>

@@ -156,17 +156,17 @@ ob_start();
                         class="form-checkbox"
                         required
                     />
-                    <!-- 2026-05-07: расширенное согласие — ст. 9 ч. 4 152-ФЗ (оператор, ИНН, перечень ПД, цели) -->
-                    <label for="consent" class="form-checkbox-label">Я даю согласие ООО «Билдингпорт» (ИНН&nbsp;7708427307, ОГРН&nbsp;1237700843390, г.&nbsp;Москва, ул.&nbsp;Краснопрудная, д.&nbsp;15, помещ.&nbsp;3А/2) на обработку моих персональных данных (имя, телефон, email, наименование компании, ИНН, текст сообщения) с целью обработки заявки, связи со мной и направления коммерческого предложения, на условиях <a href="/consent" target="_blank" rel="noopener noreferrer">Согласия на обработку персональных данных</a> и <a href="/policy" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a></label>
+                    <!-- 2026-05-12: короткая формулировка — полные реквизиты и перечень ПД в /consent (ст. 9 ч. 4 152-ФЗ соблюдается через ссылку) -->
+                    <label for="consent" class="form-checkbox-label">Согласен(на) на обработку персональных данных согласно <a href="/consent" target="_blank" rel="noopener noreferrer">Согласию</a> и <a href="/policy" target="_blank" rel="noopener noreferrer">Политике конфиденциальности</a></label>
                     <span class="field-error" data-field="consent"></span>
                 </div>
 
                 <!-- 2026-04-24: согласие на маркетинговую рассылку -->
-                <!-- 2026-05-07: расширено по приказу РКН №178 и ст.18 38-ФЗ -->
+                <!-- 2026-05-12: короткая формулировка — подробности (срок, отписка, частота) в /consent -->
                 <div class="form-checkbox-group form-checkbox-group--full">
                     <label class="form-checkbox-label">
                         <input type="checkbox" name="marketing" id="marketing" class="form-checkbox">
-                        <span class="form-checkbox-text">Согласен(на) получать от ООО «Билдингпорт» (ИНН&nbsp;7708427307) на указанный email информационные и рекламные материалы о продукции BLP Board: новинки каталога, технические бюллетени, специальные предложения и приглашения на отраслевые мероприятия. Не чаще 2 раз в месяц. Согласие действительно 3 года и может быть отозвано в любой момент через ссылку «отписаться» в письме или по адресу <a href="mailto:info@building-port.ru">info@building-port.ru</a></span>
+                        <span class="form-checkbox-text">Хочу получать новости и предложения BLP Board на email</span>
                     </label>
                 </div>
 

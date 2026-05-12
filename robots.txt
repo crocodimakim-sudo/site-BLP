@@ -1,6 +1,28 @@
 User-agent: *
 Allow: /
 
+# 2026-05-11: AI-краулеры разрешены — для GEO/AI Overviews/ChatGPT/Perplexity (tactics из 05-ТЕХНИЧЕСКИЙ-SEO.md §2.5)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 # 2026-04-23: служебные страницы — не индексировать (тонкий контент)
 Disallow: /policy
 Disallow: /cookies
@@ -26,9 +48,10 @@ Disallow: /503
 Disallow: /error
 
 # 2026-05-04: служебные/девопс страницы — не для публичной индексации
+# 2026-05-11: /install убран — страница открыта (is_live=true), индексируется
 Disallow: /devops
-Disallow: /install
 Disallow: /template
+Disallow: /logistika
 
 # 2026-05-04: schema-файлы отдают JSON-LD, не страницы — индексация бессмысленна
 Disallow: /schema_blog
@@ -37,7 +60,12 @@ Disallow: /schema_localbusiness
 Disallow: /schema_organization
 Disallow: /schema_products
 Disallow: /schema_webpage
+Disallow: /schema_itemlist
+Disallow: /schema_faqpage
+Disallow: /schema_howto
+Disallow: /schema_article
 
 # 2026-04-20: updated Sitemap URL and Allow directive for production domain
 # TODO: если домен изменится — обновить URL ниже
 Sitemap: https://building-port.ru/sitemap.xml
+Sitemap: https://building-port.ru/sitemap-images.xml

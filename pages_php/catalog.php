@@ -504,6 +504,41 @@ ob_start();
 <!-- 2026-04-20: ProductGroup + Product schemas for catalog page -->
 <?php include __DIR__ . '/schema_products.php'; ?>
 
+<!-- 2026-05-11: ItemList schema — 4 серии BLP с ценами для SERP rich results -->
+<?php
+$itemlist_items = [
+    [
+        'name'          => 'BLP NATURE — натуральная фактура',
+        'url'           => 'https://building-port.ru/catalog#nature',
+        'image'         => 'https://building-port.ru/images-convert/pages/catalog/1.jpg',
+        'price'         => '7200',
+        'priceCurrency' => 'RUB',
+    ],
+    [
+        'name'          => 'BLP POLISHED — гладкие фиброцементные плиты',
+        'url'           => 'https://building-port.ru/catalog#polished',
+        'image'         => 'https://building-port.ru/images-convert/pages/catalog/2.png',
+        'price'         => '7950',
+        'priceCurrency' => 'RUB',
+    ],
+    [
+        'name'          => 'BLP TEXTURE — фактурные фиброцементные панели',
+        'url'           => 'https://building-port.ru/catalog#texture',
+        'image'         => 'https://building-port.ru/images-convert/pages/catalog/3.png',
+        'price'         => '7200',
+        'priceCurrency' => 'RUB',
+    ],
+    [
+        'name'          => 'BLP WALYPAN — крупноформатные плиты',
+        'url'           => 'https://building-port.ru/catalog#walypan',
+        'image'         => 'https://building-port.ru/images-convert/blocks/products/series-walypan.webp',
+        'price'         => '12200',
+        'priceCurrency' => 'RUB',
+    ],
+];
+include __DIR__ . '/schema_itemlist.php';
+?>
+
 <?php
 $page_content = ob_get_clean();
 include 'template.php';
