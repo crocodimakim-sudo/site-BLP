@@ -12,6 +12,9 @@ $extra_js = '<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.mi
 // 2026-04-27: унифицировано с session_init.php (httponly, samesite, strict_mode, regenerate_id)
 require_once __DIR__ . '/../blocks/session_init.php';
 
+// 2026-05-12: anti-spam — фиксируем время рендера формы (отсечь мгновенные POST от ботов)
+$_SESSION['form_time'] = time();
+
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
     ['name' => 'Главная',  'url' => 'https://building-port.ru/'],
@@ -185,6 +188,10 @@ ob_start();
 
                 <!-- 2026-04-22: CSRF token protection -->
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">
+
+                <!-- 2026-05-12: honeypot — невидимые поля для ловли ботов (XRumer и пр.). Реальные пользователи не заполняют, AT их видит как aria-hidden -->
+                <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+                <input type="text" name="fax_number" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
             </div>
         </form>
     </div>

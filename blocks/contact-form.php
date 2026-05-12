@@ -101,7 +101,9 @@ $_SESSION['form_time'] = time();
         </div>
 
         <!-- 2026-04-24: honeypot — ботозащита, не трогать. aria-hidden для accessibility (поле невидимо для AT) -->
+        <!-- 2026-05-12: добавлен второй honeypot fax_number — XRumer обходит известное имя website -->
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+        <input type="text" name="fax_number" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
 
         <!-- 2026-04-22: CSRF token -->
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES); ?>">

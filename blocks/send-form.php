@@ -38,7 +38,9 @@ if (!$csrf_input || !isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['c
 }
 
 // 2026-04-24: honeypot — тихо игнорируем ботов
-if (!empty($input['website'])) {
+// 2026-05-12: добавлен второй honeypot `fax_number` — XRumer знает `website`, новое имя его обманывает
+if (!empty($input['website']) || !empty($input['fax_number'])) {
+    error_log('FORM_SPAM honeypot triggered: ip=' . ($_SERVER['REMOTE_ADDR'] ?? '?') . ' ua=' . substr($_SERVER['HTTP_USER_AGENT'] ?? '?', 0, 100));
     echo json_encode(['ok' => true, 'message' => 'Спасибо!']);
     exit;
 }
@@ -105,6 +107,15 @@ $errors = [];
 
 if (empty($name) || mb_strlen($name) < 2) {
     $errors[] = 'Укажите корректное имя';
+}
+// 2026-05-12: anti-spam — имя только буквы/дефис/пробел, никаких цифр (XRumer шлёт Jennavago7357, Broncofeh)
+if (!empty($name) && !preg_match('/^[а-яА-ЯёЁa-zA-Z\s\-]+$/u', $name)) {
+    $errors[] = 'Имя должно содержать только буквы';
+}
+// 2026-05-12: anti-spam — требуем минимум 1 кириллический символ (сайт русскоязычный)
+if (!empty($name) && !preg_match('/[а-яА-ЯёЁ]/u', $name)) {
+    error_log('FORM_SPAM latin-only name: name=' . substr($name, 0, 30) . ' ip=' . ($_SERVER['REMOTE_ADDR'] ?? '?'));
+    $errors[] = 'Укажите имя на русском языке';
 }
 
 if (empty($phone) || !preg_match('/^[\d\s\+\-\(\)]{7,20}$/', $phone)) {
