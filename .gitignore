@@ -14,6 +14,11 @@ rollback.bat
 # 2026-04-27: данные живут на сервере, не в git
 database/*.db
 database/*.json
+# 2026-06-30: бэкапы БД (blog.db.bak-YYYY-MM-DD и т.п.) не коммитим
+database/*.bak
+database/*.bak-*
+# 2026-06-30: секрет деплоя живёт только на сервере (.deploy-key) и в env, не в git
+.deploy-key
 
 # 2026-04-28: локальные скрипты и служебные файлы
 scripts/generate_html.bat

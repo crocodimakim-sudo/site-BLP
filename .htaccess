@@ -91,7 +91,18 @@ RewriteRule ^logistika$     pages_php/logistika.php   [L]
 </IfModule>
 
 # 2026-04-20: block access to service files (docs, scripts, backups, git)
-<FilesMatch "\.(md|py|bat|sh|log|sql|bak|env|ini|yaml|yml|json|lock)$">
+<FilesMatch "\.(md|py|bat|sh|log|sql|env|ini|yaml|yml|json|lock|key)$">
+    Require all denied
+</FilesMatch>
+# 2026-06-11: ловить .bak и суффиксы вида .bak-2026-05-07 (без якоря конца)
+<FilesMatch "\.bak">
+    Require all denied
+</FilesMatch>
+# 2026-06-11: явная блокировка deploy-ключей и админских заметок по имени
+<FilesMatch "^\.deploy-key">
+    Require all denied
+</FilesMatch>
+<FilesMatch "^README-для-админа">
     Require all denied
 </FilesMatch>
 RedirectMatch 404 /\.git

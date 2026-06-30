@@ -7,6 +7,13 @@ setlocal
 
 cd /d "D:\Claude Code\01-sites-buildingport\01-site-blpboard"
 
+REM 2026-06-11: ключ из env var BLP_DEPLOY_KEY (плейн-текст в репо больше не хранится)
+if "%BLP_DEPLOY_KEY%"=="" (
+    echo ERROR: BLP_DEPLOY_KEY env var is not set
+    echo Set it once: setx BLP_DEPLOY_KEY "your-secret-key" ^&^& restart terminal
+    exit /b 1
+)
+
 REM Commit message
 if "%~1"=="" (
     for /f "tokens=1-3 delims=/" %%a in ('date /t') do set TODAY=%%c-%%b-%%a
@@ -53,7 +60,7 @@ for %%I in ("%ZIPFILE%") do echo ZIP size: %%~zI bytes
 
 echo [5/5] Uploading ZIP to server...
 curl.exe -s -X POST "https://building-port.ru/deploy.php" ^
-    -H "X-Deploy-Key: blp-deploy-2026-key" ^
+    -H "X-Deploy-Key: %BLP_DEPLOY_KEY%" ^
     -F "zip=@%ZIPFILE%" ^
     -o "%TEMP%\deploy-response.json" ^
     -w "\nHTTP_CODE: %%{http_code}\n"

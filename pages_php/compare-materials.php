@@ -3,7 +3,7 @@
 $page_title     = 'BLP Board vs конкуренты: сравнение фасадных материалов';
 $page_canonical = 'https://building-port.ru/compare-materials';
 $page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
-$page_desc      = 'Сравнение BLP Board с HPL-панелями, керамогранитом, АКП, металлокассетами, клинкером, хризотилцементом, СФБ, терракотой и натуральным камнем по 22 параметрам.';
+$page_desc      = 'Сравнение BLP Board с HPL-панелями, керамогранитом, АКП, металлокассетами, клинкером, хризотилцементом, стеклофибробетоном (GFRC), терракотой и натуральным камнем по 22 параметрам.';
 $extra_css      = '<link rel="stylesheet" href="/css/pages/compare-materials.css">';
 $breadcrumbs    = [
     ['name' => 'Главная',              'url' => 'https://building-port.ru/'],
@@ -59,7 +59,7 @@ ob_start();
             <span class="cmp-selector-label">Сравнить с:</span>
             <div class="cmp-pills" id="cmpPills">
                 <button class="cmp-pill active" data-mat="chrysotile">Хризотилцемент</button>
-                <button class="cmp-pill" data-mat="gfrc">СФБ</button>
+                <button class="cmp-pill" data-mat="gfrc">Стеклофибробетон</button>
                 <button class="cmp-pill" data-mat="clinker">Клинкер</button>
                 <button class="cmp-pill" data-mat="ceramics">Керамогранит</button>
                 <button class="cmp-pill" data-mat="acp">АКП</button>
@@ -70,7 +70,7 @@ ob_start();
             </div>
             <select class="cmp-select-mobile" id="cmpSelectMobile">
                 <option value="chrysotile">Хризотилцемент</option>
-                <option value="gfrc">СФБ</option>
+                <option value="gfrc">Стеклофибробетон</option>
                 <option value="clinker">Клинкер</option>
                 <option value="ceramics">Керамогранит</option>
                 <option value="acp">АКП</option>
@@ -357,7 +357,7 @@ const MATERIALS = {
         }
     },
     gfrc: {
-        name: 'СФБ',
+        name: 'Стеклофибробетон (GFRC)',
         desc: 'Стеклофибробетон (GFRC)',
         rows: {
             thickness:      { val: '10–25 мм',                     result: 'equal' },
