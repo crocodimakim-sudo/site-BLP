@@ -38,7 +38,8 @@ ob_start();
                 </div>
             </div>
             <div class="blp-method-info">
-                <p class="blp-method-description">Заклёпки, выкрашенные&nbsp;в тон панели, становятся деталью дизайна.</p>
+                <!-- 2026-08-18: уточнено — видимое крепление предусматривает 2 официальных способа по АТР АТРБИЛДП230626 -->
+                <p class="blp-method-description">Вытяжные заклёпки или самосверлящие винты, выкрашенные&nbsp;в тон панели, становятся деталью дизайна.</p>
             </div>
         </div>
     </div>
@@ -53,40 +54,25 @@ ob_start();
                 </div>
             </div>
             <div class="blp-method-info">
-                <p class="blp-method-description">Невидимый крепёж - сохраняет чистоту фасадной поверхности. Ничего лишнего, только идеальные линии.</p>
+                <!-- 2026-08-18: перечень скрытого крепежа приведён к 3 официальным способам по АТР АТРБИЛДП230626 (убраны KEIL и «Аграфы NORDFox» — таких вариантов нет в АТР/ТС) -->
+                <p class="blp-method-description">Невидимый крепёж - сохраняет чистоту фасадной поверхности. Ничего лишнего, только идеальные линии. Три официальных способа скрытого крепления по Альбому технических решений АТРБИЛДП230626: кляммеры КЛ8 «КРАБ» (ГК «ДИАТ», ТС № 7205-24), анкеры KS цангового типа (ООО «ТПК «Новая Грань», ТС № 7204-24), винты ФИКСАР типа ИНСЕРТ РТ (ТС № 7457-26).</p>
                 <div class="blp-hardware-grid">
                     <div class="blp-hardware-item">
-                        <p class="blp-hardware-title">Кляммер «КРАБ»</p>
+                        <p class="blp-hardware-title">Кляммер КЛ8 «КРАБ»</p>
                         <div class="blp-hardware-images">
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_krab_1.png', 'Кляммер КРАБ'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_krab_1.png', 'Кляммер КЛ8 КРАБ'); ?>
                             </div>
                             <div class="blp-hardware-img">
-                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_krab_2.png', 'Кляммер КРАБ вид 2'); ?>
+                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_krab_2.png', 'Кляммер КЛ8 КРАБ вид 2'); ?>
                             </div>
                         </div>
                     </div>
                     <div class="blp-hardware-item">
-                        <p class="blp-hardware-title">KEIL</p>
-                        <div class="blp-hardware-images">
-                            <div class="blp-hardware-img">
-                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_keil_1.png', 'KEIL крепёж'); ?>
-                            </div>
-                            <div class="blp-hardware-img">
-                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_keil_2.png', 'KEIL крепёж вид 2'); ?>
-                            </div>
-                        </div>
+                        <p class="blp-hardware-title">Анкер KS цангового типа</p>
                     </div>
                     <div class="blp-hardware-item">
-                        <p class="blp-hardware-title">Аграфы NORDFox</p>
-                        <div class="blp-hardware-images">
-                            <div class="blp-hardware-img">
-                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_nordfox_1.png', 'Аграфы NORDFox схема'); ?>
-                            </div>
-                            <div class="blp-hardware-img">
-                                <?php echo render_image('/images-convert/pages/kreplenie/skritoe/mount_nordfox_2.png', 'Аграфы NORDFox'); ?>
-                            </div>
-                        </div>
+                        <p class="blp-hardware-title">Винт ФИКСАР типа ИНСЕРТ РТ</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +98,41 @@ ob_start();
     </div>
 </div>
 
+<!-- 2026-08-18: блок совместимых фасадных систем (класс К0) добавлен по решению владельца -->
+<div class="blp-compatibility-block">
+    <h2 class="blp-compatibility-title">Совместимые фасадные системы (класс К0 по ГОСТ 31251-2008)</h2>
+    <div class="blp-compatibility-divider"></div>
+
+    <p class="blp-method-description">Подтверждено экспертным заключением АНО «ПОЖ-АУДИТ» № З-1/06-2026 от 23.06.2026: класс пожарной опасности К0 (ГОСТ 31251-2008) распространён на 10 навесных фасадных систем (НФС) с облицовкой BLPboard:</p>
+
+    <div class="blp-materials-grid">
+        <div class="blp-material-card">
+            <p class="blp-material-name">АЛЬТ-ФАСАД-А/ФБ</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">АЛЬТ-ФАСАД-03</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">NORDFOX MTA-v-100</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">NORDFOX MLK-v-300 DECO</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">U-kon (АТС-114, LT-147р, АТС-414, LT-447, СИАЛ ПЛМ, КАФТ 03-В/С)</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">EnWall-PANELS</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">UTECH VFH Fibrocement</p>
+        </div>
+        <div class="blp-material-card">
+            <p class="blp-material-name">ФАРОС-001</p>
+        </div>
+    </div>
+</div>
+
 <?php include "../blocks/partners-section.php"; ?>
 <?php include "../blocks/contact-form.php"; ?>
 
@@ -127,9 +148,10 @@ $howto_data = [
         ['name' => 'Дрель'],
         ['name' => 'Уровень'],
     ],
+    // 2026-08-18: перечень крепежа приведён к 5 официальным способам по АТР АТРБИЛДП230626 (убраны KEIL и Nordfox)
     'supply'      => [
-        ['name' => 'Заклёпки вытяжные (для видимого крепления)'],
-        ['name' => 'Кляммеры скрытого крепления (KRAB, KEIL, Nordfox)'],
+        ['name' => 'Заклёпки вытяжные или самосверлящие винты (для видимого крепления)'],
+        ['name' => 'Кляммеры КЛ8 «КРАБ», анкеры KS цангового типа или винты ФИКСАР типа ИНСЕРТ РТ (для скрытого крепления)'],
         ['name' => 'Направляющие профили подсистемы'],
         ['name' => 'Фиброцементные панели BLP Board'],
     ],
@@ -143,8 +165,8 @@ $howto_data = [
             'text' => 'Просверлите отверстие в панели и направляющей. Установите вытяжную заклёпку из нержавеющей стали или окрашенную в цвет панели. Заклёпки видны на фасаде — допустимо для большинства архитектурных решений.',
         ],
         [
-            'name' => 'Скрытое крепление кляммерами',
-            'text' => 'Закрепите кляммеры (KRAB, KEIL, Nordfox) к направляющим. Заведите панель в кляммер сверху и зафиксируйте. Крепёж не виден на фасаде — выбор для премиум-проектов.',
+            'name' => 'Скрытое крепление',
+            'text' => 'Закрепите кляммеры КЛ8 «КРАБ», анкеры KS цангового типа или винты ФИКСАР типа ИНСЕРТ РТ к направляющим по Альбому технических решений АТРБИЛДП230626. Крепёж не виден на фасаде — выбор для премиум-проектов.',
         ],
         [
             'name' => 'Контроль зазоров',

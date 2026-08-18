@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 2026-04-23: lastmod убран (был одинаковый для всех — поисковики игнорируют) -->
 <!-- 2026-05-04: удалены 404-страницы (faq, install), служебная devops; добавлена compare-materials (200 OK) -->
+<!-- 2026-08-18: решение владельца — /compare, /faq, /install скрыты в админке (is_live=false); удалены из sitemap. faq и install вернуть при повторной активации -->
 <!-- TODO: если домен изменится — заменить building-port.ru во всех loc -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
@@ -44,26 +45,12 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://building-port.ru/compare</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
         <loc>https://building-port.ru/compare-materials</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <!-- 2026-05-11: открыты ранее скрытые страницы — faq, install, blog -->
-    <url>
-        <loc>https://building-port.ru/faq</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://building-port.ru/install</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    <!-- 2026-08-18: faq и install снова скрыты (is_live=false) — удалены отсюда, blog остаётся -->
     <url>
         <loc>https://building-port.ru/blog</loc>
         <changefreq>weekly</changefreq>

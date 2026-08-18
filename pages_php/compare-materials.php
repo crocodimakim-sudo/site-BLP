@@ -147,6 +147,7 @@ ob_start();
      ============================================ -->
 <script>
 // 2026-04-27: BLP Board — данные для сравнения с конкурентами
+// 2026-08-18: гарантия приведена к единой цифре 5 лет (решение владельца)
 
 const BLP = {
     thickness:       '8–15 мм',
@@ -170,7 +171,7 @@ const BLP = {
     repaintable:     'Не требуется (цвет в массе)',
     color_stability: 'Очень высокая',
     service_life:    '50+ лет',
-    warranty:        '10–15 лет',
+    warranty:        '5 лет',
     install_cost:    'Средняя',
     maintenance:     'Не требуется',
 };
@@ -201,7 +202,7 @@ const MATERIALS = {
             repaintable:    { val: 'Нет',                          result: 'equal' },
             color_stability:{ val: 'Высокая',                      result: 'blp' },
             service_life:   { val: '30–50 лет',                    result: 'blp' },
-            warranty:       { val: '10–15 лет',                    result: 'equal' },
+            warranty:       { val: '10–15 лет',                    result: 'competitor' }, // 2026-08-18: гарантия BLP теперь 5 лет — маркер обновлён
             install_cost:   { val: 'Средняя',                      result: 'equal' },
             maintenance:    { val: 'Низкое',                       result: 'blp' },
         }
@@ -261,7 +262,7 @@ const MATERIALS = {
             repaintable:    { val: 'Только заводская',             result: 'equal' },
             color_stability:{ val: 'Высокая (PVDF)',               result: 'blp' },
             service_life:   { val: '25–40 лет',                    result: 'blp' },
-            warranty:       { val: '10 лет (PVDF до 20)',          result: 'equal' },
+            warranty:       { val: '10 лет (PVDF до 20)',          result: 'competitor' }, // 2026-08-18: гарантия BLP теперь 5 лет — маркер обновлён
             install_cost:   { val: 'Средняя',                      result: 'equal' },
             maintenance:    { val: 'Низкое',                       result: 'blp' },
         }
@@ -291,7 +292,7 @@ const MATERIALS = {
             repaintable:    { val: 'Только на производстве',       result: 'equal' },
             color_stability:{ val: 'Высокая',                      result: 'blp' },
             service_life:   { val: '25–50 лет',                    result: 'equal' },
-            warranty:       { val: '5–10 лет',                     result: 'blp' },
+            warranty:       { val: '5–10 лет',                     result: 'equal' }, // 2026-08-18: гарантия BLP теперь 5 лет — маркер обновлён
             install_cost:   { val: 'Средняя',                      result: 'equal' },
             maintenance:    { val: 'Низкое',                       result: 'blp' },
         }
