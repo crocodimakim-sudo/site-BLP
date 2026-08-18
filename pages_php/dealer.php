@@ -157,7 +157,7 @@ ob_start();
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "BLP Board — дилерская программа",
-  "description": "Дилерская программа по фиброцементным панелям BLP Board. Серии NATURE, POLISHED, TEXTURE, WALYPAN. Класс НГ (К0), без асбеста, ГОСТ 8747-88.",
+  "description": "Дилерская программа по фиброцементным панелям BLP Board. Серии NATURE, POLISHED, TEXTURE, WALYPAN. Класс НГ (К0), без асбеста, ГОСТ 18124-2012.",
   "url": "https://building-port.ru/dealer",
   "telephone": "+74959849689",
   "email": "info@building-port.ru",

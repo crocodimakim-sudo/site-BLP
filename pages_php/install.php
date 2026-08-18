@@ -415,7 +415,8 @@ ob_start();
             <a href="/sertificate" class="install-link-card">
                 <span class="install-link-icon">⬡</span>
                 <span class="install-link-title">Сертификаты</span>
-                <span class="install-link-desc">ТС ФАУ ФЦС № 7292-25, НГ по ГОСТ 30244-94, PDF</span>
+                <!-- 2026-08-18: сверка с эталоном — добавлено новое ТС № 7515-26, ТС 7292-25 не удалено -->
+                <span class="install-link-desc">ТС № 7292-25 и № 7515-26, НГ по ГОСТ 30244-94, PDF</span>
             </a>
             <a href="/catalog" class="install-link-card">
                 <span class="install-link-icon">⬡</span>

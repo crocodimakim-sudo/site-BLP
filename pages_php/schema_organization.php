@@ -19,7 +19,7 @@
         "width": 200,
         "height": 60
       },
-      "description": "Производитель и поставщик фиброцементных панелей для вентилируемых фасадов. Серии NATURE, POLISHED, TEXTURE, WALYPAN. Негорючие, 0% асбеста, крупноформатные.",
+      "description": "Бренд и поставщик фиброцементных панелей для вентилируемых фасадов. Серии NATURE, POLISHED, TEXTURE, WALYPAN. Негорючие, 0% асбеста, крупноформатные.",
       "telephone": "+74959849689",
       "email": "info@building-port.ru",
       "address": {

@@ -4,7 +4,8 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 // 2026-04-20: added meta description, OG image, canonical
 // 2026-04-20: SEO — title keyword-first, meta desc 155-160 chars
 $page_title    = 'Фиброцементные панели для вентилируемых фасадов — BLP Board';
-$page_desc     = 'Фиброцементные плиты НГ для вентфасадов: серии NATURE, POLISHED, TEXTURE, WALYPAN. Без асбеста. Крупный формат до 3050 мм. Соответствие ГОСТ. Производитель BLP Board.';
+// 2026-08-18: сверка с эталоном — «Производитель BLP Board» заменено на «Бренд BLP Board» (по документам ООО «Билдингпорт» — заявитель/поставщик, не изготовитель)
+$page_desc     = 'Фиброцементные плиты НГ для вентфасадов: серии NATURE, POLISHED, TEXTURE, WALYPAN. Без асбеста. Крупный формат до 3050 мм. Соответствие ГОСТ. Бренд BLP Board.';
 $page_canonical = 'https://building-port.ru/';
 $page_og_image  = 'https://building-port.ru/images-convert/pages/index/index_hero.jpg';
 $extra_css  = '<link rel="stylesheet" href="/css/pages/index.css">';
