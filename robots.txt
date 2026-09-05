@@ -1,29 +1,6 @@
+# 2026-09-05: структура исправлена — блок Disallow раньше стоял после группы Bytespider и не действовал ни для кого
 User-agent: *
-Allow: /
-
-# 2026-05-11: AI-краулеры разрешены — для GEO/AI Overviews/ChatGPT/Perplexity (tactics из 05-ТЕХНИЧЕСКИЙ-SEO.md §2.5)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-# 2026-04-23: служебные страницы — не индексировать (тонкий контент)
+# служебные страницы — не индексировать (тонкий контент)
 Disallow: /policy
 Disallow: /cookies
 Disallow: /consent
@@ -31,14 +8,10 @@ Disallow: /blocks/
 Disallow: /logs/
 Disallow: /database/
 Disallow: /scripts/
-
-# 2026-05-04: административная панель — закрыть от индексации
+# административная панель и API
 Disallow: /admin/
-
-# 2026-05-04: API-эндпоинты — не для индексации, только для внутреннего использования
 Disallow: /api/
-
-# 2026-05-04: страницы ошибок — дублирующий тонкий контент
+# страницы ошибок — дублирующий тонкий контент
 Disallow: /400
 Disallow: /403
 Disallow: /404
@@ -46,14 +19,10 @@ Disallow: /405
 Disallow: /500
 Disallow: /503
 Disallow: /error
-
-# 2026-05-04: служебные/девопс страницы — не для публичной индексации
-# 2026-05-11: /install убран — страница открыта (is_live=true), индексируется
-Disallow: /devops
+# 2026-09-05: /devops открыт (страница в меню, индексируется); /template и /logistika — черновики
 Disallow: /template
 Disallow: /logistika
-
-# 2026-05-04: schema-файлы отдают JSON-LD, не страницы — индексация бессмысленна
+# schema-файлы отдают JSON-LD, не страницы
 Disallow: /schema_blog
 Disallow: /schema_breadcrumbs
 Disallow: /schema_localbusiness
@@ -65,7 +34,52 @@ Disallow: /schema_faqpage
 Disallow: /schema_howto
 Disallow: /schema_article
 
-# 2026-04-20: updated Sitemap URL and Allow directive for production domain
-# TODO: если домен изменится — обновить URL ниже
+# 2026-05-11 / 2026-09-05: AI-краулеры разрешены — GEO (ChatGPT, Claude, Perplexity, Gemini, Алиса AI)
+# Внимание: GPTBot, ClaudeBot, Amazonbot режет хостинг на уровне UA-фильтра — запрос в reg.ru, см. audit 2026-09-05
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: YandexAdditional
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://building-port.ru/sitemap.xml
 Sitemap: https://building-port.ru/sitemap-images.xml

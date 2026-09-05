@@ -3,11 +3,12 @@ DirectoryIndex pages_php/index.php
 # 2026-04-20: HTTPS enforcement — redirect all HTTP to HTTPS (skip localhost for dev)
 Options -Indexes
 RewriteEngine On
-# 2026-04-24: HTTPS редирект отключён до установки SSL-сертификата
-# RewriteCond %{HTTPS} off
-# RewriteCond %{HTTP_HOST} !^localhost$ [NC]
-# RewriteCond %{HTTP_HOST} !^127\.0\.0\.1$ [NC]
-# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# 2026-09-05: HTTPS включён (SSL активен с мая) + канонизация хоста www -> building-port.ru.
+# Явный хост вместо %{HTTP_HOST}: хостинг отдавал редирект на https://building-port.ru:443/
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.building-port\.ru$ [NC]
+RewriteRule ^ https://building-port.ru%{REQUEST_URI} [L,R=301]
 
 RewriteBase /
 
