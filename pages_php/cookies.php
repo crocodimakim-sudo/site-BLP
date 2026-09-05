@@ -5,7 +5,7 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title    = 'Политика в отношении файлов cookies — BLP Board';
 $page_canonical = 'https://building-port.ru/cookies';
-$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Политика BLP Board по использованию файлов cookies. Как мы используем cookies, как вы можете управлять ими, и как отключить ненужные файлы.';
 // 2026-05-11: noindex для юридических страниц (тонкий контент)
 $page_robots = 'noindex, follow';

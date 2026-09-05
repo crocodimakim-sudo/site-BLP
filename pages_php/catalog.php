@@ -6,7 +6,7 @@ $page_title    = 'Каталог фиброцементных панелей BLP
 $page_desc     = 'Каталог фиброцементных панелей BLP Board. 4 серии, 10 цветов, толщина 8–15 мм, размеры до 3050 мм. Характеристики, палитра и сертификаты на каждую серию.';
 $page_canonical = 'https://building-port.ru/catalog';
 // 2026-04-20: og_image → real hero instead of missing og-default
-$page_og_image  = 'https://building-port.ru/images-convert/pages/catalog/catalog_nature_render.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/blocks/products/series-nature.png'; // 2026-09-05: старый файл отдавал 404
 $extra_css = '<link rel="stylesheet" href="/css/pages/catalog.css?v=20260428">';
 $extra_js = '<script src="/js/pages/catalog.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
@@ -501,34 +501,35 @@ ob_start();
 <?php include __DIR__ . '/schema_products.php'; ?>
 
 <!-- 2026-05-11: ItemList schema — 4 серии BLP с ценами для SERP rich results -->
+<!-- 2026-09-05: цены из catalog.json (blp_price_min), картинки → series-*.webp -->
 <?php
 $itemlist_items = [
     [
         'name'          => 'BLP NATURE — натуральная фактура',
         'url'           => 'https://building-port.ru/catalog#nature',
-        'image'         => 'https://building-port.ru/images-convert/pages/catalog/1.jpg',
-        'price'         => '7200',
+        'image'         => 'https://building-port.ru/images-convert/blocks/products/series-nature.webp',
+        'price'         => blp_price_min('nature'),
         'priceCurrency' => 'RUB',
     ],
     [
         'name'          => 'BLP POLISHED — гладкие фиброцементные плиты',
         'url'           => 'https://building-port.ru/catalog#polished',
-        'image'         => 'https://building-port.ru/images-convert/pages/catalog/2.png',
-        'price'         => '7950',
+        'image'         => 'https://building-port.ru/images-convert/blocks/products/series-polished.webp',
+        'price'         => blp_price_min('polished'),
         'priceCurrency' => 'RUB',
     ],
     [
         'name'          => 'BLP TEXTURE — фактурные фиброцементные панели',
         'url'           => 'https://building-port.ru/catalog#texture',
-        'image'         => 'https://building-port.ru/images-convert/pages/catalog/3.png',
-        'price'         => '7200',
+        'image'         => 'https://building-port.ru/images-convert/blocks/products/series-texture.webp',
+        'price'         => blp_price_min('texture'),
         'priceCurrency' => 'RUB',
     ],
     [
         'name'          => 'BLP WALYPAN — крупноформатные плиты',
         'url'           => 'https://building-port.ru/catalog#walypan',
         'image'         => 'https://building-port.ru/images-convert/blocks/products/series-walypan.webp',
-        'price'         => '12200',
+        'price'         => blp_price_min('walypan'),
         'priceCurrency' => 'RUB',
     ],
 ];

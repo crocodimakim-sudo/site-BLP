@@ -24,6 +24,7 @@ function createMiniPictureHtml(imagePath, alt) {
 
 function renderProjects() {
     const grid = document.getElementById("projectsGrid");
+    grid.innerHTML = ""; // 2026-09-05: сетка теперь приходит с сервера (SSR-фолбэк для роботов) — очищаем перед перерисовкой
 
     projects.forEach((project, index) => {
         const card = document.createElement("div");

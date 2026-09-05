@@ -7,6 +7,7 @@ $dbFile = dirname(__DIR__) . '/database/blog.db';
 if ($slug === '' || !is_file($dbFile)) {
     $error_code = 404;
     require __DIR__ . '/error.php';
+    exit; // 2026-09-05: раньше скрипт шёл дальше и печатал BlogPosting поверх 404
     return;
 }
 
@@ -22,6 +23,7 @@ try {
 if (!$article) {
     $error_code = 404;
     require __DIR__ . '/error.php';
+    exit; // 2026-09-05: раньше скрипт шёл дальше и печатал BlogPosting поверх 404
     return;
 }
 
@@ -55,7 +57,7 @@ if (count($related) < 3) {
 $page_title    = $article['title'] . ' — Блог BLP Board';
 $page_desc     = $article['subtitle'] ?? '';
 $page_canonical = 'https://building-port.ru/blog/' . $article['slug'];
-$page_og_image  = 'https://building-port.ru' . ($article['image'] ?? '/images/og-default.jpg');
+$page_og_image  = 'https://building-port.ru' . ($article['image'] ?? '/images-convert/og-default.jpg');
 $page_og_type   = 'article';
 $extra_css     = '<link rel="stylesheet" href="/css/pages/blog.css">';
 

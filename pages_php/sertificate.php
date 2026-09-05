@@ -52,7 +52,7 @@ ob_start();
                     <div class="carousel-slide">
                         <div class="slide-inner" oncontextmenu="return false;" ondragstart="return false;">
                             <div class="image-wrapper">
-                                <?php echo render_image('/images-convert/pages/sertificate/cert_technical_passport.png', 'Технический паспорт (Техническое свидетельство ФАУ ФЦС)'); ?>
+                                <?php echo render_image('/images-convert/pages/sertificate/cert_technical_passport.png', 'Технический паспорт (Техническое свидетельство ФАУ ФЦС)', ['lazy' => false]) /* 2026-09-05: первый экран — eager */; ?>
                             </div>
                             <div class="slide-number">01</div>
                         </div>

@@ -1,7 +1,8 @@
 <?php
 // 2026-04-20: ProductGroup + 4 Product schemas for catalog.php
 // 2026-05-04: add image to WALYPAN Product schema (Phase 2)
-// 2026-05-04: add price to Offer (Phase 2) — no public prices in catalog.json (B2B), using AggregateOffer without price
+// 2026-05-04: add price to Offer (Phase 2)
+// 2026-09-05: lowPrice/highPrice/offerCount из catalog.json (blp_offer_prices), картинки серий → series-*.webp (старые пути отдавали 404)
 // Inject inside catalog.php before </body>
 ?>
 <script type="application/ld+json">
@@ -25,7 +26,7 @@
       "@id": "https://building-port.ru/catalog#nature",
       "name": "Фиброцементные панели BLP Board — серия NATURE",
       "description": "Натуральные фиброцементные панели с фактурой под бетон. Индустриальная эстетика, неповторимый рисунок каждой панели.",
-      "image": "https://building-port.ru/images-convert/pages/catalog/1.jpg",
+      "image": "https://building-port.ru/images-convert/blocks/products/series-nature.webp",
       "url": "https://building-port.ru/catalog#nature",
       "brand": {
         "@type": "Brand",
@@ -67,7 +68,7 @@
         "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
-        "offerCount": "1",
+        <?php echo blp_offer_prices('nature') ?: '"offerCount": "1",'; ?>
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
@@ -79,7 +80,7 @@
       "@id": "https://building-port.ru/catalog#polished",
       "name": "Фиброцементные панели BLP Board — серия POLISHED",
       "description": "Полированные фиброцементные плиты в спокойных природных оттенках. Матовая поверхность, сдержанная классика.",
-      "image": "https://building-port.ru/images-convert/pages/catalog/2.png",
+      "image": "https://building-port.ru/images-convert/blocks/products/series-polished.webp",
       "url": "https://building-port.ru/catalog#polished",
       "brand": {
         "@type": "Brand",
@@ -116,7 +117,7 @@
         "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
-        "offerCount": "1",
+        <?php echo blp_offer_prices('polished') ?: '"offerCount": "1",'; ?>
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
@@ -128,7 +129,7 @@
       "@id": "https://building-port.ru/catalog#texture",
       "name": "Фиброцементные панели BLP Board — серия TEXTURE",
       "description": "Текстурированные фиброцементные плиты. Естественная палитра и слегка шлифованная поверхность для статусного фасада.",
-      "image": "https://building-port.ru/images-convert/pages/catalog/3.png",
+      "image": "https://building-port.ru/images-convert/blocks/products/series-texture.webp",
       "url": "https://building-port.ru/catalog#texture",
       "brand": {
         "@type": "Brand",
@@ -165,7 +166,7 @@
         "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
-        "offerCount": "1",
+        <?php echo blp_offer_prices('texture') ?: '"offerCount": "1",'; ?>
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },
@@ -213,7 +214,7 @@
         "@type": "AggregateOffer",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
-        "offerCount": "1",
+        <?php echo blp_offer_prices('walypan') ?: '"offerCount": "1",'; ?>
         "seller": {
           "@id": "https://building-port.ru/#organization"
         },

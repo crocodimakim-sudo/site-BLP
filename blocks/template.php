@@ -18,7 +18,8 @@ $page_title    = isset($page_title)    ? $page_title    : 'BLP Board';
 $page_desc     = isset($page_desc)     ? $page_desc     : '';
 $page_og_image = isset($page_og_image) ? $page_og_image : 'https://building-port.ru/images-convert/og-default.jpg';
 $page_og_type  = isset($page_og_type)  ? $page_og_type  : 'website';
-$page_canonical = isset($page_canonical) ? $page_canonical : '';
+// 2026-09-05: fallback canonical на текущий URL без query (раньше страницы без $page_canonical выходили без canonical)
+$page_canonical = isset($page_canonical) ? $page_canonical : ('https://building-port.ru' . strtok($_SERVER['REQUEST_URI'] ?? '/', '?'));
 // 2026-04-24: SEO — noindex support for error pages and non-indexed content
 $page_robots   = isset($page_robots)   ? $page_robots   : '';
 
@@ -65,7 +66,7 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
 // $vk_pixel_id = !empty($_site_cfg['vk_pixel_id']) ? $_site_cfg['vk_pixel_id'] : '';
 ?>
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,8 +97,13 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
     <meta property="og:description" content="<?php echo htmlspecialchars($page_desc, ENT_QUOTES, 'UTF-8'); ?>">
     <?php endif; ?>
     <meta property="og:image" content="<?php echo htmlspecialchars($page_og_image, ENT_QUOTES, 'UTF-8'); ?>">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <?php // 2026-09-05: размеры og:image по реальному файлу (раньше всегда 1200×630 при файле 600×315)
+    $_og_local = preg_replace('#^https://building-port\.ru#', __DIR__ . '/..', $page_og_image);
+    $_og_dim = (is_file($_og_local) && ($_d = @getimagesize($_og_local))) ? $_d : null;
+    if ($_og_dim): ?>
+    <meta property="og:image:width" content="<?php echo (int)$_og_dim[0]; ?>">
+    <meta property="og:image:height" content="<?php echo (int)$_og_dim[1]; ?>">
+    <?php endif; ?>
     <?php if ($page_canonical): ?>
     <meta property="og:url" content="<?php echo htmlspecialchars($page_canonical, ENT_QUOTES, 'UTF-8'); ?>">
     <?php endif; ?>
@@ -150,7 +156,7 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
 
     <!-- 2026-04-20: Critical CSS — sync (above-fold) -->
     <!-- 2026-04-27: ?v= версионирование — сбрасывает кэш браузера при обновлении CSS -->
-    <?php $cv = '20260427b'; ?>
+    <?php $cv = @filemtime(__DIR__ . '/../css/main.css') ?: '20260905'; // 2026-09-05: версия CSS по дате файла, была константа апреля ?>
     <link rel="stylesheet" href="/css/main.css?v=<?php echo $cv; ?>">
     <link rel="stylesheet" href="/css/header.css?v=<?php echo $cv; ?>">
     <link rel="stylesheet" href="/css/hero-section.css?v=<?php echo $cv; ?>">

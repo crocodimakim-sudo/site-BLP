@@ -25,7 +25,7 @@ foreach ($all_posts as $a) {
     $post_url = 'https://building-port.ru/blog/' . ($a['slug'] ?? '');
     $image_url = !empty($a['image'])
         ? (strpos($a['image'], 'http') === 0 ? $a['image'] : 'https://building-port.ru' . $a['image'])
-        : 'https://building-port.ru/images/og-default.jpg';
+        : 'https://building-port.ru/images-convert/og-default.jpg';
 
     $entry = [
         '@type'         => 'BlogPosting',

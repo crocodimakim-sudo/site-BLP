@@ -4,8 +4,8 @@
 require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title    = 'Политика конфиденциальности — BLP Board';
-$page_canonical = 'https://building-port.ru/policy/';
-$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
+$page_canonical = 'https://building-port.ru/policy'; // 2026-09-05: без слэша — /policy/ отдавал 404
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Политика конфиденциальности BLP Board. Как мы обрабатываем ваши персональные данные, какие права вы имеете, и как связаться с нами.';
 // 2026-05-11: noindex для юридических страниц (тонкий контент, дублирует Templates/)
 $page_robots = 'noindex, follow';

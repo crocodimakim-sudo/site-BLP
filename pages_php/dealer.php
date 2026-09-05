@@ -151,30 +151,7 @@ ob_start();
     </div>
 </section>
 
-<!-- Schema.org LocalBusiness JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "BLP Board — дилерская программа",
-  "description": "Дилерская программа по фиброцементным панелям BLP Board. Серии NATURE, POLISHED, TEXTURE, WALYPAN. Класс НГ (К0), без асбеста, ГОСТ 18124-2012.",
-  "url": "https://building-port.ru/dealer",
-  "telephone": "+74959849689",
-  "email": "info@building-port.ru",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Неделина, 6А",
-    "addressLocality": "Одинцово",
-    "addressRegion": "Московская область",
-    "postalCode": "143003",
-    "addressCountry": "RU"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Russia"
-  }
-}
-</script>
+<!-- 2026-09-05: inline LocalBusiness удалён — дублировал канонический блок на /contacts без @id/geo -->
 
 <?php $form_title = 'Стать дилером BLP Board'; $form_desc = 'Оставьте заявку — свяжемся в течение рабочего дня для обсуждения условий.'; include '../blocks/contact-form.php'; ?>
 

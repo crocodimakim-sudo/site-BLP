@@ -19,7 +19,7 @@ foreach ($itemlist_items as $pos => $it) {
     if (!empty($it['image'])) {
         $element['item']['image'] = $it['image'];
     }
-    if (isset($it['price'])) {
+    if (isset($it['price']) && $it['price'] !== '') { // 2026-09-05: пустая цена (нет в catalog.json) — без offers
         $element['item']['offers'] = [
             '@type'         => 'Offer',
             'price'         => $it['price'],

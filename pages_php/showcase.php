@@ -2,7 +2,7 @@
 // 2026-04-20: Stage 3 Group 3.B — Project showcase / case studies page
 $page_title    = 'Реализованные проекты с фиброцементными панелями BLP Board';
 $page_canonical = 'https://building-port.ru/showcase';
-$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Кейсы применения фиброцементных панелей BLP Board: жилые комплексы, школы, административные здания, частные дома. Серия, объём, регион, результат.';
 $extra_css = '<link rel="stylesheet" href="/css/pages/showcase.css">';
 // 2026-04-20: breadcrumbs for schema

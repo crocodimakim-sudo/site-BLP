@@ -127,6 +127,8 @@
 
 /* ===== TABLE SECTION ===== */
 .cmp-table-section { padding: 24px 0 40px; }
+/* 2026-09-05: резерв высоты под таблицу, которую заполняет JS — убирает сдвиг макета (CLS 0.87 на десктопе); таблица всегда выше 70vh, визуально не меняется */
+@media (min-width: 1024px) { .cmp-table-section { min-height: 70vh; } }
 .cmp-table-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

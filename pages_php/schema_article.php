@@ -10,7 +10,7 @@ if (empty($_canonical_for_schema)) return;
 
 $_image_url = !empty($article['image'])
     ? (strpos($article['image'], 'http') === 0 ? $article['image'] : 'https://building-port.ru' . $article['image'])
-    : 'https://building-port.ru/images/og-default.jpg';
+    : 'https://building-port.ru/images-convert/og-default.jpg';
 
 $_datePublished = !empty($article['published_at']) ? date('c', strtotime($article['published_at'])) : '';
 $_dateModified  = !empty($article['updated_at'])   ? date('c', strtotime($article['updated_at']))   : $_datePublished;

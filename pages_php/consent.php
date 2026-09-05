@@ -5,7 +5,7 @@ require_once __DIR__ . '/../blocks/image-helper.php';
 
 $page_title    = 'Согласие на обработку персональных данных — BLP Board';
 $page_canonical = 'https://building-port.ru/consent';
-$page_og_image  = 'https://building-port.ru/images/og-default.jpg';
+$page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Форма согласия на обработку персональных данных. Подтвердите согласие на обработку ваших персональных данных в соответствии с Федеральным законом № 152-ФЗ.';
 // 2026-05-11: noindex для юридических страниц (тонкий контент)
 $page_robots = 'noindex, follow';

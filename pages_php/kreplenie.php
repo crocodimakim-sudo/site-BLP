@@ -22,7 +22,7 @@ ob_start();
 
 <!-- Блок MOUNTING -->
 <div class="blp-mounting-block">
-    <h2 class="blp-mounting-title">Варианты крепления панелей&nbsp;к подсистеме</h2>
+    <h1 class="blp-mounting-title">Варианты крепления панелей&nbsp;к подсистеме</h1><!-- 2026-09-05: h2→h1, страница была без H1; класс и стили те же -->
     <div class="blp-mounting-divider"></div>
 
     <!-- Видимый способ -->
@@ -31,7 +31,7 @@ ob_start();
         <div class="blp-method-content">
             <div class="blp-method-images">
                 <div class="blp-img-large">
-                    <?php echo render_image('/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png', 'Фасад с видимыми заклёпками'); ?>
+                    <?php echo render_image('/images-convert/pages/kreplenie/vidimoe/mount_visible_facade.png', 'Фасад с видимыми заклёпками', ['lazy' => false]) /* 2026-09-05: первый экран — eager */; ?>
                 </div>
                 <div class="blp-img-small">
                     <?php echo render_image('/images-convert/pages/kreplenie/vidimoe/mount_visible_rivets.png', 'Заклёпки'); ?>

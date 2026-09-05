@@ -1,5 +1,15 @@
 # Changelog — BLP Board
 
+## 2026-09-05 — SEO-аудит: техправки без изменения дизайна (группы 1–3)
+
+**Индексация:** robots.txt перестроен (блок Disallow раньше стоял после группы Bytespider и не действовал ни для кого; добавлены группы OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, YandexAdditional, Applebot, Amazonbot, DuckAssistBot; /devops открыт). sitemap.xml — 10 живых URL с lastmod из git, блог убран до открытия. sitemap-images.xml — битые картинки каталога → series-*.webp, дубль / объединён. Ключ IndexNow в корне + scripts/indexnow-key.txt, пинг api.indexnow.org и yandex.com/indexnow (202).
+**.htaccess:** www → building-port.ru 301. Инцидент: включённый `RewriteCond %{HTTPS} off` дал петлю редиректов (TLS снимает прокси хостинга) — сайт лежал ~12 минут, починено загрузкой .htaccess по FTP. Правило: на reg.ru условия по HTTPS не использовать.
+**Разметка:** Product.image и ItemList.image → series-*.webp (старые пути 404); цены ItemList/AggregateOffer из catalog.json (blp_price_min / blp_offer_prices в blocks/catalog_config.php) — раньше захардкожены старые 7200/7950; og:image каталога → series-nature.png; og-default → /images-convert/; og:image:width/height по реальному файлу; inline LocalBusiness на /dealer удалён (дубль /contacts); BlogPosting больше не печатается поверх 404 (exit после error.php).
+**Страницы:** /kreplenie h2 → h1 (класс тот же); /policy canonical без слэша; fallback canonical в template; lang="ru-RU"; версия CSS по filemtime; /projects — серверный вывод карточек (SSR-фолбэк, projects.js очищает сетку перед перерисовкой); eager для первого экрана /sertificate, /kreplenie; /compare-materials — min-height 70vh на десктопе против CLS 0.87.
+**llms.txt:** цены с НДС «от», ТС № 7515-26, blp. вместо мёртвого fcb., дата 2026-09-05; .well-known/llms.txt = копия корневого (был домен blpboard.ru).
+**Лендинг:** robots.txt Sitemap → blp.building-port.ru.
+Отчёт аудита: `05-SEO-И-ОНЛАЙН/audit/building-port.ru-audit-2026-09-05/`.
+
 ## 2026-06-30 — Цены каталога (с НДС), дисклеймеры, рефакторинг ключа деплоя
 
 **Каталог:**
