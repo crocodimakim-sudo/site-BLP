@@ -26,6 +26,7 @@ ob_start();
     <div class="projects-grid" id="projectsGrid"><?php
         // 2026-09-05: SSR-фолбэк — те же карточки, что рисует js/pages/projects.js; JS очищает сетку и перерисовывает
         ob_start(); include __DIR__ . '/../blocks/get_projects.php'; $_ssr = json_decode(ob_get_clean(), true) ?: [];
+        header('Content-Type: text/html; charset=utf-8'); // 2026-09-05 hotfix: get_projects.php выставляет application/json — возвращаем HTML
         foreach ($_ssr as $_i => $_p):
             $_imgs = $_p['images'] ?? []; $_first = $_imgs[0] ?? '';
             $_sm = preg_replace('/\.(jpg|jpeg|png)$/i', '-sm.webp', $_first); ?>
