@@ -1,6 +1,7 @@
 <?php
 // 2026-05-11: ItemList schema — параметризованный JSON-LD для списков товаров/страниц
 // Вход: $itemlist_items — массив ['name'=>..., 'url'=>..., 'image'=>..., 'price'=>..., 'priceCurrency'=>'RUB']
+// 2026-09-06: $itemlist_item_type — тип элемента (Product для каталога, Place для реализованных объектов)
 // Если массив пуст или не задан — ничего не выводит
 
 if (empty($itemlist_items) || !is_array($itemlist_items)) return;
@@ -11,7 +12,7 @@ foreach ($itemlist_items as $pos => $it) {
         '@type'    => 'ListItem',
         'position' => $pos + 1,
         'item'     => [
-            '@type' => 'Product',
+            '@type' => ($itemlist_item_type ?? 'Product'),
             'name'  => $it['name'] ?? '',
             'url'   => $it['url']  ?? '',
         ],

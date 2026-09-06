@@ -12,7 +12,8 @@ $extra_css  = '<link rel="stylesheet" href="/css/pages/index.css">';
 $extra_js   = '<script src="/js/pages/index.js" defer></script>';
 $lcp_image  = '/images-convert/pages/index/index_hero.jpg';
 // 2026-04-24: preload LCP hero image (WebP) с fetchpriority=high
-$extra_preload = '<link rel="preload" as="image" href="/images-convert/pages/index/index_hero.webp" type="image/webp" fetchpriority="high">';
+// 2026-09-06: imagesrcset/imagesizes вместо href — preload обязан совпадать с <picture>, иначе мобильный грузит два файла
+$extra_preload = '<link rel="preload" as="image" imagesrcset="/images-convert/pages/index/index_hero-sm.webp 800w, /images-convert/pages/index/index_hero.webp 1835w" imagesizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw" type="image/webp" fetchpriority="high">';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
     ['name' => 'Главная', 'url' => 'https://building-port.ru/'],

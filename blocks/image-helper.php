@@ -17,9 +17,26 @@ function render_image($path, $alt = '', $options = []) {
     $html = '<picture>';
 
     // 2026-04-22: WebP source if file exists on disk
+    // 2026-09-06: responsive srcset — к полноразмерному webp добавляется -sm.webp (800px),
+    // который уже генерирует scripts/convert_images.php. Мобильные грузят ~2x меньше (hero 91 КБ -> 39 КБ).
+    // Вид страницы не меняется: браузер выбирает файл по ширине контейнера из того же sizes.
     $webp_disk = $_SERVER['DOCUMENT_ROOT'] . $webp_url;
     if (file_exists($webp_disk)) {
-        $html .= '<source type="image/webp" srcset="' . htmlspecialchars($webp_url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '" sizes="' . htmlspecialchars($sizes, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '">';
+        $srcset_parts = [];
+        $sm_url  = $dir . '/' . $basename . '-sm.webp';
+        $sm_disk = $_SERVER['DOCUMENT_ROOT'] . $sm_url;
+        if (file_exists($sm_disk)) {
+            $sm_size = @getimagesize($sm_disk);
+            if ($sm_size && $sm_size[0] > 0) $srcset_parts[] = $sm_url . ' ' . (int)$sm_size[0] . 'w';
+        }
+        $full_size = @getimagesize($webp_disk);
+        if ($srcset_parts && $full_size && $full_size[0] > 0) {
+            $srcset_parts[] = $webp_url . ' ' . (int)$full_size[0] . 'w';
+            $srcset_value = implode(', ', $srcset_parts);
+        } else {
+            $srcset_value = $webp_url;
+        }
+        $html .= '<source type="image/webp" srcset="' . htmlspecialchars($srcset_value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '" sizes="' . htmlspecialchars($sizes, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '">';
     }
 
     // 2026-04-22: Original format fallback (JPEG/PNG)

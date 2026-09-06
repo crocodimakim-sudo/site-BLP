@@ -93,5 +93,19 @@ include '../blocks/contact-form.php';
 ?>
 
 <?php
+// 2026-09-06: ItemList из тех же объектов, что выведены выше — страница получает структурированные данные
+$itemlist_items = [];
+foreach ($_ssr as $_p) {
+    $_name = trim(($_p['name'] ?? '') . (!empty($_p['location']) ? ', ' . $_p['location'] : ''));
+    if ($_name === '') continue;
+    $_item = ['name' => $_name, 'url' => 'https://building-port.ru/projects'];
+    if (!empty($_p['images'][0])) $_item['image'] = 'https://building-port.ru' . $_p['images'][0];
+    $itemlist_items[] = $_item;
+}
+$itemlist_item_type = 'Place'; // здания, не товары
+if ($itemlist_items) include __DIR__ . '/schema_itemlist.php';
+?>
+
+<?php
 $page_content = ob_get_clean();
 include 'template.php';
