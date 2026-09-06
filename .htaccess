@@ -124,6 +124,14 @@ ErrorDocument 500 /pages_php/500.php
 ErrorDocument 503 /pages_php/503.php
 
 # 2026-04-22: Gzip compression — extended with AddEncoding + mod_filter wrapper
+# 2026-09-07: Brotli сжимает текст плотнее gzip. Если mod_brotli на хостинге нет,
+# блок игнорируется и остаётся gzip ниже — поведение не меняется.
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript application/x-javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json application/xml image/svg+xml
+</IfModule>
+
 <IfModule mod_deflate.c>
     AddEncoding gzip .gz
     AddType application/gzip .gz

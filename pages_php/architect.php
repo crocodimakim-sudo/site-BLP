@@ -14,6 +14,8 @@ $extra_css  = '<link rel="stylesheet" href="/css/pages/architect.css">';
 // 2026-04-20: fix — подключаем корректный JS страницы architect (был index.js)
 $extra_js   = '<script src="/js/pages/architect.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
+// 2026-09-07: preload главной картинки экрана — тот же приём, что на главной
+$extra_preload = '<link rel="preload" as="image" imagesrcset="/images-convert/pages/architect/architect_hero-sm.webp 800w, /images-convert/pages/architect/architect_hero.webp 1680w" imagesizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw" type="image/webp" fetchpriority="high">';
 $breadcrumbs = [
     ['name' => 'Главная',                      'url' => 'https://building-port.ru/'],
     ['name' => 'Архитекторам и проектировщикам', 'url' => 'https://building-port.ru/architect'],

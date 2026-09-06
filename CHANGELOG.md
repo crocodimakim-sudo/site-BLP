@@ -1,5 +1,14 @@
 # Changelog — BLP Board
 
+## 2026-09-06 — Responsive srcset, alt объектов, ItemList на /projects
+
+**Скорость (главное):** `blocks/image-helper.php` теперь отдаёт в `<source>` два кандидата — `-sm.webp` (800 px, их давно генерирует `scripts/convert_images.php`) и полноразмерный webp с реальной шириной. Мобильные грузят вдвое меньше. Preload главной переведён на `imagesrcset`/`imagesizes`, иначе телефон качал бы оба файла.
+Замер Lighthouse mobile: главная perf 89 → **95**, LCP 3.5 → **2.7 с**; каталог perf 91 → **99**, LCP 3.1 → **1.9 с**. Для сравнения, в мае LCP главной был 6.7 с до оптимизации и 4.5 с после.
+
+**Разметка и картинки:** карточкам блока «Объекты» проставлены осмысленные `alt` (были пустые как «декоративные»); на `/projects` добавлен `ItemList` из реально выведенных объектов, тип элемента `Place` (здания, не товары) — `schema_itemlist.php` получил параметр `$itemlist_item_type` с прежним значением `Product` по умолчанию для каталога.
+
+**Проверка:** визуальная сверка 16 скриншотов (8 страниц × десктоп/мобильный) до и после — расхождений нет.
+
 ## 2026-09-05 — SEO-аудит: техправки без изменения дизайна (группы 1–3)
 
 **Индексация:** robots.txt перестроен (блок Disallow раньше стоял после группы Bytespider и не действовал ни для кого; добавлены группы OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, YandexAdditional, Applebot, Amazonbot, DuckAssistBot; /devops открыт). sitemap.xml — 10 живых URL с lastmod из git, блог убран до открытия. sitemap-images.xml — битые картинки каталога → series-*.webp, дубль / объединён. Ключ IndexNow в корне + scripts/indexnow-key.txt, пинг api.indexnow.org и yandex.com/indexnow (202).

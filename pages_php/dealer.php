@@ -10,6 +10,8 @@ $page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
 $page_desc = 'Дилерская программа BLP Board: условия сотрудничества, ценовые уровни, маркетинговая поддержка и техническое сопровождение. Станьте дилером фиброцементных панелей.';
 $extra_css = '<link rel="stylesheet" href="/css/pages/dealer.css">';
 // 2026-04-20: breadcrumbs for schema
+// 2026-09-07: preload главной картинки экрана — тот же приём, что на главной
+$extra_preload = '<link rel="preload" as="image" imagesrcset="/images-convert/pages/diler/diler_hero-sm.webp 800w, /images-convert/pages/diler/diler_hero.webp 1680w" imagesizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw" type="image/webp" fetchpriority="high">';
 $breadcrumbs = [
     ['name' => 'Главная',             'url' => 'https://building-port.ru/'],
     ['name' => 'Дилерская программа', 'url' => 'https://building-port.ru/dealer'],
