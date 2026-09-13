@@ -1,4 +1,7 @@
     <header class="header">
+        <?php /* 2026-09-12: строка направлений над навигацией */ ?>
+        <?php include __DIR__ . '/cross-nav.php'; ?>
+
         <div class="header-container">
             <a href="/" class="logo" aria-label="Building Port - на главную">
                 <img src="/images-convert/shared/header/logo-3.svg" alt="Building Port" width="120" height="40">

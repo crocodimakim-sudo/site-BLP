@@ -2,14 +2,14 @@
 
 **Язык:** Русский | **Прод:** `https://building-port.ru/`  
 **Git:** `github.com/crocodimakim-sudo/site-BLP` (main)  
-**Архив для подрядчика:** `D:/Claude Code/01-sites-buildingport/01-site-blpboard-hosting.zip`
+**Архив для подрядчика:** `D:/Claude Code/02-building-port/01-sites-buildingport/01-site-blpboard-hosting.zip`
 
 ---
 
 ## 🎨 Дизайн-система (2026-06-23)
 
 **Перед любым визуальным/UI-решением сверяйся с источником истины:**
-`D:/Claude Code/01-sites-buildingport/00-ДИЗАЙН-СИСТЕМА/` — `DESIGN.md` (правила) + `tokens.css` (CSS-переменные) + `styleguide.html` (живой гайд).
+`D:/Claude Code/02-building-port/01-sites-buildingport/00-ДИЗАЙН-СИСТЕМА/` — `DESIGN.md` (правила) + `tokens.css` (CSS-переменные) + `styleguide.html` (живой гайд).
 
 - Цвета/шрифты/отступы/иерархия — только оттуда. Зелёный `#00352F` + тёплый бетонный нейтрал, БЕЗ золота. Шрифт: Montserrat (веб) / Arial (документы).
 - Отклонение от системы — только с согласия владельца + запись в «Журнал решений» DESIGN.md.
@@ -73,7 +73,7 @@
 
 ### deploy.bat (автоматический)
 ```bash
-cd "/d/Claude Code/01-sites-buildingport/01-site-blpboard"
+cd "/d/Claude Code/02-building-port/01-sites-buildingport/01-site-blpboard"
 C:/xampp/php/php.exe scripts/convert_images.php   # конвертация images/ → images-convert/
 git add -A
 git commit -m "описание"

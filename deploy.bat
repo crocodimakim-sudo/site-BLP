@@ -5,7 +5,7 @@ chcp 65001 >nul
 
 setlocal
 
-cd /d "D:\Claude Code\01-sites-buildingport\01-site-blpboard"
+cd /d "D:\Claude Code\02-building-port\01-sites-buildingport\01-site-blpboard"
 
 REM 2026-06-11: ключ из env var BLP_DEPLOY_KEY (плейн-текст в репо больше не хранится)
 if "%BLP_DEPLOY_KEY%"=="" (

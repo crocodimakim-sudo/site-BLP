@@ -1,0 +1,228 @@
+/* ============================================================
+   Контейнерная загрузка и калькулятор партии (container-section)
+   2026-09-12: карточки по контейнерам вместо таблицы — на телефоне
+   читаются без прокрутки вбок. Рабочий контейнер 40HQ выделен.
+   Блок стоит на /catalog, страница /logistika отключена в админке.
+   ============================================================ */
+
+.blp-cont,
+.blp-calc {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 40px 48px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* 2026-09-12: шапка фиксированная — якорь не должен уезжать под неё */
+  scroll-margin-top: 128px;
+}
+
+.blp-cont *,
+.blp-calc *,
+.blp-cont *::before,
+.blp-calc *::before { box-sizing: border-box; }
+
+.blp-cont h2,
+.blp-calc h2 {
+  margin: 0 0 8px;
+  color: #1a1a1a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.blp-calc h2 { margin-bottom: 20px; }
+
+.blp-cont-sub {
+  margin: 0 0 22px;
+  max-width: 68ch;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.blp-cont-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.blp-cont-card {
+  background: #ffffff;
+  border: 1px solid #e8e6e2;
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+
+.blp-cont-card.is-main {
+  border-color: #00352F;
+  background: #f7faf9;
+}
+
+.blp-cont-card h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.blp-cont-card h3 em {
+  color: #8a857b;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.blp-cont-pay {
+  margin: 3px 0 14px;
+  color: #8a857b;
+  font-size: 12px;
+}
+
+.blp-cont-card dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 12px;
+  align-items: baseline;
+  margin: 0;
+}
+
+.blp-cont-card dt {
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+.blp-cont-card dd {
+  margin: 0;
+  text-align: right;
+  color: #1a1a1a;
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.blp-cont-card.is-main dd { color: #00352F; }
+.blp-cont-card dd small { color: #8a857b; font-size: 11px; font-weight: 400; }
+
+.blp-cont-foot {
+  margin: 16px 0 0;
+  max-width: 80ch;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.blp-cont-more {
+  display: inline-block;
+  margin-left: 4px;
+  color: #00352F;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 53, 47, 0.3);
+}
+
+/* --- калькулятор --- */
+
+.blp-calc-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.blp-calc-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #5a5a5a;
+  font-size: 12px;
+}
+
+.blp-calc-controls select,
+.blp-calc-controls input {
+  min-width: 150px;
+  padding: 10px 12px;
+  border: 1px solid #d8d5d0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.blp-calc-controls select:focus-visible,
+.blp-calc-controls input:focus-visible {
+  outline: 2px solid #00352F;
+  outline-offset: 1px;
+}
+
+.blp-calc-ship {
+  padding: 18px 20px;
+  border: 1px solid #00352F;
+  border-radius: 10px;
+  background: #f7faf9;
+  margin-bottom: 12px;
+}
+
+.blp-calc-ship span {
+  display: block;
+  margin-bottom: 4px;
+  color: #5a5a5a;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.blp-calc-ship strong {
+  display: block;
+  color: #00352F;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.blp-calc-out {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.blp-calc-out div {
+  flex: 1 1 170px;
+  padding: 13px 16px;
+  border: 1px solid #e8e6e2;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.blp-calc-out span {
+  display: block;
+  color: #5a5a5a;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.blp-calc-out strong {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 768px) {
+  .blp-cont,
+  .blp-calc { padding: 28px 20px; border-radius: 12px; scroll-margin-top: 96px; }
+  .blp-cont-card { padding: 16px 18px; }
+  .blp-calc-ship strong { font-size: 17px; }
+  .blp-calc-controls select,
+  .blp-calc-controls input { min-width: 0; width: 100%; }
+  .blp-calc-controls label { flex: 1 1 100%; }
+}

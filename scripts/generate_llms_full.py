@@ -1,6 +1,6 @@
 # 2026-09-07: сборка /llms-full.txt — полные тексты страниц одним файлом для AI-ассистентов.
 # llms.txt даёт карту сайта и факты, llms-full.txt — сам текст, чтобы модель цитировала нас, а не пересказ.
-# Запуск: cd "D:\Claude Code\01-sites-buildingport\01-site-blpboard" && python scripts/generate_llms_full.py
+# Запуск: cd "D:\Claude Code\02-building-port\01-sites-buildingport\01-site-blpboard" && python scripts/generate_llms_full.py
 # Затем deploy.bat. Повторять после правок текста на страницах.
 import re
 import sys

@@ -159,6 +159,8 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
     <?php $cv = @filemtime(__DIR__ . '/../css/main.css') ?: '20260905'; // 2026-09-05: версия CSS по дате файла, была константа апреля ?>
     <link rel="stylesheet" href="/css/main.css?v=<?php echo $cv; ?>">
     <link rel="stylesheet" href="/css/header.css?v=<?php echo $cv; ?>">
+    <?php /* 2026-09-12: cross-nav.css строго после header.css — переопределяет .header-spacer */ ?>
+    <link rel="stylesheet" href="/css/cross-nav.css?v=<?php echo $cv; ?>">
     <link rel="stylesheet" href="/css/hero-section.css?v=<?php echo $cv; ?>">
 
     <!-- 2026-04-20: Non-critical CSS — deferred (below-fold) -->
@@ -215,8 +217,7 @@ $yandex_metrika_id = !empty($_site_cfg['yandex_metrika_id']) ? $_site_cfg['yande
     </main>
 
     <?php include 'footer.php'; ?>
-    <?php /* 2026-05-08: welcome popup — один раз для новых пользователей (BLITE + FCB 6мм) */ ?>
-    <?php include 'welcome-popup.php'; ?>
+    <?php /* 2026-09-12: welcome popup удалён — его заменила постоянная строка направлений (blocks/cross-nav.php) */ ?>
     <script src="/js/header.js" defer></script>
     <script src="/js/analytics.js" defer></script>
     <?php if (isset($extra_js)) echo $extra_js; ?>
