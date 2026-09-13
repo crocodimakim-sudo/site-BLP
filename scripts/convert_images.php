@@ -196,8 +196,11 @@ function cleanOrphanedThumbnails(): void {
 }
 
 // 2026-04-24: Create WebP version with resize to max 1920px (was: no resize)
+// 2026-09-13: define был внутри функции и ругался "already defined" со второго вызова —
+// поднят на уровень файла, объявляется один раз.
+const WEBP_MAX = 1920;
+
 function createWebP(string $src, string $dst, string $ext): bool {
-    define('WEBP_MAX', 1920);
     try {
         $img = match ($ext) {
             'png'         => imagecreatefrompng($src),

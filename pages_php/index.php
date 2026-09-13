@@ -132,7 +132,7 @@ ob_start();
                         </tr>
                         <tr>
                             <td>Масса, кг/м²</td>
-                            <td class="index-mb-td-blp"><strong>14–20</strong></td>
+                            <td class="index-mb-td-blp"><strong>13–25</strong></td>
                             <td>8–12</td>
                             <td>5–8</td>
                             <td>25–35</td>
