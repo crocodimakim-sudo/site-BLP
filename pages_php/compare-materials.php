@@ -3,7 +3,8 @@
 $page_title     = 'BLP Board vs конкуренты: сравнение фасадных материалов';
 $page_canonical = 'https://building-port.ru/compare-materials';
 $page_og_image  = 'https://building-port.ru/images-convert/og-default.jpg';
-$page_desc      = 'Сравнение BLP Board с HPL-панелями, керамогранитом, АКП, металлокассетами, клинкером, хризотилцементом, стеклофибробетоном (GFRC), терракотой и натуральным камнем по 22 параметрам.';
+// 2026-09-21: description сокращён с 180 до 157 симв. (обрезался в выдаче), в начало вынесено «фиброцементные панели» — это сам запрос
+$page_desc      = 'Фиброцементные панели BLP Board против керамогранита, HPL, АКП, металлокассет, клинкера, стеклофибробетона и натурального камня — сравнение по 22 параметрам.';
 $extra_css      = '<link rel="stylesheet" href="/css/pages/compare-materials.css">';
 $breadcrumbs    = [
     ['name' => 'Главная',              'url' => 'https://building-port.ru/'],
@@ -23,8 +24,9 @@ ob_start();
 
             <div class="cmp-header-left">
                 <p class="cmp-page-header-eyebrow">Анализ рынка фасадных материалов</p>
+                <!-- 2026-09-21: в H1 добавлен предмет запроса — искали «фиброцемент или керамогранит», а не «BLP Board vs» -->
                 <h1 class="cmp-page-header-title">
-                    BLP Board <span class="cmp-vs">vs</span> конкуренты
+                    Фиброцементные панели BLP Board <span class="cmp-vs">vs</span> конкуренты
                 </h1>
                 <p class="cmp-page-header-sub">Выберите материал — таблица покажет сравнение по 22 техническим параметрам</p>
             </div>

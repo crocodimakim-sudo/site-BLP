@@ -33,6 +33,8 @@
                     <div class="footer-column-title">Партнёрам</div>
                     <a href="/sertificate" class="footer-link">Сертификаты</a>
                     <a href="/kreplenie" class="footer-link">Способы крепления</a>
+                    <!-- 2026-09-21: на /compare-materials не вело ни одной внутренней ссылки — страница в sitemap, отдаёт 200, но для обхода тупик -->
+                    <a href="/compare-materials" class="footer-link">Сравнение материалов</a>
                 </div>
 
                 <div class="footer-column">

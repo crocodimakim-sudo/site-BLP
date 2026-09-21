@@ -85,8 +85,9 @@ if (!function_exists('blog_format_date')) {
 $_canonical_for_schema = $page_canonical;
 include __DIR__ . '/schema_article.php';
 
-// 2026-04-27: блог скрыт до доработки — не индексировать
-$page_robots = 'noindex, nofollow';
+// 2026-09-21: хардкод noindex снят. Сюда попадают только статьи с is_published = 1 (фильтр в SELECT выше),
+// а весь блог закрывается флагом is_live в database/pages.json через /admin — как у остальных страниц.
+// Значение не задаём: пустой $page_robots = страница индексируется, это соглашение шаблона (blocks/template.php:24).
 
 ob_start();
 ?>

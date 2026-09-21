@@ -14,8 +14,12 @@ $extra_css  = '<link rel="stylesheet" href="/css/pages/architect.css">';
 // 2026-04-20: fix — подключаем корректный JS страницы architect (был index.js)
 $extra_js   = '<script src="/js/pages/architect.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
-// 2026-09-07: preload главной картинки экрана — тот же приём, что на главной
-$extra_preload = '<link rel="preload" as="image" imagesrcset="/images-convert/pages/architect/architect_hero-sm.webp 800w, /images-convert/pages/architect/architect_hero.webp 1680w" imagesizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw" type="image/webp" fetchpriority="high">';
+// 2026-09-21: preload убран — он противоречил самой разметке. На этой странице нет блока героя
+// (стили .blp-architect-hero в architect.css остались от удалённого блока), а architect_hero используется
+// только в карточке «Партнерская модель» — это 84% вниз по документу, и <img> там помечен loading="lazy".
+// Получалось так: браузер по preload качал architect_hero.webp ~107 КБ с fetchpriority=high в самом начале
+// загрузки, отнимая канал у экранных ресурсов, ради картинки, до которой посетитель может не долистать.
+// og:image и primaryImageOfPage на эту же картинку сохранены — там она уместна.
 $breadcrumbs = [
     ['name' => 'Главная',                      'url' => 'https://building-port.ru/'],
     ['name' => 'Архитекторам и проектировщикам', 'url' => 'https://building-port.ru/architect'],
@@ -26,7 +30,11 @@ ob_start();
 ?>
 
 <div class="blp-audience-block">
-    <h1 class="blp-section-title">Кому можем помочь</h1>
+    <!-- 2026-09-21: H1 был «Кому можем помочь» — на странице, которая метит в запрос «фиброцементные панели
+         для архитекторов», главный заголовок не содержал ни одного ключевого слова. Прежняя формулировка
+         сохранена подзаголовком над карточками. Класс тот же, размер задаёт глобальный h1/h2 в main.css. -->
+    <h1 class="blp-section-title">Фиброцементные панели BLP Board для архитекторов и проектировщиков</h1>
+    <h2 class="blp-section-title">Кому можем помочь</h2>
 
     <div class="blp-cards-grid">
         <div class="blp-card">
