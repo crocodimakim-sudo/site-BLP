@@ -18,8 +18,8 @@
                     <a href="/catalog#walypan" class="footer-link">WALYPAN</a>
                     <a href="/catalog#palette" class="footer-link">Палитра цветов</a>
                     <a href="/catalog#characteristics" class="footer-link">Характеристики</a>
-                    <!-- 2026-09-13: вес, контейнеры, калькулятор -->
-                    <a href="/catalog#ves" class="footer-link">Вес и загрузка</a>
+                    <!-- 2026-09-13: вес; 2026-09-22: контейнеры и калькулятор сняты -->
+                    <a href="/catalog#ves" class="footer-link">Вес панелей</a>
                 </div>
 
                 <div class="footer-column">

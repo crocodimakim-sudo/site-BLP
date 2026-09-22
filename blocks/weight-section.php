@@ -40,9 +40,9 @@ $blp_weights = [
         </table>
     </div>
 
+    <?php // 2026-09-22: плотность убрана из примечания по решению руководителя; ссылка на блок контейнеров снята вместе с блоком. ?>
     <p class="blp-weight-foot">
-        Площадь листа 3050&nbsp;×&nbsp;1220&nbsp;— 3,72&nbsp;м². Плотность ≥&nbsp;1450&nbsp;кг/м³.
+        Площадь листа 3050&nbsp;×&nbsp;1220&nbsp;— 3,72&nbsp;м².
         Панель 6&nbsp;мм — интерьерная линейка MDBoard, <a href="https://blp.building-port.ru/" rel="noopener">смотреть на сайте интерьерных панелей</a>.
-        <a class="blp-weight-more" href="#konteyner">Сколько панелей входит в контейнер →</a>
     </p>
 </div>

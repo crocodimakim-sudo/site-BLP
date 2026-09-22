@@ -20,8 +20,8 @@
                         <a href="/catalog#walypan" class="dropdown-item" role="menuitem">Walypan</a>
                         <a href="/catalog#palette" class="dropdown-item" role="menuitem">Палитра цветов</a>
                         <a href="/catalog#characteristics" class="dropdown-item" role="menuitem">Характеристики</a>
-                        <?php /* 2026-09-13: пункт на блоки веса, контейнеров и калькулятора */ ?>
-                        <a href="/catalog#ves" class="dropdown-item" role="menuitem">Вес и загрузка</a>
+                        <?php /* 2026-09-13: пункт на блок веса; 2026-09-22: контейнеры и калькулятор сняты, название сокращено */ ?>
+                        <a href="/catalog#ves" class="dropdown-item" role="menuitem">Вес панелей</a>
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
                     <a href="/catalog#walypan" class="mobile-dropdown-item">WALYPAN (Линеарные плиты)</a>
                     <a href="/catalog#palette" class="mobile-dropdown-item">Палитра цветов</a>
                     <a href="/catalog#characteristics" class="mobile-dropdown-item">Характеристики</a>
-                    <a href="/catalog#ves" class="mobile-dropdown-item">Вес и загрузка</a>
+                    <a href="/catalog#ves" class="mobile-dropdown-item">Вес панелей</a>
                 </div>
             </div>
 

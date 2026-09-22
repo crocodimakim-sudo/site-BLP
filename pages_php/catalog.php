@@ -8,8 +8,7 @@ $page_canonical = 'https://building-port.ru/catalog';
 // 2026-04-20: og_image → real hero instead of missing og-default
 $page_og_image  = 'https://building-port.ru/images-convert/blocks/products/series-nature.png'; // 2026-09-05: старый файл отдавал 404
 $extra_css = '<link rel="stylesheet" href="/css/pages/catalog.css?v=20260428">'
-            . '<link rel="stylesheet" href="/css/weight-section.css?v=20260912">'
-            . '<link rel="stylesheet" href="/css/container-section.css?v=20260912">';  // 2026-09-12: вес и контейнеры
+            . '<link rel="stylesheet" href="/css/weight-section.css?v=20260922">';  // 2026-09-22: остался только блок веса, container-section.css отключён
 $extra_js = '<script src="/js/pages/catalog.js" defer></script>';
 // 2026-04-20: breadcrumbs for schema
 $breadcrumbs = [
@@ -368,8 +367,11 @@ ob_start();
      07-ХРАНЕНИЕ-И-ТРАНСПОРТИРОВКА/03-логистика-импорта/контейнерная-загрузка.md -->
 <?php include '../blocks/weight-section.php'; ?>
 
-<!-- 2026-09-12: контейнерная загрузка и калькулятор партии -->
-<?php include '../blocks/container-section.php'; ?>
+<?php
+/* 2026-09-22: блок «Сколько панелей входит в контейнер» и калькулятор партии сняты
+   по решению руководителя — вместимость не подтверждена (см. blocks/container-section.php).
+   include '../blocks/container-section.php';  // НЕ включать без пересчёта */
+?>
 
 
 <script>
