@@ -137,6 +137,50 @@ if (!empty($errors)) {
     exit;
 }
 
+// 2026-09-28: анти-спам — подозрительную заявку сохраняем с пометкой, но на info@ не шлём.
+// Боту отвечаем «успешно», чтобы он не подбирал обход. Разбор спама 26 заявок за май–сентябрь 2026.
+$spamReasons = [];
+
+// не браузер: FormDelivery/1.0, curl, python и т.п. шлют запрос мимо формы
+$ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+if (strpos($ua, 'Mozilla/') !== 0 || preg_match('/bot|crawl|spider|curl|wget|python|java|go-http|okhttp|httpclient|scrapy|headless|phantom|formdelivery/i', $ua)) {
+    $spamReasons[] = 'не браузер';
+}
+
+// форма заполнена быстрее 8 секунд или без показа формы (человек так не успевает)
+if (!$form_time) {
+    $spamReasons[] = 'форма не открывалась';
+} elseif ($_rl_now - $form_time < 8) {
+    $spamReasons[] = 'заполнено за ' . ($_rl_now - $form_time) . ' с';
+}
+
+// номер: ровно 11 цифр, +7, код начинается на 3/4/7/8/9, без 0000000 и 1234567
+$phoneDigits = preg_replace('/\D/', '', $phone);
+if (strlen($phoneDigits) === 11 && $phoneDigits[0] === '8') {
+    $phoneDigits = '7' . substr($phoneDigits, 1);
+}
+if (!preg_match('/^7[34789]\d{9}$/', $phoneDigits) || preg_match('/(\d)\1{6}|1234567|7654321/', substr($phoneDigits, 1))) {
+    $spamReasons[] = 'неверный номер';
+}
+
+// email из случайных букв разного регистра (JKrroSCJpaHKeoV@...) или несуществующий домен
+$emailLocal  = (string)strstr($email, '@', true);
+$emailDomain = substr((string)strrchr($email, '@'), 1);
+if (preg_match('/^[A-Za-z]{12,}$/', $emailLocal)
+    && preg_match_all('/[A-Z]/', $emailLocal) >= 4
+    && preg_match_all('/[a-z]/', $emailLocal) >= 3
+    && preg_match_all('/[a-z][A-Z]|[A-Z][a-z]/', $emailLocal) >= 4) {
+    $spamReasons[] = 'случайный email';
+}
+if ($emailDomain !== '' && function_exists('checkdnsrr') && !checkdnsrr($emailDomain, 'MX') && !checkdnsrr($emailDomain, 'A')) {
+    $spamReasons[] = 'домен почты не существует';
+}
+
+// компании-заглушки генератора: ООО "Альфа", НПО "Бета", ИП "Звезда"
+if (preg_match('/^(ООО|ОАО|ЗАО|ПАО|АО|НПО|ИП)\s*["«]?(Альфа|Бета|Гамма|Дельта|Омега|Звезда|Ромашка)["»]?$/u', $company)) {
+    $spamReasons[] = 'шаблонная компания';
+}
+
 // Формируем письмо
 $to      = 'info@building-port.ru';
 $subject = 'Сообщение со страницы Контакты — BLP Board';
@@ -178,9 +222,25 @@ try {
     if (!in_array('consent_text_version', $cols, true)) $pdo->exec("ALTER TABLE leads ADD COLUMN consent_text_version TEXT");
     if (!in_array('consent_at', $cols, true))           $pdo->exec("ALTER TABLE leads ADD COLUMN consent_at TEXT");
     if (!in_array('user_agent', $cols, true))           $pdo->exec("ALTER TABLE leads ADD COLUMN user_agent TEXT");
+    // 2026-09-28: причина пометки «спам»; пусто — нормальная заявка
+    if (!in_array('spam_reason', $cols, true))          $pdo->exec("ALTER TABLE leads ADD COLUMN spam_reason TEXT");
+
+    // 2026-09-28: повтор номера за 30 дней (спамер «Артём» слал один номер с разных почт раз в 2–4 дня).
+    // Сравниваем только с нормальными заявками: если первую ошибочно пометили спамом, вторая пройдёт.
+    $since = date('Y-m-d H:i:s', $_rl_now - 30 * 86400);
+    $prev = $pdo->prepare("SELECT id, created_at, phone FROM leads WHERE created_at >= ? AND (spam_reason IS NULL OR spam_reason = '') ORDER BY id DESC");
+    $prev->execute([$since]);
+    foreach ($prev->fetchAll(PDO::FETCH_ASSOC) as $p) {
+        $pDigits = preg_replace('/\D/', '', $p['phone']);
+        if (strlen($pDigits) === 11 && $pDigits[0] === '8') $pDigits = '7' . substr($pDigits, 1);
+        if ($pDigits === $phoneDigits) {
+            $spamReasons[] = 'повтор номера (№' . $p['id'] . ' от ' . substr($p['created_at'], 0, 10) . ')';
+            break;
+        }
+    }
 
     $userAgent = substr($_SERVER['HTTP_USER_AGENT'] ?? '', 0, 500);
-    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, marketing, ip, consent_text_version, consent_at, user_agent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO leads (created_at, name, phone, email, company, marketing, ip, consent_text_version, consent_at, user_agent, spam_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
         date('Y-m-d H:i:s'),
         $name, $phone, $email, $company,
@@ -188,7 +248,8 @@ try {
         $_SERVER['REMOTE_ADDR'] ?? '',
         BLP_CONSENT_VERSION,
         $consentAt,
-        $userAgent
+        $userAgent,
+        $spamReasons ? implode('; ', $spamReasons) : null
     ]);
 } catch (Exception $e) {
     // лог не блокирует отправку
@@ -196,7 +257,9 @@ try {
 }
 
 // Отправляем письмо
-$mailSent = @mail($to, $subject, $body, $headers);
+// 2026-09-28: спам не шлём ни на info@, ни отбивкой на чужой адрес
+$isSpam   = !empty($spamReasons);
+$mailSent = $isSpam ? false : @mail($to, $subject, $body, $headers);
 
 // 2026-04-24: отбивка пользователю — подтверждение получения заявки
 if ($mailSent && !empty($email)) {
@@ -227,7 +290,7 @@ $logLine = date('Y-m-d H:i:s')
     . ' | ' . $maskPhone
     . ' | ' . $maskEmail
     . ' | ' . ($company ? '[set]' : '-')
-    . ' | mail:' . ($mailSent ? 'ok' : 'FAIL')
+    . ' | mail:' . ($isSpam ? 'spam (' . implode('; ', $spamReasons) . ')' : ($mailSent ? 'ok' : 'FAIL'))
     . "\n";
 @file_put_contents($logFile, $logLine, FILE_APPEND | LOCK_EX);
 
@@ -262,7 +325,7 @@ if (!empty($email_raw)) {
     @file_put_contents($_rl_email_file, json_encode($_rl_email_hits), LOCK_EX);
 }
 
-if ($mailSent) {
+if ($mailSent || $isSpam) {
     echo json_encode(['ok' => true, 'message' => 'Заявка успешно отправлена']);
 } else {
     // 2026-04-23: честный ответ при ошибке mail() — заявка сохранена в лог

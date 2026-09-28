@@ -1409,7 +1409,8 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                             $msg_short = mb_substr($msg, 0, 80, 'UTF-8');
                             if (mb_strlen($msg, 'UTF-8') > 80) $msg_short .= '...';
                         ?>
-                            <tr>
+                            <?php $spam = (string)($l['spam_reason'] ?? ''); /* 2026-09-28: спам бледнее, причина в колонке «Письмо» */ ?>
+                            <tr<?= $spam !== '' ? ' style="opacity:.5"' : '' ?>>
                                 <td><?= (int)$l['id'] ?></td>
                                 <td class="admin-td-date"><?= h($l['created_at']) ?></td>
                                 <td><?= h($l['name']) ?></td>
@@ -1418,7 +1419,7 @@ $project_tags = ['Медицина', 'Образование', 'Государс
                                 <td><?= h($l['company']) ?></td>
                                 <td title="<?= h($msg) ?>"><?= h($msg_short) ?></td>
                                 <td class="admin-td-center"><?= !empty($l['marketing']) ? 'да' : '—' ?></td>
-                                <td class="admin-td-center"><?= !empty($l['mail_sent']) ? 'да' : '—' ?></td>
+                                <td class="admin-td-center"><?= $spam !== '' ? 'спам: ' . h($spam) : (!empty($l['mail_sent']) ? 'да' : '—') ?></td>
                                 <td class="admin-td-center">
                                     <a href="?action=del-lead&id=<?= (int)$l['id'] ?>&csrf=<?= h($csrf) ?>"
                                        class="btn-danger btn-sm"
